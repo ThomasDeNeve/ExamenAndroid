@@ -3,4 +3,8 @@
     <string name="profile">Profiel</string>
     <string name="reserve">Reserveer</string>
     <string name="myReservations">Mijn Reservaties</string>
+    <string name="username">Gebruikersnaam</string>
+    <string name="passwordHint">Vul uw paswoord in</string>
+    <string name="login">Login</string>
+    <string name="register">Registreer</string>
 </resources>
