@@ -17,6 +17,6 @@ Instructions how to run the project (don't forget the DB Connection etc.)
 - Groupmember 1 : thomasboghaert - Boghaert - Thomas
 - Groupmember 2 : LorenzBaeleOfficial - Baele - Lorenz
 - Groupmember 3 : YvesVanduynslager - Vanduynslager - Yves
-- Groupmember 4 : {{GitHub Username}} - {{Lastname}} - {{Firstname}}
+- Groupmember 4 : MaartenGoethals - Goethals - Maarten
 - Groupmember 5 : {{GitHub Username}} - {{Lastname}} - {{Firstname}}
 - Groupmember 6 : {{GitHub Username}} - {{Lastname}} - {{Firstname}}
