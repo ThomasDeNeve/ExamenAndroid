@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="bottom_nav_style">
+        <item name="bottomNavigationStyle">
+            @style/Widget.MaterialComponents.BottomNavigationView.Colored
+        </item>
+        <item name="colorPrimary">@color/primary_pink</item>
+    </style>
+</resources>
