@@ -1,10 +1,16 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'androidx.navigation.safeargs'
 }
 
 android {
     compileSdk 31
+
+    buildFeatures{
+        dataBinding true
+    }
 
     defaultConfig {
         applicationId "com.example.hier"
@@ -12,7 +18,8 @@ android {
         targetSdk 31
         versionCode 1
         versionName "1.0"
-
+        //TODO IMPORTANT change BASE_URL to backend-URL!!
+        buildConfigField 'String', 'BASE_URL', "\"localhost\""
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -42,4 +49,30 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation 'com.google.android.material:material:1.4.0'
 
+    // KOIN (dependency injection framework for kotlin - used in dependency_injection folder)
+    // Koin core features
+    implementation "io.insert-koin:koin-core:$koin_version"
+    // Koin test features
+    testImplementation "io.insert-koin:koin-test:$koin_version"
+    // Koin main features for Android (Scope,ViewModel ...)
+    implementation "io.insert-koin:koin-android:$koin_version"
+    // Koin Java Compatibility
+    implementation "io.insert-koin:koin-android-compat:$koin_version"
+    // Koin for Jetpack WorkManager
+    implementation "io.insert-koin:koin-androidx-workmanager:$koin_version"
+    // Koin for Jetpack Compose
+    implementation "io.insert-koin:koin-androidx-compose:$koin_version"
+
+
+    // RETROFIT
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
+    implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$interceptor_version"
+
+    // Moshi
+    implementation "com.squareup.moshi:moshi-kotlin:$moshi_version"
+
+    // Navigation
+    implementation "android.arch.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "android.arch.navigation:navigation-ui-ktx:$nav_version"
 }
