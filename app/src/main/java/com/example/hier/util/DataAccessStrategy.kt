@@ -30,10 +30,26 @@ fun <T, A> performGetOperation(
         val responseStatus = networkCall.invoke()
         if (responseStatus.status == Status.SUCCESS) {
             saveCallResult(responseStatus.data!!)
-            Log.i("DataAccessStrategy", "Sucessfully fetched data from API")
+            Log.i("DataAccessStrategy", "Successfully fetched data from API")
         } else if (responseStatus.status == Status.ERROR) {
             Log.e("DataAccessStrategy", "Error fetching result from API")
             emit(Resource.error(responseStatus.message!!))
             emitSource(source)
         }
     }
+/*
+
+fun <T, A> fetchUser(networkCall: suspend () -> Resource<A>): LiveData<Resource<T>> =
+    liveData(Dispatchers.IO) {
+        emit(Resource.loading())
+        val responseStatus = networkCall.invoke()
+        if (responseStatus.status == Status.SUCCESS) {
+            saveCallResult(responseStatus.data!!)
+            Log.i("DataAccessStrategy", "Successfully fetched data from API")
+        } else if (responseStatus.status == Status.ERROR) {
+            Log.e("DataAccessStrategy", "Error fetching result from API")
+            emit(Resource.error(responseStatus.message!!))
+            emitSource(source)
+        }
+    }
+*/

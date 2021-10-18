@@ -6,6 +6,7 @@ import com.example.hier.database.LocalDataSource
 import com.example.hier.network.ApiService
 import com.example.hier.network.RemoteDataSource
 import com.example.hier.repository.RoomRepository
+import com.example.hier.repository.UserRepository
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient
@@ -24,6 +25,7 @@ val networkModule = module {
     single { RemoteDataSource(get()) }
     single { LocalDataSource(get()) }
     single { RoomRepository(get(), get()) }
+    single { UserRepository(get()) }
 }
 
 private fun provideOkHttpClient() = if (BuildConfig.DEBUG) {
