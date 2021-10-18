@@ -28,6 +28,8 @@ class LoginFragment : Fragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
+        binding.
+
         binding.loginButton.setOnClickListener{
 //             Toast.makeText(context, "login successful", Toast.LENGTH_LONG).show()
 //            Log.e("test", "lalala")
@@ -37,27 +39,30 @@ class LoginFragment : Fragment() {
             //TODO hash password here?
 
             viewModel.setCredentials(username, password)
+        }
 
-            viewModel.loginResponse.observe(viewLifecycleOwner,
-                Observer {
-                    it?.let { resource ->
-                        when (resource.status) {
-                            //TODO add logic for logging in
-                            Status.SUCCESS -> {
-                               Toast.makeText(context, "login successful", Toast.LENGTH_LONG).show()
-                                navigateToHome()
-                            }
-                            Status.LOADING -> {
-                                Toast.makeText(context, "loading", Toast.LENGTH_LONG).show()
-                            }
-                            Status.ERROR -> {
-                                Toast.makeText(context, resource.message, Toast.LENGTH_LONG).show()
-                            }
+        //TODO find out why this doesn't work
+        viewModel.loginResponse?.observe(viewLifecycleOwner,
+            Observer {
+                Log.e("LoginFragment", it.toString())
+                it?.let { resource ->
+                    when (resource.status) {
+                        //TODO add logic for logging in
+                        Status.SUCCESS -> {
+                            Toast.makeText(context, "login successful", Toast.LENGTH_LONG).show()
+                            Log.e("Fragment", "successful fetch from Fragment")
+                            navigateToHome()
+                        }
+                        Status.LOADING -> {
+                            Toast.makeText(context, "loading", Toast.LENGTH_LONG).show()
+                        }
+                        Status.ERROR -> {
+                            Toast.makeText(context, resource.message, Toast.LENGTH_LONG).show()
                         }
                     }
                 }
-            )
-        }
+            }
+        )
 
         return binding.root
     }

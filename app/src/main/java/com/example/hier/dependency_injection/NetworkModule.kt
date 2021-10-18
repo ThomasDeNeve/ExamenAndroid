@@ -21,11 +21,12 @@ val networkModule = module {
     single { provideOkHttpClient() }
     single { provideRetrofit(get(), BuildConfig.BASE_URL) }
     single { provideApiService(get()) }
-    //single { ApplicationDatabase.getDatabase(androidApplication().roomDao() }
+    single { ApplicationDatabase.getDatabase(androidApplication()).roomDao() }
+    single { ApplicationDatabase.getDatabase(androidApplication()).userDao() }
     single { RemoteDataSource(get()) }
-    single { LocalDataSource(get()) }
+    single { LocalDataSource(get(), get()) }
     single { RoomRepository(get(), get()) }
-    single { UserRepository(get()) }
+    single { UserRepository(get(), get()) }
 }
 
 private fun provideOkHttpClient() = if (BuildConfig.DEBUG) {

@@ -37,9 +37,9 @@ fun <T, A> performGetOperation(
             emitSource(source)
         }
     }
-/*
 
-fun <T, A> fetchUser(networkCall: suspend () -> Resource<A>): LiveData<Resource<T>> =
+
+/*fun <T, A> fetchUser(networkCall: suspend () -> Resource<A>, saveCallResult: suspend (A) -> Unit): LiveData<Resource<T>> =
     liveData(Dispatchers.IO) {
         emit(Resource.loading())
         val responseStatus = networkCall.invoke()
@@ -51,5 +51,5 @@ fun <T, A> fetchUser(networkCall: suspend () -> Resource<A>): LiveData<Resource<
             emit(Resource.error(responseStatus.message!!))
             emitSource(source)
         }
-    }
-*/
+    }*/
+

@@ -4,15 +4,17 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.example.hier.models.Room
+import com.example.hier.models.User
 
 @Database(
-    entities = [Room::class],
-    version = 1,
+    entities = [Room::class, User::class],
+    version = 2,
     exportSchema = false
 )
 abstract class ApplicationDatabase : RoomDatabase() {
 
     abstract fun roomDao(): RoomDao
+    abstract fun userDao(): UserDao
 
     companion object {
         @Volatile
