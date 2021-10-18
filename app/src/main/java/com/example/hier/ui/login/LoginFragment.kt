@@ -28,7 +28,6 @@ class LoginFragment : Fragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
-        binding.
 
         binding.loginButton.setOnClickListener{
 //             Toast.makeText(context, "login successful", Toast.LENGTH_LONG).show()
