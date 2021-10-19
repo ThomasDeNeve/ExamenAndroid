@@ -19,9 +19,11 @@ class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
         updateLoginUser()
     }
 
-    var loginResponse : LiveData<Resource<LoginResponse>>? = null
+    val loginResponse : MutableLiveData<Resource<LoginResponse>> by lazy{
+        MutableLiveData<Resource<LoginResponse>>()
+    }
     private fun updateLoginUser(){
-        loginResponse = userRepository.loginUser(username, password)
+        loginResponse.value = userRepository.loginUser(username, password).value
         //addToLoginResponse2()
     }
 
