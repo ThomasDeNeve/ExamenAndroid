@@ -14,6 +14,7 @@ class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
     var password: String = ""
 
     fun setCredentials(username: String, password: String){
+        //TODO hash password here?
         this.username = username
         this.password = password
         updateLoginUser()

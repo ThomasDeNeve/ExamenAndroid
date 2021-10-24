@@ -3,18 +3,20 @@ package com.example.hier.database
 import android.content.Context
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import com.example.hier.models.Reservation
 import com.example.hier.models.Room
 import com.example.hier.models.User
 
 @Database(
-    entities = [Room::class, User::class],
-    version = 2,
+    entities = [Room::class, User::class, Reservation::class],
+    version = 3,
     exportSchema = false
 )
 abstract class ApplicationDatabase : RoomDatabase() {
 
     abstract fun roomDao(): RoomDao
     abstract fun userDao(): UserDao
+    abstract fun reservationsDao() : ReservationDao
 
     companion object {
         @Volatile

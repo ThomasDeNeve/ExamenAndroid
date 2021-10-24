@@ -1,5 +1,5 @@
 package com.example.hier.networkModels
 
-data class RootNetworkModel(
+data class RootRoomNetworkModel(
     val records: List<RoomNetworkModel>
 )

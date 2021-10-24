@@ -2,10 +2,14 @@ package com.example.hier
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.example.hier.databinding.ActivityMainBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,7 +25,25 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupNavigation(){
+        /*val navController = findNavController(R.id.nav_host_fragment)
+        setupActionBarWithNavController(navController)*/
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         val navController = findNavController(R.id.nav_host_fragment)
-        setupActionBarWithNavController(navController)
+        bottomNavigationView.setupWithNavController(navController)
+
+        hideBottomNavigationOnLoginPage(navController, bottomNavigationView)
+    }
+
+    private fun hideBottomNavigationOnLoginPage(
+        navController: NavController,
+        bottomNavigationView: BottomNavigationView
+    ) {
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            bottomNavigationView.visibility = if (destination.id == R.id.loginFragment) {
+                View.GONE
+            } else {
+                View.VISIBLE
+            }
+        }
     }
 }

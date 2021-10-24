@@ -19,4 +19,19 @@
             android:id="@+id/action_loginFragment_to_mainActivity"
             app:destination="@id/mainActivity" />
     </fragment>
+    <fragment
+        android:id="@+id/roomFragment"
+        android:name="com.example.hier.ui.rooms.RoomFragment"
+        android:label="room_fragment"
+        tools:layout="@layout/room_fragment" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.hier.ui.profile.ProfileFragment"
+        android:label="profile_fragment"
+        tools:layout="@layout/profile_fragment" />
+    <fragment
+        android:id="@+id/reservationsFragment"
+        android:name="com.example.hier.ui.reservations.ReservationsFragment"
+        android:label="reservations_fragment"
+        tools:layout="@layout/reservations_fragment" />
 </navigation>

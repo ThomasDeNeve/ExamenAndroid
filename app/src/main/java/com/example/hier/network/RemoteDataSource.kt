@@ -8,6 +8,7 @@ import retrofit2.Response
 class RemoteDataSource(val apiService: ApiService) : BaseDataSource() {
     suspend fun getRooms() = getResult { apiService.getRooms() }
     suspend fun loginUser(username: String, password: String) = getResult { apiService.loginUser(username, password) }
+    suspend fun getReservations() = getResult { apiService.getReservations() }
 
     /*suspend fun loginUser (username: String, password: String) : Resource<LoginResponse>{
         Log.e("RemoteDataSource", "got into loginUser")
