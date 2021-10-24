@@ -1,3 +1,4 @@
+/*
 package com.example.hier.repository
 
 import com.example.hier.database.LocalDataSource
@@ -13,4 +14,4 @@ class ReservationRepository(
         networkCall = { remoteDataSource.getReservations() },
         saveCallResult = { localDataSource.saveReservations(it.records) }
     )
-}
+}*/

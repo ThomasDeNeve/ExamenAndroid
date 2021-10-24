@@ -4,5 +4,5 @@ import androidx.lifecycle.ViewModel
 import com.example.hier.repository.UserRepository
 
 class ProfileViewModel(userRepository: UserRepository) : ViewModel() {
-    // TODO: Implement the ViewModel
+    val user = userRepository.getUser()
 }

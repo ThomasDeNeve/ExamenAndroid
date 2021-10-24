@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.hier.R
 import com.example.hier.databinding.RoomFragmentBinding
+import com.example.hier.models.Room
 import org.koin.android.ext.android.inject
 
 class RoomFragment : Fragment() {
@@ -19,7 +20,8 @@ class RoomFragment : Fragment() {
         val binding = RoomFragmentBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
-        val rooms = viewModel.rooms
+       // val rooms = viewModel.rooms
+
         return binding.root
     }
 
