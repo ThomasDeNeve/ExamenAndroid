@@ -10,4 +10,6 @@
     <string name="hier_logo">HIER logo</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="dagprijs_label">Dagprijs:</string>
+    <string name="grootte_label">zitplaatsen</string>
 </resources>

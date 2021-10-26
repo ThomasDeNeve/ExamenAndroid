@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import com.example.hier.R
+import com.example.hier.adapters.RoomAdapter
 import com.example.hier.databinding.RoomFragmentBinding
 import com.example.hier.models.Room
 import org.koin.android.ext.android.inject
@@ -21,6 +23,12 @@ class RoomFragment : Fragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
        // val rooms = viewModel.rooms
+
+        //attaching adapter for recyclerview
+        val adapter = RoomAdapter()
+        binding.roomList.adapter = adapter
+
+        adapter.data=viewModel.rooms.data!!
 
         return binding.root
     }
