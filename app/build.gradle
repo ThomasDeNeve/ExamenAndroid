@@ -21,7 +21,7 @@ android {
         versionCode 1
         versionName "1.0"
         //TODO IMPORTANT change BASE_URL to backend-URL!!
-        buildConfigField 'String', 'BASE_URL', "\"https://10.0.2.2:44390/\""
+        buildConfigField 'String', 'BASE_URL', "\"https://10.0.2.2:44341/\""
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -90,4 +90,7 @@ dependencies {
     // ViewModel en LiveData
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+
+    //GSON (only for testing!)
+    implementation 'com.google.code.gson:gson:2.8.7'
 }

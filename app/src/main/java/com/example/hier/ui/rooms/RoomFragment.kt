@@ -18,7 +18,7 @@ class RoomFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val viewModel: RoomViewModel by inject()
+        val viewModel: LocationViewModel by inject()
         val binding = RoomFragmentBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
@@ -28,8 +28,7 @@ class RoomFragment : Fragment() {
         val adapter = RoomAdapter()
         binding.roomList.adapter = adapter
 
-        adapter.data=viewModel.rooms.data!!
-
+        adapter.data=viewModel.rooms!!
         return binding.root
     }
 

@@ -8,17 +8,17 @@ import com.example.hier.network.LoginResponse
 import com.example.hier.networkModels.ReservationNetworkModel
 import com.example.hier.networkModels.RoomNetworkModel
 
-class LocalDataSource(private val roomDao: RoomDao, private val userDao: UserDao, private val reservationDao: ReservationDao) {
-    fun getRooms() = roomDao.getAllRooms()
+class LocalDataSource(private val locationDao: LocationDao, private val userDao: UserDao, private val reservationDao: ReservationDao) {
+    fun getLocations() = locationDao.getAllLocations()
 
-    fun getRoom(id: Int) = roomDao.getRoom(id)
+    //fun getRoom(id: Int) = roomDao.getRoom(id)
 
     // save list of rooms to database
-    fun saveRooms(list: List<RoomNetworkModel>) {
+    /*fun saveRooms(list: List<RoomNetworkModel>) {
         val roomList = ArrayList<Room>()
         list.forEach { room -> roomList.add(room.toDataBaseModel()) }
         roomDao.insertAll(roomList)
-    }
+    }*/
 
     fun getUser(username: String): LiveData<LoginResponse> {
         return MutableLiveData(LoginResponse(false, "", userDao.getUser(username)))
