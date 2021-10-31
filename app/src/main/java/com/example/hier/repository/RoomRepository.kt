@@ -3,6 +3,7 @@ package com.example.hier.repository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.map
 import com.example.hier.database.LocalDataSource
+import com.example.hier.models.Location
 import com.example.hier.models.LocationWithRooms
 import com.example.hier.models.Room
 import com.example.hier.network.RemoteDataSource
@@ -22,11 +23,22 @@ class RoomRepository(
         return localDataSource.getAllRooms().map { Resource.success(it) }
     }
 
-    fun getLocations() = performGetOperation(
+    /*fun getLocations() = performGetOperation(
         databaseQuery = { localDataSource.getLocations() },
         networkCall = { remoteDataSource.getLocations() },
         saveCallResult = { localDataSource.saveLocations(it) }
-    )
+    )*/
+
+    fun getLocations() : LiveData<Resource<List<LocationWithRooms>>>{
+        var locationsFromDB = localDataSource.getLocations().map { Resource.success(it) }
+        var locationsFromAPI = remoteDataSource.getLocations()
+        if(locationsFromAPI.status == Status.SUCCESS){
+            localDataSource.saveLocations(locationsFromAPI.data!!.toList())
+            locationsFromDB = localDataSource.getLocations().map { Resource.success(it) } //update records with new
+        }
+        return locationsFromDB
+    }
+
     /** TODO: Get real rooms from dtb
      * fun getRooms() = performGetOperation(
         databaseQuery = { localDataSource.getRooms() },

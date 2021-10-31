@@ -29,13 +29,13 @@ class RoomFragment : Fragment() {
 
         //adapter.data=viewModel.rooms
 
-        viewModel.rooms.observe(viewLifecycleOwner, Observer {
+        /*viewModel.rooms.observe(viewLifecycleOwner, Observer {
             it?.let { resource ->  if(resource.status == Status.SUCCESS){
                 adapter.data = resource.data!!
             } }
-        })
+        })*/
 
-        /*viewModel.rooms.observe(
+        viewModel.rooms.observe(
             viewLifecycleOwner,
             Observer {
                 it?.let { resource ->
@@ -53,7 +53,7 @@ class RoomFragment : Fragment() {
                     }
                 }
             }
-        )*/
+        )
         return binding.root
     }
 
