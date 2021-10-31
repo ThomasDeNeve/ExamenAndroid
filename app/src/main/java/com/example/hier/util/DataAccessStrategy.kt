@@ -5,6 +5,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import kotlinx.coroutines.Dispatchers
 import androidx.lifecycle.map
+import com.example.hier.models.Location
+import com.example.hier.models.LocationWithRooms
+import com.example.hier.models.Room
+import org.json.JSONArray
 
 /**
  * Helper method to do 3 things:
@@ -38,6 +42,47 @@ fun <T, A> performGetOperation(
         }
     }
 
+
+fun parseJson(jsonString: String): ArrayList<LocationWithRooms> {
+    val jsonArray = JSONArray(jsonString)
+
+    val locations: ArrayList<LocationWithRooms> = ArrayList()
+
+    //iterate over each location object
+    for (i in 0 until jsonArray.length()) {
+        val locationObject = jsonArray.getJSONObject(i)
+        val rooms: ArrayList<Room> = ArrayList()
+        val roomsArray = locationObject.getJSONArray("meetingRooms")
+
+        //iterate over each room object within location
+        for (j in 0 until roomsArray.length()) {
+            val roomObject = roomsArray.getJSONObject(j)
+            val tempRoom = Room(
+                roomObject.get("id") as Int,
+                roomObject.get("name").toString(),
+                roomObject.get("numberOfSeats") as Int,
+                0.0, //TODO: this is hardcoded as 0 because price is null and can't be cast to Double
+                //roomObject.get("price") as Double,
+                locationObject.get("id") as Int
+            )
+            rooms.add(tempRoom)
+        }
+
+        val location = LocationWithRooms(
+            Location(
+                locationObject.get("id") as Int,
+                locationObject.get("name").toString(),
+                locationObject.get("street").toString(),
+                locationObject.get("number") as Int,
+                locationObject.get("postalCode").toString(),
+                locationObject.get("place").toString()
+            ),
+            rooms
+        )
+        locations.add(location)
+    }
+    return locations
+}
 
 /*fun <T, A> fetchUser(networkCall: suspend () -> Resource<A>, saveCallResult: suspend (A) -> Unit): LiveData<Resource<T>> =
     liveData(Dispatchers.IO) {

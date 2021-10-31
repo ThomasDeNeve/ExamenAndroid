@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.hier.ui.rooms.LocationViewModel" />
+            type="com.example.hier.ui.rooms.RoomViewModel" />
     </data>
 
     <FrameLayout

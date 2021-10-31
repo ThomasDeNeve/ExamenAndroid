@@ -6,7 +6,7 @@ import com.example.hier.database.ApplicationDatabase
 import com.example.hier.database.LocalDataSource
 import com.example.hier.network.ApiService
 import com.example.hier.network.RemoteDataSource
-import com.example.hier.repository.LocationRepository
+//import com.example.hier.repository.LocationRepository
 import com.example.hier.repository.RoomRepository
 import com.example.hier.repository.UserRepository
 import com.squareup.moshi.Moshi
@@ -26,11 +26,12 @@ val networkModule = module {
     single { ApplicationDatabase.getDatabase(androidApplication()).locationDao() }
     single { ApplicationDatabase.getDatabase(androidApplication()).userDao() }
     single { ApplicationDatabase.getDatabase(androidApplication()).reservationsDao() }
+    single { ApplicationDatabase.getDatabase(androidApplication()).roomDao() }
     single { RemoteDataSource(get()) }
-    single { LocalDataSource(get(), get(), get()) }
+    single { LocalDataSource(get(), get(), get(), get()) }
     single { RoomRepository(get(), get()) }
     single { UserRepository(get(), get()) }
-    single { LocationRepository(get(), get()) }
+    //single { LocationRepository(get(), get()) }
     //single { ReservationRepository(get(), get()) }
 }
 

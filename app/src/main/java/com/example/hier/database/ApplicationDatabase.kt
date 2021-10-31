@@ -12,7 +12,7 @@ import com.example.hier.models.*
 )
 abstract class ApplicationDatabase : RoomDatabase() {
 
-    //abstract fun roomDao(): RoomDao
+    abstract fun roomDao(): RoomDao
     abstract fun locationDao() : LocationDao
     abstract fun userDao(): UserDao
     abstract fun reservationsDao() : ReservationDao
