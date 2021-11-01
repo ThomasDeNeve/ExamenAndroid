@@ -20,26 +20,28 @@
         android:id="@+id/roomOverviewFragment"
         android:name="com.example.hier.ui.roomoverview.RoomOverviewFragment"
         android:label="room_fragment"
-        tools:layout="@layout/roomoverview_fragment">
+        tools:layout="@layout/fragment_roomoverview">
         <action
             android:id="@+id/action_roomOverviewFragment_to_roomFragment"
-            app:destination="@id/roomFragment" />
+            app:destination="@id/roomFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.hier.ui.profile.ProfileFragment"
         android:label="profile_fragment"
-        tools:layout="@layout/profile_fragment" />
+        tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/reservationsFragment"
         android:name="com.example.hier.ui.reservations.ReservationsFragment"
         android:label="reservations_fragment"
-        tools:layout="@layout/reservations_fragment" />
+        tools:layout="@layout/fragment_reservations" />
     <fragment
         android:id="@+id/roomFragment"
         android:name="com.example.hier.ui.room.RoomFragment"
         android:label="RoomFragment"
-        tools:layout="@layout/room_fragment">
+        tools:layout="@layout/fragment_room">
         <argument
             android:name="roomId"
             app:argType="integer" />

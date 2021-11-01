@@ -31,6 +31,8 @@ class RoomRepository(
         saveCallResult = { localDataSource.saveLocations(it) }
     )*/
 
+    fun getLocationById(locationId: Int) = localDataSource.getLocationById(locationId)
+
     fun getLocations() : LiveData<Resource<List<LocationWithRooms>>>{
         var locationsFromDB = localDataSource.getLocations().map { Resource.success(it) }
         var locationsFromAPI = remoteDataSource.getLocations()
@@ -40,11 +42,4 @@ class RoomRepository(
         }
         return locationsFromDB
     }
-
-    /** TODO: Get real rooms from dtb
-     * fun getRooms() = performGetOperation(
-        databaseQuery = { localDataSource.getRooms() },
-        networkCall = { remoteDataSource.getRooms() },
-        saveCallResult = { localDataSource.saveRooms(it.records) }
-    )**/
 }

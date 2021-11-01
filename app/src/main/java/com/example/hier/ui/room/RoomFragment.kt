@@ -9,8 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
-import com.example.hier.R
-import com.example.hier.databinding.RoomFragmentBinding
+import com.example.hier.databinding.FragmentRoomBinding
 import org.koin.android.ext.android.inject
 
 class RoomFragment : Fragment() {
@@ -22,7 +21,7 @@ class RoomFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val viewModel: RoomViewModel by inject()
-        val binding = RoomFragmentBinding.inflate(inflater, container, false)
+        val binding = FragmentRoomBinding.inflate(inflater, container, false)
         Log.e("roomfragment", "room id passed by args is ${args.roomId}")
         viewModel.setRoom(args.roomId)
 
@@ -31,7 +30,13 @@ class RoomFragment : Fragment() {
 
         viewModel.room.observe(viewLifecycleOwner, Observer { room ->
             roomName = room.name
+           // viewModel.initializeLocation(room.locationId)
         })
+
+        /*viewModel.location.observe(viewLifecycleOwner, Observer { loc ->
+
+        })*/
+
 
         return binding.root
     }

@@ -14,6 +14,8 @@ class LocalDataSource(private val locationDao: LocationDao, private val userDao:
     fun getLocations() = locationDao.getAllLocations()
     fun getAllRooms() = roomDao.getAllRooms()
     fun getRoomById(roomId: Int) = roomDao.getRoom(roomId)
+    fun getLocationById(locationId: Int) = roomDao.getLocation(locationId)
+
 
 
     // save list of rooms to database
@@ -49,6 +51,5 @@ class LocalDataSource(private val locationDao: LocationDao, private val userDao:
         locationDao.insertAll(locations)
         roomDao.insertAll(rooms)
     }
-
 
 }

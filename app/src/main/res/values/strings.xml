@@ -8,9 +8,16 @@
     <string name="login">Login</string>
     <string name="register">Registreer</string>
     <string name="hier_logo">HIER logo</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="dagprijs_label">Dagprijs:</string>
+    <string name="dagprijs_label">Prijs volledige dag:</string>
+    <string name="halvedagprijs_label">Prijs halve dag:</string>
+    <string name="avondprijs_label">Prijs avond:</string>
+    <string name="tweeuurprijs_label">Prijs voor 2 uur:</string>
     <string name="grootte_label">zitplaatsen</string>
     <string name="rooms_fragment_title">Reserveer zalen</string>
+    <string name="euro">euro</string>
+    <string name="info">Info</string>
+    <string name="aantalPlaatsen">Aantal plaatsen:</string>
+    <string name="locatie">Locatie:</string>
+    <string name="prijzen">Prijzen</string>
 </resources>

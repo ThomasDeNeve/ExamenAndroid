@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.profile.ProfileFragment">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.hier.ui.room.RoomViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/btn_reserve"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:backgroundTint="@color/primary_pink"
+            android:padding="20dp"
+            android:text="@string/reserve"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txvTwoHours" />
+
+        <TextView
+            android:id="@+id/txvPrices"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/prijzen"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/txvInfo"
+            app:layout_constraintTop_toBottomOf="@+id/txvAantalPlaatsen" />
+
+        <TextView
+            android:id="@+id/lblAantalPlaatsen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@{String.valueOf(viewModel.room.numberOfSeats)}"
+            app:layout_constraintStart_toEndOf="@+id/txvAantalPlaatsen"
+            app:layout_constraintTop_toTopOf="@+id/txvAantalPlaatsen"
+            tools:text="20" />
+
+        <TextView
+            android:id="@+id/tcvLocatie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/locatie"
+            app:layout_constraintStart_toStartOf="@+id/txvInfo"
+            app:layout_constraintTop_toBottomOf="@+id/txvInfo" />
+
+<!--
+        TODO fix hardcoded location name
+-->
+        <TextView
+            android:id="@+id/lblLocatie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="HIER"
+            app:layout_constraintStart_toEndOf="@+id/tcvLocatie"
+            app:layout_constraintTop_toTopOf="@+id/tcvLocatie"
+            tools:text="HIER" />
+
+        <TextView
+            android:id="@+id/txvAantalPlaatsen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/aantalPlaatsen"
+            app:layout_constraintStart_toStartOf="@+id/txvInfo"
+            app:layout_constraintTop_toBottomOf="@+id/tcvLocatie" />
+
+        <TextView
+            android:id="@+id/txvInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/info"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+        <TextView
+            android:id="@+id/txvEuro1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:text="@string/euro"
+            app:layout_constraintStart_toEndOf="@+id/lblPriceFullDay"
+            app:layout_constraintTop_toTopOf="@+id/lblPriceFullDay" />
+
+        <TextView
+            android:id="@+id/txvEuro2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:text="@string/euro"
+            app:layout_constraintStart_toEndOf="@+id/lblPriceHalfDay"
+            app:layout_constraintTop_toTopOf="@+id/lblPriceHalfDay" />
+
+
+        <TextView
+            android:id="@+id/txvEuro3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:text="@string/euro"
+            app:layout_constraintStart_toEndOf="@+id/lblPriceEvening"
+            app:layout_constraintTop_toTopOf="@+id/lblPriceEvening" />
+
+        <TextView
+            android:id="@+id/txvEuro4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:text="@string/euro"
+            app:layout_constraintStart_toEndOf="@+id/lblPriceTwoHoursDay"
+            app:layout_constraintTop_toTopOf="@+id/lblPriceTwoHoursDay" />
+
+        <TextView
+            android:id="@+id/txvPriceFullDay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/dagprijs_label"
+            app:layout_constraintStart_toStartOf="@+id/txvPrices"
+            app:layout_constraintTop_toBottomOf="@+id/txvPrices" />
+
+        <TextView
+            android:id="@+id/lblPriceFullDay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@{String.valueOf(viewModel.room.priceFullDay)}"
+            app:layout_constraintStart_toEndOf="@+id/txvPriceFullDay"
+            app:layout_constraintTop_toTopOf="@+id/txvPriceFullDay"
+            tools:text="180" />
+
+        <TextView
+            android:id="@+id/txvPriceHalfDay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/halvedagprijs_label"
+            app:layout_constraintStart_toStartOf="@+id/txvPriceFullDay"
+            app:layout_constraintTop_toBottomOf="@+id/txvPriceFullDay" />
+
+        <TextView
+            android:id="@+id/lblPriceHalfDay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@{String.valueOf(viewModel.room.priceHalfDay)}"
+            app:layout_constraintStart_toEndOf="@+id/txvPriceHalfDay"
+            app:layout_constraintTop_toTopOf="@+id/txvPriceHalfDay"
+            tools:text="120" />
+
+        <TextView
+            android:id="@+id/txvPriceEvening"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/avondprijs_label"
+            app:layout_constraintStart_toStartOf="@+id/txvPriceHalfDay"
+            app:layout_constraintTop_toBottomOf="@+id/txvPriceHalfDay" />
+
+        <TextView
+            android:id="@+id/lblPriceEvening"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@{String.valueOf(viewModel.room.priceEvening)}"
+            app:layout_constraintStart_toEndOf="@+id/txvPriceEvening"
+            app:layout_constraintTop_toTopOf="@+id/txvPriceEvening"
+            tools:text="110" />
+
+        <TextView
+            android:id="@+id/txvTwoHours"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/tweeuurprijs_label"
+            app:layout_constraintStart_toStartOf="@+id/txvPriceEvening"
+            app:layout_constraintTop_toBottomOf="@+id/txvPriceEvening" />
+
+        <TextView
+            android:id="@+id/lblPriceTwoHoursDay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@{String.valueOf(viewModel.room.priceTwoHours)}"
+            app:layout_constraintStart_toEndOf="@+id/txvTwoHours"
+            app:layout_constraintTop_toTopOf="@+id/txvTwoHours"
+            tools:text="145" />
+
+        <TextView
+            android:id="@+id/txvName"
+            style="@style/TextAppearance.AppCompat.Headline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/trebms"
+            android:text="@{viewModel.room.name}"
+            android:textColor="@color/primary_pink"
+            android:textSize="32sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="The executive room" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/room_vanvoor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txvName" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

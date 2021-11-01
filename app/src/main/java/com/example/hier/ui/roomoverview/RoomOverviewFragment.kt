@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.hier.adapters.RoomAdapter
-import com.example.hier.databinding.RoomoverviewFragmentBinding
+import com.example.hier.databinding.FragmentRoomoverviewBinding
 import com.example.hier.models.Room
 import com.example.hier.util.Status
 import org.koin.android.ext.android.inject
@@ -22,7 +22,7 @@ class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener {
         savedInstanceState: Bundle?
     ): View? {
         val overviewViewModel: RoomOverviewViewModel by inject()
-        val binding = RoomoverviewFragmentBinding.inflate(inflater, container, false)
+        val binding = FragmentRoomoverviewBinding.inflate(inflater, container, false)
         binding.viewModel = overviewViewModel
         binding.lifecycleOwner = viewLifecycleOwner
         // val rooms = viewModel.rooms

@@ -8,8 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import com.example.hier.R
-import com.example.hier.databinding.ProfileFragmentBinding
-import com.example.hier.databinding.ReservationsFragmentBinding
+import com.example.hier.databinding.FragmentProfileBinding
 import com.example.hier.ui.reservations.ReservationsViewModel
 import org.koin.android.ext.android.inject
 
@@ -20,7 +19,7 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val viewModel: ProfileViewModel by inject()
-        val binding = ProfileFragmentBinding.inflate(inflater, container, false)
+        val binding = FragmentProfileBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
