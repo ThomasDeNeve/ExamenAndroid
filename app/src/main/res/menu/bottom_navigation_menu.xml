@@ -5,7 +5,7 @@
         android:icon="@drawable/icon_person"
         android:title="@string/profile"/>
     <item
-        android:id="@+id/roomFragment"
+        android:id="@+id/roomOverviewFragment"
         android:enabled="true"
         android:icon="@drawable/icon_reserve"
         android:title="@string/reserve"/>
