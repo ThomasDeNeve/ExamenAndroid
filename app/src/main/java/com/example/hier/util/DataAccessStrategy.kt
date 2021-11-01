@@ -61,8 +61,10 @@ fun parseJson(jsonString: String): ArrayList<LocationWithRooms> {
                 roomObject.get("id") as Int,
                 roomObject.get("name").toString(),
                 roomObject.get("numberOfSeats") as Int,
-                0.0, //TODO: this is hardcoded as 0 because price is null and can't be cast to Double
-                //roomObject.get("price") as Double,
+                roomObject.get("priceEvening").toString().toDouble(),
+                roomObject.get("priceFullDay").toString().toDouble(),
+                roomObject.get("priceHalfDay").toString().toDouble(),
+                roomObject.get("priceTwoHours").toString().toDouble(),
                 locationObject.get("id") as Int
             )
             rooms.add(tempRoom)
