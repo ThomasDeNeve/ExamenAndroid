@@ -12,15 +12,19 @@
         tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_mainActivity"
-            app:destination="@id/roomFragment"
+            app:destination="@id/roomOverviewFragment"
             app:popUpTo="@+id/nav_graph"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
-        android:id="@+id/roomFragment"
-        android:name="com.example.hier.ui.rooms.RoomFragment"
+        android:id="@+id/roomOverviewFragment"
+        android:name="com.example.hier.ui.roomoverview.RoomOverviewFragment"
         android:label="room_fragment"
-        tools:layout="@layout/room_fragment" />
+        tools:layout="@layout/roomoverview_fragment">
+        <action
+            android:id="@+id/action_roomOverviewFragment_to_roomFragment"
+            app:destination="@id/roomFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.hier.ui.profile.ProfileFragment"
@@ -31,4 +35,13 @@
         android:name="com.example.hier.ui.reservations.ReservationsFragment"
         android:label="reservations_fragment"
         tools:layout="@layout/reservations_fragment" />
+    <fragment
+        android:id="@+id/roomFragment"
+        android:name="com.example.hier.ui.room.RoomFragment"
+        android:label="RoomFragment"
+        tools:layout="@layout/room_fragment">
+        <argument
+            android:name="roomId"
+            app:argType="integer" />
+    </fragment>
 </navigation>

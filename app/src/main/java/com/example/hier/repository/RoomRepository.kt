@@ -23,6 +23,8 @@ class RoomRepository(
         return localDataSource.getAllRooms().map { Resource.success(it) }
     }
 
+    fun getRoomById(roomId: Int) = localDataSource.getRoomById(roomId)
+
     /*fun getLocations() = performGetOperation(
         databaseQuery = { localDataSource.getLocations() },
         networkCall = { remoteDataSource.getLocations() },

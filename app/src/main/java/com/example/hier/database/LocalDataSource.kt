@@ -12,10 +12,9 @@ import com.example.hier.networkModels.RoomNetworkModel
 
 class LocalDataSource(private val locationDao: LocationDao, private val userDao: UserDao, private val reservationDao: ReservationDao, private val roomDao: RoomDao) {
     fun getLocations() = locationDao.getAllLocations()
-
     fun getAllRooms() = roomDao.getAllRooms()
+    fun getRoomById(roomId: Int) = roomDao.getRoom(roomId)
 
-    //fun getRoom(id: Int) = roomDao.getRoom(id)
 
     // save list of rooms to database
     /*fun saveRooms(list: List<RoomNetworkModel>) {
@@ -50,7 +49,6 @@ class LocalDataSource(private val locationDao: LocationDao, private val userDao:
         locationDao.insertAll(locations)
         roomDao.insertAll(rooms)
     }
-
 
 
 }
