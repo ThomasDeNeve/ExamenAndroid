@@ -14,6 +14,6 @@ val viewModelModule = module {
     viewModel { RoomOverviewViewModel(get()) }
     viewModel { ProfileViewModel(get()) }
     viewModel { ReservationsViewModel(get()) }
-    viewModel { RoomViewModel(get()) }
+    //viewModel { RoomViewModel(get()) }
    // viewModel { LocationViewModel(get()) }
 }

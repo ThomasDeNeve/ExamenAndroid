@@ -1,5 +1,6 @@
 package com.example.hier.ui.login
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -18,13 +19,31 @@ class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
         this.username = username
         this.password = password
         updateLoginUser()
+
+
     }
 
+
+    var responseCount = 0
     val loginResponse : MutableLiveData<Resource<LoginResponse>> by lazy{
+        Log.i("LoginViewModel", "Response init: ${responseCount}")
+        responseCount += 1
         MutableLiveData<Resource<LoginResponse>>()
     }
+
+    //A common pattern for MutableLiveData adds a private and a public val:
+    /*
+    private val _loginResponse= MutableLiveData<Resource<LoginResponse>>()
+    val loginResponse : LiveData<Resource<LoginResponse>>
+        get() = _loginResponse
+    */
+
     private fun updateLoginUser(){
-        loginResponse.value = userRepository.loginUser(username, password).value
+        //loginResponse.value = userRepository.loginUser(username, password).value
+        //as a test:
+        loginResponse.value = Resource<LoginResponse>(Status.SUCCESS,LoginResponse(true, "testuser", User("admin", "admin")), "true")
+        //--> that works
+
         //addToLoginResponse2()
     }
 
