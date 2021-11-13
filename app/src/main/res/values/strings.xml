@@ -22,4 +22,8 @@
     <string name="aantalPlaatsen">Aantal plaatsen:</string>
     <string name="locatie">Locatie:</string>
     <string name="prijzen">Prijzen</string>
+    <string name="info_choice">Maak een keuze uit de volgende 2 locaties:</string>
+    <string name="adres_1">Albert Lienartstraat 24/1 \n 9300 Aalst</string>
+    <string name="adres_2">Zandberg 6 \n 9300 Aalst</string>
+    <string name="kies">Kies</string>
 </resources>

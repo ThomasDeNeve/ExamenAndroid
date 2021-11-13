@@ -20,6 +20,6 @@ class ChoiceCoworkingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (activity as AppCompatActivity).supportActionBar?.title = "Kies locatie"
+        (activity as AppCompatActivity).supportActionBar?.title = "Kies locatie voor coworking"
     }
 }
