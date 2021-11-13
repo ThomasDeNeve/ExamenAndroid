@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_mainActivity"
-            app:destination="@id/roomOverviewFragment"
+            app:destination="@id/reservationsFragment"
             app:popUpTo="@+id/nav_graph"
             app:popUpToInclusive="true" />
     </fragment>
@@ -32,6 +32,16 @@
         android:name="com.example.hier.ui.profile.ProfileFragment"
         android:label="profile_fragment"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/choiceMeetingRoomFragment"
+        android:name="com.example.hier.ui.makeChoice.ChoiceMeetingRoomFragment"
+        android:label="choicemeetingroomfragment"
+        tools:layout="@layout/fragment_choice_meeting_room" />
+    <fragment
+        android:id="@+id/choiceCoworkingFragment"
+        android:name="com.example.hier.ui.makeChoice.ChoiceCoworkingFragment"
+        android:label="choicecoworkingfragment"
+        tools:layout="@layout/fragment_choice_coworking" />
     <fragment
         android:id="@+id/reservationsFragment"
         android:name="com.example.hier.ui.reservations.ReservationsFragment"

@@ -5,10 +5,15 @@
         android:icon="@drawable/icon_person"
         android:title="@string/profile"/>
     <item
-        android:id="@+id/roomOverviewFragment"
+        android:id="@+id/choiceMeetingRoomFragment"
         android:enabled="true"
-        android:icon="@drawable/icon_reserve"
-        android:title="@string/reserve"/>
+        android:icon="@drawable/icon_meetingroom"
+        android:title="@string/reserve_meetingroom"/>
+    <item
+        android:id="@+id/choiceCoworkingFragment"
+        android:enabled="true"
+        android:icon="@drawable/icon_seat"
+        android:title="@string/reserve_coworkingspace"/>
     <item
         android:id="@+id/reservationsFragment"
         android:enabled="true"
