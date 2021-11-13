@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">HIER</string>
     <string name="profile">Profiel</string>
-    <string name="reserve_meetingroom">Reserveer Zalen</string>
+    <string name="reserve_meetingroom">Zalen</string>
     <string name="reserve">Reserveer</string>
-    <string name="reserve_coworkingspace">Reserveer Coworking</string>
+    <string name="reserve_coworkingspace">Stoelen</string>
     <string name="myReservations">Reservaties</string>
     <string name="username">Gebruikersnaam</string>
     <string name="passwordHint">Vul uw paswoord in</string>
