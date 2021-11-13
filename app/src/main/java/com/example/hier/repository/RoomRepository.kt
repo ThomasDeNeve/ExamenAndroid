@@ -42,4 +42,8 @@ class RoomRepository(
         }
         return locationsFromDB
     }
+
+    fun getLocationIdByName(name: String): Int {
+        return localDataSource.getLocationIdByName(name)
+    }
 }
