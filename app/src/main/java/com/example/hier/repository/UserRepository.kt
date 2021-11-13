@@ -21,6 +21,13 @@ class UserRepository(
         saveCallResult = { localDataSource.saveUser(it)}
     )
 
+    fun getReservations() = performGetOperation(
+        databaseQuery = { localDataSource.getReservations() },
+        networkCall = { remoteDataSource.getReservations() },
+        saveCallResult = { localDataSource.saveReservations(it.records) }
+    )
+
+    fun getUser() = NotImplementedError("not yet implemented") //TODO implement this
 
 
     /*fun loginUser(username: String, password: String): LiveData<Resource<LoginResponse>> = liveData(Dispatchers.IO) {

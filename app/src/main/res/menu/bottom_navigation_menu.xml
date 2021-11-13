@@ -1,16 +1,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/profile"
+        android:id="@+id/profileFragment"
         android:enabled="true"
         android:icon="@drawable/icon_person"
         android:title="@string/profile"/>
     <item
-        android:id="@+id/reserve"
+        android:id="@+id/roomOverviewFragment"
         android:enabled="true"
         android:icon="@drawable/icon_reserve"
         android:title="@string/reserve"/>
     <item
-        android:id="@+id/myReservations"
+        android:id="@+id/reservationsFragment"
         android:enabled="true"
         android:icon="@drawable/icon_myreservations"
         android:title="@string/myReservations"/>

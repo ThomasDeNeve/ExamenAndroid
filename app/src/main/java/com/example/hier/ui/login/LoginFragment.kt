@@ -41,9 +41,9 @@ class LoginFragment : Fragment() {
         }
 
         //TODO find out why this doesn't work
-        viewModel.loginResponse?.observe(viewLifecycleOwner,
+        viewModel.loginResponse.observe(viewLifecycleOwner,
             Observer {
-                Log.e("LoginFragment", it.toString())
+                //Log.e("LoginFragment", it.toString())
                 it?.let { resource ->
                     when (resource.status) {
                         //TODO add logic for logging in

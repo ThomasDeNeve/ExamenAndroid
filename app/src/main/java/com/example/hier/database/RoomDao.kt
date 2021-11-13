@@ -2,6 +2,7 @@ package com.example.hier.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.example.hier.models.Location
 import com.example.hier.models.Room
 
 @Dao
@@ -17,5 +18,9 @@ interface RoomDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(list: List<Room>)
+
+    @Transaction
+    @Query("select * from location where id=:locationId")
+    fun getLocation(locationId: Int): LiveData<Location>
 
 }
