@@ -12,7 +12,9 @@ class RemoteDataSource(val apiService: ApiService) : BaseDataSource() {
 
     suspend fun getReservations() = getResult { apiService.getReservations() }
 
-    fun getLocations(): Resource<ArrayList<LocationWithRooms>> {
+    suspend fun getLocations() = getResult { apiService.getLocations() }
+
+    fun getLocations2(): Resource<ArrayList<LocationWithRooms>> {
         //TODO: this is hardcoded to mock a API response for testing
         val jsonString =
             "[{\"id\": 1, \"name\": \"HIER\", \"street\": \"Hier ergens\", \"number\": 1, \"postalCode\": \"BE9000\", \"place\": \"Gent\", \"meetingRooms\": [ {\"id\": 1, \"name\": \"HIER.Boven\", \"numberOfSeats\": 0, \"seats\": [], \"price\": null }, { \"id\": 4, \"name\": \"HIER.Ginder\", \"numberOfSeats\": 0, \"seats\": [], \"price\": null }, { \"id\": 7, \"name\": \"HIER.Vanvoor\", \"numberOfSeats\": 0, \"seats\": [], \"price\": null } ], \"coWorkSeats\": [] }, { \"id\": 2, \"name\": \"Kluizen\", \"street\": \"Ergens anders\", \"number\": 1, \"postalCode\": \"BE9300\", \"place\": \"Aalst\", \"meetingRooms\": [ { \"id\": 2, \"name\": \"The Practice\", \"numberOfSeats\": 0, \"seats\": [], \"price\": null }, { \"id\": 3, \"name\": \"Boardroom\", \"numberOfSeats\": 0, \"seats\": [], \"price\": null }, { \"id\": 5, \"name\": \"The Executive Room\", \"numberOfSeats\": 0, \"seats\": [], \"price\": null }, { \"id\": 6, \"name\": \"The Course\", \"numberOfSeats\": 0, \"seats\": [], \"price\": null } ], \"coWorkSeats\": [] }]"

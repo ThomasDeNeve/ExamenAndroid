@@ -25,15 +25,15 @@ class RoomRepository(
 
     fun getRoomById(roomId: Int) = localDataSource.getRoomById(roomId)
 
-    /*fun getLocations() = performGetOperation(
+    fun getLocations() = performGetOperation(
         databaseQuery = { localDataSource.getLocations() },
         networkCall = { remoteDataSource.getLocations() },
-        saveCallResult = { localDataSource.saveLocations(it) }
-    )*/
+        saveCallResult = { localDataSource.saveLocations(it.records) }
+    )
 
     fun getLocationById(locationId: Int) = localDataSource.getLocationById(locationId)
 
-    fun getLocations() : LiveData<Resource<List<LocationWithRooms>>>{
+    /*fun getLocations() : LiveData<Resource<List<LocationWithRooms>>>{
         var locationsFromDB = localDataSource.getLocations().map { Resource.success(it) }
         var locationsFromAPI = remoteDataSource.getLocations()
         if(locationsFromAPI.status == Status.SUCCESS){
@@ -41,7 +41,7 @@ class RoomRepository(
             locationsFromDB = localDataSource.getLocations().map { Resource.success(it) } //update records with new
         }
         return locationsFromDB
-    }
+    }*/
 
     fun getLocationIdByName(name: String): Int {
         return localDataSource.getLocationIdByName(name)

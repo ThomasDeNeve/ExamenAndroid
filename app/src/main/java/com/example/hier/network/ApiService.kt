@@ -1,7 +1,7 @@
 package com.example.hier.network
 
 import com.example.hier.networkModels.RootReservationNetworkModel
-import com.example.hier.networkModels.RootRoomNetworkModel
+import com.example.hier.networkModels.LocationNetworkModel
 import retrofit2.Response
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -10,8 +10,8 @@ import retrofit2.http.POST
 
 interface ApiService {
     //TODO add the URL to the endpoint in the GET (for example: "api/rooms")
-    @GET("api/recipes")
-    suspend fun getRooms(): Response<RootRoomNetworkModel>
+    @GET("api/rooms")
+    suspend fun getRooms(): Response<LocationNetworkModel>
 
     //TODO add URL (api/login)
     @FormUrlEncoded
@@ -21,9 +21,12 @@ interface ApiService {
         @Field("password") password: String
     ): Response<LoginResponse>
 
-    fun getReservations() : Response<RootReservationNetworkModel>{
+    fun getReservations(): Response<RootReservationNetworkModel> {
         TODO("Not yet implemented")
     }
+
+    @GET("api/Location")
+    suspend fun getLocations(): Response<LocationNetworkModel>
 
     /* suspend fun loginUser(username: String, password: String): Response<LoginResponse> {
          if (username == "admin" && password == "admin") {

@@ -11,6 +11,7 @@
         <entry key="..\:/Users/thoma/AndroidStudioProjects/devops-project-android-2122-t4-android/app/src/main/res/layout/fragment_choice_meeting_room.xml" value="0.36096014492753625" />
         <entry key="..\:/Users/thoma/AndroidStudioProjects/devops-project-android-2122-t4-android/app/src/main/res/layout/fragment_login.xml" value="0.33" />
         <entry key="..\:/Users/thoma/AndroidStudioProjects/devops-project-android-2122-t4-android/app/src/main/res/layout/fragment_profile.xml" value="0.36096014492753625" />
+        <entry key="..\:/Users/thoma/AndroidStudioProjects/devops-project-android-2122-t4-android/app/src/main/res/layout/fragment_reservations.xml" value="0.35688405797101447" />
         <entry key="..\:/Users/thoma/AndroidStudioProjects/devops-project-android-2122-t4-android/app/src/main/res/layout/fragment_room.xml" value="0.22864583333333333" />
         <entry key="..\:/Users/thoma/AndroidStudioProjects/devops-project-android-2122-t4-android/app/src/main/res/layout/fragment_roomoverview.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/thoma/AndroidStudioProjects/devops-project-android-2122-t4-android/app/src/main/res/layout/list_item_room.xml" value="0.33" />
@@ -21,6 +22,7 @@
         <entry key="..\:/Users/thoma/AndroidStudioProjects/devops-project-android-2122-t4-android/app/src/main/res/layout/room_fragment.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/thoma/AndroidStudioProjects/devops-project-android-2122-t4-android/app/src/main/res/layout/roomoverview_fragment.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/thoma/AndroidStudioProjects/devops-project-android-2122-t4-android/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.25" />
+        <entry key="..\:/Users/thoma/AndroidStudioProjects/devops-project-android-2122-t4-android/app/src/main/res/xml/network_security_config.xml" value="0.35688405797101447" />
       </map>
     </option>
   </component>
