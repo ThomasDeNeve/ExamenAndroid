@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_mainActivity"
-            app:destination="@id/roomOverviewFragment"
+            app:destination="@id/reservationsFragment"
             app:popUpTo="@+id/nav_graph"
             app:popUpToInclusive="true" />
     </fragment>
@@ -26,12 +26,33 @@
             app:destination="@id/roomFragment"
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out" />
+        <argument
+            android:name="locationId"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.hier.ui.profile.ProfileFragment"
         android:label="profile_fragment"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/choiceMeetingRoomFragment"
+        android:name="com.example.hier.ui.makeChoice.ChoiceMeetingRoomFragment"
+        android:label="choicemeetingroomfragment">
+        <action
+            android:id="@+id/action_choiceMeetingRoomFragment_to_roomOverviewFragment"
+            app:destination="@id/roomOverviewFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@anim/nav_default_exit_anim" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/choiceCoworkingFragment"
+        android:name="com.example.hier.ui.makeChoice.ChoiceCoworkingFragment"
+        android:label="choicecoworkingfragment"
+        tools:layout="@layout/fragment_choice" />
     <fragment
         android:id="@+id/reservationsFragment"
         android:name="com.example.hier.ui.reservations.ReservationsFragment"

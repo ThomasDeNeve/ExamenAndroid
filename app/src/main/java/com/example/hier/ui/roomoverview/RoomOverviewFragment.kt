@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.hier.adapters.RoomAdapter
 import com.example.hier.databinding.FragmentRoomoverviewBinding
 import com.example.hier.models.Room
@@ -16,6 +17,7 @@ import com.example.hier.util.Status
 import org.koin.android.ext.android.inject
 
 class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener {
+    private val args: RoomOverviewFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,7 +47,7 @@ class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener {
                 it?.let { resource ->
                     when (resource.status) {
                         Status.SUCCESS -> {
-                            adapter.data = resource.data!!
+                            adapter.data = resource.data!!.filter { it.locationId == args.locationId }
                             //viewModel.setStatus(Status.SUCCESS)
                         }
                         Status.LOADING -> {

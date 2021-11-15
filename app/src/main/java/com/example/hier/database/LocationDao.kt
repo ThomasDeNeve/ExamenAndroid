@@ -16,4 +16,7 @@ interface LocationDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(list: List<Location>)
 
+    @Query("select id from location where name=:name")
+    fun getLocationIdByName(name: String): Int
+
 }

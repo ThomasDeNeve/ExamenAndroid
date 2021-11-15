@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">HIER</string>
     <string name="profile">Profiel</string>
+    <string name="reserve_meetingroom">Zalen</string>
     <string name="reserve">Reserveer</string>
-    <string name="myReservations">Mijn Reservaties</string>
+    <string name="reserve_coworkingspace">Stoelen</string>
+    <string name="myReservations">Reservaties</string>
     <string name="username">Gebruikersnaam</string>
     <string name="passwordHint">Vul uw paswoord in</string>
     <string name="login">Login</string>
@@ -20,4 +22,8 @@
     <string name="aantalPlaatsen">Aantal plaatsen:</string>
     <string name="locatie">Locatie:</string>
     <string name="prijzen">Prijzen</string>
+    <string name="info_choice">Maak een keuze uit de volgende 2 locaties:</string>
+    <string name="adres_1">Albert Lienartstraat 24/1 \n 9300 Aalst</string>
+    <string name="adres_2">Zandberg 6 \n 9300 Aalst</string>
+    <string name="kies">Kies</string>
 </resources>
