@@ -26,4 +26,8 @@
     <string name="adres_1">Albert Lienartstraat 24/1 \n 9300 Aalst</string>
     <string name="adres_2">Zandberg 6 \n 9300 Aalst</string>
     <string name="kies">Kies</string>
+    <string name="date_choice">Kies een datum</string>
+    <string name="hier_beneden">hier.beneden</string>
+    <string name="hier_boven">hier.boven</string>
+    <string name="kies_locatie">Kies locatie voor coworking</string>
 </resources>

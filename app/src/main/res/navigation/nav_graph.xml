@@ -52,7 +52,11 @@
         android:id="@+id/choiceCoworkingFragment"
         android:name="com.example.hier.ui.makeChoice.ChoiceCoworkingFragment"
         android:label="choicecoworkingfragment"
-        tools:layout="@layout/fragment_choice" />
+        tools:layout="@layout/fragment_choice" >
+        <action
+            android:id="@+id/action_choiceCoworkingFragment_to_albertLienartstraatCoworkingFragment"
+            app:destination="@id/albertLienartstraatCoworkingFragment" />
+    </fragment>
     <fragment
         android:id="@+id/reservationsFragment"
         android:name="com.example.hier.ui.reservations.ReservationsFragment"
@@ -67,4 +71,8 @@
             android:name="roomId"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/albertLienartstraatCoworkingFragment"
+        android:name="com.example.hier.ui.coworking.AlbertLienartstraatCoworkingFragment"
+        android:label="AlbertLienartstraatCoworkingFragment" />
 </navigation>
