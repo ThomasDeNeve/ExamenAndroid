@@ -7,6 +7,7 @@ import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.POST
+import java.util.*
 
 interface ApiService {
     //TODO add the URL to the endpoint in the GET (for example: "api/rooms")
@@ -22,6 +23,10 @@ interface ApiService {
     ): Response<LoginResponse>
 
     fun getReservations() : Response<RootReservationNetworkModel>{
+        TODO("Not yet implemented")
+    }
+
+    fun getReservations(date: Date) : Response<RootReservationNetworkModel>{
         TODO("Not yet implemented")
     }
 

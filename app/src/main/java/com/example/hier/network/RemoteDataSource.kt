@@ -4,6 +4,8 @@ import com.example.hier.models.LocationWithRooms
 import com.example.hier.util.Resource
 import com.example.hier.util.Status
 import com.example.hier.util.parseJson
+import java.util.*
+import kotlin.collections.ArrayList
 
 class RemoteDataSource(val apiService: ApiService) : BaseDataSource() {
     //suspend fun getRooms() = getResult { apiService.getRooms() }
@@ -11,6 +13,10 @@ class RemoteDataSource(val apiService: ApiService) : BaseDataSource() {
         getResult { apiService.loginUser(username, password) }
 
     suspend fun getReservations() = getResult { apiService.getReservations() }
+
+    suspend fun getReservations(date: Date) = getResult {
+        apiService.getReservations(date)
+    }
 
     fun getLocations(): Resource<ArrayList<LocationWithRooms>> {
         //TODO: this is hardcoded to mock a API response for testing

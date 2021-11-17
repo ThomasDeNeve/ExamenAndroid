@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.hier.ui.coworking.ALCViewModel" />
+    </data>
 <ScrollView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -35,7 +40,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/hier_beneden_text"
             app:layout_constraintEnd_toStartOf="@id/chair2"
-            app:srcCompat="@drawable/greenchair" />
+            app:srcCompat="@drawable/greenchair"
+            app:isGone="@{!viewModel.chair1reserved}"/>
         <ImageView
             android:id="@+id/chair2"
             android:layout_width="100dp"
@@ -43,7 +49,8 @@
             app:layout_constraintStart_toEndOf="@id/chair1"
             app:layout_constraintEnd_toStartOf="@id/chair3"
             app:layout_constraintTop_toBottomOf="@id/hier_beneden_text"
-            app:srcCompat="@drawable/greenchair" />
+            app:srcCompat="@drawable/greenchair"
+            app:isGone="@{!viewModel.chair2reserved}" />
         <ImageView
             android:id="@+id/chair3"
             android:layout_width="100dp"
@@ -51,7 +58,8 @@
             app:layout_constraintStart_toEndOf="@id/chair2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/hier_beneden_text"
-            app:srcCompat="@drawable/greenchair" />
+            app:srcCompat="@drawable/greenchair"
+            app:isGone="@{!viewModel.chair3reserved}" />
 
         <ImageView
             android:id="@+id/table1"
@@ -73,7 +81,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/table1"
             app:layout_constraintEnd_toStartOf="@id/chair5"
-            app:srcCompat="@drawable/greenchair" />
+            app:srcCompat="@drawable/greenchair"
+            app:isGone="@{!viewModel.chair4reserved}" />
         <ImageView
             android:id="@+id/chair5"
             android:layout_width="100dp"
@@ -82,7 +91,8 @@
             app:layout_constraintStart_toEndOf="@id/chair4"
             app:layout_constraintEnd_toStartOf="@id/chair6"
             app:layout_constraintTop_toBottomOf="@id/table1"
-            app:srcCompat="@drawable/greenchair" />
+            app:srcCompat="@drawable/greenchair"
+            app:isGone="@{!viewModel.chair5reserved}" />
 
         <ImageView
             android:id="@+id/chair6"
@@ -92,7 +102,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/chair5"
             app:layout_constraintTop_toBottomOf="@id/table1"
-            app:srcCompat="@drawable/greenchair" />
+            app:srcCompat="@drawable/greenchair"
+            app:isGone="@{!viewModel.chair6reserved}"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -112,7 +123,8 @@
             app:layout_constraintStart_toStartOf="@id/table2"
             app:layout_constraintTop_toBottomOf="@id/hier_boven_text"
             app:layout_constraintEnd_toStartOf="@id/chair8"
-            app:srcCompat="@drawable/greenchair" />
+            app:srcCompat="@drawable/greenchair"
+            app:isGone="@{!viewModel.chair7reserved}"/>
         <ImageView
             android:id="@+id/chair8"
             android:layout_width="60dp"
@@ -121,7 +133,8 @@
             app:layout_constraintStart_toEndOf="@id/chair7"
             app:layout_constraintEnd_toStartOf="@id/chair9"
             app:layout_constraintTop_toBottomOf="@id/hier_boven_text"
-            app:srcCompat="@drawable/greenchair" />
+            app:srcCompat="@drawable/greenchair"
+            app:isGone="@{!viewModel.chair8reserved}"/>
 
         <ImageView
             android:id="@+id/chair9"
@@ -131,7 +144,8 @@
             app:layout_constraintEnd_toEndOf="@id/table2"
             app:layout_constraintStart_toEndOf="@id/chair8"
             app:layout_constraintTop_toBottomOf="@id/hier_boven_text"
-            app:srcCompat="@drawable/greenchair" />
+            app:srcCompat="@drawable/greenchair"
+            app:isGone="@{!viewModel.chair9reserved}"/>
 
         <ImageView
             android:id="@+id/table2"
@@ -162,7 +176,8 @@
             app:layout_constraintTop_toBottomOf="@id/table2"
             app:layout_constraintEnd_toStartOf="@id/chair8"
             android:rotationX="180"
-            app:srcCompat="@drawable/greenchair" />
+            app:srcCompat="@drawable/greenchair"
+            app:isGone="@{!viewModel.chair10reserved}"/>
         <ImageView
             android:id="@+id/chair11"
             android:layout_width="60dp"
@@ -172,7 +187,8 @@
             app:layout_constraintEnd_toStartOf="@id/chair9"
             app:layout_constraintTop_toBottomOf="@id/table2"
             android:rotationX="180"
-            app:srcCompat="@drawable/greenchair" />
+            app:srcCompat="@drawable/greenchair"
+            app:isGone="@{!viewModel.chair11reserved}"/>
 
         <ImageView
             android:id="@+id/chair12"
@@ -183,7 +199,8 @@
             app:layout_constraintStart_toEndOf="@id/chair8"
             app:layout_constraintTop_toBottomOf="@id/table2"
             android:rotationX="180"
-            app:srcCompat="@drawable/greenchair" />
+            app:srcCompat="@drawable/greenchair"
+            app:isGone="@{!viewModel.chair12reserved}"/>
 
         <ImageView
             android:id="@+id/chair13"
@@ -193,7 +210,8 @@
             app:layout_constraintStart_toStartOf="@id/table3"
             app:layout_constraintEnd_toStartOf="@id/chair14"
             app:layout_constraintTop_toBottomOf="@id/hier_boven_text"
-            app:srcCompat="@drawable/greenchair" />
+            app:srcCompat="@drawable/greenchair"
+            app:isGone="@{!viewModel.chair13reserved}"/>
 
         <ImageView
             android:id="@+id/chair14"
@@ -203,7 +221,8 @@
             app:layout_constraintEnd_toEndOf="@id/table3"
             app:layout_constraintStart_toEndOf="@id/chair13"
             app:layout_constraintTop_toBottomOf="@id/hier_boven_text"
-            app:srcCompat="@drawable/greenchair" />
+            app:srcCompat="@drawable/greenchair"
+            app:isGone="@{!viewModel.chair14reserved}"/>
 
         <ImageView
             android:id="@+id/chair15"
@@ -214,7 +233,8 @@
             app:layout_constraintEnd_toStartOf="@id/chair16"
             app:layout_constraintTop_toBottomOf="@id/table3"
             android:rotationX="180"
-            app:srcCompat="@drawable/greenchair" />
+            app:srcCompat="@drawable/greenchair"
+            app:isGone="@{!viewModel.chair15reserved}"/>
 
         <ImageView
             android:id="@+id/chair16"
@@ -225,7 +245,182 @@
             app:layout_constraintStart_toEndOf="@id/chair15"
             app:layout_constraintTop_toBottomOf="@id/table2"
             android:rotationX="180"
-            app:srcCompat="@drawable/greenchair" />
+            app:srcCompat="@drawable/greenchair"
+            app:isGone="@{!viewModel.chair16reserved}"/>
+
+        <ImageView
+            android:id="@+id/redchair1"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/hier_beneden_text"
+            app:layout_constraintEnd_toStartOf="@id/chair2"
+            app:srcCompat="@drawable/redchair"
+            app:isGone="@{viewModel.chair1reserved}"/>
+        <ImageView
+            android:id="@+id/redchair2"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/chair1"
+            app:layout_constraintEnd_toStartOf="@id/chair3"
+            app:layout_constraintTop_toBottomOf="@id/hier_beneden_text"
+            app:srcCompat="@drawable/redchair"
+            app:isGone="@{viewModel.chair2reserved}" />
+        <ImageView
+            android:id="@+id/redchair3"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/chair2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/hier_beneden_text"
+            app:srcCompat="@drawable/redchair"
+            app:isGone="@{viewModel.chair13reserved}" />
+
+
+        <ImageView
+            android:id="@+id/redchair4"
+            android:layout_width="100dp"
+            android:rotationX="180"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/table1"
+            app:layout_constraintEnd_toStartOf="@id/chair5"
+            app:srcCompat="@drawable/redchair"
+            app:isGone="@{viewModel.chair4reserved}" />
+        <ImageView
+            android:id="@+id/redchair5"
+            android:layout_width="100dp"
+            android:rotationX="180"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/chair4"
+            app:layout_constraintEnd_toStartOf="@id/chair6"
+            app:layout_constraintTop_toBottomOf="@id/table1"
+            app:srcCompat="@drawable/redchair"
+            app:isGone="@{viewModel.chair5reserved}"/>
+
+        <ImageView
+            android:id="@+id/redchair6"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:rotationX="180"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/chair5"
+            app:layout_constraintTop_toBottomOf="@id/table1"
+            app:srcCompat="@drawable/redchair"
+            app:isGone="@{viewModel.chair6reserved}"/>
+
+        <ImageView
+            android:id="@+id/redchair7"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:scaleType="fitEnd"
+            app:layout_constraintStart_toStartOf="@id/table2"
+            app:layout_constraintTop_toBottomOf="@id/hier_boven_text"
+            app:layout_constraintEnd_toStartOf="@id/chair8"
+            app:srcCompat="@drawable/redchair"
+            app:isGone="@{viewModel.chair7reserved}"/>
+        <ImageView
+            android:id="@+id/redchair8"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:scaleType="fitEnd"
+            app:layout_constraintStart_toEndOf="@id/chair7"
+            app:layout_constraintEnd_toStartOf="@id/chair9"
+            app:layout_constraintTop_toBottomOf="@id/hier_boven_text"
+            app:srcCompat="@drawable/redchair"
+            app:isGone="@{viewModel.chair8reserved}" />
+
+        <ImageView
+            android:id="@+id/redchair9"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:scaleType="fitEnd"
+            app:layout_constraintEnd_toEndOf="@id/table2"
+            app:layout_constraintStart_toEndOf="@id/chair8"
+            app:layout_constraintTop_toBottomOf="@id/hier_boven_text"
+            app:srcCompat="@drawable/redchair"
+            app:isGone="@{viewModel.chair9reserved}"/>
+
+        <ImageView
+            android:id="@+id/redchair10"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:scaleType="fitEnd"
+            app:layout_constraintStart_toStartOf="@id/table2"
+            app:layout_constraintTop_toBottomOf="@id/table2"
+            app:layout_constraintEnd_toStartOf="@id/chair8"
+            android:rotationX="180"
+            app:srcCompat="@drawable/redchair"
+            app:isGone="@{viewModel.chair10reserved}"/>
+        <ImageView
+            android:id="@+id/redchair11"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:scaleType="fitEnd"
+            app:layout_constraintStart_toEndOf="@id/chair7"
+            app:layout_constraintEnd_toStartOf="@id/chair9"
+            app:layout_constraintTop_toBottomOf="@id/table2"
+            android:rotationX="180"
+            app:srcCompat="@drawable/redchair"
+            app:isGone="@{viewModel.chair11reserved}"/>
+
+        <ImageView
+            android:id="@+id/redchair12"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:scaleType="fitEnd"
+            app:layout_constraintEnd_toEndOf="@id/table2"
+            app:layout_constraintStart_toEndOf="@id/chair8"
+            app:layout_constraintTop_toBottomOf="@id/table2"
+            android:rotationX="180"
+            app:srcCompat="@drawable/redchair"
+            app:isGone="@{viewModel.chair12reserved}" />
+
+        <ImageView
+            android:id="@+id/redchair13"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:scaleType="fitEnd"
+            app:layout_constraintStart_toStartOf="@id/table3"
+            app:layout_constraintEnd_toStartOf="@id/chair14"
+            app:layout_constraintTop_toBottomOf="@id/hier_boven_text"
+            app:srcCompat="@drawable/redchair"
+            app:isGone="@{viewModel.chair13reserved}"/>
+
+        <ImageView
+            android:id="@+id/redchair14"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:scaleType="fitEnd"
+            app:layout_constraintEnd_toEndOf="@id/table3"
+            app:layout_constraintStart_toEndOf="@id/chair13"
+            app:layout_constraintTop_toBottomOf="@id/hier_boven_text"
+            app:srcCompat="@drawable/redchair"
+            app:isGone="@{viewModel.chair14reserved}" />
+
+        <ImageView
+            android:id="@+id/redchair15"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:scaleType="fitEnd"
+            app:layout_constraintStart_toStartOf="@id/table3"
+            app:layout_constraintEnd_toStartOf="@id/chair16"
+            app:layout_constraintTop_toBottomOf="@id/table3"
+            android:rotationX="180"
+            app:srcCompat="@drawable/redchair"
+            app:isGone="@{viewModel.chair15reserved}"/>
+
+        <ImageView
+            android:id="@+id/redchair16"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:scaleType="fitEnd"
+            app:layout_constraintEnd_toEndOf="@id/table3"
+            app:layout_constraintStart_toEndOf="@id/chair15"
+            app:layout_constraintTop_toBottomOf="@id/table2"
+            android:rotationX="180"
+            app:srcCompat="@drawable/redchair"
+            app:isGone="@{viewModel.chair16reserved}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
