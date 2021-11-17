@@ -4,6 +4,7 @@ plugins {
     //id 'kotlin-android-extensions'
     id 'androidx.navigation.safeargs'
     id 'kotlin-kapt'
+    id "org.jmailen.kotlinter" version "3.7.0"
 }
 
 android {
@@ -97,4 +98,12 @@ dependencies {
 
     //GSON (only for testing!)
     implementation 'com.google.code.gson:gson:2.8.7'
+}
+
+kotlinter {
+    ignoreFailures = true
+    indentSize = 4
+    reporters = ['html', 'plain']
+    experimentalRules = false
+    disabledRules = ["no-wildcard-imports"]
 }
