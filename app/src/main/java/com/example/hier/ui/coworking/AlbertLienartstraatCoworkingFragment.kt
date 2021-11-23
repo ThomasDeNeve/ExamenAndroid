@@ -7,11 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.hier.databinding.FragmentAlbertLienartstraatCoworkingBinding
+import org.koin.android.ext.android.inject
 
 class AlbertLienartstraatCoworkingFragment : Fragment() {
     private lateinit var binding: FragmentAlbertLienartstraatCoworkingBinding
-
-    private val viewmodel: ALCViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -19,7 +18,8 @@ class AlbertLienartstraatCoworkingFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentAlbertLienartstraatCoworkingBinding.inflate(inflater, container, false)
-
+        val viewmodel: ALCViewModel by inject()
+        binding.viewModel = viewmodel
         return binding.root
     }
 

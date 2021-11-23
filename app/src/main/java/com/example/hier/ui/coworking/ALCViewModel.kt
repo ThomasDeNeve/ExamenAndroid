@@ -8,7 +8,9 @@ import com.example.hier.models.Reservation
 import com.example.hier.repository.ReservationRepository
 import java.util.*
 
-class ALCViewModel(val reservationSource: ReservationRepository) : ViewModel(){
+class ALCViewModel(
+    val reservationSource: ReservationRepository
+    ) : ViewModel(){
 
     //date as given by user, must be at least today
     var date = System.currentTimeMillis()
@@ -16,11 +18,11 @@ class ALCViewModel(val reservationSource: ReservationRepository) : ViewModel(){
     var timespan = DAY
 
     //List of reservations from server for given date and timespan
-    val reservationsList : LiveData<List<Reservation>> = reservationSource.getReservations(date)
+    //var reservationsList : LiveData<List<Reservation>> = reservationSource.getReservations(date)
 
     //TODO: check availability for every chair.
-    var chair1reserved: Boolean =true
-    var chair2reserved: Boolean =false
+    val chair1reserved: Boolean =true
+    val chair2reserved: Boolean =false
     var chair3reserved: Boolean =true
     var chair4reserved: Boolean =false
     var chair5reserved: Boolean =true

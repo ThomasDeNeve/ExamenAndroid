@@ -6,6 +6,7 @@ import com.example.hier.database.ApplicationDatabase
 import com.example.hier.database.LocalDataSource
 import com.example.hier.network.ApiService
 import com.example.hier.network.RemoteDataSource
+import com.example.hier.repository.ReservationRepository
 //import com.example.hier.repository.LocationRepository
 import com.example.hier.repository.RoomRepository
 import com.example.hier.repository.UserRepository
@@ -32,7 +33,7 @@ val networkModule = module {
     single { RoomRepository(get(), get()) }
     single { UserRepository(get(), get()) }
     //single { LocationRepository(get(), get()) }
-    //single { ReservationRepository(get(), get()) }
+    single { ReservationRepository(get(), get()) }
 }
 
 private fun provideOkHttpClient() = if (BuildConfig.DEBUG) {
