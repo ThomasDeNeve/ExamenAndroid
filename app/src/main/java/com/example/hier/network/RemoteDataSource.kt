@@ -12,7 +12,7 @@ class RemoteDataSource(val apiService: ApiService) : BaseDataSource() {
 
     suspend fun getReservations() = getResult { apiService.getReservations() }
 
-    suspend fun getLocations() = getResult { apiService.getLocations() }
+    suspend fun getLocations() = getResult2 { apiService.getLocations() }
 
     fun getLocations2(): Resource<ArrayList<LocationWithRooms>> {
         //TODO: this is hardcoded to mock a API response for testing

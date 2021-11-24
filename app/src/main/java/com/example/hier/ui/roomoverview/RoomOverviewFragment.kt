@@ -33,7 +33,7 @@ class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener {
         val adapter = RoomAdapter(this)
         binding.roomList.adapter = adapter
 
-        //adapter.data=viewModel.rooms
+        //adapter.data= viewModel.rooms
 
         /*viewModel.rooms.observe(viewLifecycleOwner, Observer {
             it?.let { resource ->  if(resource.status == Status.SUCCESS){
@@ -69,10 +69,10 @@ class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener {
     }
 
     override fun onRoomClicked(room: Room) {
-        Log.e("test", "clicked on room with roomID ${room.roomId}")
+        //Log.e("test", "clicked on room with roomID ${room.roomId}")
 
         val directions =
-            RoomOverviewFragmentDirections.actionRoomOverviewFragmentToRoomFragment(room.roomId)
+            RoomOverviewFragmentDirections.actionRoomOverviewFragmentToRoomFragment(room.id)
 
         findNavController().navigate(directions)
     }

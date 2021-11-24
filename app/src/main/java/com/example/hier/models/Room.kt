@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "rooms")
 data class Room(
     @PrimaryKey
-    var roomId: Int,
+    var id: Int,
     @ColumnInfo(name = "name")
     var name: String,
     @ColumnInfo(name = "numberOfSeats")

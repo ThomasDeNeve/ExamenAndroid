@@ -49,7 +49,7 @@ class LoginFragment : Fragment() {
                         //TODO add logic for logging in
                         Status.SUCCESS -> {
                             Toast.makeText(context, "login successful", Toast.LENGTH_LONG).show()
-                            Log.e("Fragment", "successful fetch from Fragment")
+                            //Log.e("Fragment", "successful fetch from Fragment")
                             navigateToHome()
                         }
                         Status.LOADING -> {

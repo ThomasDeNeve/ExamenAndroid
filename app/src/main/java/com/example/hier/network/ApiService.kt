@@ -26,7 +26,7 @@ interface ApiService {
     }
 
     @GET("api/Location")
-    suspend fun getLocations(): Response<LocationNetworkModel>
+    suspend fun getLocations(): Response<List<LocationNetworkModel>>
 
     /* suspend fun loginUser(username: String, password: String): Response<LoginResponse> {
          if (username == "admin" && password == "admin") {

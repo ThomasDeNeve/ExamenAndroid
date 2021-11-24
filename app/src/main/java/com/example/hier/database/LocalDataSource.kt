@@ -7,6 +7,7 @@ import com.example.hier.models.LocationWithRooms
 import com.example.hier.models.Reservation
 import com.example.hier.models.Room
 import com.example.hier.network.LoginResponse
+import com.example.hier.networkModels.LocationNetworkModel
 import com.example.hier.networkModels.ReservationNetworkModel
 import com.example.hier.networkModels.RoomNetworkModel
 
@@ -42,15 +43,16 @@ class LocalDataSource(private val locationDao: LocationDao, private val userDao:
         reservationDao.insertAll(reservationList)
     }
 
-    fun saveLocations(list: List<LocationWithRooms>) {
-        val locations = ArrayList<Location>()
+    fun saveLocations(list: List<LocationNetworkModel>) {
+        // TODO uncomment this
+        /*val locations = ArrayList<Location>()
         val rooms = ArrayList<Room>()
         for(lwr in list) {
             locations.add(lwr.location)
             rooms.addAll(lwr.rooms)
         }
         locationDao.insertAll(locations)
-        roomDao.insertAll(rooms)
+        roomDao.insertAll(rooms)*/
     }
 
 
