@@ -44,15 +44,15 @@ class LocalDataSource(private val locationDao: LocationDao, private val userDao:
     }
 
     fun saveLocations(list: List<LocationNetworkModel>) {
-        // TODO uncomment this
-        /*val locations = ArrayList<Location>()
+        val locations = ArrayList<Location>()
         val rooms = ArrayList<Room>()
-        for(lwr in list) {
+        val lwrList : List<LocationWithRooms> = list.map { item -> item.toDatabaseModel() }
+        for(lwr in lwrList) {
             locations.add(lwr.location)
             rooms.addAll(lwr.rooms)
         }
         locationDao.insertAll(locations)
-        roomDao.insertAll(rooms)*/
+        roomDao.insertAll(rooms)
     }
 
 

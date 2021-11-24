@@ -10,6 +10,7 @@ import com.example.hier.network.RemoteDataSource
 import com.example.hier.networkModels.LocationNetworkModel
 import com.example.hier.util.Resource
 import com.example.hier.util.Status
+import com.example.hier.util.fetchAndSaveLocations
 import com.example.hier.util.performGetOperation
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -23,7 +24,7 @@ class RoomRepository(
         runBlocking {
             launch {
                 var error = remoteDataSource.getLocations().message
-                if(!error.isNullOrBlank()){
+                if (!error.isNullOrBlank()) {
                     Log.e("Roomrepository", "failed because $error")
                 }
                 val resource: Resource<List<LocationNetworkModel>> = remoteDataSource.getLocations()
@@ -40,13 +41,24 @@ class RoomRepository(
 
     fun getRooms(): LiveData<Resource<List<Room>>> {
         //fetching locations and rooms
-        getLocations()
+        try {
+            getLocations()
+        } catch (e: Exception) {
+            return localDataSource.getAllRooms()
+                .map { Resource.error("Failed to load data from server", it) }
+        }
         return localDataSource.getAllRooms().map { Resource.success(it) }
     }
 
     fun getRoomById(roomId: Int) = localDataSource.getRoomById(roomId)
 
-    fun getLocations() = performGetOperation(
+    fun getLocations() = fetchAndSaveLocations(
+        databaseQuery = { localDataSource.getLocations() },
+        networkCall = { remoteDataSource.getLocations() },
+        saveCallResult = { localDataSource.saveLocations(it) }
+    )
+
+    fun getLocations_old() = performGetOperation(
         databaseQuery = { localDataSource.getLocations() },
         networkCall = { remoteDataSource.getLocations() },
         saveCallResult = { localDataSource.saveLocations(it) }

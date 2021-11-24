@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -54,6 +55,7 @@ class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener {
                             //viewModel.setStatus(Status.LOADING)
                         }
                         Status.ERROR -> {
+                            Toast.makeText(context, resource.message, Toast.LENGTH_LONG).show()
                             //viewModel.setStatus(Status.ERROR)
                         }
                     }

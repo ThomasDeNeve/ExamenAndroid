@@ -1,5 +1,6 @@
 package com.example.hier.networkModels
 
+import com.example.hier.models.Location
 import com.example.hier.models.LocationWithRooms
 import com.example.hier.models.Room
 
@@ -12,4 +13,9 @@ data class LocationNetworkModel(
     val place: String,
     val meetingRooms: List<Room>,
     val coWorkRooms: List<Any>
-)
+){
+    fun toDatabaseModel() : LocationWithRooms{
+        //TODO add coworkrooms
+        return LocationWithRooms(Location(id, name, street, number, postalCode, place), meetingRooms)
+    }
+}

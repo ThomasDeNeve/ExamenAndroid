@@ -3,11 +3,13 @@ package com.example.hier.util
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
-import kotlinx.coroutines.Dispatchers
 import androidx.lifecycle.map
 import com.example.hier.models.Location
 import com.example.hier.models.LocationWithRooms
 import com.example.hier.models.Room
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.json.JSONArray
 
 /**
@@ -41,6 +43,24 @@ fun <T, A> performGetOperation(
             emitSource(source)
         }
     }
+
+fun <T, A> fetchAndSaveLocations(
+    databaseQuery: () -> LiveData<T>,
+    networkCall: suspend () -> Resource<A>,
+    saveCallResult: suspend (A) -> Unit
+) {
+    GlobalScope.launch {
+        val source = databaseQuery.invoke().map { Resource.success(it) }
+        val responseStatus = networkCall.invoke()
+        if (responseStatus.status == Status.SUCCESS) {
+            saveCallResult(responseStatus.data!!)
+            Log.i("DataAccessStrategy", "Successfully fetched data from API")
+        } else if (responseStatus.status == Status.ERROR) {
+            Log.e("DataAccessStrategy", "Error fetching result from API")
+            throw Exception("Exception thrown because response failed: ${responseStatus.message!!}")
+        }
+    }
+}
 
 
 fun parseJson(jsonString: String): ArrayList<LocationWithRooms> {
