@@ -19,26 +19,6 @@ class RoomRepository(
     private val remoteDataSource: RemoteDataSource,
     private val localDataSource: LocalDataSource
 ) {
-    fun getRooms_fetchDirectly(): LiveData<Resource<List<Room>>> {
-        val rooms = ArrayList<Room>()
-        runBlocking {
-            launch {
-                var error = remoteDataSource.getLocations().message
-                if (!error.isNullOrBlank()) {
-                    Log.e("Roomrepository", "failed because $error")
-                }
-                val resource: Resource<List<LocationNetworkModel>> = remoteDataSource.getLocations()
-                val list = resource.data!!
-                for (it in list) {
-                    rooms.addAll(it.meetingRooms)
-                }
-            }
-        }
-        val resource: Resource<List<Room>>
-        resource = Resource(Status.SUCCESS, rooms, null)
-        return MutableLiveData<Resource<List<Room>>>(resource)
-    }
-
     fun getRooms(): LiveData<Resource<List<Room>>> {
         //fetching locations and rooms
         try {
@@ -66,17 +46,27 @@ class RoomRepository(
 
     fun getLocationById(locationId: Int) = localDataSource.getLocationById(locationId)
 
-    /*fun getLocations() : LiveData<Resource<List<LocationWithRooms>>>{
-        var locationsFromDB = localDataSource.getLocations().map { Resource.success(it) }
-        var locationsFromAPI = remoteDataSource.getLocations()
-        if(locationsFromAPI.status == Status.SUCCESS){
-            localDataSource.saveLocations(locationsFromAPI.data!!.toList())
-            locationsFromDB = localDataSource.getLocations().map { Resource.success(it) } //update records with new
-        }
-        return locationsFromDB
-    }*/
-
     fun getLocationIdByName(name: String): Int {
         return localDataSource.getLocationIdByName(name)
+    }
+
+    fun getRooms_fetchDirectly(): LiveData<Resource<List<Room>>> {
+        val rooms = ArrayList<Room>()
+        runBlocking {
+            launch {
+                var error = remoteDataSource.getLocations().message
+                if (!error.isNullOrBlank()) {
+                    Log.e("Roomrepository", "failed because $error")
+                }
+                val resource: Resource<List<LocationNetworkModel>> = remoteDataSource.getLocations()
+                val list = resource.data!!
+                for (it in list) {
+                    rooms.addAll(it.meetingRooms)
+                }
+            }
+        }
+        val resource: Resource<List<Room>>
+        resource = Resource(Status.SUCCESS, rooms, null)
+        return MutableLiveData<Resource<List<Room>>>(resource)
     }
 }

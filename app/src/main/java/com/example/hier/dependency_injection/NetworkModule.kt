@@ -1,6 +1,5 @@
 package com.example.hier.dependency_injection
 
-//import com.example.hier.repository.LocationRepository
 import com.example.hier.BuildConfig
 import com.example.hier.database.ApplicationDatabase
 import com.example.hier.database.LocalDataSource
@@ -64,6 +63,7 @@ private fun provideUnsafeOkHttpClient(): OkHttpClient {
         .hostnameVerifier { _, _ -> true }.addInterceptor(loggingInterceptor).build()
 }
 
+// DONT DELETE THIS!
 /*private fun provideOkHttpClient() = if (BuildConfig.DEBUG) {
     val loggingInterceptor = HttpLoggingInterceptor()
     loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)

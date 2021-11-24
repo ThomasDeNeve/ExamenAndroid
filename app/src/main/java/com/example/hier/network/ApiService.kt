@@ -9,10 +9,6 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface ApiService {
-    //TODO add the URL to the endpoint in the GET (for example: "api/rooms")
-    @GET("api/rooms")
-    suspend fun getRooms(): Response<LocationNetworkModel>
-
     //TODO add URL (api/login)
     @FormUrlEncoded
     @POST("api/login")
