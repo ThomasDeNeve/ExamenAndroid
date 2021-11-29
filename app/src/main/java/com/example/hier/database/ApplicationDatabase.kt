@@ -10,7 +10,7 @@ import com.example.hier.models.User
 
 @Database(
     entities = [Room::class, User::class, Reservation::class, Location::class],
-    version = 4,
+    version = 6,
     exportSchema = false
 )
 abstract class ApplicationDatabase : RoomDatabase() {

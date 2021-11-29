@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -33,7 +34,7 @@ class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener {
         val adapter = RoomAdapter(this)
         binding.roomList.adapter = adapter
 
-        //adapter.data=viewModel.rooms
+        //adapter.data= viewModel.rooms
 
         /*viewModel.rooms.observe(viewLifecycleOwner, Observer {
             it?.let { resource ->  if(resource.status == Status.SUCCESS){
@@ -54,6 +55,7 @@ class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener {
                             //viewModel.setStatus(Status.LOADING)
                         }
                         Status.ERROR -> {
+                            Toast.makeText(context, resource.message, Toast.LENGTH_LONG).show()
                             //viewModel.setStatus(Status.ERROR)
                         }
                     }
@@ -69,10 +71,10 @@ class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener {
     }
 
     override fun onRoomClicked(room: Room) {
-        Log.e("test", "clicked on room with roomID ${room.roomId}")
+        //Log.e("test", "clicked on room with roomID ${room.roomId}")
 
         val directions =
-            RoomOverviewFragmentDirections.actionRoomOverviewFragmentToRoomFragment(room.roomId)
+            RoomOverviewFragmentDirections.actionRoomOverviewFragmentToRoomFragment(room.id)
 
         findNavController().navigate(directions)
     }

@@ -1,12 +1,10 @@
 package com.example.hier.dependency_injection
 
-import android.location.Location
 import com.example.hier.BuildConfig
 import com.example.hier.database.ApplicationDatabase
 import com.example.hier.database.LocalDataSource
 import com.example.hier.network.ApiService
 import com.example.hier.network.RemoteDataSource
-//import com.example.hier.repository.LocationRepository
 import com.example.hier.repository.RoomRepository
 import com.example.hier.repository.UserRepository
 import com.squareup.moshi.Moshi
@@ -15,12 +13,16 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module
-import org.koin.dsl.single
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import java.security.cert.X509Certificate
+import javax.net.ssl.SSLContext
+import javax.net.ssl.TrustManager
+import javax.net.ssl.X509TrustManager
+
 
 val networkModule = module {
-    single { provideOkHttpClient() }
+    single { provideUnsafeOkHttpClient() }
     single { provideRetrofit(get(), BuildConfig.BASE_URL) }
     single { provideApiService(get()) }
     single { ApplicationDatabase.getDatabase(androidApplication()).locationDao() }
@@ -35,13 +37,40 @@ val networkModule = module {
     //single { ReservationRepository(get(), get()) }
 }
 
-private fun provideOkHttpClient() = if (BuildConfig.DEBUG) {
+private fun provideUnsafeOkHttpClient(): OkHttpClient {
+    // Create a trust manager that does not validate certificate chains
+    val trustAllCerts = arrayOf<TrustManager>(object : X509TrustManager {
+        override fun checkClientTrusted(chain: Array<out X509Certificate>?, authType: String?) {
+        }
+
+        override fun checkServerTrusted(chain: Array<out X509Certificate>?, authType: String?) {
+        }
+
+        override fun getAcceptedIssuers() = arrayOf<X509Certificate>()
+    })
+
+    // Install the all-trusting trust manager
+    val sslContext = SSLContext.getInstance("SSL")
+    sslContext.init(null, trustAllCerts, java.security.SecureRandom())
+    // Create an ssl socket factory with our all-trusting manager
+    val sslSocketFactory = sslContext.socketFactory
+
+    val loggingInterceptor = HttpLoggingInterceptor()
+    loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
+
+    return OkHttpClient.Builder()
+        .sslSocketFactory(sslSocketFactory, trustAllCerts[0] as X509TrustManager)
+        .hostnameVerifier { _, _ -> true }.addInterceptor(loggingInterceptor).build()
+}
+
+// DONT DELETE THIS!
+/*private fun provideOkHttpClient() = if (BuildConfig.DEBUG) {
     val loggingInterceptor = HttpLoggingInterceptor()
     loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
     OkHttpClient.Builder()
         .addInterceptor(loggingInterceptor)
         .build()
-} else OkHttpClient.Builder().build()
+} else OkHttpClient.Builder().build()*/
 
 private fun provideRetrofit(
     okHttpClient: OkHttpClient,

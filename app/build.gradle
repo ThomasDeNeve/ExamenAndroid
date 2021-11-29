@@ -22,7 +22,7 @@ android {
         versionCode 1
         versionName "1.0"
         //TODO IMPORTANT change BASE_URL to backend-URL!!
-        buildConfigField 'String', 'BASE_URL', "\"https://10.0.2.2:44341/\""
+        buildConfigField 'String', 'BASE_URL', "\"https://10.0.2.2:5001/\""
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
