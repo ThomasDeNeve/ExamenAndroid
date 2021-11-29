@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData;
 import androidx.room.*
 import com.example.hier.models.Location
 import com.example.hier.models.LocationWithRooms
-import com.example.hier.models.Reservation
 
 @Dao
 interface LocationDao {

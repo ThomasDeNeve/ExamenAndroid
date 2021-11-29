@@ -19,7 +19,7 @@ class ReservationsFragment : Fragment() {
         val binding = FragmentReservationsBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
-        val reservations = viewModel.reservations
+        //val reservations = viewModel.reservations
         return binding.root
     }
 

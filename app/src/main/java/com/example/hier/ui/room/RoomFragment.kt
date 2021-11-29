@@ -36,7 +36,7 @@ class RoomFragment : Fragment() {
 
 
         val binding = FragmentRoomBinding.inflate(inflater, container, false)
-        Log.e("roomfragment", "room id passed by args is ${args.roomId}")
+        //Log.e("roomfragment", "room id passed by args is ${args.roomId}")
         viewModel.setRoom(args.roomId)
 
         binding.viewModel = viewModel
