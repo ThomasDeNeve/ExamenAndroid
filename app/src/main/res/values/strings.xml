@@ -26,4 +26,9 @@
     <string name="adres_1">Albert Lienartstraat 24/1 \n 9300 Aalst</string>
     <string name="adres_2">Zandberg 6 \n 9300 Aalst</string>
     <string name="kies">Kies</string>
+    <string name="error_login" >Fout tijdens login</string>
+    <string name="auth0_clientId">tIHBlQvkYFg35zCofxtjKPvip5Yrg2b2</string>
+    <string name="auth0_domain">devops-t4.eu.auth0.com</string>
+    <string name="auth0_scheme">demo</string>
+    <string name="logout">Afmelden</string>
 </resources>
