@@ -20,27 +20,95 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="80dp"
             android:layout_marginTop="16dp"
-            android:text="Gebruikers gegevens"
+            android:text="@string/profile_userData"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/txvNaam"
+            android:id="@+id/txvProfileName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Naam"
+            android:text="@string/profile_name"
             app:layout_constraintStart_toStartOf="@id/tcvUserData"
             app:layout_constraintTop_toBottomOf="@+id/tcvUserData" />
 
         <TextView
-            android:id="@+id/lblName"
+            android:id="@+id/txvProfileFirstName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/profile_firstName"
+            app:layout_constraintStart_toStartOf="@id/txvProfileName"
+            app:layout_constraintTop_toBottomOf="@id/txvProfileName" />
+
+        <TextView
+            android:id="@+id/txvProfileEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/profile_email"
+            app:layout_constraintStart_toStartOf="@id/txvProfileFirstName"
+            app:layout_constraintTop_toBottomOf="@id/txvProfileFirstName" />
+
+        <TextView
+            android:id="@+id/txvProfileTel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/profile_tel"
+            app:layout_constraintStart_toStartOf="@id/txvProfileEmail"
+            app:layout_constraintTop_toBottomOf="@id/txvProfileEmail" />
+
+        <TextView
+            android:id="@+id/txvProfileBTW"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/profile_btw"
+            app:layout_constraintStart_toStartOf="@id/txvProfileTel"
+            app:layout_constraintTop_toBottomOf="@id/txvProfileTel" />
+
+        <TextView
+            android:id="@+id/lblProfileFirstName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            app:layout_constraintStart_toEndOf="@id/txvNaam"
-            app:layout_constraintTop_toTopOf="@id/txvNaam" />
+            app:layout_constraintStart_toEndOf="@id/txvProfileFirstName"
+            app:layout_constraintTop_toTopOf="@id/txvProfileFirstName" />
+
+        <TextView
+            android:id="@+id/lblProfileEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toEndOf="@id/txvProfileEmail"
+            app:layout_constraintTop_toTopOf="@id/txvProfileEmail" />
+
+        <TextView
+            android:id="@+id/lblProfileTel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toEndOf="@id/txvProfileTel"
+            app:layout_constraintTop_toTopOf="@id/txvProfileTel" />
+
+        <TextView
+            android:id="@+id/lblProfileBTW"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toEndOf="@id/txvProfileBTW"
+            app:layout_constraintTop_toTopOf="@id/txvProfileBTW" />
+
+        <TextView
+            android:id="@+id/lblProfileName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toEndOf="@id/txvProfileName"
+            app:layout_constraintTop_toTopOf="@id/txvProfileName" />
 
         <Button
             android:id="@+id/btnLogout"
@@ -48,8 +116,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:text="@string/logout"
-            app:layout_constraintStart_toStartOf="@+id/txvNaam"
-            app:layout_constraintTop_toBottomOf="@+id/txvNaam" />
+            app:layout_constraintStart_toStartOf="@id/txvProfileBTW"
+            app:layout_constraintTop_toBottomOf="@id/txvProfileBTW" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
