@@ -31,4 +31,10 @@
     <string name="auth0_domain">devops-t4.eu.auth0.com</string>
     <string name="auth0_scheme">demo</string>
     <string name="logout">Afmelden</string>
+    <string name="profile_userData">Gebruikers gegevens</string>
+    <string name="profile_name">Naam</string>
+    <string name="profile_firstName">Voornaam</string>
+    <string name="profile_email">Email</string>
+    <string name="profile_tel">Tel</string>
+    <string name="profile_btw">BTW</string>
 </resources>
