@@ -7,6 +7,7 @@ import androidx.lifecycle.map
 import com.example.hier.database.LocalDataSource
 import com.example.hier.models.Room
 import com.example.hier.network.RemoteDataSource
+import com.example.hier.network.ReservationPostModel
 import com.example.hier.networkModels.LocationNetworkModel
 import com.example.hier.util.Resource
 import com.example.hier.util.Status
@@ -48,6 +49,10 @@ class RoomRepository(
 
     fun getLocationIdByName(name: String): Int {
         return localDataSource.getLocationIdByName(name)
+    }
+
+    suspend fun addReservation(reservationPostModel: ReservationPostModel){
+        remoteDataSource.addReservation(reservationPostModel)
     }
 
     fun getRooms_fetchDirectly(): LiveData<Resource<List<Room>>> {

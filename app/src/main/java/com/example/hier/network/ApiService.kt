@@ -2,11 +2,9 @@ package com.example.hier.network
 
 import com.example.hier.networkModels.RootReservationNetworkModel
 import com.example.hier.networkModels.LocationNetworkModel
+import retrofit2.Call
 import retrofit2.Response
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ApiService
 {
@@ -24,6 +22,9 @@ interface ApiService
 
     @GET("api/Location")
     suspend fun getLocations(): Response<List<LocationNetworkModel>>
+
+    @POST("/api/Reservation/meetingroom")
+    suspend fun addReservation(@Body reservation: ReservationPostModel): Response<ReservationPostModel>
 
     /*@FormUrlEncoded
     @POST("api/reservation/meetingroom")
