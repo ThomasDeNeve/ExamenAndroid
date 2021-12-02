@@ -17,13 +17,15 @@ import com.example.hier.models.Room
 import com.example.hier.util.Status
 import org.koin.android.ext.android.inject
 
-class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener {
+class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener
+{
     private val args: RoomOverviewFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View?
+    {
         val overviewViewModel: RoomOverviewViewModel by inject()
         val binding = FragmentRoomoverviewBinding.inflate(inflater, container, false)
         binding.viewModel = overviewViewModel
