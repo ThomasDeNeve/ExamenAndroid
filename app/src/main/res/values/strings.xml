@@ -3,6 +3,8 @@
     <string name="profile">Profiel</string>
     <string name="reserve_meetingroom">Zalen</string>
     <string name="reserve">Reserveer</string>
+    <string name="confirm">Bevestig</string>
+    <string name="from">Van</string>
     <string name="reserve_coworkingspace">Stoelen</string>
     <string name="myReservations">Reservaties</string>
     <string name="username">Gebruikersnaam</string>

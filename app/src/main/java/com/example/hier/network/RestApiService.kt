@@ -5,7 +5,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class RestApiService
+/*class RestApiService
 {
     fun addReservation(reservation: ReservationPostModel, onResult: (ReservationPostModel?) -> Unit)
     {
@@ -25,4 +25,4 @@ class RestApiService
                 }
         })
     }
-}
+}*/

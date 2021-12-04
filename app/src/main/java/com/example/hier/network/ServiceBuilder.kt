@@ -5,7 +5,7 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object ServiceBuilder
+/*object ServiceBuilder
 {
     private val client = OkHttpClient.Builder().build()
 
@@ -20,4 +20,4 @@ object ServiceBuilder
     fun<T> buildService(service: Class<T>): T{
         return retrofit.create(service)
     }
-}
+}*/
