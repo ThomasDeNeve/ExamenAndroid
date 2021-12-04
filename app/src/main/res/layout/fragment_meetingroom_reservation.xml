@@ -43,7 +43,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="80dp"
-                android:text="Van"
+                android:text="@string/from"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
@@ -53,16 +53,17 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="date"
+                android:minHeight="48dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txvFrom"/>
+                app:layout_constraintTop_toBottomOf="@+id/txvFrom" />
 
             <TextView
                 android:id="@+id/txvTo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="80dp"
-                android:text="Tot"
+                android:text="@string/to"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/dteFrom" />
 
@@ -72,9 +73,10 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="date"
+                android:minHeight="48dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txvTo"/>
+                app:layout_constraintTop_toBottomOf="@+id/txvTo" />
 
             <Button
                 android:id="@+id/btnReserve"

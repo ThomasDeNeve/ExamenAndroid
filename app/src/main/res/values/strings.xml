@@ -33,4 +33,5 @@
     <string name="auth0_domain">devops-t4.eu.auth0.com</string>
     <string name="auth0_scheme">demo</string>
     <string name="logout">Afmelden</string>
+    <string name="to">Tot</string>
 </resources>
