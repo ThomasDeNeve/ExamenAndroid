@@ -37,4 +37,8 @@
     <string name="profile_email">Email</string>
     <string name="profile_tel">Tel</string>
     <string name="profile_btw">BTW</string>
+    <string name="col1_header">Van</string>
+    <string name="col2_header">Tot</string>
+    <string name="col3_header">Zaal</string>
+    <string name="col4_header">Stoel</string>
 </resources>
