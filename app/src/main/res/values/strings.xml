@@ -34,4 +34,5 @@
     <string name="auth0_scheme">demo</string>
     <string name="logout">Afmelden</string>
     <string name="to">Tot</string>
+    <string name="room_overview">Room overview</string>
 </resources>

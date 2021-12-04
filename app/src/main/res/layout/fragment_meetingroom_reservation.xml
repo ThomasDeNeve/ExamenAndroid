@@ -35,7 +35,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txvName"
-                android:contentDescription="Room overview" />
+                android:contentDescription="@string/room_overview" />
 
 
             <TextView
@@ -56,7 +56,9 @@
                 android:minHeight="48dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txvFrom" />
+                app:layout_constraintTop_toBottomOf="@+id/txvFrom"
+                tools:ignore="SpeakableTextPresentCheck"
+                android:autofillHints="" />
 
             <TextView
                 android:id="@+id/txvTo"
@@ -76,7 +78,9 @@
                 android:minHeight="48dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txvTo" />
+                app:layout_constraintTop_toBottomOf="@+id/txvTo"
+                tools:ignore="SpeakableTextPresentCheck"
+                android:autofillHints="" />
 
             <Button
                 android:id="@+id/btnReserve"
