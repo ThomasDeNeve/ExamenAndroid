@@ -1,7 +1,5 @@
 package com.example.hier.network
 
-import retrofit2.http.Field
-
 class RemoteDataSource(private val apiService: ApiService) : BaseDataSource()
 {
     suspend fun loginUser(username: String, password: String) =
@@ -10,6 +8,8 @@ class RemoteDataSource(private val apiService: ApiService) : BaseDataSource()
     suspend fun getReservations() = getResult { apiService.getReservations() }
 
     suspend fun getLocations() = getResult { apiService.getLocations() }
+
+    suspend fun getAvailableMeetingrooms(meetingroomsGetModel: MeetingroomsGetModel) = getResult { apiService.getAvailableMeetingrooms(meetingroomsGetModel) }
 
     suspend fun addReservation(reservationPostModel: ReservationPostModel) = getResult { apiService.addReservation(reservationPostModel) }
 

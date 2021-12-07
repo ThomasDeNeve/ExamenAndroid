@@ -62,7 +62,6 @@ fun <T, A> fetchAndSaveLocations(
     }
 }
 
-
 fun parseJson(jsonString: String): ArrayList<LocationWithRooms> {
     val jsonArray = JSONArray(jsonString)
 

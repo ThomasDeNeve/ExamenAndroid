@@ -1,7 +1,11 @@
 package com.example.hier.network
 
+import androidx.lifecycle.LiveData
+import com.example.hier.models.Room
 import com.example.hier.networkModels.RootReservationNetworkModel
 import com.example.hier.networkModels.LocationNetworkModel
+import com.example.hier.networkModels.MeetingRoomNetworkModel
+import com.example.hier.util.Resource
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.*
@@ -26,12 +30,8 @@ interface ApiService
     @POST("/api/Reservation/meetingroom")
     suspend fun addReservation(@Body reservation: ReservationPostModel): Response<ReservationPostModel>
 
-    /*@FormUrlEncoded
-    @POST("api/reservation/meetingroom")
-    suspend fun reserveRoom(
-        @Field("RoomId") roomId: Int,
-        @Field("CustomerId") customerId: Int
-    ): Response<ReservationResponse>*/
+    @POST("api/Reservation/meetingrooms_available")
+    suspend fun getAvailableMeetingrooms(@Body meetingroomsGetModel: MeetingroomsGetModel) : Response<List<Room>>
 
 
     /* suspend fun loginUser(username: String, password: String): Response<LoginResponse> {

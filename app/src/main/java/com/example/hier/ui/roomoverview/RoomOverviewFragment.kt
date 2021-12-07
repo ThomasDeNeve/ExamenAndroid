@@ -14,6 +14,7 @@ import androidx.navigation.fragment.navArgs
 import com.example.hier.adapters.RoomAdapter
 import com.example.hier.databinding.FragmentRoomoverviewBinding
 import com.example.hier.models.Room
+import com.example.hier.repository.RoomRepository
 import com.example.hier.util.Status
 import org.koin.android.ext.android.inject
 
@@ -28,6 +29,10 @@ class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener
     {
         val overviewViewModel: RoomOverviewViewModel by inject()
         val binding = FragmentRoomoverviewBinding.inflate(inflater, container, false)
+
+        //!!! Added as test !!!
+        overviewViewModel.getAvailableRooms(1,8,"0001-01-01 00:00:00.000000")
+
         binding.viewModel = overviewViewModel
         binding.lifecycleOwner = viewLifecycleOwner
         // val rooms = viewModel.rooms
@@ -80,5 +85,4 @@ class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener
 
         findNavController().navigate(directions)
     }
-
 }

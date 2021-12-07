@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
 import com.example.hier.database.LocalDataSource
 import com.example.hier.models.Room
+import com.example.hier.network.MeetingroomsGetModel
 import com.example.hier.network.RemoteDataSource
 import com.example.hier.network.ReservationPostModel
 import com.example.hier.networkModels.LocationNetworkModel
@@ -39,6 +40,12 @@ class RoomRepository(
         saveCallResult = { localDataSource.saveLocations(it) }
     )
 
+    fun getAvailableRooms(locationId:Int, numberOfSeats: Int, datetime: String) = performGetOperation(
+        databaseQuery = { localDataSource.getAllRooms()},
+        networkCall = { remoteDataSource.getAvailableMeetingrooms(MeetingroomsGetModel(locationId, numberOfSeats, datetime))},
+        saveCallResult = { localDataSource.saveRooms(it)}
+    )
+
     fun getLocations_old() = performGetOperation(
         databaseQuery = { localDataSource.getLocations() },
         networkCall = { remoteDataSource.getLocations() },
@@ -54,6 +61,11 @@ class RoomRepository(
     suspend fun addReservation(reservationPostModel: ReservationPostModel){
         remoteDataSource.addReservation(reservationPostModel)
     }
+
+    /*suspend fun getAvailableRooms(locationId: Int, numberOfSeats:Int, datetime:String) : LiveData<Resource<List<Room>>>
+    {
+        return remoteDataSource.getAvailableMeetingrooms(locationId, numberOfSeats, datetime).map{Resource.success(it)}
+    }*/
 
     fun getRooms_fetchDirectly(): LiveData<Resource<List<Room>>> {
         val rooms = ArrayList<Room>()
