@@ -30,4 +30,11 @@
     <string name="hier_beneden">hier.beneden</string>
     <string name="hier_boven">hier.boven</string>
     <string name="kies_locatie">Kies locatie voor coworking</string>
+    <string name="reservation_recap">Samenvatting van uw reservatie</string>
+    <string-array name="tijdssloten">
+        <item>Voormiddag</item>
+        <item>Namiddag</item>
+        <item>Avond</item>
+        <item>Dag</item>
+    </string-array>
 </resources>

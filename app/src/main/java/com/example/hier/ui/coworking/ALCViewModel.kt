@@ -2,6 +2,7 @@ package com.example.hier.ui.coworking
 
 import android.text.format.DateUtils
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.hier.models.DAY
 import com.example.hier.models.Reservation
@@ -19,6 +20,10 @@ class ALCViewModel(
 
     //List of reservations from server for given date and timespan
     //var reservationsList : LiveData<List<Reservation>> = reservationSource.getReservations(date)
+
+    private val _eventChairClicked = MutableLiveData<Boolean>()
+    val eventChairClicked: LiveData<Boolean>
+        get() = _eventChairClicked
 
     //TODO: check availability for every chair.
     val chair1reserved: Boolean =true
@@ -39,4 +44,11 @@ class ALCViewModel(
     var chair16reserved: Boolean =false
 
 
+    fun onGreenChairClicked(){
+        _eventChairClicked.value = true
+    }
+
+    fun onGreenChairClickedComplete(){
+        _eventChairClicked.value = false
+    }
 }

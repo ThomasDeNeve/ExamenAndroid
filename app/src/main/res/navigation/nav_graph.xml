@@ -74,5 +74,39 @@
     <fragment
         android:id="@+id/albertLienartstraatCoworkingFragment"
         android:name="com.example.hier.ui.coworking.AlbertLienartstraatCoworkingFragment"
-        android:label="AlbertLienartstraatCoworkingFragment" />
+        android:label="AlbertLienartstraatCoworkingFragment" >
+        <action
+            android:id="@+id/action_albertLienartstraatCoworkingFragment_to_coworkingRecapFragment"
+            app:destination="@id/coworkingRecapFragment"
+            />
+
+    </fragment>
+    <fragment
+        android:id="@+id/coworkingRecapFragment"
+        android:name="com.example.hier.ui.coworking.CoworkingRecapFragment"
+        android:label="CoworkingRecapFragment" >
+        <argument
+            android:name="locationName"
+            android:defaultValue="Albert Lienartstraat"
+            app:argType="string"/>
+        <argument
+            android:name="chamberName"
+            android:defaultValue="Hier.vanboven"
+            app:argType="string"/>
+        <argument
+            android:name="seatNumber"
+            android:defaultValue="0"
+            app:argType="integer"/>
+        <argument
+            android:name="date"
+            android:defaultValue="0L"
+            app:argType="long"/>
+        <argument
+            android:name="timeslot"
+            android:defaultValue="Voormiddag"
+            app:argType="string"/>
+        <action
+            android:id="@+id/action_coworkingRecapFragment_to_reservationsFragment"
+            app:destination="@id/reservationsFragment" />
+    </fragment>
 </navigation>
