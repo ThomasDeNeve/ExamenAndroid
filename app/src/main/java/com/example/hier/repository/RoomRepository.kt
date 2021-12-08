@@ -10,10 +10,7 @@ import com.example.hier.network.MeetingroomsGetModel
 import com.example.hier.network.RemoteDataSource
 import com.example.hier.network.ReservationPostModel
 import com.example.hier.networkModels.LocationNetworkModel
-import com.example.hier.util.Resource
-import com.example.hier.util.Status
-import com.example.hier.util.fetchAndSaveLocations
-import com.example.hier.util.performGetOperation
+import com.example.hier.util.*
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
@@ -40,9 +37,9 @@ class RoomRepository(
         saveCallResult = { localDataSource.saveLocations(it) }
     )
 
-    fun getAvailableRooms(locationId:Int, numberOfSeats: Int, datetime: String) = performGetOperation(
+    fun getAvailableRooms(neededseats:Int, locationid: Int, datetime: String) = performGetOperation(
         databaseQuery = { localDataSource.getAllRooms()},
-        networkCall = { remoteDataSource.getAvailableMeetingrooms(MeetingroomsGetModel(locationId, numberOfSeats, datetime))},
+        networkCall = { remoteDataSource.getAvailableMeetingrooms(neededseats, locationid, datetime)},
         saveCallResult = { localDataSource.saveRooms(it)}
     )
 

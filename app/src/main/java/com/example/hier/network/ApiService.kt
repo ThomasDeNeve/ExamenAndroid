@@ -28,11 +28,10 @@ interface ApiService
     suspend fun getLocations(): Response<List<LocationNetworkModel>>
 
     @POST("/api/Reservation/meetingroom")
-    suspend fun addReservation(@Body reservation: ReservationPostModel): Response<ReservationPostModel>
+    suspend fun addReservation( reservation: ReservationPostModel): Response<ReservationPostModel>
 
-    @POST("api/Reservation/meetingrooms_available")
-    suspend fun getAvailableMeetingrooms(@Body meetingroomsGetModel: MeetingroomsGetModel) : Response<List<Room>>
-
+    @GET("api/Reservation/availablemeetingrooms")
+    suspend fun getAvailableMeetingrooms(@Query("neededseats") neededseats: Int,@Query("locationid") locationid: Int,@Query("date") date: String) : Response<List<MeetingRoomNetworkModel>>
 
     /* suspend fun loginUser(username: String, password: String): Response<LoginResponse> {
          if (username == "admin" && password == "admin") {

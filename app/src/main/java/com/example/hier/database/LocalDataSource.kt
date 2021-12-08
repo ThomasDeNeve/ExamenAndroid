@@ -51,9 +51,9 @@ class LocalDataSource(
         roomDao.insertAll(rooms)
     }
 
-    fun saveRooms(list: List<Room>)
+    fun saveRooms(list: List<MeetingRoomNetworkModel>)
     {
-        val rooms = ArrayList<Room>()
+        val rooms = ArrayList<MeetingRoomNetworkModel>()
         rooms.addAll(list)
     }
 }

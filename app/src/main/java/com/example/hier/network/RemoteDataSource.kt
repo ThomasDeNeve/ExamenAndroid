@@ -9,7 +9,7 @@ class RemoteDataSource(private val apiService: ApiService) : BaseDataSource()
 
     suspend fun getLocations() = getResult { apiService.getLocations() }
 
-    suspend fun getAvailableMeetingrooms(meetingroomsGetModel: MeetingroomsGetModel) = getResult { apiService.getAvailableMeetingrooms(meetingroomsGetModel) }
+    suspend fun getAvailableMeetingrooms(neededseats:Int,locationid:Int,date:String) = getResult { apiService.getAvailableMeetingrooms(neededseats,locationid,date) }
 
     suspend fun addReservation(reservationPostModel: ReservationPostModel) = getResult { apiService.addReservation(reservationPostModel) }
 
