@@ -14,18 +14,23 @@ import androidx.navigation.fragment.navArgs
 import com.example.hier.adapters.RoomAdapter
 import com.example.hier.databinding.FragmentRoomoverviewBinding
 import com.example.hier.models.Room
+import com.example.hier.repository.RoomRepository
 import com.example.hier.util.Status
 import org.koin.android.ext.android.inject
 
-class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener {
+class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener
+{
     private val args: RoomOverviewFragmentArgs by navArgs()
+    private val _roomRepository: RoomRepository by inject()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
+    {
         val overviewViewModel: RoomOverviewViewModel by inject()
         val binding = FragmentRoomoverviewBinding.inflate(inflater, container, false)
+
+        //!!! Added as test !!!
+        //overviewViewModel.getAvailableRooms(8,1,"0001-01-01 00:00:00.000000")
+
         binding.viewModel = overviewViewModel
         binding.lifecycleOwner = viewLifecycleOwner
         // val rooms = viewModel.rooms
@@ -45,32 +50,36 @@ class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener {
         overviewViewModel.rooms.observe(
             viewLifecycleOwner,
             Observer {
-                it?.let { resource ->
-                    when (resource.status) {
-                        Status.SUCCESS -> {
-                            adapter.data = resource.data!!.filter { it.locationId == args.locationId }
+                it?.let { resource -> when (resource.status)
+                {
+                        Status.SUCCESS ->
+                        {
+                            adapter.data = resource.data!!.filter { it.locationId == args.locationId}
                             //viewModel.setStatus(Status.SUCCESS)
                         }
-                        Status.LOADING -> {
+                        Status.LOADING ->
+                        {
                             //viewModel.setStatus(Status.LOADING)
                         }
-                        Status.ERROR -> {
+                        Status.ERROR ->
+                        {
                             Toast.makeText(context, resource.message, Toast.LENGTH_LONG).show()
                             //viewModel.setStatus(Status.ERROR)
                         }
-                    }
                 }
-            }
-        )
+                }
+        })
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?)
+    {
         super.onViewCreated(view, savedInstanceState)
         (activity as AppCompatActivity).supportActionBar?.title = "Reserveer zalen"
     }
 
-    override fun onRoomClicked(room: Room) {
+    override fun onRoomClicked(room: Room)
+    {
         //Log.e("test", "clicked on room with roomID ${room.roomId}")
 
         val directions =
@@ -78,5 +87,4 @@ class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener {
 
         findNavController().navigate(directions)
     }
-
 }

@@ -3,6 +3,8 @@
     <string name="profile">Profiel</string>
     <string name="reserve_meetingroom">Zalen</string>
     <string name="reserve">Reserveer</string>
+    <string name="confirm">Bevestig</string>
+    <string name="from">Van</string>
     <string name="reserve_coworkingspace">Stoelen</string>
     <string name="myReservations">Reservaties</string>
     <string name="username">Gebruikersnaam</string>
@@ -31,6 +33,8 @@
     <string name="auth0_domain">devops-t4.eu.auth0.com</string>
     <string name="auth0_scheme">demo</string>
     <string name="logout">Afmelden</string>
+    <string name="to">Tot</string>
+    <string name="room_overview">Room overview</string>
     <string name="profile_userData">Gebruikers gegevens</string>
     <string name="profile_name">Naam</string>
     <string name="profile_firstName">Voornaam</string>

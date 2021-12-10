@@ -6,7 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.hier.databinding.ListItemRoomBinding
 import com.example.hier.models.Room
 
-class RoomAdapter (private val roomClickListener: RoomClickListener) : RecyclerView.Adapter<RoomAdapter.RoomViewHolder>() {
+class RoomAdapter (private val roomClickListener: RoomClickListener) : RecyclerView.Adapter<RoomAdapter.RoomViewHolder>()
+{
     var data = listOf<Room>()
         set(value) {
             val valueSorted = value.sortedWith(Comparator { lhs, rhs ->
@@ -24,15 +25,17 @@ class RoomAdapter (private val roomClickListener: RoomClickListener) : RecyclerV
         return RoomViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: RoomViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: RoomViewHolder, position: Int)
+    {
         val room = data[position]
         holder.bind(room, roomClickListener)
     }
 
-    class RoomViewHolder(private val binding: ListItemRoomBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Room, listener: RoomClickListener) {
-            itemView.setOnClickListener {
+    class RoomViewHolder(private val binding: ListItemRoomBinding) : RecyclerView.ViewHolder(binding.root)
+    {
+        fun bind(item: Room, listener: RoomClickListener)
+        {
+            itemView.setOnClickListener{
                 listener.onRoomClicked(item)
             }
             binding.apply {
@@ -42,7 +45,8 @@ class RoomAdapter (private val roomClickListener: RoomClickListener) : RecyclerV
         }
     }
 
-    interface RoomClickListener {
+    interface RoomClickListener
+    {
         fun onRoomClicked(room: Room)
     }
 }

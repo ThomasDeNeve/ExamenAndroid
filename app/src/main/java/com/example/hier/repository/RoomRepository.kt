@@ -6,12 +6,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
 import com.example.hier.database.LocalDataSource
 import com.example.hier.models.Room
+import com.example.hier.network.MeetingroomsGetModel
 import com.example.hier.network.RemoteDataSource
+import com.example.hier.network.ReservationPostModel
 import com.example.hier.networkModels.LocationNetworkModel
-import com.example.hier.util.Resource
-import com.example.hier.util.Status
-import com.example.hier.util.fetchAndSaveLocations
-import com.example.hier.util.performGetOperation
+import com.example.hier.util.*
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
@@ -38,6 +37,12 @@ class RoomRepository(
         saveCallResult = { localDataSource.saveLocations(it) }
     )
 
+    fun getAvailableRooms(neededseats:Int, locationid: Int, datetime: String) = performGetOperation(
+        databaseQuery = { localDataSource.getAllRooms()},
+        networkCall = { remoteDataSource.getAvailableMeetingrooms(neededseats, locationid, datetime)},
+        saveCallResult = { localDataSource.saveRooms(it)}
+    )
+
     fun getLocations_old() = performGetOperation(
         databaseQuery = { localDataSource.getLocations() },
         networkCall = { remoteDataSource.getLocations() },
@@ -49,6 +54,15 @@ class RoomRepository(
     fun getLocationIdByName(name: String): Int {
         return localDataSource.getLocationIdByName(name)
     }
+
+    suspend fun addReservation(reservationPostModel: ReservationPostModel){
+        remoteDataSource.addReservation(reservationPostModel)
+    }
+
+    /*suspend fun getAvailableRooms(locationId: Int, numberOfSeats:Int, datetime:String) : LiveData<Resource<List<Room>>>
+    {
+        return remoteDataSource.getAvailableMeetingrooms(locationId, numberOfSeats, datetime).map{Resource.success(it)}
+    }*/
 
     fun getRooms_fetchDirectly(): LiveData<Resource<List<Room>>> {
         val rooms = ArrayList<Room>()

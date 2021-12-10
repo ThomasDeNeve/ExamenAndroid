@@ -1,14 +1,13 @@
 package com.example.hier.ui.room
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import com.example.hier.database.RoomDao
+import androidx.lifecycle.ViewModel
 import com.example.hier.models.Location
 import com.example.hier.models.Room
+import com.example.hier.network.ReservationPostModel
+import com.example.hier.repository.RoomRepository
 
-class RoomViewModel(private val roomRepository: RoomDao, application: Application) :
-    AndroidViewModel(application) {
+class RoomViewModel(private val roomRepository: RoomRepository) : ViewModel() {
     private lateinit var _room: LiveData<Room>
     val room: LiveData<Room>
         get() = _room
@@ -18,6 +17,11 @@ class RoomViewModel(private val roomRepository: RoomDao, application: Applicatio
         get() = _location
 
     fun setRoom(roomId: Int) {
-        _room = roomRepository.getRoom(roomId)
+        _room = roomRepository.getRoomById(roomId)
+    }
+
+    suspend fun addReservation(roomId: Int, customerId: Int) {
+        var reservationPostModel = ReservationPostModel(roomId, customerId)
+        roomRepository.addReservation(reservationPostModel)
     }
 }
