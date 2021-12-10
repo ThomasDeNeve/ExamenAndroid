@@ -17,8 +17,9 @@ class LocalDataSource(
     private val reservationDao: ReservationDao,
     private val roomDao: RoomDao
 ) {
-    fun getLocations() = locationDao.getAllLocations()
-    fun getAllRooms() = roomDao.getAllRooms()
+    //fun getLocations() = locationDao.getAllLocations()
+    fun getRooms() = roomDao.getRooms()
+
     fun getRoomById(roomId: Int) = roomDao.getRoom(roomId)
     fun getLocationById(locationId: Int) = roomDao.getLocation(locationId)
     fun getLocationIdByName(name: String) = locationDao.getLocationIdByName(name)
@@ -39,9 +40,11 @@ class LocalDataSource(
         reservationDao.insertAll(reservationList)
     }
 
-    fun saveLocations(list: List<LocationNetworkModel>) {
+    /*fun saveLocations(list: List<LocationNetworkModel>)
+    {
         val locations = ArrayList<Location>()
         val rooms = ArrayList<Room>()
+
         val lwrList: List<LocationWithRooms> = list.map { item -> item.toDatabaseModel() }
         for (lwr in lwrList) {
             locations.add(lwr.location)
@@ -49,11 +52,21 @@ class LocalDataSource(
         }
         locationDao.insertAll(locations)
         roomDao.insertAll(rooms)
-    }
+    }*/
 
+    /*
+    * Yves
+    * Takes a list of MeetingRoomNetworkModel objects (received through the API)
+    * and maps it to a Room object (to be saved in the local database)
+    * */
     fun saveRooms(list: List<MeetingRoomNetworkModel>)
     {
-        val rooms = ArrayList<MeetingRoomNetworkModel>()
-        rooms.addAll(list)
+        val rooms = ArrayList<Room>()
+
+        val mappedList: List<Room> = list.map { item -> item.toDatabaseModel() }
+
+        rooms.addAll(mappedList)
+
+        roomDao.insertAll(rooms)
     }
 }

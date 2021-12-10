@@ -21,7 +21,6 @@ import org.koin.android.ext.android.inject
 class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener
 {
     private val args: RoomOverviewFragmentArgs by navArgs()
-    private val _roomRepository: RoomRepository by inject()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
     {
@@ -54,7 +53,7 @@ class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener
                 {
                         Status.SUCCESS ->
                         {
-                            adapter.data = resource.data!!.filter { it.locationId == args.locationId}
+                            adapter.data = resource.data!!/*.filter { it.locationId == args.locationId}*/
                             //viewModel.setStatus(Status.SUCCESS)
                         }
                         Status.LOADING ->

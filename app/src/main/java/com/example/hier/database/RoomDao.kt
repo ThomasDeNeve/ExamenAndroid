@@ -10,7 +10,7 @@ interface RoomDao {
 
     @Transaction
     @Query("select * from rooms")
-    fun getAllRooms(): LiveData<List<Room>>
+    fun getRooms(): LiveData<List<Room>>
 
     @Transaction
     @Query("select * from rooms where id=:id")

@@ -1,6 +1,5 @@
 package com.example.hier.networkModels
 
-import com.example.hier.models.Location
 import com.example.hier.models.Room
 
 data class MeetingRoomNetworkModel(
@@ -8,8 +7,21 @@ data class MeetingRoomNetworkModel(
     val name: String,
     val numberOfSeats: Int,
     val locationId: Int,
-    val priceEvening: Int,
-    val priceFullDay: Int,
-    val priceHalfDay: Int,
-    val priceTwoHours: Int
-)
+    val priceEvening: Double,
+    val priceFullDay: Double,
+    val priceHalfDay: Double,
+    val priceTwoHours: Double
+) {
+    fun toDatabaseModel(): Room {
+        return Room(
+            id,
+            name,
+            numberOfSeats,
+            priceEvening,
+            priceFullDay,
+            priceHalfDay,
+            priceTwoHours,
+            locationId
+        )
+    }
+}

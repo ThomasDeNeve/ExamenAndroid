@@ -18,36 +18,49 @@ class RoomRepository(
     private val remoteDataSource: RemoteDataSource,
     private val localDataSource: LocalDataSource
 ) {
-    fun getRooms(): LiveData<Resource<List<Room>>> {
+    /*fun getRooms(): LiveData<Resource<List<Room>>> {
         //fetching locations and rooms
         try {
             getLocations()
         } catch (e: Exception) {
-            return localDataSource.getAllRooms()
+            return localDataSource.getRooms()
                 .map { Resource.error("Failed to load data from server", it) }
         }
-        return localDataSource.getAllRooms().map { Resource.success(it) }
+        return localDataSource.getRooms().map { Resource.success(it) }
+    }*/
+
+    fun getRooms(neededseats:Int, locationid: Int, date: String): LiveData<Resource<List<Room>>>
+    {
+        try
+        {
+            getAvailableRooms(neededseats, locationid, date)
+        }
+        catch (e: Exception)
+        {
+            return localDataSource.getRooms().map { Resource.error("Failed to load data from server", it)}
+        }
+        return localDataSource.getRooms().map { Resource.success(it)}
     }
 
     fun getRoomById(roomId: Int) = localDataSource.getRoomById(roomId)
 
-    fun getLocations() = fetchAndSaveLocations(
+    /*fun getLocations() = fetchAndSaveLocations(
         databaseQuery = { localDataSource.getLocations() },
         networkCall = { remoteDataSource.getLocations() },
         saveCallResult = { localDataSource.saveLocations(it) }
-    )
+    )*/
 
-    fun getAvailableRooms(neededseats:Int, locationid: Int, datetime: String) = performGetOperation(
-        databaseQuery = { localDataSource.getAllRooms()},
-        networkCall = { remoteDataSource.getAvailableMeetingrooms(neededseats, locationid, datetime)},
+    fun getAvailableRooms(neededseats:Int, locationid: Int, date: String) = fetchAndSaveRooms(
+        databaseQuery = { localDataSource.getRooms()},
+        networkCall = { remoteDataSource.getAvailableMeetingrooms(neededseats, locationid, date)},
         saveCallResult = { localDataSource.saveRooms(it)}
     )
 
-    fun getLocations_old() = performGetOperation(
+    /*fun getLocations_old() = performGetOperation(
         databaseQuery = { localDataSource.getLocations() },
         networkCall = { remoteDataSource.getLocations() },
         saveCallResult = { localDataSource.saveLocations(it) }
-    )
+    )*/
 
     fun getLocationById(locationId: Int) = localDataSource.getLocationById(locationId)
 
