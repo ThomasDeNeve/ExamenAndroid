@@ -14,7 +14,7 @@ import com.auth0.android.authentication.AuthenticationException
 import com.auth0.android.callback.Callback
 import com.auth0.android.provider.WebAuthProvider
 import com.auth0.android.result.Credentials
-import com.example.hier.MainActivity
+import com.example.hier.MyApplication.Companion.cachedCredentials
 import com.example.hier.R
 import com.example.hier.databinding.FragmentLoginBinding
 import com.example.hier.util.Status
@@ -76,14 +76,15 @@ class LoginFragment : Fragment() {
     private fun loginWithBrowser() {
         // Setup the WebAuthProvider, using the custom scheme and scope
         activity?.let {
-            val clientId: String = it.getString(R.string.auth0_clientId)
-            val domain: String = it.getString(R.string.auth0_domain)
+            val clientId: String = getString(R.string.auth0_clientId)
+            val domain: String = getString(R.string.auth0_domain)
 
             account = Auth0(clientId, domain)
 
             WebAuthProvider.login(account)
                 .withScheme("demo")
-                .withScope("openid profile email")
+                .withScope("openid profile email read:current_user update:current_user_metadata")
+                .withAudience("https://${getString(R.string.auth0_domain)}/api/v2/")
                 // Launch the authentication passing the callback where the results will be received
                 .start(it, object : Callback<Credentials, AuthenticationException> {
                     // Called when there is an authentication failure
@@ -98,7 +99,7 @@ class LoginFragment : Fragment() {
                         // Get the access token from the credentials object.
                         // This can be used to call APIs
                         Log.i("LOGIN", "Login success")
-                        MainActivity().cachedCredentials = result
+                        cachedCredentials = result
                         navigateToHome()
                     }
                 })
