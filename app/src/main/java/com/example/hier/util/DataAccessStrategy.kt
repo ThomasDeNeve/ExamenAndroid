@@ -44,6 +44,7 @@ fun <T, A> performGetOperation(databaseQuery: () -> LiveData<T>, networkCall: su
         }
     }
 
+
 /*fun <T,A> fetchAndSaveMeetingrooms(
     databaseQuery: () -> LiveData<T>,
     networkCall: suspend () -> Resource<A>,
