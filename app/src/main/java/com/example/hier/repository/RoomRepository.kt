@@ -37,6 +37,7 @@ class RoomRepository(
         }
         catch (e: Exception)
         {
+            Log.e("API error", e.message.toString())
             return localDataSource.getRooms().map { Resource.error("Failed to load data from server", it)}
         }
         return localDataSource.getRooms().map { Resource.success(it)}
@@ -64,6 +65,7 @@ class RoomRepository(
 
     fun getLocationById(locationId: Int) = localDataSource.getLocationById(locationId)
 
+    //TODO: change to remoteDataSource
     fun getLocationIdByName(name: String): Int {
         return localDataSource.getLocationIdByName(name)
     }

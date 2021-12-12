@@ -19,6 +19,7 @@ class LocalDataSource(
 ) {
     //fun getLocations() = locationDao.getAllLocations()
     fun getRooms() = roomDao.getRooms()
+    //fun getRoomsByNeededSeats(neededseats:Int) = roomDao.getRoomsByNeededSeats(neededseats)
 
     fun getRoomById(roomId: Int) = roomDao.getRoom(roomId)
     fun getLocationById(locationId: Int) = roomDao.getLocation(locationId)
@@ -30,8 +31,11 @@ class LocalDataSource(
         return MutableLiveData(LoginResponse(false, "", userDao.getUser(username)))
     }
 
-    fun saveUser(loginResponse: LoginResponse) {
+    fun saveUser(loginResponse: LoginResponse)
+    {
         userDao.insert(loginResponse.user)
+
+        //TODO: post request to api to add user in our own database
     }
 
     fun saveReservations(list: List<ReservationNetworkModel>) {
@@ -67,6 +71,8 @@ class LocalDataSource(
 
         rooms.addAll(mappedList)
 
+        //Delete all rooms in the cached database Before filling it with data retreived from the api. This ensures we have the updated data
+        roomDao.deleteAllRooms()
         roomDao.insertAll(rooms)
     }
 }

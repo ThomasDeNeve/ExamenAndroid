@@ -1,5 +1,10 @@
 package com.example.hier.network
 
+import android.util.Log
+import android.util.Log.ERROR
+import com.example.hier.util.Status
+import java.net.SocketTimeoutException
+
 class RemoteDataSource(private val apiService: ApiService) : BaseDataSource()
 {
     suspend fun loginUser(username: String, password: String) =
