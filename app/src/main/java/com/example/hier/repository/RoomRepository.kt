@@ -29,11 +29,11 @@ class RoomRepository(
         return localDataSource.getRooms().map { Resource.success(it) }
     }*/
 
-    fun getRooms(neededseats:Int, locationid: Int, date: String): LiveData<Resource<List<Room>>>
+    fun getRooms(neededseats:Int, locationid: Int, datetimeStart: String, datetimeEnd: String): LiveData<Resource<List<Room>>>
     {
         try
         {
-            getAvailableRooms(neededseats, locationid, date)
+            getAvailableRooms(neededseats, locationid, datetimeStart, datetimeEnd)
         }
         catch (e: Exception)
         {
@@ -51,9 +51,9 @@ class RoomRepository(
         saveCallResult = { localDataSource.saveLocations(it) }
     )*/
 
-    fun getAvailableRooms(neededseats:Int, locationid: Int, date: String) = fetchAndSaveRooms(
+    fun getAvailableRooms(neededseats:Int, locationid: Int, datetimeStart: String,datetimeEnd: String) = fetchAndSaveRooms(
         databaseQuery = { localDataSource.getRooms()},
-        networkCall = { remoteDataSource.getAvailableMeetingrooms(neededseats, locationid, date)},
+        networkCall = { remoteDataSource.getAvailableMeetingrooms(neededseats, locationid, datetimeStart, datetimeEnd)},
         saveCallResult = { localDataSource.saveRooms(it)}
     )
 

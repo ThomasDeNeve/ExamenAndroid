@@ -31,7 +31,7 @@ interface ApiService
     suspend fun addReservation( reservation: ReservationPostModel): Response<ReservationPostModel>
 
     @GET("api/Reservation/availablemeetingrooms")
-    suspend fun getAvailableMeetingrooms(@Query("neededseats") neededseats: Int,@Query("locationid") locationid: Int,@Query("date") date: String) : Response<List<MeetingRoomNetworkModel>>
+    suspend fun getAvailableMeetingrooms(@Query("neededseats") neededseats: Int,@Query("locationid") locationid: Int,@Query("datetimeStart") datetimeStart: String,@Query("datetimeEnd") datetimeEnd: String) : Response<List<MeetingRoomNetworkModel>>
 
     /* suspend fun loginUser(username: String, password: String): Response<LoginResponse> {
          if (username == "admin" && password == "admin") {
