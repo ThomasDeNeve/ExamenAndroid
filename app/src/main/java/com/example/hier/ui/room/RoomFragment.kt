@@ -9,9 +9,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.hier.database.ApplicationDatabase
 import com.example.hier.databinding.FragmentRoomBinding
+import com.example.hier.models.Room
+import com.example.hier.ui.roomoverview.RoomOverviewFragmentDirections
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
@@ -24,10 +27,10 @@ class RoomFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val viewModel: RoomViewModel by inject()
-        val application = requireNotNull(this.activity).application
+        //val application = requireNotNull(this.activity).application
 
         // Create an instance of the ViewModel Factory.
-        val dataSource = ApplicationDatabase.getDatabase(application).roomDao()
+        //val dataSource = ApplicationDatabase.getDatabase(application).roomDao()
         //val viewModelFactory = RoomViewModelFactory(dataSource, application)
 
         //val viewModel = ViewModelProvider(this, viewModelFactory).get(RoomViewModel::class.java)
@@ -47,38 +50,8 @@ class RoomFragment : Fragment() {
 
         binding.btnReserve.setOnClickListener {
             lifecycleScope.launch {
-                viewModel.addReservation(args.roomId, 1) //TODO add actual customer ID
+                viewModel.addReservation(args.roomId, args.user, args.dateStart, args.dateEnd) //TODO add actual customer ID and catch exception when duplicate
             }
-
-            //val directions = RoomFragmentDirections.actionRoomFragmentToReservationsFragment(roomId) //.actionChoiceMeetingRoomFragmentToRoomOverviewFragment(roomId)
-            //findNavController().navigate(directions)
-
-            //viewModel.saveReservation(roomId, 1)
-
-
-            //System.out.println(response.body().string());
-
-            /*val apiService = RestApiService()
-            val reservation = ReservationPostModel(
-                roomId = id,
-                customerId = 1
-            )
-
-            apiService.addReservation(reservation)
-            {
-                if (it?.roomId != null)
-                {
-                    //it = newly added user parsed as response
-                    // it?.id = newly added user ID
-                }
-            }
-        }*/
-
-
-            /*viewModel.location.observe(viewLifecycleOwner, Observer { loc ->
-
-        })*/
-
         }
         return binding.root
     }
@@ -87,5 +60,12 @@ class RoomFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         (activity as AppCompatActivity).supportActionBar?.title = roomName
         //TODO find out why this doesn't work
+    }
+
+    fun onReserveButtonClicked()
+    {
+        /*al directions = RoomFragmentDirections.actionRoomOverviewFragmentToRoomFragment()
+
+        findNavController().navigate(directions)*/
     }
 }

@@ -28,7 +28,7 @@ interface ApiService
     suspend fun getLocations(): Response<List<LocationNetworkModel>>
 
     @POST("/api/Reservation/meetingroom")
-    suspend fun addReservation( reservation: ReservationPostModel): Response<ReservationPostModel>
+    suspend fun addReservation(@Body reservation: ReservationPostModel): Response<ReservationPostModel>
 
     @GET("api/Reservation/availablemeetingrooms")
     suspend fun getAvailableMeetingrooms(@Query("neededseats") neededseats: Int,@Query("locationid") locationid: Int,@Query("datetimeStart") datetimeStart: String,@Query("datetimeEnd") datetimeEnd: String) : Response<List<MeetingRoomNetworkModel>>

@@ -51,10 +51,9 @@ class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener
 
     override fun onRoomClicked(room: Room)
     {
-        //Log.e("test", "clicked on room with roomID ${room.roomId}")
-
+        val user = 1 //TODO: get actual userid
         val directions =
-            RoomOverviewFragmentDirections.actionRoomOverviewFragmentToRoomFragment(room.id)
+            RoomOverviewFragmentDirections.actionRoomOverviewFragmentToRoomFragment(room.id, overviewViewModel.datetimeStart, overviewViewModel.datetimeEnd, user)
 
         findNavController().navigate(directions)
     }

@@ -70,7 +70,8 @@ class RoomRepository(
         return localDataSource.getLocationIdByName(name)
     }
 
-    suspend fun addReservation(reservationPostModel: ReservationPostModel){
+    suspend fun addReservation(reservationPostModel: ReservationPostModel)
+    {
         remoteDataSource.addReservation(reservationPostModel)
     }
 

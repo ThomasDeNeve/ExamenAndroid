@@ -24,12 +24,10 @@ class RoomOverviewViewModel(private val roomRepository: RoomRepository) : ViewMo
     }
 
     //Get the actual date and return as String
-    fun getCurrentDate(): String
-    {
+    private fun getCurrentDate(): String {
         //Get the current date
         val currentdate = SimpleDateFormat("yyyy-MM-dd hh:mm:ss")
         //format to string
-        val dateString = currentdate.format(Date())
-        return dateString
+        return currentdate.format(Date())
     }
 }
