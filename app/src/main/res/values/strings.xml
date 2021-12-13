@@ -35,4 +35,14 @@
     <string name="to">Tot</string>
     <string name="room_overview">Room overview</string>
     <string name="aantalPlaatsen">Aantal plaatsen:</string>
+    <string name="profile_userData">Gebruikers gegevens</string>
+    <string name="profile_name">Naam</string>
+    <string name="profile_firstName">Voornaam</string>
+    <string name="profile_email">Email</string>
+    <string name="profile_tel">Tel</string>
+    <string name="profile_btw">BTW</string>
+    <string name="col1_header">Van</string>
+    <string name="col2_header">Tot</string>
+    <string name="col3_header">Zaal</string>
+    <string name="col4_header">Stoel</string>
 </resources>
