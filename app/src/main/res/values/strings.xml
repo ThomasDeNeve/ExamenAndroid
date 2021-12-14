@@ -31,6 +31,7 @@
     <string name="hier_boven">hier.boven</string>
     <string name="kies_locatie">Kies locatie voor coworking</string>
     <string name="reservation_recap">Samenvatting van uw reservatie</string>
+    <string name="aanvragen">Aanvragen</string>
     <string-array name="tijdssloten">
         <item>Voormiddag</item>
         <item>Namiddag</item>

@@ -24,15 +24,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/locationname" />
 
-        <DatePicker
+        <CalendarView
             android:id="@+id/date_picker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:calendarViewShown="false"
-            android:datePickerMode="spinner"
+            android:date="@{viewModel.date}"
+            android:minDate="@{System.currentTimeMillis()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/date_text" />
+            app:layout_constraintTop_toBottomOf="@id/date_text" /><!--TODO: Date moet 2 way binding zijn, maar inverse binding adapter werkt niet.-->
         <TextView
             android:id="@+id/locationname"
             android:text="@string/adres_1"
@@ -42,28 +42,20 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
-
-        <Spinner
-            android:id="@+id/tijdsslot_spinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/date_picker"
-            tools:listitem="Voormiddag" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/hier_beneden_text"
             android:text="@string/hier_beneden"
             style="@style/hier_label"
-            app:layout_constraintTop_toBottomOf="@id/tijdsslot_spinner"
+            app:layout_constraintTop_toBottomOf="@id/date_picker"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             />
 
         <ImageView
             android:id="@+id/chair1"
+            android:onClick="@{() -> viewModel.onGreenChairClicked(1)}"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             app:isGone="@{!viewModel.chair1reserved}"
@@ -75,6 +67,7 @@
 
         <ImageView
             android:id="@+id/chair2"
+            android:onClick="@{() -> viewModel.onGreenChairClicked(2)}"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             app:isGone="@{!viewModel.chair2reserved}"
@@ -85,6 +78,7 @@
             app:srcCompat="@drawable/greenchair" />
         <ImageView
             android:id="@+id/chair3"
+            android:onClick="@{() -> viewModel.onGreenChairClicked(3)}"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="@id/table1"
@@ -109,6 +103,7 @@
 
         <ImageView
             android:id="@+id/chair4"
+            android:onClick="@{() -> viewModel.onGreenChairClicked(4)}"
             android:layout_width="100dp"
             android:rotationX="180"
             android:layout_height="wrap_content"
@@ -120,6 +115,7 @@
             app:isGone="@{!viewModel.chair4reserved}" />
         <ImageView
             android:id="@+id/chair5"
+            android:onClick="@{() -> viewModel.onGreenChairClicked(5)}"
             android:layout_width="100dp"
             android:rotationX="180"
             android:layout_height="wrap_content"
@@ -132,6 +128,7 @@
 
         <ImageView
             android:id="@+id/chair6"
+            android:onClick="@{() -> viewModel.onGreenChairClicked(6)}"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:rotationX="180"
@@ -155,6 +152,7 @@
 
         <ImageView
             android:id="@+id/chair7"
+            android:onClick="@{() -> viewModel.onGreenChairClicked(7)}"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:scaleType="fitEnd"
@@ -166,6 +164,7 @@
             app:isGone="@{!viewModel.chair7reserved}"/>
         <ImageView
             android:id="@+id/chair8"
+            android:onClick="@{() -> viewModel.onGreenChairClicked(8)}"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:scaleType="fitEnd"
@@ -178,6 +177,7 @@
 
         <ImageView
             android:id="@+id/chair9"
+            android:onClick="@{() -> viewModel.onGreenChairClicked(9)}"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:scaleType="fitEnd"
@@ -211,6 +211,7 @@
             app:srcCompat="@drawable/table" />
         <ImageView
             android:id="@+id/chair10"
+            android:onClick="@{() -> viewModel.onGreenChairClicked(10)}"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:scaleType="fitEnd"
@@ -223,6 +224,7 @@
             app:isGone="@{!viewModel.chair10reserved}"/>
         <ImageView
             android:id="@+id/chair11"
+            android:onClick="@{() -> viewModel.onGreenChairClicked(11)}"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:scaleType="fitEnd"
@@ -236,6 +238,7 @@
 
         <ImageView
             android:id="@+id/chair12"
+            android:onClick="@{() -> viewModel.onGreenChairClicked(12)}"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:scaleType="fitEnd"
@@ -249,6 +252,7 @@
 
         <ImageView
             android:id="@+id/chair13"
+            android:onClick="@{() -> viewModel.onGreenChairClicked(13)}"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:scaleType="fitEnd"
@@ -261,6 +265,7 @@
 
         <ImageView
             android:id="@+id/chair14"
+            android:onClick="@{() -> viewModel.onGreenChairClicked(14)}"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:scaleType="fitEnd"
@@ -273,6 +278,7 @@
 
         <ImageView
             android:id="@+id/chair15"
+            android:onClick="@{() -> viewModel.onGreenChairClicked(15)}"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:scaleType="fitEnd"
@@ -286,6 +292,7 @@
 
         <ImageView
             android:id="@+id/chair16"
+            android:onClick="@{() -> viewModel.onGreenChairClicked(16)}"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:scaleType="fitEnd"

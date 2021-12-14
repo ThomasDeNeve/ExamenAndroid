@@ -30,12 +30,12 @@ class CoworkingRecapFragment : Fragment() {
             false
         )
         val viewModel: CoworkingRecapViewModel by inject()
+        binding.viewModel=viewModel
 
-        viewModel.location = CoworkingRecapFragmentArgs.fromBundle(requireArguments()).locationName
-        viewModel.chamber = CoworkingRecapFragmentArgs.fromBundle(requireArguments()).chamberName
-        viewModel.seatId = CoworkingRecapFragmentArgs.fromBundle(requireArguments()).seatNumber
-        viewModel.date = CoworkingRecapFragmentArgs.fromBundle(requireArguments()).date
-        viewModel.timeslot = CoworkingRecapFragmentArgs.fromBundle(requireArguments()).timeslot
+        viewModel.setLocation(CoworkingRecapFragmentArgs.fromBundle(requireArguments()).locationName)
+        viewModel.setChamber(CoworkingRecapFragmentArgs.fromBundle(requireArguments()).chamberName)
+        viewModel.setSeatId(CoworkingRecapFragmentArgs.fromBundle(requireArguments()).seatNumber)
+        viewModel.setDate(CoworkingRecapFragmentArgs.fromBundle(requireArguments()).date)
 
         binding.submitButton.setOnClickListener{
             viewModel.onSubmit()

@@ -14,9 +14,13 @@ class ALCViewModel(
     ) : ViewModel(){
 
     //date as given by user, must be at least today
-    var date = System.currentTimeMillis()
-    //timespan as given by user; MORNING, AFTERNOON, EVENING or DAY
-    var timespan = DAY
+    private val _date = MutableLiveData<Long>()
+    val date: LiveData<Long>
+        get() = _date
+
+    private val _chamber = MutableLiveData<String>()
+    val chamber: LiveData<String>
+        get() = _chamber
 
     //List of reservations from server for given date and timespan
     //var reservationsList : LiveData<List<Reservation>> = reservationSource.getReservations(date)
@@ -24,6 +28,10 @@ class ALCViewModel(
     private val _eventChairClicked = MutableLiveData<Boolean>()
     val eventChairClicked: LiveData<Boolean>
         get() = _eventChairClicked
+
+    private val _clickedSeatId = MutableLiveData<Int>()
+    val clickedSeatId: LiveData<Int>
+        get() = _clickedSeatId
 
     //TODO: check availability for every chair.
     val chair1reserved: Boolean =true
@@ -43,8 +51,16 @@ class ALCViewModel(
     var chair15reserved: Boolean =true
     var chair16reserved: Boolean =false
 
+    init {
+        _date.value = System.currentTimeMillis()
+    }
 
-    fun onGreenChairClicked(){
+    fun onGreenChairClicked(value: Int){
+        _clickedSeatId.value = value
+        if(0<value && value<7)
+            _chamber.value = "hier.beneden"
+        if(value>6)
+            _chamber.value = "hier.boven"
         _eventChairClicked.value = true
     }
 
