@@ -51,6 +51,7 @@ class RoomFragment : Fragment() {
         binding.btnReserve.setOnClickListener {
             lifecycleScope.launch {
                 viewModel.addReservation(args.roomId, args.user, args.dateStart, args.dateEnd) //TODO add actual customer ID and catch exception when duplicate
+                //onReserveButtonClicked()
             }
         }
         return binding.root
@@ -64,8 +65,8 @@ class RoomFragment : Fragment() {
 
     fun onReserveButtonClicked()
     {
-        /*al directions = RoomFragmentDirections.actionRoomOverviewFragmentToRoomFragment()
+        val directions = RoomFragmentDirections.actionRoomFragmentToChoiceCoworkingFragment2()
 
-        findNavController().navigate(directions)*/
+        findNavController().navigate(directions)
     }
 }

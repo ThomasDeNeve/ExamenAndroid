@@ -57,12 +57,6 @@ class RoomRepository(
         saveCallResult = { localDataSource.saveRooms(it)}
     )
 
-    /*fun getLocations_old() = performGetOperation(
-        databaseQuery = { localDataSource.getLocations() },
-        networkCall = { remoteDataSource.getLocations() },
-        saveCallResult = { localDataSource.saveLocations(it) }
-    )*/
-
     fun getLocationById(locationId: Int) = localDataSource.getLocationById(locationId)
 
     //TODO: change to remoteDataSource
@@ -74,11 +68,6 @@ class RoomRepository(
     {
         remoteDataSource.addReservation(reservationPostModel)
     }
-
-    /*suspend fun getAvailableRooms(locationId: Int, numberOfSeats:Int, datetime:String) : LiveData<Resource<List<Room>>>
-    {
-        return remoteDataSource.getAvailableMeetingrooms(locationId, numberOfSeats, datetime).map{Resource.success(it)}
-    }*/
 
     fun getRooms_fetchDirectly(): LiveData<Resource<List<Room>>> {
         val rooms = ArrayList<Room>()

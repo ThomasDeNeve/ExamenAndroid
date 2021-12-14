@@ -119,30 +119,30 @@ class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener
     private fun buildTimeOfDaySpinner(binding: FragmentRoomoverviewBinding)
     {
         val spinner = binding.timeSpinner
-        val items = arrayOf("Voormiddag", "Namiddag", "Hele dag", "Avond") //TODO: 2 hours slot edge case (needs lots of refactoring)
+        val items = arrayOf("Voormiddag", "Namiddag", "Hele dag", "Avond") //TODO: 2 hours slot edge case (needs refactoring)
 
         spinner.adapter = ArrayAdapter(this.requireContext(), android.R.layout.simple_spinner_item, items)
 
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?)
             {
-                //
+                rebuildDateAndOverviewViewModel("08:00:00" , "12:00:00")
             }
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long )
             {
                 when (parent?.getItemAtPosition(position).toString())
                 {
-                    "Voormiddag" -> rebuildDate("08:00:00" , "12:00:00")
-                    "Namiddag" -> rebuildDate("13:00:00", "17:00:00")
-                    "Hele dag" -> rebuildDate("08:00:00", "17:00:00")
-                    "Avond" -> rebuildDate("17:00:00", "21:00:00")
+                    "Voormiddag" -> rebuildDateAndOverviewViewModel("08:00:00" , "12:00:00")
+                    "Namiddag" -> rebuildDateAndOverviewViewModel("13:00:00", "17:00:00")
+                    "Hele dag" -> rebuildDateAndOverviewViewModel("08:00:00", "17:00:00") //show enkel avond, extra api calls (gelijkaardig voor 2 uur?)
+                    "Avond" -> rebuildDateAndOverviewViewModel("17:00:00", "21:00:00")
                 }
             }
         }
     }
 
-    private fun rebuildDate(timeStart: String, timeEnd: String)
+    private fun rebuildDateAndOverviewViewModel(timeStart: String, timeEnd: String)
     {
         var date = overviewViewModel.datetimeStart
 
@@ -155,8 +155,7 @@ class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener
 
         overviewViewModel.datetimeStart = startDateWithTime
         overviewViewModel.datetimeEnd = endDateWithTime
-        overviewViewModel.getAvavailableRooms()
-
+        overviewViewModel.rooms = overviewViewModel.getAvavailableRooms()
     }
     private fun buildDatePicker(binding: FragmentRoomoverviewBinding)
     {
@@ -164,9 +163,10 @@ class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener
 
         binding.datePicker.init(now.get(Calendar.YEAR), now.get(Calendar.MONTH), now.get(Calendar.DAY_OF_MONTH))
         {
-                view, year, month, day -> val month = month + 1
+                _, year, month, day -> val month = month + 1
 
-            overviewViewModel.datetimeStart = "$year-$month-$day 00:00:01"
+            overviewViewModel.datetimeStart = "$year-$month-$day 08:00:00"
+            overviewViewModel.datetimeEnd = "$year-$month-$day 12:00:00"
             overviewViewModel.rooms = overviewViewModel.getAvavailableRooms()
             Log.d("date", day.toString() + month.toString() + year.toString())
         }

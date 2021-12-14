@@ -81,5 +81,8 @@
         <argument
             android:name="user"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_roomFragment_to_choiceCoworkingFragment2"
+            app:destination="@id/choiceCoworkingFragment" />
     </fragment>
 </navigation>

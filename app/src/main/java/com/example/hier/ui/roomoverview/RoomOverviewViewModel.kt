@@ -10,10 +10,10 @@ import java.util.*
 
 class RoomOverviewViewModel(private val roomRepository: RoomRepository) : ViewModel()
 {
-    var neededseats:Int=0 //init on minimum amount of needed seats
+    var neededseats:Int=8 //init on minimum amount of needed seats
     var location:Int=0 //location is passed by RoomOverviewFragment on init using args.locationId
-    var datetimeStart:String = getCurrentDate() //initialize date on current datetime
-    var datetimeEnd:String = getCurrentDate()
+    var datetimeStart:String = getStartDateTime() //initialize date on current datetime
+    var datetimeEnd:String = getEndDateTime()
 
     var rooms = getAvavailableRooms()
 
@@ -24,10 +24,22 @@ class RoomOverviewViewModel(private val roomRepository: RoomRepository) : ViewMo
     }
 
     //Get the actual date and return as String
-    private fun getCurrentDate(): String {
+    private fun getStartDateTime(): String {
         //Get the current date
         val currentdate = SimpleDateFormat("yyyy-MM-dd hh:mm:ss")
+        var cdatestring = currentdate.format(Date()).toString()
+        cdatestring = cdatestring.split(" ")[0];
+        cdatestring += " 08:00:00"
         //format to string
-        return currentdate.format(Date())
+        return cdatestring//currentdate.format(Date())
+    }
+
+    private fun getEndDateTime() : String {
+        val currentdate = SimpleDateFormat("yyyy-MM-dd hh:mm:ss")
+        var cdatestring = currentdate.format(Date()).toString()
+        cdatestring = cdatestring.split(" ")[0];
+        cdatestring += " 12:00:00"
+        //format to string
+        return cdatestring//currentdate.format(Date())
     }
 }
