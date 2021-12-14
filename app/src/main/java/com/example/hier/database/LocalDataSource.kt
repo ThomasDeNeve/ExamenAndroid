@@ -1,15 +1,10 @@
 package com.example.hier.database
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import com.example.hier.models.Location
-import com.example.hier.models.LocationWithRooms
-import com.example.hier.models.Reservation
-import com.example.hier.models.Room
-import com.example.hier.network.LoginResponse
+import com.example.hier.models.*
 import com.example.hier.networkModels.LocationNetworkModel
 import com.example.hier.networkModels.MeetingRoomNetworkModel
 import com.example.hier.networkModels.ReservationNetworkModel
+import com.example.hier.networkModels.UserNetworkModel
 
 class LocalDataSource(
     private val locationDao: LocationDao,
@@ -25,13 +20,7 @@ class LocalDataSource(
 
     fun getReservations() = reservationDao.getAllReservations()
 
-    fun getUser(username: String): LiveData<LoginResponse> {
-        return MutableLiveData(LoginResponse(false, "", userDao.getUser(username)))
-    }
-
-    fun saveUser(loginResponse: LoginResponse) {
-        userDao.insert(loginResponse.user)
-    }
+    fun getUser(username: String) = userDao.getUser(username)
 
     fun saveReservations(list: List<ReservationNetworkModel>) {
         val reservationList = ArrayList<Reservation>()
