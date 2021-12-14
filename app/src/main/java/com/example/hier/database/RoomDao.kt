@@ -13,7 +13,7 @@ interface RoomDao {
     fun getAllRooms(): LiveData<List<Room>>
 
     @Transaction
-    @Query("select * from rooms where roomId=:id")
+    @Query("select * from rooms where id=:id")
     fun getRoom(id: Int): LiveData<Room>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

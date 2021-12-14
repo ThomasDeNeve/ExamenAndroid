@@ -3,7 +3,6 @@ package com.example.hier.database
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.hier.models.Reservation
-import com.example.hier.models.Room
 
 @Dao
 interface ReservationDao {

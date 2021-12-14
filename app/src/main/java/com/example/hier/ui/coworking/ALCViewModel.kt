@@ -4,7 +4,6 @@ import android.text.format.DateUtils
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.hier.models.DAY
 import com.example.hier.models.Reservation
 import com.example.hier.repository.ReservationRepository
 import java.util.*
