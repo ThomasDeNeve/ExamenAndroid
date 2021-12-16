@@ -44,6 +44,7 @@ fun <T, A> performGetOperation(databaseQuery: () -> LiveData<T>, networkCall: su
         }
     }
 
+
 /*fun <T,A> fetchAndSaveMeetingrooms(
     databaseQuery: () -> LiveData<T>,
     networkCall: suspend () -> Resource<A>,
@@ -67,6 +68,24 @@ fun <T, A> fetchAndSaveLocations(
     networkCall: suspend () -> Resource<A>,
     saveCallResult: suspend (A) -> Unit
 ) {
+    GlobalScope.launch {
+        val source = databaseQuery.invoke().map { Resource.success(it) }
+        val responseStatus = networkCall.invoke()
+        if (responseStatus.status == Status.SUCCESS) {
+            saveCallResult(responseStatus.data!!)
+            Log.i("DataAccessStrategy", "Successfully fetched data from API")
+        } else if (responseStatus.status == Status.ERROR) {
+            Log.e("DataAccessStrategy", "Error fetching result from API")
+            throw Exception("Exception thrown because response failed: ${responseStatus.message!!}")
+        }
+    }
+}
+
+fun <T,A> fetchAndSaveRooms(
+    databaseQuery: () -> LiveData<T>,
+    networkCall: suspend () -> Resource<A>,
+    saveCallResult: suspend (A) -> Unit
+){
     GlobalScope.launch {
         val source = databaseQuery.invoke().map { Resource.success(it) }
         val responseStatus = networkCall.invoke()

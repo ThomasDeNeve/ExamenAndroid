@@ -9,7 +9,8 @@ import com.example.hier.models.Room
 class RoomAdapter (private val roomClickListener: RoomClickListener) : RecyclerView.Adapter<RoomAdapter.RoomViewHolder>()
 {
     var data = listOf<Room>()
-        set(value) {
+        set(value)
+        {
             val valueSorted = value.sortedWith(Comparator { lhs, rhs ->
                 // sort rooms by location | -1 - less than, 1 - greater than, 0 - equal, all inversed for descending
                 if (lhs.locationId < rhs.locationId) -1 else if (lhs.locationId > rhs.locationId) 1 else 0

@@ -17,8 +17,10 @@ class LocalDataSource(
     private val reservationDao: ReservationDao,
     private val roomDao: RoomDao
 ) {
-    fun getLocations() = locationDao.getAllLocations()
-    fun getAllRooms() = roomDao.getAllRooms()
+    //fun getLocations() = locationDao.getAllLocations()
+    fun getRooms() = roomDao.getRooms()
+    //fun getRoomsByNeededSeats(neededseats:Int) = roomDao.getRoomsByNeededSeats(neededseats)
+
     fun getRoomById(roomId: Int) = roomDao.getRoom(roomId)
     fun getLocationById(locationId: Int) = roomDao.getLocation(locationId)
     fun getLocationIdByName(name: String) = locationDao.getLocationIdByName(name)
@@ -29,8 +31,11 @@ class LocalDataSource(
         return MutableLiveData(LoginResponse(false, "", userDao.getUser(username)))
     }
 
-    fun saveUser(loginResponse: LoginResponse) {
+    fun saveUser(loginResponse: LoginResponse)
+    {
         userDao.insert(loginResponse.user)
+
+        //TODO: post request to api to add user in our own database
     }
 
     fun saveReservations(list: List<ReservationNetworkModel>) {
@@ -39,9 +44,11 @@ class LocalDataSource(
         reservationDao.insertAll(reservationList)
     }
 
-    fun saveLocations(list: List<LocationNetworkModel>) {
+    /*fun saveLocations(list: List<LocationNetworkModel>)
+    {
         val locations = ArrayList<Location>()
         val rooms = ArrayList<Room>()
+
         val lwrList: List<LocationWithRooms> = list.map { item -> item.toDatabaseModel() }
         for (lwr in lwrList) {
             locations.add(lwr.location)
@@ -49,11 +56,23 @@ class LocalDataSource(
         }
         locationDao.insertAll(locations)
         roomDao.insertAll(rooms)
-    }
+    }*/
 
+    /*
+    * Yves
+    * Takes a list of MeetingRoomNetworkModel objects (received through the API)
+    * and maps it to a Room object (to be saved in the local database)
+    * */
     fun saveRooms(list: List<MeetingRoomNetworkModel>)
     {
-        val rooms = ArrayList<MeetingRoomNetworkModel>()
-        rooms.addAll(list)
+        val rooms = ArrayList<Room>()
+
+        val mappedList: List<Room> = list.map { item -> item.toDatabaseModel() }
+
+        rooms.addAll(mappedList)
+
+        //Delete all rooms in the cached database Before filling it with data retreived from the api. This ensures we have the updated data
+        roomDao.deleteAllRooms()
+        roomDao.insertAll(rooms)
     }
 }
