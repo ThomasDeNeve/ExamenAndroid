@@ -18,6 +18,7 @@ import org.koin.android.ext.android.inject
 import java.util.*
 
 import android.widget.*
+import com.example.hier.R
 
 class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener
 {
@@ -94,7 +95,7 @@ class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener
         val spinner = binding.seatSpinner
         val items = arrayOf(8,14,40,50,120) //TODO: get capacity list from db
 
-        spinner.adapter = ArrayAdapter(this.requireContext(), android.R.layout.simple_spinner_item, items)
+        spinner.adapter = ArrayAdapter(this.requireContext(), R.layout.custom_spinner_list, items)
 
         spinner.onItemSelectedListener = object :AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?)
@@ -121,7 +122,7 @@ class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener
         val spinner = binding.timeSpinner
         val items = arrayOf("Voormiddag", "Namiddag", "Hele dag", "Avond") //TODO: 2 hours slot edge case (needs refactoring)
 
-        spinner.adapter = ArrayAdapter(this.requireContext(), android.R.layout.simple_spinner_item, items)
+        spinner.adapter = ArrayAdapter(this.requireContext(), R.layout.custom_spinner_list, items)
 
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?)
