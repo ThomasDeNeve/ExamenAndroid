@@ -13,10 +13,9 @@ import retrofit2.Response
 import retrofit2.http.*
 
 interface ApiService {
-    @FormUrlEncoded
     @GET("api/customer/GetLoggedIn")
     suspend fun getUser(
-        @Field("username") username: String
+        @Query("username") username: String
     ): Response<UserNetworkModel>
 
     fun getReservations(): Response<RootReservationNetworkModel> {

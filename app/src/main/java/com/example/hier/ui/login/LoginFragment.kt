@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.auth0.android.Auth0
 import com.auth0.android.authentication.AuthenticationAPIClient
@@ -23,6 +24,7 @@ import com.example.hier.databinding.FragmentLoginBinding
 import com.example.hier.util.Status
 import org.koin.android.ext.android.inject
 import com.example.hier.repository.UserRepository
+import kotlinx.coroutines.launch
 
 class LoginFragment : Fragment() {
 
@@ -95,7 +97,7 @@ class LoginFragment : Fragment() {
 
                 override fun onSuccess(userProfile: UserProfile) {
                     MyApplication.cachedUserProfile = userProfile
-                    viewModel.insertNewUser(userProfile.email)
+                    lifecycleScope.launch { viewModel.insertNewUser(userProfile.email) }
                     navigateToHome()
                 }
             })

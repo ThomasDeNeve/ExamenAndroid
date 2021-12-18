@@ -13,7 +13,7 @@ import com.example.hier.util.Status
 class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
     var user: String = ""
 
-    fun insertNewUser(user: String?) {
+    suspend fun insertNewUser(user: String?) {
         var userValue: String = ""
         if (user != null)
         {
