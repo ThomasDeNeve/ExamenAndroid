@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:background="@color/primary_pink"
             android:editable="false"
-            android:text="Aanpassing selectie"
+            android:text="@string/aanpassing_selectie"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
@@ -44,7 +44,7 @@
             android:layout_marginStart="8dp"
             android:editable="false"
             android:labelFor="@id/seatSpinner"
-            android:text="Capaciteit"
+            android:text="@string/capaciteit"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             app:layout_constraintStart_toEndOf="@+id/datePicker"
             app:layout_constraintTop_toBottomOf="@+id/lblFilter" />
@@ -60,7 +60,8 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/datePicker"
             app:layout_constraintTop_toBottomOf="@+id/lblSpinner"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.0"
+            tools:ignore="DuplicateSpeakableTextCheck" />
 
         <TextView
             android:id="@+id/lblTijdstipDag"
@@ -68,7 +69,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="Tijdstip dag"
+            android:text="@string/tijdstip_dag"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             app:layout_constraintStart_toEndOf="@+id/datePicker"
             app:layout_constraintTop_toBottomOf="@+id/seatSpinner" />
@@ -84,7 +85,8 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/datePicker"
             app:layout_constraintTop_toBottomOf="@+id/lblTijdstipDag"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.0"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/room_list"
