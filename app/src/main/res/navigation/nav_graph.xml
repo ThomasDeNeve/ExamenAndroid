@@ -72,5 +72,17 @@
         <argument
             android:name="roomId"
             app:argType="integer" />
+        <argument
+            android:name="dateStart"
+            app:argType="string" />
+        <argument
+            android:name="dateEnd"
+            app:argType="string" />
+        <argument
+            android:name="user"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_roomFragment_to_choiceCoworkingFragment2"
+            app:destination="@id/choiceCoworkingFragment" />
     </fragment>
 </navigation>

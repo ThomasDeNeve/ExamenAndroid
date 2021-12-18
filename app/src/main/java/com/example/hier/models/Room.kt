@@ -22,5 +22,4 @@ data class Room(
     var priceTwoHours: Double,
     @ColumnInfo(name = "locationId")
     var locationId: Int
-) {
-}
+)

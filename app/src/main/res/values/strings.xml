@@ -21,7 +21,6 @@
     <string name="rooms_fragment_title">Reserveer zalen</string>
     <string name="euro">euro</string>
     <string name="info">Info</string>
-    <string name="aantalPlaatsen">Aantal plaatsen:</string>
     <string name="locatie">Locatie:</string>
     <string name="prijzen">Prijzen</string>
     <string name="info_choice">Maak een keuze uit de volgende 2 locaties:</string>
@@ -35,6 +34,7 @@
     <string name="logout">Afmelden</string>
     <string name="to">Tot</string>
     <string name="room_overview">Room overview</string>
+    <string name="aantalPlaatsen">Aantal plaatsen:</string>
     <string name="profile_userData">Gebruikers gegevens</string>
     <string name="profile_name">Naam</string>
     <string name="profile_firstName">Voornaam</string>
