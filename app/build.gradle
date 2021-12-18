@@ -22,7 +22,8 @@ android {
         versionCode 1
         versionName "1.0"
         //TODO IMPORTANT change BASE_URL to backend-URL!!
-        buildConfigField 'String', 'BASE_URL', "\"https://10.0.2.2:5001/\""
+        //buildConfigField 'String', 'BASE_URL', "\"https://10.0.2.2:5001/\"" //http://ec2-3-212-186-23.compute-1.amazonaws.com:5000/ //https://ec2-3-212-186-23.compute-1.amazonaws.com:5001/
+        buildConfigField 'String', 'BASE_URL', "\"https://ec2-3-212-186-23.compute-1.amazonaws.com:5001/\""
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         //manifestPlaceholders = [auth0Domain: "@string/devops-t4.eu.auth0.com", auth0Scheme: "https"]
         manifestPlaceholders = [auth0Domain: "devops-t4.eu.auth0.com", auth0Scheme: "demo"]
