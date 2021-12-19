@@ -20,7 +20,6 @@ import javax.net.ssl.SSLContext
 import javax.net.ssl.TrustManager
 import javax.net.ssl.X509TrustManager
 
-
 val networkModule = module {
     single { provideUnsafeOkHttpClient() }
     single { provideRetrofit(get(), BuildConfig.BASE_URL) }
@@ -33,8 +32,8 @@ val networkModule = module {
     single { LocalDataSource(get(), get(), get(), get()) }
     single { RoomRepository(get(), get()) }
     single { UserRepository(get(), get()) }
-    //single { LocationRepository(get(), get()) }
-    //single { ReservationRepository(get(), get()) }
+    // single { LocationRepository(get(), get()) }
+    // single { ReservationRepository(get(), get()) }
 }
 
 private fun provideUnsafeOkHttpClient(): OkHttpClient {

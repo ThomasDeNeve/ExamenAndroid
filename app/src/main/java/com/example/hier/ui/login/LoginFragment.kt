@@ -2,11 +2,11 @@ package com.example.hier.ui.login
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.auth0.android.Auth0
@@ -25,7 +25,8 @@ class LoginFragment : Fragment() {
     private lateinit var account: Auth0
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val viewModel: LoginViewModel by inject()
@@ -34,29 +35,29 @@ class LoginFragment : Fragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
-
-        binding.loginButton.setOnClickListener{
+        binding.loginButton.setOnClickListener {
 //             Toast.makeText(context, "login successful", Toast.LENGTH_LONG).show()
 //            Log.e("test", "lalala")
 
-            //var username = binding.editTextTextPersonName.text.toString()
-            //var password = binding.editTextTextPassword.text.toString()
+            // var username = binding.editTextTextPersonName.text.toString()
+            // var password = binding.editTextTextPassword.text.toString()
 
-            //viewModel.setCredentials(username, password)
+            // viewModel.setCredentials(username, password)
 
             loginWithBrowser()
         }
 
-        //TODO find out why this doesn't work
-        viewModel.loginResponse.observe(viewLifecycleOwner,
+        // TODO find out why this doesn't work
+        viewModel.loginResponse.observe(
+            viewLifecycleOwner,
             Observer {
-                //Log.e("LoginFragment", it.toString())
+                // Log.e("LoginFragment", it.toString())
                 it?.let { resource ->
                     when (resource.status) {
-                        //TODO add logic for logging in
+                        // TODO add logic for logging in
                         Status.SUCCESS -> {
                             Toast.makeText(context, "login successful", Toast.LENGTH_LONG).show()
-                            //Log.e("Fragment", "successful fetch from Fragment")
+                            // Log.e("Fragment", "successful fetch from Fragment")
                             navigateToHome()
                         }
                         Status.LOADING -> {
@@ -86,27 +87,30 @@ class LoginFragment : Fragment() {
                 .withScope("openid profile email read:current_user update:current_user_metadata")
                 .withAudience("https://${getString(R.string.auth0_domain)}/api/v2/")
                 // Launch the authentication passing the callback where the results will be received
-                .start(it, object : Callback<Credentials, AuthenticationException> {
-                    // Called when there is an authentication failure
-                    override fun onFailure(error: AuthenticationException) {
-                        // Something went wrong!
-                        Log.i("LOGIN", error.getDescription())
-                        Toast.makeText(context, "Login failed", Toast.LENGTH_LONG).show()
-                    }
+                .start(
+                    it,
+                    object : Callback<Credentials, AuthenticationException> {
+                        // Called when there is an authentication failure
+                        override fun onFailure(error: AuthenticationException) {
+                            // Something went wrong!
+                            Log.i("LOGIN", error.getDescription())
+                            Toast.makeText(context, "Login failed", Toast.LENGTH_LONG).show()
+                        }
 
-                    // Called when authentication completed successfully
-                    override fun onSuccess(result: Credentials) {
-                        // Get the access token from the credentials object.
-                        // This can be used to call APIs
-                        Log.i("LOGIN", "Login success")
-                        cachedCredentials = result
-                        navigateToHome()
+                        // Called when authentication completed successfully
+                        override fun onSuccess(result: Credentials) {
+                            // Get the access token from the credentials object.
+                            // This can be used to call APIs
+                            Log.i("LOGIN", "Login success")
+                            cachedCredentials = result
+                            navigateToHome()
+                        }
                     }
-                })
+                )
         }
     }
 
-    private fun navigateToHome(){
+    private fun navigateToHome() {
         val directions = LoginFragmentDirections.actionLoginFragmentToMainActivity()
         findNavController().navigate(directions)
     }

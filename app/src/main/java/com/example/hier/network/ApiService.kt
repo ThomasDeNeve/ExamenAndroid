@@ -1,18 +1,13 @@
 package com.example.hier.network
 
-import androidx.lifecycle.LiveData
-import com.example.hier.models.Room
-import com.example.hier.networkModels.RootReservationNetworkModel
 import com.example.hier.networkModels.LocationNetworkModel
 import com.example.hier.networkModels.MeetingRoomNetworkModel
-import com.example.hier.util.Resource
-import retrofit2.Call
+import com.example.hier.networkModels.RootReservationNetworkModel
 import retrofit2.Response
 import retrofit2.http.*
 
-interface ApiService
-{
-    //TODO add URL (api/login)
+interface ApiService {
+    // TODO add URL (api/login)
     @FormUrlEncoded
     @POST("api/login")
     suspend fun loginUser(
@@ -31,7 +26,7 @@ interface ApiService
     suspend fun addReservation(@Body reservation: ReservationPostModel): Response<ReservationPostModel>
 
     @GET("api/Reservation/availablemeetingrooms")
-    suspend fun getAvailableMeetingrooms(@Query("neededseats") neededseats: Int,@Query("locationid") locationid: Int,@Query("datetimeStart") datetimeStart: String,@Query("datetimeEnd") datetimeEnd: String) : Response<List<MeetingRoomNetworkModel>>
+    suspend fun getAvailableMeetingrooms(@Query("neededseats") neededseats: Int, @Query("locationid") locationid: Int, @Query("datetimeStart") datetimeStart: String, @Query("datetimeEnd") datetimeEnd: String): Response<List<MeetingRoomNetworkModel>>
 
     /* suspend fun loginUser(username: String, password: String): Response<LoginResponse> {
          if (username == "admin" && password == "admin") {

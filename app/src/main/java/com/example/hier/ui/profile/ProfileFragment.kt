@@ -1,12 +1,12 @@
 package com.example.hier.ui.profile
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.auth0.android.Auth0
 import com.auth0.android.authentication.AuthenticationAPIClient
@@ -28,7 +28,8 @@ class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val viewModel: ProfileViewModel by inject()
@@ -45,9 +46,9 @@ class ProfileFragment : Fragment() {
 
         getUserProfile()
 
-        //binding.lblName.text = "Test"
+        // binding.lblName.text = "Test"
 
-        binding.btnLogout.setOnClickListener{
+        binding.btnLogout.setOnClickListener {
             logoutWithBrowser()
         }
 
@@ -105,7 +106,6 @@ class ProfileFragment : Fragment() {
                     binding.lblProfileTel.text = result.getUserMetadata()["tel"] as String?
                     binding.lblProfileBTW.text = result.getUserMetadata()["btw_nr"] as String?
                 }
-
             })
     }
 
@@ -113,23 +113,26 @@ class ProfileFragment : Fragment() {
         activity?.let {
             WebAuthProvider.logout(account)
                 .withScheme(getString(R.string.auth0_scheme))
-                .start(it, object : Callback<Void?, AuthenticationException> {
-                    override fun onSuccess(result: Void?) {
-                        // The user has been logged out!
-                        cachedCredentials = null
-                        cachedUserProfile = null
+                .start(
+                    it,
+                    object : Callback<Void?, AuthenticationException> {
+                        override fun onSuccess(result: Void?) {
+                            // The user has been logged out!
+                            cachedCredentials = null
+                            cachedUserProfile = null
 
-                        navigateToLogin()
-                    }
+                            navigateToLogin()
+                        }
 
-                    override fun onFailure(error: AuthenticationException) {
-                        Toast.makeText(context, "Logout failed", Toast.LENGTH_LONG).show()
+                        override fun onFailure(error: AuthenticationException) {
+                            Toast.makeText(context, "Logout failed", Toast.LENGTH_LONG).show()
+                        }
                     }
-                })
+                )
         }
     }
 
-    private fun navigateToLogin(){
+    private fun navigateToLogin() {
         val directions = ProfileFragmentDirections.actionProfileFragmentToLoginFragment()
         findNavController().navigate(directions)
     }

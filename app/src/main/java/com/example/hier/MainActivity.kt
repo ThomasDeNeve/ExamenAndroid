@@ -1,9 +1,9 @@
 package com.example.hier
 
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
@@ -19,19 +19,19 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        //supportActionBar?.hide();
+        // supportActionBar?.hide();
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         window.statusBarColor = ContextCompat.getColor(this, R.color.primary_pink)
         var toolbar = findViewById<Toolbar>(R.id.my_toolbar)
         toolbar.setTitleTextColor(Color.WHITE)
         setSupportActionBar(toolbar)
 
-        //setContentView(R.layout.login_screen)
+        // setContentView(R.layout.login_screen)
 
         setupNavigation()
     }
 
-    fun setupNavigation(){
+    fun setupNavigation() {
         /*val navController = findNavController(R.id.nav_host_fragment)
         setupActionBarWithNavController(navController)*/
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)

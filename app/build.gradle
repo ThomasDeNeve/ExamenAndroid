@@ -110,6 +110,12 @@ dependencies {
     implementation 'com.auth0.android:auth0:2.5.1'
 }
 
+//https://github.com/jeremymailen/kotlinter-gradle
+/* HOWTO
+set JAVA_HOME environment variable to your jdk installation if necessary
+run in terminal: gradlew formatKotlin (formats code)
+run in terminal: gradlew lintKotlin (linting, reports can be found in [project root folder]/app/build/reports/ktlint/
+ */
 kotlinter {
     ignoreFailures = true
     indentSize = 4

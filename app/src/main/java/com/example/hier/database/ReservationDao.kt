@@ -13,5 +13,4 @@ interface ReservationDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(list: List<Reservation>)
-
 }

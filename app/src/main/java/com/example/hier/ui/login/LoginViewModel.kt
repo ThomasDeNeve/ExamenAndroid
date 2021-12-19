@@ -1,7 +1,6 @@
 package com.example.hier.ui.login
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.hier.models.User
@@ -14,37 +13,34 @@ class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
     var username: String = ""
     var password: String = ""
 
-    fun setCredentials(username: String, password: String){
-        //TODO hash password here?
+    fun setCredentials(username: String, password: String) {
+        // TODO hash password here?
         this.username = username
         this.password = password
         updateLoginUser()
-
-
     }
 
-
     var responseCount = 0
-    val loginResponse : MutableLiveData<Resource<LoginResponse>> by lazy{
-        Log.i("LoginViewModel", "Response init: ${responseCount}")
+    val loginResponse: MutableLiveData<Resource<LoginResponse>> by lazy {
+        Log.i("LoginViewModel", "Response init: $responseCount")
         responseCount += 1
         MutableLiveData<Resource<LoginResponse>>()
     }
 
-    //A common pattern for MutableLiveData adds a private and a public val:
+    // A common pattern for MutableLiveData adds a private and a public val:
     /*
     private val _loginResponse= MutableLiveData<Resource<LoginResponse>>()
     val loginResponse : LiveData<Resource<LoginResponse>>
         get() = _loginResponse
     */
 
-    private fun updateLoginUser(){
-        //loginResponse.value = userRepository.loginUser(username, password).value
-        //as a test:
-        loginResponse.value = Resource<LoginResponse>(Status.SUCCESS,LoginResponse(true, "testuser", User("admin", "admin")), "true")
-        //--> that works
+    private fun updateLoginUser() {
+        // loginResponse.value = userRepository.loginUser(username, password).value
+        // as a test:
+        loginResponse.value = Resource<LoginResponse>(Status.SUCCESS, LoginResponse(true, "testuser", User("admin", "admin")), "true")
+        // --> that works
 
-        //addToLoginResponse2()
+        // addToLoginResponse2()
     }
 
 /*    private fun addToLoginResponse2(){
@@ -53,5 +49,4 @@ class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
         loginResponse2.value = resource
     }
     var loginResponse2 = MutableLiveData<Resource<LoginResponse>> ()*/
-
 }
