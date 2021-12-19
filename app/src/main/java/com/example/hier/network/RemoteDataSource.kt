@@ -1,14 +1,13 @@
 package com.example.hier.network
-
 import android.util.Log
 import android.util.Log.ERROR
 import com.example.hier.util.Status
 import java.net.SocketTimeoutException
+import com.example.hier.models.User
 
 class RemoteDataSource(private val apiService: ApiService) : BaseDataSource()
 {
-    suspend fun loginUser(username: String, password: String) =
-        getResult { apiService.loginUser(username, password) }
+    suspend fun getUser(username: String) = getResult { apiService.getUser(username) }
 
     suspend fun getReservations() = getResult { apiService.getReservations() }
 

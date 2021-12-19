@@ -48,7 +48,7 @@ class ProfileFragment : Fragment() {
             account = Auth0(clientId, domain)
         }
 
-        getUserProfile()
+        getUserMetadata()
 
         //binding.lblName.text = "Test"
 
@@ -62,27 +62,6 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (activity as AppCompatActivity).supportActionBar?.title = "Mijn profiel"
-    }
-
-    private fun getUserProfile() {
-        if (cachedUserProfile != null) {
-            getUserMetadata()
-            return
-        }
-
-        val client = AuthenticationAPIClient(account)
-
-        client.userInfo(cachedCredentials!!.accessToken!!)
-            .start(object : Callback<UserProfile, AuthenticationException> {
-                override fun onFailure(exception: AuthenticationException) {
-                    Toast.makeText(context, "Laden van gebruikersinfo gefaald. ${exception.getDescription()}", Toast.LENGTH_LONG).show()
-                }
-
-                override fun onSuccess(userProfile: UserProfile) {
-                    cachedUserProfile = userProfile
-                    getUserMetadata()
-                }
-            })
     }
 
     private fun getUserMetadata() {
