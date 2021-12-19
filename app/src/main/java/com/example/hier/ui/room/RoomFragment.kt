@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -49,8 +50,20 @@ class RoomFragment : Fragment() {
 
         binding.btnReserve.setOnClickListener {
             lifecycleScope.launch {
-                viewModel.addReservation(args.roomId, args.user, args.dateStart, args.dateEnd) // TODO add actual customer ID and catch exception when duplicate
-                // onReserveButtonClicked()
+                try {
+                    viewModel.addReservation(
+                        args.roomId,
+                        args.user,
+                        args.dateStart,
+                        args.dateEnd
+                    ) // TODO add actual customer ID and catch exception when duplicate
+                    onReserveButtonClicked()
+                    Toast.makeText(container!!.context, "Reservatie werd geregistreerd!", Toast.LENGTH_LONG).show()
+                }
+                catch(e: Exception)
+                {
+                    Toast.makeText(container!!.context, "Er ging iets fout bij de reservatie", Toast.LENGTH_LONG).show()
+                }
             }
         }
         return binding.root
@@ -63,7 +76,7 @@ class RoomFragment : Fragment() {
     }
 
     fun onReserveButtonClicked() {
-        val directions = RoomFragmentDirections.actionRoomFragmentToChoiceCoworkingFragment2()
+        val directions = RoomFragmentDirections.actionRoomFragmentToChoiceCoworkingFragment()
 
         findNavController().navigate(directions)
     }

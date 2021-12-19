@@ -111,7 +111,7 @@ class LoginFragment : Fragment() {
     }
 
     private fun navigateToHome() {
-        val directions = LoginFragmentDirections.actionLoginFragmentToMainActivity()
+        val directions = LoginFragmentDirections.actionLoginFragmentToChoiceMeetingRoomFragment()//.actionLoginFragmentToMainActivity()
         findNavController().navigate(directions)
     }
 }
