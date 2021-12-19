@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.hier.R
@@ -153,7 +152,7 @@ class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener {
 
         binding.datePicker.init(now.get(Calendar.YEAR), now.get(Calendar.MONTH), now.get(Calendar.DAY_OF_MONTH)) {
             _, year, month, day ->
-            val month = month + 1
+            month + 1
 
             overviewViewModel.datetimeStart = "$year-$month-$day 08:00:00"
             overviewViewModel.datetimeEnd = "$year-$month-$day 12:00:00"
