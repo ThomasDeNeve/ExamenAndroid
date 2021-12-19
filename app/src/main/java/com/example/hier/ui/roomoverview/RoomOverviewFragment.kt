@@ -152,7 +152,7 @@ class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener {
 
         binding.datePicker.init(now.get(Calendar.YEAR), now.get(Calendar.MONTH), now.get(Calendar.DAY_OF_MONTH)) {
             _, year, month, day ->
-            month + 1
+            val month = month + 1
 
             overviewViewModel.datetimeStart = "$year-$month-$day 08:00:00"
             overviewViewModel.datetimeEnd = "$year-$month-$day 12:00:00"
