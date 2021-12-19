@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.example.hier.models.Room
 import com.example.hier.repository.RoomRepository
 import com.example.hier.util.Resource
+import kotlinx.coroutines.DelicateCoroutinesApi
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -15,9 +16,11 @@ class RoomOverviewViewModel(private val roomRepository: RoomRepository) : ViewMo
     var datetimeStart:String = getStartDateTime() //initialize date on current datetime
     var datetimeEnd:String = getEndDateTime()
 
+    @DelicateCoroutinesApi
     var rooms = getAvavailableRooms()
 
     //update the list of rooms using minimum amount of needed seats, location id, and requested date
+    @DelicateCoroutinesApi
     fun getAvavailableRooms() : LiveData<Resource<List<Room>>>
     {
         return roomRepository.getRooms(neededseats, location, datetimeStart, datetimeEnd)

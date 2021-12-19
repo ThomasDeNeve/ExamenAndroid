@@ -7,6 +7,7 @@ import androidx.lifecycle.map
 import com.example.hier.models.Location
 import com.example.hier.models.LocationWithRooms
 import com.example.hier.models.Room
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -63,13 +64,14 @@ fun <T, A> performGetOperation(databaseQuery: () -> LiveData<T>, networkCall: su
     }
 }*/
 
+@DelicateCoroutinesApi
 fun <T, A> fetchAndSaveLocations(
     databaseQuery: () -> LiveData<T>,
     networkCall: suspend () -> Resource<A>,
     saveCallResult: suspend (A) -> Unit
 ) {
     GlobalScope.launch {
-        val source = databaseQuery.invoke().map { Resource.success(it) }
+        databaseQuery.invoke().map { Resource.success(it) }
         val responseStatus = networkCall.invoke()
         if (responseStatus.status == Status.SUCCESS) {
             saveCallResult(responseStatus.data!!)
@@ -81,13 +83,14 @@ fun <T, A> fetchAndSaveLocations(
     }
 }
 
+@DelicateCoroutinesApi
 fun <T,A> fetchAndSaveRooms(
     databaseQuery: () -> LiveData<T>,
     networkCall: suspend () -> Resource<A>,
     saveCallResult: suspend (A) -> Unit
 ){
     GlobalScope.launch {
-        val source = databaseQuery.invoke().map { Resource.success(it) }
+        /*val source = */databaseQuery.invoke().map { Resource.success(it) }
         val responseStatus = networkCall.invoke()
         if (responseStatus.status == Status.SUCCESS) {
             saveCallResult(responseStatus.data!!)

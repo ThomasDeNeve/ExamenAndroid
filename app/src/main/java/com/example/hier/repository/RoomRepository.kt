@@ -11,6 +11,7 @@ import com.example.hier.network.RemoteDataSource
 import com.example.hier.network.ReservationPostModel
 import com.example.hier.networkModels.LocationNetworkModel
 import com.example.hier.util.*
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
@@ -29,6 +30,7 @@ class RoomRepository(
         return localDataSource.getRooms().map { Resource.success(it) }
     }*/
 
+    @DelicateCoroutinesApi
     fun getRooms(neededseats:Int, locationid: Int, datetimeStart: String, datetimeEnd: String): LiveData<Resource<List<Room>>>
     {
         try
@@ -51,7 +53,8 @@ class RoomRepository(
         saveCallResult = { localDataSource.saveLocations(it) }
     )*/
 
-    fun getAvailableRooms(neededseats:Int, locationid: Int, datetimeStart: String,datetimeEnd: String) = fetchAndSaveRooms(
+    @DelicateCoroutinesApi
+    fun getAvailableRooms(neededseats:Int, locationid: Int, datetimeStart: String, datetimeEnd: String) = fetchAndSaveRooms(
         databaseQuery = { localDataSource.getRooms()},
         networkCall = { remoteDataSource.getAvailableMeetingrooms(neededseats, locationid, datetimeStart, datetimeEnd)},
         saveCallResult = { localDataSource.saveRooms(it)}
@@ -73,7 +76,7 @@ class RoomRepository(
         val rooms = ArrayList<Room>()
         runBlocking {
             launch {
-                var error = remoteDataSource.getLocations().message
+                val error = remoteDataSource.getLocations().message
                 if (!error.isNullOrBlank()) {
                     Log.e("Roomrepository", "failed because $error")
                 }

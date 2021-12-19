@@ -19,7 +19,9 @@ import java.util.*
 
 import android.widget.*
 import com.example.hier.R
+import kotlinx.coroutines.DelicateCoroutinesApi
 
+@DelicateCoroutinesApi
 class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener
 {
     private val args: RoomOverviewFragmentArgs by navArgs()
@@ -27,7 +29,7 @@ class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener
 
     //private var locationId:Int = 0
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View
     {
         val binding = FragmentRoomoverviewBinding.inflate(inflater, container, false)
 
@@ -158,13 +160,14 @@ class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener
         overviewViewModel.datetimeEnd = endDateWithTime
         overviewViewModel.rooms = overviewViewModel.getAvavailableRooms()
     }
+
     private fun buildDatePicker(binding: FragmentRoomoverviewBinding)
     {
         val now = Calendar.getInstance()
 
         binding.datePicker.init(now.get(Calendar.YEAR), now.get(Calendar.MONTH), now.get(Calendar.DAY_OF_MONTH))
         {
-                _, year, month, day -> val month = month + 1
+                _, year, month, day -> month + 1
 
             overviewViewModel.datetimeStart = "$year-$month-$day 08:00:00"
             overviewViewModel.datetimeEnd = "$year-$month-$day 12:00:00"

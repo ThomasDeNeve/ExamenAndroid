@@ -1,13 +1,10 @@
 package com.example.hier.ui.profile
 
-import android.content.res.Resources
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
@@ -23,8 +20,6 @@ import com.example.hier.MyApplication.Companion.cachedCredentials
 import com.example.hier.MyApplication.Companion.cachedUserProfile
 import com.example.hier.R
 import com.example.hier.databinding.FragmentProfileBinding
-import com.example.hier.ui.login.LoginFragmentDirections
-import com.example.hier.ui.reservations.ReservationsViewModel
 import org.koin.android.ext.android.inject
 
 class ProfileFragment : Fragment() {
@@ -72,14 +67,14 @@ class ProfileFragment : Fragment() {
 
         val client = AuthenticationAPIClient(account)
 
-        client.userInfo(cachedCredentials!!.accessToken!!)
+        client.userInfo(cachedCredentials!!.accessToken)
             .start(object : Callback<UserProfile, AuthenticationException> {
-                override fun onFailure(exception: AuthenticationException) {
-                    Toast.makeText(context, "Laden van gebruikersinfo gefaald. ${exception.getDescription()}", Toast.LENGTH_LONG).show()
+                override fun onFailure(error: AuthenticationException) {
+                    Toast.makeText(context, "Laden van gebruikersinfo gefaald. ${error.getDescription()}", Toast.LENGTH_LONG).show()
                 }
 
-                override fun onSuccess(userProfile: UserProfile) {
-                    cachedUserProfile = userProfile
+                override fun onSuccess(result: UserProfile) {
+                    cachedUserProfile = result
                     getUserMetadata()
                 }
             })
@@ -91,24 +86,24 @@ class ProfileFragment : Fragment() {
             return
         }
 
-        val usersClient = UsersAPIClient(account, cachedCredentials!!.accessToken!!)
+        val usersClient = UsersAPIClient(account, cachedCredentials!!.accessToken)
 
         usersClient
             .getProfile(cachedUserProfile!!.getId()!!)
             .start(object : Callback<UserProfile, ManagementException> {
 
-                override fun onFailure(exception: ManagementException) {
-                    Toast.makeText(context, "Laden van gebruikersinfo gefaald. ${exception.getDescription()}", Toast.LENGTH_LONG).show()
+                override fun onFailure(error: ManagementException) {
+                    Toast.makeText(context, "Laden van gebruikersinfo gefaald. ${error.getDescription()}", Toast.LENGTH_LONG).show()
                 }
 
-                override fun onSuccess(userProfile: UserProfile) {
-                    cachedUserProfile = userProfile
+                override fun onSuccess(result: UserProfile) {
+                    cachedUserProfile = result
 
-                    binding.lblProfileName.text = userProfile.getUserMetadata()["first_name"] as String?
-                    binding.lblProfileFirstName.text = userProfile.getUserMetadata()["last_name"] as String?
-                    binding.lblProfileEmail.text = userProfile.email
-                    binding.lblProfileTel.text = userProfile.getUserMetadata()["tel"] as String?
-                    binding.lblProfileBTW.text = userProfile.getUserMetadata()["btw_nr"] as String?
+                    binding.lblProfileName.text = result.getUserMetadata()["first_name"] as String?
+                    binding.lblProfileFirstName.text = result.getUserMetadata()["last_name"] as String?
+                    binding.lblProfileEmail.text = result.email
+                    binding.lblProfileTel.text = result.getUserMetadata()["tel"] as String?
+                    binding.lblProfileBTW.text = result.getUserMetadata()["btw_nr"] as String?
                 }
 
             })
@@ -119,7 +114,7 @@ class ProfileFragment : Fragment() {
             WebAuthProvider.logout(account)
                 .withScheme(getString(R.string.auth0_scheme))
                 .start(it, object : Callback<Void?, AuthenticationException> {
-                    override fun onSuccess(payload: Void?) {
+                    override fun onSuccess(result: Void?) {
                         // The user has been logged out!
                         cachedCredentials = null
                         cachedUserProfile = null
@@ -127,7 +122,7 @@ class ProfileFragment : Fragment() {
                         navigateToLogin()
                     }
 
-                    override fun onFailure(exception: AuthenticationException) {
+                    override fun onFailure(error: AuthenticationException) {
                         Toast.makeText(context, "Logout failed", Toast.LENGTH_LONG).show()
                     }
                 })
