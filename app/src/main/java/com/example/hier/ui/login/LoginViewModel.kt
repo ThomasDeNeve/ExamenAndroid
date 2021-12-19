@@ -19,6 +19,6 @@ class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
         {
             userValue = user
         }
-        val userObject = userRepository.getUser(userValue)
+        userRepository.getUser(userValue)
     }
 }

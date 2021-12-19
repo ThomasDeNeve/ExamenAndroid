@@ -7,9 +7,7 @@ import com.example.hier.models.User
 
 class RemoteDataSource(private val apiService: ApiService) : BaseDataSource()
 {
-    class RemoteDataSource(private val apiService: ApiService) : BaseDataSource() {
-        suspend fun getUser(username: String) = getResult { apiService.getUser(username) }
-    }
+    suspend fun getUser(username: String) = getResult { apiService.getUser(username) }
 
     suspend fun getReservations() = getResult { apiService.getReservations() }
 

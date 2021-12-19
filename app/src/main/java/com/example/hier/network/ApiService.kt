@@ -14,9 +14,7 @@ import retrofit2.http.*
 
 interface ApiService {
     @GET("api/customer/GetLoggedIn")
-    suspend fun getUser(
-        @Query("username") username: String
-    ): Response<UserNetworkModel>
+    suspend fun getUser(@Query("username") username: String): Response<UserNetworkModel>
 
     fun getReservations(): Response<RootReservationNetworkModel> {
         TODO("Not yet implemented")
