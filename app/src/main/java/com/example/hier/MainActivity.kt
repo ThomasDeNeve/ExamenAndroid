@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         // supportActionBar?.hide();
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         window.statusBarColor = ContextCompat.getColor(this, R.color.primary_pink)
-        var toolbar = findViewById<Toolbar>(R.id.my_toolbar)
+        val toolbar = findViewById<Toolbar>(R.id.my_toolbar)
         toolbar.setTitleTextColor(Color.WHITE)
         setSupportActionBar(toolbar)
 

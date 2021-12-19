@@ -17,7 +17,7 @@ class ChoiceMeetingRoomFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val viewModel: ChoiceViewModel by inject()
         val binding = FragmentChoiceBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel

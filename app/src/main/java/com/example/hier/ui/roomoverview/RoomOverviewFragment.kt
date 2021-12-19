@@ -66,7 +66,7 @@ class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener {
 
         overviewViewModel.rooms.observe(
             viewLifecycleOwner,
-            Observer {
+            {
                 it?.let { resource ->
                     when (resource.status) {
                         Status.SUCCESS ->

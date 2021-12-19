@@ -22,7 +22,7 @@ class RoomFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val viewModel: RoomViewModel by inject()
         // val application = requireNotNull(this.activity).application
 
@@ -41,7 +41,7 @@ class RoomFragment : Fragment() {
 
         viewModel.room.observe(
             viewLifecycleOwner,
-            Observer { room ->
+            { room ->
                 roomName = room.name
                 // viewModel.initializeLocation(room.locationId)
             }
