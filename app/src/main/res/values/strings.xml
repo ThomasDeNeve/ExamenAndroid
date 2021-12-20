@@ -45,4 +45,7 @@
     <string name="col2_header">Tot</string>
     <string name="col3_header">Zaal</string>
     <string name="col4_header">Stoel</string>
+    <string name="aanpassing_selectie">Aanpassing selectie</string>
+    <string name="capaciteit">Capaciteit</string>
+    <string name="tijdstip_dag">Tijdstip dag</string>
 </resources>

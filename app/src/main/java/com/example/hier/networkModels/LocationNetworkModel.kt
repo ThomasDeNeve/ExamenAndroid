@@ -13,9 +13,9 @@ data class LocationNetworkModel(
     val place: String,
     val meetingRooms: List<Room>,
     val coWorkRooms: List<Any>
-){
-    fun toDatabaseModel() : LocationWithRooms{
-        //TODO add coworkrooms
+) {
+    fun toDatabaseModel(): LocationWithRooms {
+        // TODO add coworkrooms
         return LocationWithRooms(Location(id, name, street, number, postalCode, place), meetingRooms)
     }
 }

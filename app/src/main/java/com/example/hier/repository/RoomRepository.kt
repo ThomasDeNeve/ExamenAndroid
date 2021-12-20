@@ -6,11 +6,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
 import com.example.hier.database.LocalDataSource
 import com.example.hier.models.Room
-import com.example.hier.network.MeetingroomsGetModel
 import com.example.hier.network.RemoteDataSource
 import com.example.hier.network.ReservationPostModel
 import com.example.hier.networkModels.LocationNetworkModel
 import com.example.hier.util.*
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
@@ -29,18 +29,15 @@ class RoomRepository(
         return localDataSource.getRooms().map { Resource.success(it) }
     }*/
 
-    fun getRooms(neededseats:Int, locationid: Int, datetimeStart: String, datetimeEnd: String): LiveData<Resource<List<Room>>>
-    {
-        try
-        {
+    @DelicateCoroutinesApi
+    fun getRooms(neededseats: Int, locationid: Int, datetimeStart: String, datetimeEnd: String): LiveData<Resource<List<Room>>> {
+        try {
             getAvailableRooms(neededseats, locationid, datetimeStart, datetimeEnd)
-        }
-        catch (e: Exception)
-        {
+        } catch (e: Exception) {
             Log.e("API error", e.message.toString())
-            return localDataSource.getRooms().map { Resource.error("Failed to load data from server", it)}
+            return localDataSource.getRooms().map { Resource.error("Failed to load data from server", it) }
         }
-        return localDataSource.getRooms().map { Resource.success(it)}
+        return localDataSource.getRooms().map { Resource.success(it) }
     }
 
     fun getRoomById(roomId: Int) = localDataSource.getRoomById(roomId)
@@ -51,21 +48,21 @@ class RoomRepository(
         saveCallResult = { localDataSource.saveLocations(it) }
     )*/
 
-    fun getAvailableRooms(neededseats:Int, locationid: Int, datetimeStart: String,datetimeEnd: String) = fetchAndSaveRooms(
-        databaseQuery = { localDataSource.getRooms()},
-        networkCall = { remoteDataSource.getAvailableMeetingrooms(neededseats, locationid, datetimeStart, datetimeEnd)},
-        saveCallResult = { localDataSource.saveRooms(it)}
+    @DelicateCoroutinesApi
+    fun getAvailableRooms(neededseats: Int, locationid: Int, datetimeStart: String, datetimeEnd: String) = fetchAndSaveRooms(
+        databaseQuery = { localDataSource.getRooms() },
+        networkCall = { remoteDataSource.getAvailableMeetingrooms(neededseats, locationid, datetimeStart, datetimeEnd) },
+        saveCallResult = { localDataSource.saveRooms(it) }
     )
 
     fun getLocationById(locationId: Int) = localDataSource.getLocationById(locationId)
 
-    //TODO: change to remoteDataSource
+    // TODO: change to remoteDataSource
     fun getLocationIdByName(name: String): Int {
         return localDataSource.getLocationIdByName(name)
     }
 
-    suspend fun addReservation(reservationPostModel: ReservationPostModel)
-    {
+    suspend fun addReservation(reservationPostModel: ReservationPostModel) {
         remoteDataSource.addReservation(reservationPostModel)
     }
 
@@ -73,7 +70,7 @@ class RoomRepository(
         val rooms = ArrayList<Room>()
         runBlocking {
             launch {
-                var error = remoteDataSource.getLocations().message
+                val error = remoteDataSource.getLocations().message
                 if (!error.isNullOrBlank()) {
                     Log.e("Roomrepository", "failed because $error")
                 }

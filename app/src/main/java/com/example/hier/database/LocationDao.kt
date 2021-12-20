@@ -1,6 +1,6 @@
-package com.example.hier.database;
+package com.example.hier.database
 
-import androidx.lifecycle.LiveData;
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.hier.models.Location
 import com.example.hier.models.LocationWithRooms
@@ -17,5 +17,4 @@ interface LocationDao {
 
     @Query("select id from location where name=:name")
     fun getLocationIdByName(name: String): Int
-
 }

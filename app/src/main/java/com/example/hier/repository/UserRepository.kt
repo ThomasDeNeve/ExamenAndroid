@@ -7,8 +7,10 @@ import com.example.hier.util.Resource
 import com.example.hier.util.performGetOperation
 
 class UserRepository(
-    private val remoteDataSource: RemoteDataSource, private val localDataSource: LocalDataSource
+    private val remoteDataSource: RemoteDataSource,
+    private val localDataSource: LocalDataSource
 ) {
+
     suspend fun getUser(username: String) {
         var userNetworkModel: Resource<UserNetworkModel> = remoteDataSource.getUser(username)
 
@@ -23,8 +25,6 @@ class UserRepository(
         networkCall = { remoteDataSource.getReservations() },
         saveCallResult = { localDataSource.saveReservations(it.records) }
     )
-
-
 
     /*fun loginUser(username: String, password: String): LiveData<Resource<LoginResponse>> = liveData(Dispatchers.IO) {
         Log.e("UserRepository", "got into loginUser")

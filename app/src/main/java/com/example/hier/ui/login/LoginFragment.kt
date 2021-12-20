@@ -2,11 +2,11 @@ package com.example.hier.ui.login
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -32,7 +32,8 @@ class LoginFragment : Fragment() {
     val viewModel: LoginViewModel by inject()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         //val viewModel: LoginViewModel by inject()
@@ -40,7 +41,6 @@ class LoginFragment : Fragment() {
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
-
 
         binding.loginButton.setOnClickListener{
             loginWithBrowser()
@@ -62,13 +62,15 @@ class LoginFragment : Fragment() {
                 .withScope("openid profile email read:current_user update:current_user_metadata")
                 .withAudience("https://${getString(R.string.auth0_domain)}/api/v2/")
                 // Launch the authentication passing the callback where the results will be received
-                .start(it, object : Callback<Credentials, AuthenticationException> {
-                    // Called when there is an authentication failure
-                    override fun onFailure(error: AuthenticationException) {
-                        // Something went wrong!
-                        Log.i("LOGIN", error.getDescription())
-                        Toast.makeText(context, "Login failed", Toast.LENGTH_LONG).show()
-                    }
+                .start(
+                    it,
+                    object : Callback<Credentials, AuthenticationException> {
+                        // Called when there is an authentication failure
+                        override fun onFailure(error: AuthenticationException) {
+                            // Something went wrong!
+                            Log.i("LOGIN", error.getDescription())
+                            Toast.makeText(context, "Login failed", Toast.LENGTH_LONG).show()
+                        }
 
                     // Called when authentication completed successfully
                     override fun onSuccess(result: Credentials) {
@@ -78,7 +80,7 @@ class LoginFragment : Fragment() {
                         cachedCredentials = result
                         getUserProfile()
                     }
-                })
+                )
         }
     }
 

@@ -6,6 +6,7 @@ import com.example.hier.models.User
 import com.example.hier.networkModels.RootReservationNetworkModel
 import com.example.hier.networkModels.LocationNetworkModel
 import com.example.hier.networkModels.MeetingRoomNetworkModel
+import com.example.hier.networkModels.RootReservationNetworkModel
 import com.example.hier.networkModels.UserNetworkModel
 import com.example.hier.util.Resource
 import retrofit2.Call
@@ -24,10 +25,10 @@ interface ApiService {
     suspend fun getLocations(): Response<List<LocationNetworkModel>>
 
     @POST("/api/Reservation/meetingroom")
-    suspend fun addReservation(@Body reservation: ReservationPostModel): Response<ReservationPostModel>
+    suspend fun addReservation(@Body reservation: ReservationPostModel): Response<String>
 
     @GET("api/Reservation/availablemeetingrooms")
-    suspend fun getAvailableMeetingrooms(@Query("neededseats") neededseats: Int,@Query("locationid") locationid: Int,@Query("datetimeStart") datetimeStart: String,@Query("datetimeEnd") datetimeEnd: String) : Response<List<MeetingRoomNetworkModel>>
+    suspend fun getAvailableMeetingrooms(@Query("neededseats") neededseats: Int, @Query("locationid") locationid: Int, @Query("datetimeStart") datetimeStart: String, @Query("datetimeEnd") datetimeEnd: String): Response<List<MeetingRoomNetworkModel>>
 
     /* suspend fun loginUser(username: String, password: String): Response<LoginResponse> {
          if (username == "admin" && password == "admin") {

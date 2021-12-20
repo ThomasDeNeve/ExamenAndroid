@@ -1,6 +1,11 @@
 package com.example.hier.database
 
-import com.example.hier.models.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import com.example.hier.models.Reservation
+import com.example.hier.models.Room
+import com.example.hier.models.User
+import com.example.hier.network.LoginResponse
 import com.example.hier.networkModels.MeetingRoomNetworkModel
 import com.example.hier.networkModels.ReservationNetworkModel
 
@@ -10,9 +15,9 @@ class LocalDataSource(
     private val reservationDao: ReservationDao,
     private val roomDao: RoomDao
 ) {
-    //fun getLocations() = locationDao.getAllLocations()
+    // fun getLocations() = locationDao.getAllLocations()
     fun getRooms() = roomDao.getRooms()
-    //fun getRoomsByNeededSeats(neededseats:Int) = roomDao.getRoomsByNeededSeats(neededseats)
+    // fun getRoomsByNeededSeats(neededseats:Int) = roomDao.getRoomsByNeededSeats(neededseats)
 
     fun getRoomById(roomId: Int) = roomDao.getRoom(roomId)
     fun getLocationById(locationId: Int) = roomDao.getLocation(locationId)
@@ -54,15 +59,14 @@ class LocalDataSource(
     * Takes a list of MeetingRoomNetworkModel objects (received through the API)
     * and maps it to a Room object (to be saved in the local database)
     * */
-    fun saveRooms(list: List<MeetingRoomNetworkModel>)
-    {
+    fun saveRooms(list: List<MeetingRoomNetworkModel>) {
         val rooms = ArrayList<Room>()
 
         val mappedList: List<Room> = list.map { item -> item.toDatabaseModel() }
 
         rooms.addAll(mappedList)
 
-        //Delete all rooms in the cached database Before filling it with data retreived from the api. This ensures we have the updated data
+        // Delete all rooms in the cached database Before filling it with data retreived from the api. This ensures we have the updated data
         roomDao.deleteAllRooms()
         roomDao.insertAll(rooms)
     }

@@ -17,5 +17,4 @@ interface UserDao {
 
     @Insert(onConflict = REPLACE)
     fun insert(user: User)
-
 }

@@ -3,13 +3,13 @@ package com.example.hier.ui.reservations
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import android.widget.TableRow.LayoutParams
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.example.hier.R
 import com.example.hier.databinding.FragmentReservationsBinding
 import org.koin.android.ext.android.inject
@@ -21,7 +21,8 @@ class ReservationsFragment : Fragment() {
     val viewModel: ReservationsViewModel by inject()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         val binding = FragmentReservationsBinding.inflate(inflater, container, false)
@@ -41,7 +42,6 @@ class ReservationsFragment : Fragment() {
         val formatter = SimpleDateFormat("dd-MM-yyyy")
         val table = view.findViewById<TableLayout>(R.id.reservations_table)
 
-
         for ((count, reservation) in viewModel.reservations.withIndex()) {
             val row = TableRow(context)
             row.layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
@@ -59,11 +59,10 @@ class ReservationsFragment : Fragment() {
         }
     }
 
-    private fun createAndAddTextView(reservation:String ,row: TableRow ) {
+    private fun createAndAddTextView(reservation: String, row: TableRow) {
         val text = TextView(context)
         text.text = reservation
         text.layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT, 4F)
         row.addView(text)
     }
-
 }
