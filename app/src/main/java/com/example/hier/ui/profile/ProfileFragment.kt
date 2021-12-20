@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.auth0.android.Auth0
-import com.auth0.android.authentication.AuthenticationAPIClient
 import com.auth0.android.authentication.AuthenticationException
 import com.auth0.android.callback.Callback
 import com.auth0.android.management.ManagementException
@@ -60,7 +59,7 @@ class ProfileFragment : Fragment() {
         (activity as AppCompatActivity).supportActionBar?.title = "Mijn profiel"
     }
 
-  private fun getUserMetadata() {
+    private fun getUserMetadata() {
         // Guard against getting the metadata when no user is logged in
         if (cachedCredentials == null) {
             return

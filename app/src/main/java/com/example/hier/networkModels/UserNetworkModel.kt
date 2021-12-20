@@ -10,8 +10,8 @@ data class UserNetworkModel(
     val email: String,
     val btw: String,
     val tel: String,
-){
-    fun toDatabaseModel() : User {
+) {
+    fun toDatabaseModel(): User {
         val user = User(username)
         user.userId = customerId
         return user

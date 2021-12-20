@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.auth0.android.Auth0
@@ -21,10 +20,8 @@ import com.example.hier.MyApplication
 import com.example.hier.MyApplication.Companion.cachedCredentials
 import com.example.hier.R
 import com.example.hier.databinding.FragmentLoginBinding
-import com.example.hier.util.Status
-import org.koin.android.ext.android.inject
-import com.example.hier.repository.UserRepository
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 
 class LoginFragment : Fragment() {
 
@@ -36,13 +33,13 @@ class LoginFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        //val viewModel: LoginViewModel by inject()
+        // val viewModel: LoginViewModel by inject()
         val binding = FragmentLoginBinding.inflate(inflater, container, false)
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
-        binding.loginButton.setOnClickListener{
+        binding.loginButton.setOnClickListener {
             loginWithBrowser()
         }
 
@@ -72,18 +69,18 @@ class LoginFragment : Fragment() {
                             Toast.makeText(context, "Login failed", Toast.LENGTH_LONG).show()
                         }
 
-                    // Called when authentication completed successfully
-                    override fun onSuccess(result: Credentials) {
-                        // Get the access token from the credentials object.
-                        // This can be used to call APIs
-                        Log.i("LOGIN", "Login success")
-                        cachedCredentials = result
-                        getUserProfile()
+                        // Called when authentication completed successfully
+                        override fun onSuccess(result: Credentials) {
+                            // Get the access token from the credentials object.
+                            // This can be used to call APIs
+                            Log.i("LOGIN", "Login success")
+                            cachedCredentials = result
+                            getUserProfile()
+                        }
                     }
                 )
         }
     }
-
     private fun getUserProfile() {
         if (MyApplication.cachedUserProfile != null) {
             return
@@ -91,22 +88,26 @@ class LoginFragment : Fragment() {
 
         val client = AuthenticationAPIClient(account)
 
-        client.userInfo(cachedCredentials!!.accessToken!!)
+        client.userInfo(cachedCredentials!!.accessToken)
             .start(object : Callback<UserProfile, AuthenticationException> {
-                override fun onFailure(exception: AuthenticationException) {
-                    Toast.makeText(context, "Laden van gebruikersinfo gefaald. ${exception.getDescription()}", Toast.LENGTH_LONG).show()
+                override fun onFailure(error: AuthenticationException) {
+                    Toast.makeText(
+                        context,
+                        "Laden van gebruikersinfo gefaald. ${error.getDescription()}",
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
 
-                override fun onSuccess(userProfile: UserProfile) {
-                    MyApplication.cachedUserProfile = userProfile
-                    lifecycleScope.launch { viewModel.insertNewUser(userProfile.email) }
+                override fun onSuccess(result: UserProfile) {
+                    MyApplication.cachedUserProfile = result
+                    lifecycleScope.launch { viewModel.insertNewUser(result.email) }
                     navigateToHome()
                 }
             })
     }
-
-    private fun navigateToHome(){
-        val directions = LoginFragmentDirections.actionLoginFragmentToMainActivity()
+    private fun navigateToHome() {
+        val directions =
+            LoginFragmentDirections.actionLoginFragmentToChoiceMeetingRoomFragment() // actionLoginFragmentToMainActivity()
         findNavController().navigate(directions)
     }
 }

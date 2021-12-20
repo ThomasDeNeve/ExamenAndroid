@@ -1,11 +1,8 @@
 package com.example.hier.database
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.example.hier.models.Reservation
 import com.example.hier.models.Room
 import com.example.hier.models.User
-import com.example.hier.network.LoginResponse
 import com.example.hier.networkModels.MeetingRoomNetworkModel
 import com.example.hier.networkModels.ReservationNetworkModel
 
@@ -27,8 +24,7 @@ class LocalDataSource(
 
     fun getUser(username: String) = userDao.getUser(username)
 
-    fun saveUser(user: User)
-    {
+    fun saveUser(user: User) {
         userDao.insert(user)
 
         userDao.getUser(user.username)

@@ -14,8 +14,7 @@ class UserRepository(
     suspend fun getUser(username: String) {
         var userNetworkModel: Resource<UserNetworkModel> = remoteDataSource.getUser(username)
 
-        if (userNetworkModel.data != null)
-        {
+        if (userNetworkModel.data != null) {
             userNetworkModel.data?.toDatabaseModel()?.let { localDataSource.saveUser(it) }
         }
     }

@@ -123,8 +123,9 @@ class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener {
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 when (parent?.getItemAtPosition(position).toString()) {
-                    "Voormiddag" -> {rebuildDateAndOverviewViewModel("08:00:00", "12:00:00")
-                    timeslot = "Voormiddag"
+                    "Voormiddag" -> {
+                        rebuildDateAndOverviewViewModel("08:00:00", "12:00:00")
+                        timeslot = "Voormiddag"
                     }
                     "Namiddag" -> {
                         rebuildDateAndOverviewViewModel("13:00:00", "17:00:00")
