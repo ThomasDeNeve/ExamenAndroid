@@ -3,7 +3,6 @@ package com.example.hier.network
 import androidx.lifecycle.LiveData
 import com.example.hier.models.Room
 import com.example.hier.models.User
-import com.example.hier.networkModels.RootReservationNetworkModel
 import com.example.hier.networkModels.LocationNetworkModel
 import com.example.hier.networkModels.MeetingRoomNetworkModel
 import com.example.hier.networkModels.RootReservationNetworkModel

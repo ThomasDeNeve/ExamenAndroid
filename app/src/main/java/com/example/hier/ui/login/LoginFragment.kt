@@ -72,15 +72,15 @@ class LoginFragment : Fragment() {
                             Toast.makeText(context, "Login failed", Toast.LENGTH_LONG).show()
                         }
 
-                    // Called when authentication completed successfully
-                    override fun onSuccess(result: Credentials) {
-                        // Get the access token from the credentials object.
-                        // This can be used to call APIs
-                        Log.i("LOGIN", "Login success")
-                        cachedCredentials = result
-                        getUserProfile()
-                    }
-                )
+                        // Called when authentication completed successfully
+                        override fun onSuccess(result: Credentials) {
+                            // Get the access token from the credentials object.
+                            // This can be used to call APIs
+                            Log.i("LOGIN", "Login success")
+                            cachedCredentials = result
+                            getUserProfile()
+                        }
+                    })
         }
     }
 
@@ -106,7 +106,7 @@ class LoginFragment : Fragment() {
     }
 
     private fun navigateToHome(){
-        val directions = LoginFragmentDirections.actionLoginFragmentToMainActivity()
+        val directions = LoginFragmentDirections.actionLoginFragmentToChoiceMeetingRoomFragment()
         findNavController().navigate(directions)
     }
 }

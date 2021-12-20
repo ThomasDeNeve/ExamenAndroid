@@ -43,16 +43,6 @@
             app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
         <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/register"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/loginButton" />
-
-        <TextView
             android:id="@+id/txtErrors"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -60,7 +50,7 @@
             android:textColor="@color/primary_pink"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/loginButton" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
