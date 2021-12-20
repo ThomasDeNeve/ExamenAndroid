@@ -55,7 +55,8 @@ class RoomFragment : Fragment() {
                         args.roomId,
                         args.user,
                         args.dateStart,
-                        args.dateEnd
+                        args.dateEnd,
+                        args.timeslot
                     ) // TODO add actual customer ID and catch exception when duplicate
                     onReserveButtonClicked()
                     Toast.makeText(container!!.context, "Reservatie werd geregistreerd!", Toast.LENGTH_LONG).show()

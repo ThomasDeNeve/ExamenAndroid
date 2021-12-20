@@ -24,7 +24,7 @@ class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener {
     private val args: RoomOverviewFragmentArgs by navArgs()
     private val overviewViewModel: RoomOverviewViewModel by inject()
 
-    // private var locationId:Int = 0
+    private var timeslot: String = ""
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val binding = FragmentRoomoverviewBinding.inflate(inflater, container, false)
@@ -50,7 +50,7 @@ class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener {
     override fun onRoomClicked(room: Room) {
         val user = 1 // TODO: get actual userid
         val directions =
-            RoomOverviewFragmentDirections.actionRoomOverviewFragmentToRoomFragment(room.id, overviewViewModel.datetimeStart, overviewViewModel.datetimeEnd, user)
+            RoomOverviewFragmentDirections.actionRoomOverviewFragmentToRoomFragment(room.id, overviewViewModel.datetimeStart, overviewViewModel.datetimeEnd, user, timeslot)
 
         findNavController().navigate(directions)
     }
@@ -123,10 +123,21 @@ class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener {
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 when (parent?.getItemAtPosition(position).toString()) {
-                    "Voormiddag" -> rebuildDateAndOverviewViewModel("08:00:00", "12:00:00")
-                    "Namiddag" -> rebuildDateAndOverviewViewModel("13:00:00", "17:00:00")
-                    "Hele dag" -> rebuildDateAndOverviewViewModel("08:00:00", "17:00:00") // show enkel avond, extra api calls (gelijkaardig voor 2 uur?)
-                    "Avond" -> rebuildDateAndOverviewViewModel("17:00:00", "21:00:00")
+                    "Voormiddag" -> {rebuildDateAndOverviewViewModel("08:00:00", "12:00:00")
+                    timeslot = "Voormiddag"
+                    }
+                    "Namiddag" -> {
+                        rebuildDateAndOverviewViewModel("13:00:00", "17:00:00")
+                        timeslot = "Namiddag"
+                    }
+                    "Hele dag" -> {
+                        rebuildDateAndOverviewViewModel("08:00:00", "17:00:00")
+                        timeslot = "Volledige dag"
+                    } // show enkel avond, extra api calls (gelijkaardig voor 2 uur?)
+                    "Avond" -> {
+                        rebuildDateAndOverviewViewModel("17:00:00", "21:00:00")
+                        timeslot = "Avond"
+                    }
                 }
             }
         }

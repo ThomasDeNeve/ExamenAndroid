@@ -6,5 +6,6 @@ data class ReservationPostModel(
     @SerializedName("roomId") val roomId: Int,
     @SerializedName("customerId") val customerId: Int,
     @SerializedName("from") val from: String,
-    @SerializedName("to") val to: String
+    @SerializedName("to") val to: String,
+    @SerializedName("timeslot") val timeslot: String
 )

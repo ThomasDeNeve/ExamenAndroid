@@ -21,8 +21,8 @@ class RoomViewModel(private val roomRepository: RoomRepository) : ViewModel() {
         _room = roomRepository.getRoomById(roomId)
     }
 
-    suspend fun addReservation(roomId: Int, customerId: Int, from: String, to: String) {
-        val reservationPostModel = ReservationPostModel(roomId, customerId, from, to)
+    suspend fun addReservation(roomId: Int, customerId: Int, from: String, to: String, timeslot: String) {
+        val reservationPostModel = ReservationPostModel(roomId, customerId, from, to, timeslot)
         roomRepository.addReservation(reservationPostModel)
     }
 }

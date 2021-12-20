@@ -82,5 +82,8 @@
         <action
             android:id="@+id/action_roomFragment_to_choiceCoworkingFragment"
             app:destination="@id/choiceCoworkingFragment" />
+        <argument
+            android:name="timeslot"
+            app:argType="string" />
     </fragment>
 </navigation>
