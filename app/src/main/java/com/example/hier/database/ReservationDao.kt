@@ -14,4 +14,8 @@ interface ReservationDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(list: List<Reservation>)
 
+    @Transaction
+    @Query("select * from reservations where `from`=:date")
+    fun getReservations(date: Long): LiveData<List<Reservation>>
+
 }

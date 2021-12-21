@@ -24,6 +24,7 @@ class LocalDataSource(
     fun getLocationIdByName(name: String) = locationDao.getLocationIdByName(name)
 
     fun getReservations() = reservationDao.getAllReservations()
+    fun getReservations(date: Long) = reservationDao.getReservations(date)
 
     fun getUser(username: String): LiveData<LoginResponse> {
         return MutableLiveData(LoginResponse(false, "", userDao.getUser(username)))

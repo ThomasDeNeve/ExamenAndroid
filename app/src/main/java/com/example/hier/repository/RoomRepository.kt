@@ -6,7 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
 import com.example.hier.database.LocalDataSource
 import com.example.hier.models.Room
-import com.example.hier.network.MeetingroomsGetModel
 import com.example.hier.network.RemoteDataSource
 import com.example.hier.network.ReservationPostModel
 import com.example.hier.networkModels.LocationNetworkModel
@@ -39,15 +38,13 @@ class RoomRepository(
 
     fun getAvailableRooms(neededseats:Int, locationid: Int, datetime: String) = performGetOperation(
         databaseQuery = { localDataSource.getAllRooms()},
-        networkCall = { remoteDataSource.getAvailableMeetingrooms(neededseats, locationid, datetime)},
-        saveCallResult = { localDataSource.saveRooms(it)}
-    )
+        networkCall = { remoteDataSource.getAvailableMeetingrooms(neededseats, locationid, datetime)}
+    ) { localDataSource.saveRooms(it) }
 
     fun getLocations_old() = performGetOperation(
         databaseQuery = { localDataSource.getLocations() },
-        networkCall = { remoteDataSource.getLocations() },
-        saveCallResult = { localDataSource.saveLocations(it) }
-    )
+        networkCall = { remoteDataSource.getLocations() }
+    ) { localDataSource.saveLocations(it) }
 
     fun getLocationById(locationId: Int) = localDataSource.getLocationById(locationId)
 

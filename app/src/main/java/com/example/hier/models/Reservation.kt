@@ -1,5 +1,6 @@
 package com.example.hier.models
 
+import androidx.annotation.Nullable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -7,13 +8,18 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "reservations")
 data class Reservation(
     @PrimaryKey(autoGenerate = true)
-    var reservationId: Int,
+    var reservationId: Int = 0,
     @ColumnInfo(name = "from")
-    var from: Long,
+    @Nullable
+    var from: Long = 0L,
     @ColumnInfo(name = "to")
-    var to: Long,
+    @Nullable
+    var to: Long = 0L,
     @ColumnInfo(name = "room")
-    var room: String,
+    @Nullable
+    var room: String = "",
     @ColumnInfo(name = "seat")
-    var seat: String
-)
+    @Nullable
+    var seat: String = ""
+) {
+}

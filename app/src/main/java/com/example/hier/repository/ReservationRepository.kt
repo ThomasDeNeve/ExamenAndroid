@@ -17,8 +17,12 @@ class ReservationRepository(
         saveCallResult = { localDataSource.saveReservations(it.records) }
     )
 
-    fun getReservations(date: Long) : LiveData<List<Reservation>> {
-        //TODO: Implement function
-        return MutableLiveData<List<Reservation>>()
+    suspend fun getReservations(date: Long): List<Reservation> {
+        val response = remoteDataSource.getReservations(date)
+        val r = mutableListOf<Reservation>()
+        response.data?.forEach { o ->
+            r.add(Reservation(from = date, seat = o.seat))
+        }
+        return r
     }
 }
