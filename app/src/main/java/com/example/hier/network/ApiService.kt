@@ -1,6 +1,7 @@
 package com.example.hier.network
 
 import androidx.lifecycle.LiveData
+import com.example.hier.models.Reservation
 import com.example.hier.models.Room
 import com.example.hier.networkModels.RootReservationNetworkModel
 import com.example.hier.networkModels.LocationNetworkModel
@@ -38,7 +39,7 @@ interface ApiService
     suspend fun getReservations(@Query("date")date: Long): Response<List<ReservationNetworkModel>>
 
     @POST("api/reservation/cowork")
-    suspend fun postCoworkReservation( reservation: ReservationPostModel)
+    suspend fun postCoworkReservation( reservation: ReservationNetworkModel) : Response<Reservation>
 
     /* suspend fun loginUser(username: String, password: String): Response<LoginResponse> {
          if (username == "admin" && password == "admin") {

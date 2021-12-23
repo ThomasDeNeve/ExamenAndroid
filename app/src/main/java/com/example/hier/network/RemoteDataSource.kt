@@ -1,5 +1,7 @@
 package com.example.hier.network
 
+import com.example.hier.networkModels.ReservationNetworkModel
+
 class RemoteDataSource(private val apiService: ApiService) : BaseDataSource()
 {
     suspend fun loginUser(username: String, password: String) =
@@ -12,6 +14,8 @@ class RemoteDataSource(private val apiService: ApiService) : BaseDataSource()
     suspend fun getLocations() = getResult { apiService.getLocations() }
 
     suspend fun getAvailableMeetingrooms(neededseats:Int,locationid:Int,date:String) = getResult { apiService.getAvailableMeetingrooms(neededseats,locationid,date) }
+
+    suspend fun addReservation(reservationNetworkModel: ReservationNetworkModel) = getResult { apiService.postCoworkReservation(reservationNetworkModel) }
 
     suspend fun addReservation(reservationPostModel: ReservationPostModel) = getResult { apiService.addReservation(reservationPostModel) }
 

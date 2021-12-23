@@ -1,11 +1,12 @@
 package com.example.hier.ui.coworking;
 
-import android.text.style.TtsSpan
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.hier.networkModels.ReservationNetworkModel
 import com.example.hier.repository.ReservationRepository;
-import java.util.*
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 public class CoworkingRecapViewModel(
     val reservationSource: ReservationRepository
@@ -14,8 +15,11 @@ public class CoworkingRecapViewModel(
     val eventSubmit: LiveData<Boolean>
         get() = _eventSubmit
 
-    fun onSubmit() {
-        //TODO: Submit to backend
+    fun onSubmit() = runBlocking {
+        val rnw = ReservationNetworkModel(0, _seatId.value!!,_date.value!!, _chamber.value!!)
+        launch {
+            reservationSource.postReservation(rnw)
+        }
         _eventSubmit.value = true
     }
 

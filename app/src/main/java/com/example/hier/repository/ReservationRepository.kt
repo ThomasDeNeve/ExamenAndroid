@@ -1,10 +1,9 @@
 package com.example.hier.repository
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.example.hier.database.LocalDataSource
 import com.example.hier.models.Reservation
 import com.example.hier.network.RemoteDataSource
+import com.example.hier.networkModels.ReservationNetworkModel
 import com.example.hier.util.performGetOperation
 
 class ReservationRepository(
@@ -17,12 +16,20 @@ class ReservationRepository(
         saveCallResult = { localDataSource.saveReservations(it.records) }
     )
 
+    /**
+     *
+     *fetch reservations and adapt to Reservation class
+     */
     suspend fun getReservations(date: Long): List<Reservation> {
         val response = remoteDataSource.getReservations(date)
         val r = mutableListOf<Reservation>()
         response.data?.forEach { o ->
-            r.add(Reservation(from = date, seat = o.seat))
+            r.add(Reservation(from = date, seat = o.seat.toString()))
         }
         return r
+    }
+
+    suspend fun postReservation(reservation: ReservationNetworkModel){
+        val response = remoteDataSource.addReservation(reservation)
     }
 }

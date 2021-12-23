@@ -14,14 +14,14 @@ class ReservationsViewModel (private val userRepository: UserRepository) : ViewM
         for (i in 1..20) {
             val from = GregorianCalendar(2021, 12, i).timeInMillis
             val to = GregorianCalendar(2021, 12, i).timeInMillis
-            val res = Reservation(i, from, to, "/", (0..10).random().toString())
+            val res = Reservation(i, from,  "/", (0..10).random().toString())
 
             reservations.add(res)
         }
         for (i in 1..12) {
             val from = GregorianCalendar(2021, i, 5).timeInMillis
             val to = GregorianCalendar(2021, i, 6).timeInMillis
-            val res = Reservation(i, from, to, "HIER.ginder", "/")
+            val res = Reservation(i, from,  "HIER.ginder", "/")
 
             reservations.add(res)
         }

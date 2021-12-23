@@ -51,7 +51,7 @@ class ReservationsFragment : Fragment() {
             }
 
             createAndAddTextView(formatter.format(Date(reservation.from)), row)
-            createAndAddTextView(formatter.format(Date(reservation.to)), row)
+            //createAndAddTextView(formatter.format(Date(reservation.to)), row)
             createAndAddTextView(reservation.room, row)
             createAndAddTextView(reservation.seat, row)
 
