@@ -37,7 +37,6 @@ class RoomAdapter(private val roomClickListener: RoomClickListener) : RecyclerVi
             }
             binding.apply {
                 room = item
-                drawable = Drawable.createFromPath(item.imageName)
                 executePendingBindings()
             }
         }

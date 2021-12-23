@@ -8,9 +8,7 @@
         <variable
             name="room"
             type="com.example.hier.models.Room" />
-        <variable
-            name="drawable"
-            type="android.graphics.drawable.Drawable" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,13 +22,14 @@
             android:layout_width="158dp"
             android:layout_height="158dp"
             android:layout_marginStart="8dp"
+            android:contentDescription="@{room.imageName}"
             android:padding="0dp"
+            app:bindRoomImage="@{room.imageName}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.478"
-            app:srcCompat="@{drawable}"
-            android:contentDescription="@{room.imageName}" />
+            tools:src="@drawable/hier_boven" />
 
         <TextView
             android:id="@+id/roomName"
