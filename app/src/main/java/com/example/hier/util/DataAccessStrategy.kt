@@ -114,6 +114,7 @@ fun parseJson(jsonString: String): ArrayList<LocationWithRooms> {
             val tempRoom = Room(
                 roomObject.get("id") as Int,
                 roomObject.get("name").toString(),
+                roomObject.get("imageName").toString(),
                 roomObject.get("numberOfSeats") as Int,
                 roomObject.get("priceEvening").toString().toDouble(),
                 roomObject.get("priceFullDay").toString().toDouble(),
