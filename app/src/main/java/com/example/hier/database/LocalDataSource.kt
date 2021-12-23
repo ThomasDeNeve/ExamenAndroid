@@ -62,7 +62,7 @@ class LocalDataSource(
 
         rooms.addAll(mappedList)
 
-        // Delete all rooms in the cached database Before filling it with data retreived from the api. This ensures we have the updated data
+        // Delete all rooms in the cached database Before filling it with data retrieved from the api. This ensures we have the updated data
         roomDao.deleteAllRooms()
         roomDao.insertAll(rooms)
     }

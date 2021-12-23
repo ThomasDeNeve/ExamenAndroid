@@ -70,7 +70,6 @@ class RoomFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (activity as AppCompatActivity).supportActionBar?.title = roomName
-        // TODO find out why this doesn't work
     }
 
     fun onReserveButtonClicked() {
