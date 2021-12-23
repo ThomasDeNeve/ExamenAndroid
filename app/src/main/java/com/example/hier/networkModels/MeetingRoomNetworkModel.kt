@@ -5,6 +5,7 @@ import com.example.hier.models.Room
 data class MeetingRoomNetworkModel(
     val id: Int,
     val name: String,
+    val imageName: String,
     val numberOfSeats: Int,
     val locationId: Int,
     val priceEvening: Double,
@@ -16,6 +17,7 @@ data class MeetingRoomNetworkModel(
         return Room(
             id,
             name,
+            imageName,
             numberOfSeats,
             priceEvening,
             priceFullDay,

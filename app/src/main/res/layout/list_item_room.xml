@@ -16,9 +16,7 @@
         android:layout_marginBottom="2dp"
         android:background="@color/white">
 
-        <!--TODO: add imageurls as parameters to Room-->
-
-        <!--<ImageView
+        <ImageView
             android:id="@+id/roomImage"
             android:layout_width="158dp"
             android:layout_height="158dp"
@@ -28,7 +26,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.478"
-            app:srcCompat="@drawable/room_vanvoor" />-->
+            app:srcCompat="@drawable/hier_vanvoor"
+            android:contentDescription="@{room.imageName}" />
 
         <TextView
             android:id="@+id/roomName"
