@@ -1,5 +1,6 @@
 package com.example.hier.adapters
 
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -36,6 +37,7 @@ class RoomAdapter(private val roomClickListener: RoomClickListener) : RecyclerVi
             }
             binding.apply {
                 room = item
+                drawable = Drawable.createFromPath(item.imageName)
                 executePendingBindings()
             }
         }
