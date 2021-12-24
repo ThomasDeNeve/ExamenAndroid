@@ -4,7 +4,7 @@ import com.example.hier.models.Reservation
 import com.example.hier.models.Room
 import com.example.hier.models.User
 import com.example.hier.networkModels.MeetingRoomNetworkModel
-import com.example.hier.networkModels.ReservationNetworkModel
+import com.example.hier.networkModels.CoworkReservationPostModel
 
 class LocalDataSource(
     private val locationDao: LocationDao,
@@ -31,11 +31,11 @@ class LocalDataSource(
         userDao.getUser(user.username)
     }
 
-    fun saveReservations(list: List<ReservationNetworkModel>) {
+/*    fun saveReservations(list: List<CoworkReservationPostModel>) {
         val reservationList = ArrayList<Reservation>()
         list.forEach { res -> reservationList.add(res.toDataBaseModel()) }
         reservationDao.insertAll(reservationList)
-    }
+    }*/
 
     /*fun saveLocations(list: List<LocationNetworkModel>)
     {

@@ -1,5 +1,6 @@
 package com.example.hier.ui.coworking
 
+import androidx.databinding.InverseMethod
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
@@ -16,7 +17,7 @@ class ALCViewModel(
 ) : ViewModel() {
 
     //date as given by user, must be at least today
-    private val _date = MutableLiveData<Long>()
+    var _date = MutableLiveData<Long>()
     val date: LiveData<Long>
         get() = _date
 

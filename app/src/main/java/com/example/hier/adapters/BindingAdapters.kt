@@ -20,5 +20,5 @@ fun bindTextFromLong(view: TextView, long: Long){
     val date = Date(long)
     val format = SimpleDateFormat("dd/MM/yyyy")
     val text = format.format(date)
-    view.setText(text)
+    view.text = text
 }

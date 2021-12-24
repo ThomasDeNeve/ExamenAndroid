@@ -3,22 +3,26 @@ package com.example.hier.ui.coworking;
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.hier.networkModels.ReservationNetworkModel
-import com.example.hier.repository.ReservationRepository;
+import com.example.hier.networkModels.CoworkReservationPostModel
+import com.example.hier.repository.ReservationRepository
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import java.util.*
 
 public class CoworkingRecapViewModel(
-    val reservationSource: ReservationRepository
+    private val reservationRepository: ReservationRepository
 ) : ViewModel() {
     private val _eventSubmit = MutableLiveData<Boolean>()
     val eventSubmit: LiveData<Boolean>
         get() = _eventSubmit
 
+    //TODO make suspend & call from lifecyclescope in fragment
+    //TODO custId dynamisch instellen!
     fun onSubmit() = runBlocking {
-        val rnw = ReservationNetworkModel(0, _seatId.value!!,_date.value!!, _chamber.value!!)
+        var date : Date = Date(_date.value!!)
+        val rnw = CoworkReservationPostModel(1, _seatId.value!!, date)
         launch {
-            reservationSource.postReservation(rnw)
+            reservationRepository.postReservation(rnw)
         }
         _eventSubmit.value = true
     }
@@ -31,28 +35,31 @@ public class CoworkingRecapViewModel(
     val location: LiveData<String>
         get() = _location
 
-    fun setLocation(value: String){
+    fun setLocation(value: String) {
         _location.value = value
     }
 
     private val _chamber = MutableLiveData<String>()
     val chamber: LiveData<String>
         get() = _chamber
-    fun setChamber(value: String){
+
+    fun setChamber(value: String) {
         _chamber.value = value
     }
 
     private val _seatId = MutableLiveData<Int>()
     val seatId: LiveData<Int>
         get() = _seatId
-    fun setSeatId(value: Int){
+
+    fun setSeatId(value: Int) {
         _seatId.value = value
     }
 
     private val _date = MutableLiveData<Long>()
     val date: LiveData<Long>
         get() = _date
-    fun setDate(value: Long){
+
+    fun setDate(value: Long) {
         _date.value = value
     }
 }

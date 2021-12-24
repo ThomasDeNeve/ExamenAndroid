@@ -28,11 +28,11 @@
             android:id="@+id/date_picker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:date="@={viewModel.date}"
+            android:date="@={viewModel._date}"
             android:minDate="@{System.currentTimeMillis()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/date_text" /><!--TODO: Date moet 2 way binding zijn, maar inverse binding adapter werkt niet.-->
+            app:layout_constraintTop_toBottomOf="@id/date_text" />
         <TextView
             android:id="@+id/locationname"
             android:text="@string/adres_1"

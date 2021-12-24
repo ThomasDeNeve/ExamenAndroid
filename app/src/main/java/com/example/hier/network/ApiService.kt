@@ -1,6 +1,11 @@
 package com.example.hier.network
 
 import com.example.hier.networkModels.*
+import com.example.hier.models.Reservation
+import com.example.hier.networkModels.LocationNetworkModel
+import com.example.hier.networkModels.MeetingRoomNetworkModel
+import com.example.hier.networkModels.CoworkReservationPostModel
+import com.example.hier.networkModels.RootReservationNetworkModel
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -26,6 +31,8 @@ interface ApiService {
 
     @POST("api/reservation/cowork")
     suspend fun postCoworkReservation( reservation: CoworkReservationPostModel) : Response<CoworkReservationPostModel>
+    @POST("api/reservation/seat")
+    suspend fun postCoworkReservation(@Body coworkReservation: CoworkReservationPostModel): Response<CoworkReservationPostModel>
 
     /* suspend fun loginUser(username: String, password: String): Response<LoginResponse> {
          if (username == "admin" && password == "admin") {

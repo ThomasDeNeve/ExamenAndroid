@@ -26,6 +26,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:text="@{viewModel.location}"
+            tools:text="Aalst"
             style="@style/hier_label"/>
         <TextView
             android:id="@+id/chamber_text"
@@ -35,6 +36,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:text="@{viewModel.chamber}"
+            tools:text="bureel 1"
             style="@style/hier_label"/>
         <TextView
             android:id="@+id/seat_text"
@@ -44,6 +46,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:text="@{Integer.toString(viewModel.seatId)}"
+            tools:text="Seat 1"
             style="@style/hier_label"/>
         <TextView
             android:id="@+id/date_text"
@@ -53,6 +56,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             textFromLong="@{viewModel.date}"
+            tools:text="24/12/2021"
             style="@style/hier_label"/>
 
         <Button
