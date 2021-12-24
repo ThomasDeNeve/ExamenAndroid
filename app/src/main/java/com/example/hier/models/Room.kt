@@ -10,6 +10,8 @@ data class Room(
     var id: Int,
     @ColumnInfo(name = "name")
     var name: String,
+    @ColumnInfo(name = "imageName")
+    var imageName: String,
     @ColumnInfo(name = "numberOfSeats")
     var numberOfSeats: Int,
     @ColumnInfo(name = "priceEvening")
@@ -22,5 +24,4 @@ data class Room(
     var priceTwoHours: Double,
     @ColumnInfo(name = "locationId")
     var locationId: Int
-) {
-}
+)

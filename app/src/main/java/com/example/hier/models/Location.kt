@@ -8,15 +8,14 @@ import androidx.room.PrimaryKey
 data class Location(
     @PrimaryKey
     var id: Int,
-    @ColumnInfo(name="name")
+    @ColumnInfo(name = "name")
     var name: String,
-    @ColumnInfo(name="street")
+    @ColumnInfo(name = "street")
     var street: String,
-    @ColumnInfo(name="number")
+    @ColumnInfo(name = "number")
     var number: Int,
-    @ColumnInfo(name="postalCode")
+    @ColumnInfo(name = "postalCode")
     var postalCode: String,
-    @ColumnInfo(name="place")
+    @ColumnInfo(name = "place")
     var place: String
-) {
-}
+)

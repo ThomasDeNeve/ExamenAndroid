@@ -1,5 +1,6 @@
 package com.example.hier.database
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy.REPLACE
@@ -12,9 +13,8 @@ interface UserDao {
 
     @Transaction
     @Query("select * from users where username=:username")
-    fun getUser(username: String): User
+    fun getUser(username: String): LiveData<User>
 
     @Insert(onConflict = REPLACE)
     fun insert(user: User)
-
 }

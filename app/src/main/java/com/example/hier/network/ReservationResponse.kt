@@ -1,5 +1,8 @@
 package com.example.hier.network
 
-import com.example.hier.models.Reservation
-
-data class ReservationResponse(val error: Boolean, val message: String, val reservation: Reservation)
+/*data class ReservationResponse(
+    @SerializedName("meetingroomId") val meetingroomId: Int,
+    //@SerializedName("customerId") val customerId: Int,
+    @SerializedName("from") val from: String,
+    @SerializedName("to") val to: String
+)*/

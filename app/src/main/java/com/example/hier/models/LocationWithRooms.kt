@@ -8,6 +8,4 @@ data class LocationWithRooms(
     var location: Location,
     @Relation(parentColumn = "id", entityColumn = "locationId", entity = Room::class)
     var rooms: List<Room>
-) {
-
-}
+)

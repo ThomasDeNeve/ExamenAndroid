@@ -1,26 +1,12 @@
 package com.example.hier.network
 
-import androidx.lifecycle.LiveData
-import com.example.hier.models.Reservation
-import com.example.hier.models.Room
-import com.example.hier.networkModels.RootReservationNetworkModel
-import com.example.hier.networkModels.LocationNetworkModel
-import com.example.hier.networkModels.MeetingRoomNetworkModel
-import com.example.hier.networkModels.ReservationNetworkModel
-import com.example.hier.util.Resource
-import retrofit2.Call
+import com.example.hier.networkModels.*
 import retrofit2.Response
 import retrofit2.http.*
 
-interface ApiService
-{
-    //TODO add URL (api/login)
-    @FormUrlEncoded
-    @POST("api/login")
-    suspend fun loginUser(
-        @Field("username") username: String,
-        @Field("password") password: String
-    ): Response<LoginResponse>
+interface ApiService {
+    @GET("api/customer/GetLoggedIn")
+    suspend fun getUser(@Query("username") username: String): Response<UserNetworkModel>
 
     fun getReservations(): Response<RootReservationNetworkModel> {
         TODO("Not yet implemented")
@@ -30,16 +16,16 @@ interface ApiService
     suspend fun getLocations(): Response<List<LocationNetworkModel>>
 
     @POST("/api/Reservation/meetingroom")
-    suspend fun addReservation( reservation: ReservationPostModel): Response<ReservationPostModel>
+    suspend fun addReservation(@Body reservation: ReservationPostModel): Response<String>
 
     @GET("api/Reservation/availablemeetingrooms")
-    suspend fun getAvailableMeetingrooms(@Query("neededseats") neededseats: Int,@Query("locationid") locationid: Int,@Query("date") date: String) : Response<List<MeetingRoomNetworkModel>>
+    suspend fun getAvailableMeetingrooms(@Query("neededseats") neededseats: Int, @Query("locationid") locationid: Int, @Query("datetimeStart") datetimeStart: String, @Query("datetimeEnd") datetimeEnd: String): Response<List<MeetingRoomNetworkModel>>
 
     @GET("api/reservation/")
-    suspend fun getReservations(@Query("date")date: Long): Response<List<ReservationNetworkModel>>
+    suspend fun getReservations(@Query("date")date: Long): Response<List<CoworkReservationPostModel>>
 
     @POST("api/reservation/cowork")
-    suspend fun postCoworkReservation( reservation: ReservationNetworkModel) : Response<Reservation>
+    suspend fun postCoworkReservation( reservation: CoworkReservationPostModel) : Response<CoworkReservationPostModel>
 
     /* suspend fun loginUser(username: String, password: String): Response<LoginResponse> {
          if (username == "admin" && password == "admin") {

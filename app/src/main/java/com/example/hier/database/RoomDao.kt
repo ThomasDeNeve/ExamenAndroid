@@ -10,7 +10,11 @@ interface RoomDao {
 
     @Transaction
     @Query("select * from rooms")
-    fun getAllRooms(): LiveData<List<Room>>
+    fun getRooms(): LiveData<List<Room>>
+
+    @Transaction
+    @Query("select * from rooms where numberOfSeats=:numberofseats")
+    fun getRoomsByNeededSeats(numberofseats: Int): LiveData<List<Room>>
 
     @Transaction
     @Query("select * from rooms where id=:id")
@@ -19,8 +23,12 @@ interface RoomDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(list: List<Room>)
 
+    // Delete all meetingrooms in the cached database. This ensures the cached data is equal to the data retreived via the API
+    @Transaction
+    @Query("delete from rooms")
+    fun deleteAllRooms()
+
     @Transaction
     @Query("select * from location where id=:locationId")
     fun getLocation(locationId: Int): LiveData<Location>
-
 }

@@ -2,73 +2,46 @@ package com.example.hier.ui.login
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.lifecycle.Observer
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.auth0.android.Auth0
+import com.auth0.android.authentication.AuthenticationAPIClient
 import com.auth0.android.authentication.AuthenticationException
 import com.auth0.android.callback.Callback
 import com.auth0.android.provider.WebAuthProvider
 import com.auth0.android.result.Credentials
+import com.auth0.android.result.UserProfile
+import com.example.hier.MyApplication
 import com.example.hier.MyApplication.Companion.cachedCredentials
 import com.example.hier.R
 import com.example.hier.databinding.FragmentLoginBinding
-import com.example.hier.util.Status
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
 class LoginFragment : Fragment() {
 
     private lateinit var account: Auth0
+    val viewModel: LoginViewModel by inject()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val viewModel: LoginViewModel by inject()
+        // val viewModel: LoginViewModel by inject()
         val binding = FragmentLoginBinding.inflate(inflater, container, false)
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
-
-        binding.loginButton.setOnClickListener{
-//             Toast.makeText(context, "login successful", Toast.LENGTH_LONG).show()
-//            Log.e("test", "lalala")
-
-            //var username = binding.editTextTextPersonName.text.toString()
-            //var password = binding.editTextTextPassword.text.toString()
-
-            //viewModel.setCredentials(username, password)
-
+        binding.loginButton.setOnClickListener {
             loginWithBrowser()
         }
-
-        //TODO find out why this doesn't work
-        viewModel.loginResponse.observe(viewLifecycleOwner,
-            Observer {
-                //Log.e("LoginFragment", it.toString())
-                it?.let { resource ->
-                    when (resource.status) {
-                        //TODO add logic for logging in
-                        Status.SUCCESS -> {
-                            Toast.makeText(context, "login successful", Toast.LENGTH_LONG).show()
-                            //Log.e("Fragment", "successful fetch from Fragment")
-                            navigateToHome()
-                        }
-                        Status.LOADING -> {
-                            Toast.makeText(context, "loading", Toast.LENGTH_LONG).show()
-                        }
-                        Status.ERROR -> {
-                            Toast.makeText(context, resource.message, Toast.LENGTH_LONG).show()
-                        }
-                    }
-                }
-            }
-        )
 
         return binding.root
     }
@@ -86,28 +59,55 @@ class LoginFragment : Fragment() {
                 .withScope("openid profile email read:current_user update:current_user_metadata")
                 .withAudience("https://${getString(R.string.auth0_domain)}/api/v2/")
                 // Launch the authentication passing the callback where the results will be received
-                .start(it, object : Callback<Credentials, AuthenticationException> {
-                    // Called when there is an authentication failure
-                    override fun onFailure(error: AuthenticationException) {
-                        // Something went wrong!
-                        Log.i("LOGIN", error.getDescription())
-                        Toast.makeText(context, "Login failed", Toast.LENGTH_LONG).show()
-                    }
+                .start(
+                    it,
+                    object : Callback<Credentials, AuthenticationException> {
+                        // Called when there is an authentication failure
+                        override fun onFailure(error: AuthenticationException) {
+                            // Something went wrong!
+                            Log.i("LOGIN", error.getDescription())
+                            Toast.makeText(context, "Login failed", Toast.LENGTH_LONG).show()
+                        }
 
-                    // Called when authentication completed successfully
-                    override fun onSuccess(result: Credentials) {
-                        // Get the access token from the credentials object.
-                        // This can be used to call APIs
-                        Log.i("LOGIN", "Login success")
-                        cachedCredentials = result
-                        navigateToHome()
+                        // Called when authentication completed successfully
+                        override fun onSuccess(result: Credentials) {
+                            // Get the access token from the credentials object.
+                            // This can be used to call APIs
+                            Log.i("LOGIN", "Login success")
+                            cachedCredentials = result
+                            getUserProfile()
+                        }
                     }
-                })
+                )
         }
     }
+    private fun getUserProfile() {
+        if (MyApplication.cachedUserProfile != null) {
+            return
+        }
 
-    private fun navigateToHome(){
-        val directions = LoginFragmentDirections.actionLoginFragmentToMainActivity()
+        val client = AuthenticationAPIClient(account)
+
+        client.userInfo(cachedCredentials!!.accessToken)
+            .start(object : Callback<UserProfile, AuthenticationException> {
+                override fun onFailure(error: AuthenticationException) {
+                    Toast.makeText(
+                        context,
+                        "Laden van gebruikersinfo gefaald. ${error.getDescription()}",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+
+                override fun onSuccess(result: UserProfile) {
+                    MyApplication.cachedUserProfile = result
+                    lifecycleScope.launch { viewModel.insertNewUser(result.email) }
+                    navigateToHome()
+                }
+            })
+    }
+    private fun navigateToHome() {
+        val directions =
+            LoginFragmentDirections.actionLoginFragmentToChoiceMeetingRoomFragment() // actionLoginFragmentToMainActivity()
         findNavController().navigate(directions)
     }
 }

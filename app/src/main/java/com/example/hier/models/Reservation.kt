@@ -12,14 +12,13 @@ data class Reservation(
     @ColumnInfo(name = "from")
     @Nullable
     var from: Long = 0L,
-    //@ColumnInfo(name = "to")
-    //@Nullable
-    //var to: Long = 0L,
+    @ColumnInfo(name = "to")
+    @Nullable
+    var to: Long = 0L,
     @ColumnInfo(name = "room")
     @Nullable
     var room: String = "",
     @ColumnInfo(name = "seat")
     @Nullable
     var seat: String = ""
-) {
-}
+)

@@ -11,10 +11,8 @@
         android:label="fragment_login"
         tools:layout="@layout/fragment_login">
         <action
-            android:id="@+id/action_loginFragment_to_mainActivity"
-            app:destination="@id/reservationsFragment"
-            app:popUpTo="@+id/nav_graph"
-            app:popUpToInclusive="true" />
+            android:id="@+id/action_loginFragment_to_choiceMeetingRoomFragment"
+            app:destination="@id/choiceMeetingRoomFragment" />
     </fragment>
     <fragment
         android:id="@+id/roomOverviewFragment"
@@ -76,6 +74,21 @@
         <argument
             android:name="roomId"
             app:argType="integer" />
+        <argument
+            android:name="dateStart"
+            app:argType="string" />
+        <argument
+            android:name="dateEnd"
+            app:argType="string" />
+        <argument
+            android:name="user"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_roomFragment_to_choiceCoworkingFragment"
+            app:destination="@id/choiceCoworkingFragment" />
+        <argument
+            android:name="timeslot"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/albertLienartstraatCoworkingFragment"

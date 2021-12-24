@@ -22,7 +22,8 @@ android {
         versionCode 1
         versionName "1.0"
         //TODO IMPORTANT change BASE_URL to backend-URL!!
-        buildConfigField 'String', 'BASE_URL', "\"https://10.0.2.2:5001/\""
+        //buildConfigField 'String', 'BASE_URL', "\"https://10.0.2.2:5001/\""
+        buildConfigField 'String', 'BASE_URL', "\"http://ec2-3-212-186-23.compute-1.amazonaws.com:5000/\""
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         //manifestPlaceholders = [auth0Domain: "@string/devops-t4.eu.auth0.com", auth0Scheme: "https"]
         manifestPlaceholders = [auth0Domain: "devops-t4.eu.auth0.com", auth0Scheme: "demo"]
@@ -45,12 +46,12 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.6.0'
-    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.4.0'
     implementation 'com.google.android.material:material:1.4.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    testImplementation 'junit:junit:4.+'
+    testImplementation 'junit:junit:'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation 'com.google.android.material:material:1.4.0'
@@ -103,12 +104,18 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-reflect:$coroutines_version"
 
     //GSON (only for testing!)
-    implementation 'com.google.code.gson:gson:2.8.7'
+    implementation 'com.google.code.gson:gson:2.8.9'
 
     // Add the Auth0 Android SDK
     implementation 'com.auth0.android:auth0:2.5.1'
 }
 
+//https://github.com/jeremymailen/kotlinter-gradle
+/* HOWTO
+set JAVA_HOME environment variable to your jdk installation if necessary
+run in terminal: gradlew formatKotlin (formats code)
+run in terminal: gradlew lintKotlin (linting, reports can be found in [project root folder]/app/build/reports/ktlint/
+ */
 kotlinter {
     ignoreFailures = true
     indentSize = 4

@@ -7,6 +7,7 @@ import androidx.lifecycle.map
 import com.example.hier.models.Location
 import com.example.hier.models.LocationWithRooms
 import com.example.hier.models.Room
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -24,20 +25,16 @@ import org.json.JSONArray
  * @return LiveData<Resource<T>>
  * */
 fun <T, A> performGetOperation(databaseQuery: () -> LiveData<T>, networkCall: suspend () -> Resource<A>, saveCallResult: suspend (A) -> Unit): LiveData<Resource<T>> =
-    liveData(Dispatchers.IO)
-    {
+    liveData(Dispatchers.IO) {
         emit(Resource.loading())
         val source = databaseQuery.invoke().map { Resource.success(it) }
         emitSource(source)
 
         val responseStatus = networkCall.invoke()
-        if (responseStatus.status == Status.SUCCESS)
-        {
+        if (responseStatus.status == Status.SUCCESS) {
             saveCallResult(responseStatus.data!!)
             Log.i("DataAccessStrategy", "Successfully fetched data from API")
-        }
-        else if (responseStatus.status == Status.ERROR)
-        {
+        } else if (responseStatus.status == Status.ERROR) {
             Log.e("DataAccessStrategy", "Error fetching result from API")
             emit(Resource.error(responseStatus.message!!))
             emitSource(source)
@@ -62,13 +59,33 @@ fun <T, A> performGetOperation(databaseQuery: () -> LiveData<T>, networkCall: su
     }
 }*/
 
+@DelicateCoroutinesApi
 fun <T, A> fetchAndSaveLocations(
     databaseQuery: () -> LiveData<T>,
     networkCall: suspend () -> Resource<A>,
     saveCallResult: suspend (A) -> Unit
 ) {
     GlobalScope.launch {
-        val source = databaseQuery.invoke().map { Resource.success(it) }
+        databaseQuery.invoke().map { Resource.success(it) }
+        val responseStatus = networkCall.invoke()
+        if (responseStatus.status == Status.SUCCESS) {
+            saveCallResult(responseStatus.data!!)
+            Log.i("DataAccessStrategy", "Successfully fetched data from API")
+        } else if (responseStatus.status == Status.ERROR) {
+            Log.e("DataAccessStrategy", "Error fetching result from API")
+            throw Exception("Exception thrown because response failed: ${responseStatus.message!!}")
+        }
+    }
+}
+
+@DelicateCoroutinesApi
+fun <T, A> fetchAndSaveRooms(
+    databaseQuery: () -> LiveData<T>,
+    networkCall: suspend () -> Resource<A>,
+    saveCallResult: suspend (A) -> Unit
+) {
+    GlobalScope.launch {
+        /*val source = */databaseQuery.invoke().map { Resource.success(it) }
         val responseStatus = networkCall.invoke()
         if (responseStatus.status == Status.SUCCESS) {
             saveCallResult(responseStatus.data!!)
@@ -85,18 +102,19 @@ fun parseJson(jsonString: String): ArrayList<LocationWithRooms> {
 
     val locations: ArrayList<LocationWithRooms> = ArrayList()
 
-    //iterate over each location object
+    // iterate over each location object
     for (i in 0 until jsonArray.length()) {
         val locationObject = jsonArray.getJSONObject(i)
         val rooms: ArrayList<Room> = ArrayList()
         val roomsArray = locationObject.getJSONArray("meetingRooms")
 
-        //iterate over each room object within location
+        // iterate over each room object within location
         for (j in 0 until roomsArray.length()) {
             val roomObject = roomsArray.getJSONObject(j)
             val tempRoom = Room(
                 roomObject.get("id") as Int,
                 roomObject.get("name").toString(),
+                roomObject.get("imageName").toString(),
                 roomObject.get("numberOfSeats") as Int,
                 roomObject.get("priceEvening").toString().toDouble(),
                 roomObject.get("priceFullDay").toString().toDouble(),
@@ -136,4 +154,3 @@ fun parseJson(jsonString: String): ArrayList<LocationWithRooms> {
             emitSource(source)
         }
     }*/
-

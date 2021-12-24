@@ -5,7 +5,7 @@ import com.example.hier.models.Reservation
 import com.example.hier.repository.UserRepository
 import java.util.*
 
-class ReservationsViewModel (private val userRepository: UserRepository) : ViewModel() {
+class ReservationsViewModel(private val userRepository: UserRepository) : ViewModel() {
 //    val reservations = userRepository.getReservations()
     val reservations = populateData()
 
@@ -27,6 +27,4 @@ class ReservationsViewModel (private val userRepository: UserRepository) : ViewM
         }
         return reservations
     }
-
-
 }

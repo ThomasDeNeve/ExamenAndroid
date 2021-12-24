@@ -3,51 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/maart/OneDrive/Documenten/Toegepaste informatica/Devops project/Android/devops-project-android-2122-t4-android/app/src/main/res/drawable/icon_person.xml" value="0.17135416666666667" />
-        <entry key="..\:/Users/maart/OneDrive/Documenten/Toegepaste informatica/Devops project/Android/devops-project-android-2122-t4-android/app/src/main/res/drawable/icon_seat.xml" value="0.17135416666666667" />
-        <entry key="..\:/Users/maart/OneDrive/Documenten/Toegepaste informatica/Devops project/Android/devops-project-android-2122-t4-android/app/src/main/res/layout/activity_albert_lienartstraat_cohousing.xml" value="0.264" />
-        <entry key="..\:/Users/maart/OneDrive/Documenten/Toegepaste informatica/Devops project/Android/devops-project-android-2122-t4-android/app/src/main/res/layout/activity_main.xml" value="0.13229166666666667" />
-        <entry key="..\:/Users/maart/OneDrive/Documenten/Toegepaste informatica/Devops project/Android/devops-project-android-2122-t4-android/app/src/main/res/layout/fragment_albert_lienartstraat_coworking.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/maart/OneDrive/Documenten/Toegepaste informatica/Devops project/Android/devops-project-android-2122-t4-android/app/src/main/res/layout/fragment_choice.xml" value="0.2" />
-        <entry key="..\:/Users/maart/OneDrive/Documenten/Toegepaste informatica/Devops project/Android/devops-project-android-2122-t4-android/app/src/main/res/layout/fragment_coworking_recap.xml" value="0.13229166666666667" />
-        <entry key="..\:/Users/maart/OneDrive/Documenten/Toegepaste informatica/Devops project/Android/devops-project-android-2122-t4-android/app/src/main/res/layout/fragment_login.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/maart/OneDrive/Documenten/Toegepaste informatica/Devops project/Android/devops-project-android-2122-t4-android/app/src/main/res/layout/fragment_profile.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/maart/OneDrive/Documenten/Toegepaste informatica/Devops project/Android/devops-project-android-2122-t4-android/app/src/main/res/layout/fragment_reservations.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/thoma/AndroidStudioProjects/devops-project-android-2122-t4-android/app/src/main/res/drawable/icon_person.xml" value="0.3828125" />
-        <entry key="..\:/Users/thoma/AndroidStudioProjects/devops-project-android-2122-t4-android/app/src/main/res/font/font_hier.xml" value="0.396875" />
-        <entry key="..\:/Users/thoma/AndroidStudioProjects/devops-project-android-2122-t4-android/app/src/main/res/font/style_hier.xml" value="0.396875" />
-        <entry key="..\:/Users/thoma/AndroidStudioProjects/devops-project-android-2122-t4-android/app/src/main/res/layout/activity_main.xml" value="0.33" />
-        <entry key="..\:/Users/thoma/AndroidStudioProjects/devops-project-android-2122-t4-android/app/src/main/res/layout/fragment_login.xml" value="0.33" />
-        <entry key="..\:/Users/thoma/AndroidStudioProjects/devops-project-android-2122-t4-android/app/src/main/res/layout/fragment_profile.xml" value="0.36096014492753625" />
-        <entry key="..\:/Users/thoma/AndroidStudioProjects/devops-project-android-2122-t4-android/app/src/main/res/layout/fragment_reservations.xml" value="0.35688405797101447" />
-        <entry key="..\:/Users/thoma/AndroidStudioProjects/devops-project-android-2122-t4-android/app/src/main/res/layout/fragment_room.xml" value="0.22864583333333333" />
-        <entry key="..\:/Users/thoma/AndroidStudioProjects/devops-project-android-2122-t4-android/app/src/main/res/layout/fragment_roomoverview.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/thoma/AndroidStudioProjects/devops-project-android-2122-t4-android/app/src/main/res/layout/list_item_room.xml" value="0.33" />
-        <entry key="..\:/Users/thoma/AndroidStudioProjects/devops-project-android-2122-t4-android/app/src/main/res/layout/login_fragment.xml" value="0.1" />
-        <entry key="..\:/Users/thoma/AndroidStudioProjects/devops-project-android-2122-t4-android/app/src/main/res/layout/login_screen.xml" value="0.1" />
-        <entry key="..\:/Users/thoma/AndroidStudioProjects/devops-project-android-2122-t4-android/app/src/main/res/layout/profile_fragment.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/thoma/AndroidStudioProjects/devops-project-android-2122-t4-android/app/src/main/res/layout/reservations_fragment.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/thoma/AndroidStudioProjects/devops-project-android-2122-t4-android/app/src/main/res/layout/room_fragment.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/thoma/AndroidStudioProjects/devops-project-android-2122-t4-android/app/src/main/res/layout/roomoverview_fragment.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/thoma/AndroidStudioProjects/devops-project-android-2122-t4-android/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.25" />
-        <entry key="..\:/Users/thoma/AndroidStudioProjects/devops-project-android-2122-t4-android/app/src/main/res/xml/network_security_config.xml" value="0.35688405797101447" />
-        <entry key="..\:/devops-project-android-2122-t4-android/app/src/main/res/layout/activity_main.xml" value="0.37447916666666664" />
-        <entry key="..\:/devops-project-android-2122-t4-android/app/src/main/res/layout/fragment_choice.xml" value="0.37447916666666664" />
-        <entry key="..\:/devops-project-android-2122-t4-android/app/src/main/res/layout/fragment_login.xml" value="0.37447916666666664" />
-        <entry key="..\:/devops-project-android-2122-t4-android/app/src/main/res/layout/fragment_meetingroom_reservation.xml" value="0.2400990099009901" />
-        <entry key="..\:/devops-project-android-2122-t4-android/app/src/main/res/layout/fragment_profile.xml" value="0.37447916666666664" />
-        <entry key="..\:/devops-project-android-2122-t4-android/app/src/main/res/layout/fragment_reservations.xml" value="0.3307291666666667" />
-        <entry key="..\:/devops-project-android-2122-t4-android/app/src/main/res/layout/fragment_room.xml" value="0.3307291666666667" />
-        <entry key="..\:/devops-project-android-2122-t4-android/app/src/main/res/layout/fragment_roomoverview.xml" value="0.37447916666666664" />
-        <entry key="..\:/devops-project-android-2122-t4-android/app/src/main/res/layout/list_item_room.xml" value="0.37447916666666664" />
-        <entry key="..\:/devops-project-android-2122-t4-android/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.37447916666666664" />
+        <entry key="..\:/Users/thoma/AndroidStudioProjects/devops-project-android-2122-t4-android/app/src/main/res/layout/list_item_room.xml" value="0.17831813576494426" />
+        <entry key="..\:/devops-project-android-2122-t4-android/app/src/main/res/layout/activity_main.xml" value="0.3921875" />
+        <entry key="..\:/devops-project-android-2122-t4-android/app/src/main/res/layout/custom_spinner_list.xml" value="0.3211050724637681" />
+        <entry key="..\:/devops-project-android-2122-t4-android/app/src/main/res/layout/fragment_choice.xml" value="0.3211050724637681" />
+        <entry key="..\:/devops-project-android-2122-t4-android/app/src/main/res/layout/fragment_room.xml" value="0.3211050724637681" />
+        <entry key="..\:/devops-project-android-2122-t4-android/app/src/main/res/layout/fragment_roomoverview.xml" value="0.22916666666666666" />
+        <entry key="..\:/devops-project-android-2122-t4-android/app/src/main/res/layout/list_item_room.xml" value="0.3211050724637681" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
-    <output url="file://$PROJECT_DIR$/build/classes" />
-  </component>
-  <component name="ProjectType">
-    <option name="id" value="Android" />
-  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK" />
 </project>
