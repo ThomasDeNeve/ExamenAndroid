@@ -7,6 +7,7 @@ import com.example.hier.networkModels.CoworkReservationPostModel
 import com.example.hier.repository.ReservationRepository
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import java.text.SimpleDateFormat
 import java.util.*
 
 public class CoworkingRecapViewModel(
@@ -20,9 +21,10 @@ public class CoworkingRecapViewModel(
     //TODO custId dynamisch instellen!
     fun onSubmit() = runBlocking {
         var date : Date = Date(_date.value!!)
-        val rnw = CoworkReservationPostModel(1, _seatId.value!!, date)
+        val dateString = SimpleDateFormat("dd/MM/yyyy").format(date)
+        val rnw = CoworkReservationPostModel(1, _seatId.value!!, dateString)
         launch {
-            reservationRepository.postReservation(rnw)
+            reservationRepository.postCoworkReservation(rnw)
         }
         _eventSubmit.value = true
     }

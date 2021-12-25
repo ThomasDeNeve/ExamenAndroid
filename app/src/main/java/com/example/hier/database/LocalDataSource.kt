@@ -1,10 +1,8 @@
 package com.example.hier.database
 
-import com.example.hier.models.Reservation
 import com.example.hier.models.Room
 import com.example.hier.models.User
 import com.example.hier.networkModels.MeetingRoomNetworkModel
-import com.example.hier.networkModels.CoworkReservationPostModel
 
 class LocalDataSource(
     private val locationDao: LocationDao,
@@ -20,8 +18,8 @@ class LocalDataSource(
     fun getLocationById(locationId: Int) = roomDao.getLocation(locationId)
     fun getLocationIdByName(name: String) = locationDao.getLocationIdByName(name)
 
-    fun getReservations() = reservationDao.getAllReservations()
-    fun getReservations(date: Long) = reservationDao.getReservations(date)
+    fun getReservations() = reservationDao.getAllMeetingRoomReservations()
+    fun getReservations(date: Long) = reservationDao.getMeetingRoomReservationsOnDate(date)
 
     fun getUser(username: String) = userDao.getUser(username)
 

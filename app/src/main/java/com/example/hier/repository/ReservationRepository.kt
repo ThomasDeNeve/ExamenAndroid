@@ -1,10 +1,11 @@
 package com.example.hier.repository
 
 import com.example.hier.database.LocalDataSource
-import com.example.hier.models.Reservation
+import com.example.hier.models.CoworkReservation
 import com.example.hier.network.RemoteDataSource
 import com.example.hier.networkModels.CoworkReservationPostModel
-import com.example.hier.util.performGetOperation
+import java.text.SimpleDateFormat
+import java.util.*
 
 class ReservationRepository(
     private val remoteDataSource: RemoteDataSource,
@@ -20,16 +21,23 @@ class ReservationRepository(
      *
      *fetch reservations and adapt to Reservation class
      */
-    suspend fun getReservations(date: Long): List<Reservation> {
-        val response = remoteDataSource.getReservations(date)
-        val r = mutableListOf<Reservation>()
-        response.data?.forEach { o ->
-            r.add(Reservation(from = date, seat = o.seatId.toString()))
+    suspend fun getCoworkReservations(date: Date): List<CoworkReservation> {
+        val dateString = SimpleDateFormat("dd/MM/yyyy").format(date)
+        val response = remoteDataSource.getReservations(dateString)
+        val coworkReservationList = mutableListOf<CoworkReservation>()
+
+        response.data?.forEach { model ->
+            coworkReservationList.add(
+                CoworkReservation(
+                    from = date.time,
+                    seatId = model.seatId
+                )
+            )
         }
-        return r
+        return coworkReservationList
     }
 
-    suspend fun postReservation(coworkReservation: CoworkReservationPostModel){
-        val response = remoteDataSource.addReservation(coworkReservation)
+    suspend fun postCoworkReservation(coworkReservation: CoworkReservationPostModel) {
+        val response = remoteDataSource.addCoworkReservation(coworkReservation)
     }
 }

@@ -5,5 +5,5 @@ import java.util.*
 data class CoworkReservationPostModel(
     var customerId: Int,
     var seatId: Int,
-    var from: Date
+    var from: String
 )

@@ -1,36 +1,39 @@
 package com.example.hier.network
 
 import com.example.hier.networkModels.*
-import com.example.hier.models.Reservation
-import com.example.hier.networkModels.LocationNetworkModel
-import com.example.hier.networkModels.MeetingRoomNetworkModel
-import com.example.hier.networkModels.CoworkReservationPostModel
-import com.example.hier.networkModels.RootReservationNetworkModel
 import retrofit2.Response
-import retrofit2.http.*
+import retrofit2.http.Body
+import retrofit2.http.GET
+import retrofit2.http.POST
+import retrofit2.http.Query
 
 interface ApiService {
     @GET("api/customer/GetLoggedIn")
     suspend fun getUser(@Query("username") username: String): Response<UserNetworkModel>
 
-    fun getReservations(): Response<RootReservationNetworkModel> {
-        TODO("Not yet implemented")
-    }
+   /* fun getReservations(): Response<RootReservationNetworkModel> {
+    }*/
 
     @GET("api/Location")
     suspend fun getLocations(): Response<List<LocationNetworkModel>>
 
-    @POST("/api/Reservation/meetingroom")
-    suspend fun addReservation(@Body reservation: ReservationPostModel): Response<String>
-
     @GET("api/Reservation/availablemeetingrooms")
-    suspend fun getAvailableMeetingrooms(@Query("neededseats") neededseats: Int, @Query("locationid") locationid: Int, @Query("datetimeStart") datetimeStart: String, @Query("datetimeEnd") datetimeEnd: String): Response<List<MeetingRoomNetworkModel>>
+    suspend fun getAvailableMeetingrooms(
+        @Query("neededseats") neededseats: Int,
+        @Query("locationid") locationid: Int,
+        @Query("datetimeStart") datetimeStart: String,
+        @Query("datetimeEnd") datetimeEnd: String
+    ): Response<List<MeetingRoomNetworkModel>>
 
-    @GET("api/reservation/")
-    suspend fun getReservations(@Query("date")date: Long): Response<List<CoworkReservationPostModel>>
+    @GET("api/reservation/coworkroom/")
+    suspend fun getReservations(@Query("date") date: String): Response<List<CoworkReservationPostModel>>
 
     @POST("api/reservation/seat")
     suspend fun postCoworkReservation(@Body coworkReservation: CoworkReservationPostModel): Response<CoworkReservationPostModel>
+
+    @POST("/api/Reservation/meetingroom")
+    suspend fun addReservation(@Body reservation: ReservationPostModel): Response<String>
+
 
     /* suspend fun loginUser(username: String, password: String): Response<LoginResponse> {
          if (username == "admin" && password == "admin") {

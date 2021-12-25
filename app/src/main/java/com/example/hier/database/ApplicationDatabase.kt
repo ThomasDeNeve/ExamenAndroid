@@ -3,13 +3,10 @@ package com.example.hier.database
 import android.content.Context
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.example.hier.models.Location
-import com.example.hier.models.Reservation
-import com.example.hier.models.Room
-import com.example.hier.models.User
+import com.example.hier.models.*
 
 @Database(
-    entities = [Room::class, User::class, Reservation::class, Location::class],
+    entities = [Room::class, User::class, MeetingroomReservation::class, CoworkReservation::class, Location::class],
     version = 6,
     exportSchema = false
 )
@@ -35,6 +32,7 @@ abstract class ApplicationDatabase : RoomDatabase() {
                 ApplicationDatabase::class.java,
                 "hierDB"
             )
-                .fallbackToDestructiveMigration().allowMainThreadQueries().build() // TODO REMOVE allowMainThreadQueries -> this allows accessing database on main thread, which causes blocking
+                .fallbackToDestructiveMigration().allowMainThreadQueries()
+                .build() // TODO REMOVE allowMainThreadQueries -> this allows accessing database on main thread, which causes blocking
     }
 }

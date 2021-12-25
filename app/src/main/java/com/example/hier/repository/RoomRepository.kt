@@ -68,7 +68,7 @@ class RoomRepository(
     }
 
     suspend fun addReservation(reservationPostModel: ReservationPostModel) {
-        remoteDataSource.addReservation(reservationPostModel)
+        remoteDataSource.addMeetingroomReservation(reservationPostModel)
     }
 
     fun getRooms_fetchDirectly(): LiveData<Resource<List<Room>>> {
