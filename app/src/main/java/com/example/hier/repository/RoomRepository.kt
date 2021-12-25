@@ -55,10 +55,10 @@ class RoomRepository(
         saveCallResult = { localDataSource.saveRooms(it) }
     )
 
-    fun getLocations_old() = performGetOperation(
+/*    fun getLocations_old() = performGetOperation(
         databaseQuery = { localDataSource.getLocations() },
         networkCall = { remoteDataSource.getLocations() }
-    ) { localDataSource.saveLocations(it) }
+    ) { localDataSource.saveLocations(it) }*/
 
     fun getLocationById(locationId: Int) = localDataSource.getLocationById(locationId)
 

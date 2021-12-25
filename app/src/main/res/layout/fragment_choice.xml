@@ -2,7 +2,9 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
+
         <variable
             name="viewModel"
             type="com.example.hier.ui.makeChoice.ChoiceViewModel" />
@@ -22,17 +24,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-
             <ImageView
                 android:id="@+id/imageView4"
                 android:layout_width="109dp"
                 android:layout_height="117dp"
                 android:layout_marginTop="48dp"
+                android:layout_marginEnd="1dp"
+                android:contentDescription="TODO"
                 android:src="@drawable/klik_hier"
+                app:layout_constraintEnd_toStartOf="@+id/textView3"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txv_info" />
 
@@ -40,72 +40,64 @@
                 android:id="@+id/imageview_place2"
                 android:layout_width="109dp"
                 android:layout_height="117dp"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="170dp"
                 android:layout_marginEnd="16dp"
+                android:layout_marginBottom="2dp"
+                android:contentDescription="TODO"
                 android:src="@drawable/of_hier"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+                app:layout_constraintStart_toEndOf="@+id/textView4"
+                app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-                <ImageView
-                    android:id="@+id/imageview_place"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="24dp"
-                    android:contentDescription="TODO"
-                    android:src="@drawable/icon_place"
-                    app:layout_constraintBottom_toTopOf="@+id/textView3"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txv_info" />
             <ImageView
                 android:id="@+id/imageview_place"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="24dp"
+                android:contentDescription="TODO"
                 android:src="@drawable/icon_place"
+                app:layout_constraintBottom_toTopOf="@+id/textView3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txv_info" />
 
-                <TextView
-                    android:id="@+id/txv_info"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="50dp"
-                    android:layout_marginTop="48dp"
-                    android:layout_marginEnd="50dp"
-                    android:fontFamily="@font/font_hier"
-                    android:text="@string/info_choice"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/txv_info"
+                style="@style/hier_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="48dp"
+                android:layout_marginEnd="50dp"
+                android:fontFamily="@font/font_hier"
+                android:text="@string/info_choice"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageView
-                    android:id="@+id/imageView4"
-                    android:layout_width="109dp"
-                    android:layout_height="117dp"
-                    android:layout_marginTop="48dp"
-                    android:layout_marginEnd="1dp"
-                    android:src="@drawable/klik_hier"
-                    app:layout_constraintEnd_toStartOf="@+id/textView3"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txv_info"
-                    android:contentDescription="TODO" />
+
             <ImageView
                 android:id="@+id/imageview_place3"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginTop="64dp"
+                android:layout_marginStart="181dp"
+                android:layout_marginTop="62dp"
+                android:layout_marginEnd="180dp"
+                android:contentDescription="TODO"
                 android:src="@drawable/icon_place"
-                app:layout_constraintEnd_toEndOf="@+id/imageview_place"
-                app:layout_constraintStart_toStartOf="@+id/imageview_place"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btnLocOne" />
 
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
                 android:fontFamily="@font/font_hier"
                 android:text="@string/adres_1"
                 android:textAlignment="center"
@@ -114,143 +106,54 @@
                 app:layout_constraintStart_toStartOf="@+id/imageview_place"
                 app:layout_constraintTop_toBottomOf="@+id/imageview_place"
                 tools:text="Albert Lienartstraat 24/1 \n
-9300 Aalst" />
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:fontFamily="@font/font_hier"
-                    android:text="@string/adres_1"
-                    android:textAlignment="center"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toTopOf="@+id/btnLocOne"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageview_place"
-                    tools:text="Albert Lienartstraat 24/1 \n
-        9300 Aalst" />
+                            9300 Aalst" />
 
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="2dp"
                 android:fontFamily="@font/font_hier"
                 android:text="@string/adres_2"
                 android:textAlignment="center"
                 android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="@+id/imageview_place3"
-                app:layout_constraintStart_toStartOf="@+id/imageview_place3"
+                app:layout_constraintBottom_toTopOf="@+id/btnLocTwo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageview_place3"
                 tools:text="Zandberg 6 \n 9300 Aalst" />
-                <Button
-                    android:id="@+id/btnLocOne"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="64dp"
-                    android:backgroundTint="@color/primary_pink"
-                    android:text="@string/kies"
-                    android:textColor="@color/white"
-                    app:layout_constraintBottom_toTopOf="@+id/imageview_place3"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView3"
-                    tools:ignore="TextContrastCheck,DuplicateSpeakableTextCheck" />
-
-                <ImageView
-                    android:id="@+id/imageview_place3"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="181dp"
-                    android:layout_marginTop="62dp"
-                    android:layout_marginEnd="180dp"
-                    android:src="@drawable/icon_place"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/btnLocOne"
-                    android:contentDescription="TODO" />
-
-                <TextView
-                    android:id="@+id/textView4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
-                    android:layout_marginBottom="2dp"
-                    android:fontFamily="@font/font_hier"
-                    android:text="@string/adres_2"
-                    android:textAlignment="center"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toTopOf="@+id/btnLocTwo"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageview_place3"
-                    tools:text="Zandberg 6 \n 9300 Aalst" />
 
             <Button
                 android:id="@+id/btnLocOne"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="64dp"
                 android:backgroundTint="@color/primary_pink"
                 android:text="@string/kies"
                 android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView4"
-                app:layout_constraintEnd_toEndOf="@+id/textView3"
-                app:layout_constraintStart_toStartOf="@+id/textView3"
+                app:layout_constraintBottom_toTopOf="@+id/imageview_place3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView3"
                 tools:ignore="TextContrastCheck,DuplicateSpeakableTextCheck" />
+
 
             <Button
                 android:id="@+id/btnLocTwo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="61dp"
                 android:backgroundTint="@color/primary_pink"
                 android:text="@string/kies"
                 android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="@+id/textView4"
-                app:layout_constraintStart_toStartOf="@+id/textView4"
-                app:layout_constraintTop_toBottomOf="@+id/textView4"
-                tools:ignore="TextContrastCheck" />
-                <Button
-                    android:id="@+id/btnLocTwo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginBottom="61dp"
-                    android:backgroundTint="@color/primary_pink"
-                    android:text="@string/kies"
-                    android:textColor="@color/white"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView4"
-                    tools:ignore="TextContrastCheck" />
-
-                <ImageView
-                    android:id="@+id/imageview_place2"
-                    android:layout_width="109dp"
-                    android:layout_height="117dp"
-                    android:layout_marginStart="35dp"
-                    android:layout_marginTop="170dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="2dp"
-                    android:src="@drawable/of_hier"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/textView4"
-                    app:layout_constraintTop_toBottomOf="@+id/textView3"
-                    android:contentDescription="TODO" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </ScrollView>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-            <TextView
-                android:id="@+id/txv_info"
-                style="@style/hier_label"
-                android:text="@string/info_choice"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/date_picker" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+                app:layout_constraintTop_toBottomOf="@+id/textView4"
+                tools:ignore="TextContrastCheck" />
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

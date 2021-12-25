@@ -29,8 +29,6 @@ interface ApiService {
     @GET("api/reservation/")
     suspend fun getReservations(@Query("date")date: Long): Response<List<CoworkReservationPostModel>>
 
-    @POST("api/reservation/cowork")
-    suspend fun postCoworkReservation( reservation: CoworkReservationPostModel) : Response<CoworkReservationPostModel>
     @POST("api/reservation/seat")
     suspend fun postCoworkReservation(@Body coworkReservation: CoworkReservationPostModel): Response<CoworkReservationPostModel>
 

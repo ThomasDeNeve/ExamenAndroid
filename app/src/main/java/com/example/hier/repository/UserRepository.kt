@@ -19,9 +19,9 @@ class UserRepository(
         }
     }
 
-    fun getReservations() = performGetOperation(
+   /* fun getReservations() = performGetOperation(
         databaseQuery = { localDataSource.getReservations() },
         networkCall = { remoteDataSource.getReservations() },
         saveCallResult = { localDataSource.saveReservations(it.records) }
-    )
+    )*/
 }
