@@ -15,6 +15,10 @@ interface UserDao {
     @Query("select * from users where username=:username")
     fun getUser(username: String): LiveData<User>
 
+    @Transaction
+    @Query("select * from users order by userId desc limit 1")
+    fun getCurrentUser(): User
+
     @Insert(onConflict = REPLACE)
     fun insert(user: User)
 }

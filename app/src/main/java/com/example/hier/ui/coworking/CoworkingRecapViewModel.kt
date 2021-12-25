@@ -17,22 +17,6 @@ public class CoworkingRecapViewModel(
     val eventSubmit: LiveData<Boolean>
         get() = _eventSubmit
 
-    //TODO make suspend & call from lifecyclescope in fragment
-    //TODO custId dynamisch instellen!
-    fun onSubmit() = runBlocking {
-        var date : Date = Date(_date.value!!)
-        val dateString = SimpleDateFormat("dd/MM/yyyy").format(date)
-        val rnw = CoworkReservationPostModel(1, _seatId.value!!, dateString)
-        launch {
-            reservationRepository.postCoworkReservation(rnw)
-        }
-        _eventSubmit.value = true
-    }
-
-    fun onSubmitComplete() {
-        _eventSubmit.value = false
-    }
-
     private val _location = MutableLiveData<String>()
     val location: LiveData<String>
         get() = _location
@@ -63,5 +47,25 @@ public class CoworkingRecapViewModel(
 
     fun setDate(value: Long) {
         _date.value = value
+    }
+
+    /* private val _user = MutableLiveData<User>()
+     val user: LiveData<User>
+         get() = _user*/
+
+    //TODO make suspend & call from lifecyclescope in fragment
+    fun onSubmit() = runBlocking {
+        val date: Date = Date(_date.value!!)
+        val dateString = SimpleDateFormat("dd/MM/yyyy").format(date)
+        var user = reservationRepository.getUser()
+        val rnw = CoworkReservationPostModel(user.userId, _seatId.value!!, dateString)
+        launch {
+            reservationRepository.postCoworkReservation(rnw)
+        }
+        _eventSubmit.value = true
+    }
+
+    fun onSubmitComplete() {
+        _eventSubmit.value = false
     }
 }

@@ -1,8 +1,8 @@
-package com.example.hier.network
+package com.example.hier.networkModels
 
 import com.google.gson.annotations.SerializedName
 
-data class ReservationPostModel(
+data class MeetingroomReservationPostModel(
     @SerializedName("roomId") val roomId: Int,
     @SerializedName("customerId") val customerId: Int,
     @SerializedName("from") val from: String,

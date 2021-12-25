@@ -1,6 +1,7 @@
 package com.example.hier.network
 
 import com.example.hier.networkModels.CoworkReservationPostModel
+import com.example.hier.networkModels.MeetingroomReservationPostModel
 
 class RemoteDataSource(private val apiService: ApiService) : BaseDataSource()
 {
@@ -8,7 +9,7 @@ class RemoteDataSource(private val apiService: ApiService) : BaseDataSource()
 
     //suspend fun getReservations() = getResult { apiService.getReservations() }
 
-    suspend fun getReservations(date: String) = getResult { apiService.getReservations(date) }
+    suspend fun getReservations(date: String) = getResult { apiService.getCoworkReservations(date) }
 
     suspend fun getLocations() = getResult { apiService.getLocations() }
 
@@ -16,5 +17,5 @@ class RemoteDataSource(private val apiService: ApiService) : BaseDataSource()
 
     suspend fun addCoworkReservation(coworkReservationPostModel: CoworkReservationPostModel) = getResult { apiService.postCoworkReservation(coworkReservationPostModel) }
 
-    suspend fun addMeetingroomReservation(reservationPostModel: ReservationPostModel) = getResult { apiService.addReservation(reservationPostModel) }
+    suspend fun addMeetingroomReservation(meetingroomReservationPostModel: MeetingroomReservationPostModel) = getResult { apiService.postMeetingroomReservation(meetingroomReservationPostModel) }
 }

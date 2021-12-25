@@ -2,6 +2,7 @@ package com.example.hier.repository
 
 import com.example.hier.database.LocalDataSource
 import com.example.hier.models.CoworkReservation
+import com.example.hier.models.User
 import com.example.hier.network.RemoteDataSource
 import com.example.hier.networkModels.CoworkReservationPostModel
 import java.text.SimpleDateFormat
@@ -39,5 +40,9 @@ class ReservationRepository(
 
     suspend fun postCoworkReservation(coworkReservation: CoworkReservationPostModel) {
         val response = remoteDataSource.addCoworkReservation(coworkReservation)
+    }
+
+    fun getUser(): User {
+        return localDataSource.getCurrentUser()
     }
 }
