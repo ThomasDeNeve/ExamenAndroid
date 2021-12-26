@@ -24,16 +24,7 @@ class RoomFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val viewModel: RoomViewModel by inject()
-        // val application = requireNotNull(this.activity).application
-
-        // Create an instance of the ViewModel Factory.
-        // val dataSource = ApplicationDatabase.getDatabase(application).roomDao()
-        // val viewModelFactory = RoomViewModelFactory(dataSource, application)
-
-        // val viewModel = ViewModelProvider(this, viewModelFactory).get(RoomViewModel::class.java)
-
         val binding = FragmentRoomBinding.inflate(inflater, container, false)
-        // Log.e("roomfragment", "room id passed by args is ${args.roomId}")
         viewModel.setRoom(args.roomId)
 
         binding.viewModel = viewModel
@@ -43,7 +34,6 @@ class RoomFragment : Fragment() {
             viewLifecycleOwner,
             { room ->
                 roomName = room.name
-                // viewModel.initializeLocation(room.locationId)
             }
         )
 
@@ -56,7 +46,7 @@ class RoomFragment : Fragment() {
                         args.dateStart,
                         args.dateEnd,
                         args.timeslot
-                    ) // TODO add actual customer ID and catch exception when duplicate
+                    )
                     onReserveButtonClicked()
                     Toast.makeText(container!!.context, "Reservatie werd geregistreerd!", Toast.LENGTH_LONG).show()
                 } catch (e: Exception) {

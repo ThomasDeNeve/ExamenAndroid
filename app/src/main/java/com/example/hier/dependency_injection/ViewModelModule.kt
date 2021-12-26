@@ -1,7 +1,8 @@
 package com.example.hier.dependency_injection
 
+import com.example.hier.ui.coworking.CoworkingRecapViewModel
+import com.example.hier.ui.coworking.CoworkingViewModel
 import com.example.hier.ui.login.LoginViewModel
-import com.example.hier.ui.makeChoice.ChoiceViewModel
 import com.example.hier.ui.profile.ProfileViewModel
 import com.example.hier.ui.reservations.ReservationsViewModel
 import com.example.hier.ui.room.RoomViewModel
@@ -14,6 +15,7 @@ val viewModelModule = module {
     viewModel { RoomOverviewViewModel(get()) }
     viewModel { ProfileViewModel(get()) }
     viewModel { ReservationsViewModel(get()) }
-    viewModel { ChoiceViewModel(get()) }
     viewModel { RoomViewModel(get()) }
+    viewModel { CoworkingViewModel(get()) }
+    viewModel { CoworkingRecapViewModel(get()) }
 }
