@@ -15,7 +15,7 @@ class UserRepository(
         var userNetworkModel: Resource<UserNetworkModel> = remoteDataSource.getUser(username)
 
         if (userNetworkModel.data != null) {
-            userNetworkModel.data?.toDatabaseModel()?.let { localDataSource.saveUser(it) }
+            localDataSource.saveUser(userNetworkModel.data!!.toDatabaseModel())
         }
     }
 

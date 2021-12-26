@@ -1,5 +1,6 @@
 package com.example.hier.repository
 
+import com.example.hier.MyApplication.Companion.cachedUserProfile
 import com.example.hier.database.LocalDataSource
 import com.example.hier.models.CoworkReservation
 import com.example.hier.models.User
@@ -45,6 +46,8 @@ class ReservationRepository(
 
 
     suspend fun getUser(): User {
-        return localDataSource.getCurrentUser()
+        var username: String = cachedUserProfile?.name.toString()
+        //return localDataSource.getUser(username).value!!
+        return localDataSource.getCurrentUser();
     }
 }
