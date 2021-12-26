@@ -49,7 +49,7 @@ class CoworkingFragment : Fragment() {
         })
 
         viewModel.setInitialDate()
-        
+
         viewModel.listOfChairs.forEach { item ->
             item.observe(viewLifecycleOwner, Observer {
                 updateChairs(viewModel)
@@ -86,11 +86,5 @@ class CoworkingFragment : Fragment() {
             if (viewmodel.chair12reserved.value!!) View.GONE else View.VISIBLE
         binding.chair13.visibility =
             if (viewmodel.chair13reserved.value!!) View.GONE else View.VISIBLE
-        binding.chair14.visibility =
-            if (viewmodel.chair14reserved.value!!) View.GONE else View.VISIBLE
-        binding.chair15.visibility =
-            if (viewmodel.chair15reserved.value!!) View.GONE else View.VISIBLE
-        binding.chair16.visibility =
-            if (viewmodel.chair16reserved.value!!) View.GONE else View.VISIBLE
     }
 }

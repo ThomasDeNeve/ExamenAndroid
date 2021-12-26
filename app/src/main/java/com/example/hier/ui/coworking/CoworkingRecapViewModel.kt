@@ -5,8 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.hier.networkModels.CoworkReservationPostModel
 import com.example.hier.repository.ReservationRepository
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import com.example.hier.util.Resource
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -49,19 +48,14 @@ public class CoworkingRecapViewModel(
         _date.value = value
     }
 
-    /* private val _user = MutableLiveData<User>()
-     val user: LiveData<User>
-         get() = _user*/
+    lateinit var response: Resource<String>
 
-    //TODO make suspend & call from lifecyclescope in fragment
-    fun onSubmit() = runBlocking {
+    suspend fun onSubmit() {
         val date: Date = Date(_date.value!!)
         val dateString = SimpleDateFormat("dd/MM/yyyy").format(date)
         var user = reservationRepository.getUser()
         val rnw = CoworkReservationPostModel(user.userId, _seatId.value!!, dateString)
-        launch {
-            reservationRepository.postCoworkReservation(rnw)
-        }
+        response = reservationRepository.postCoworkReservation(rnw)
         _eventSubmit.value = true
     }
 

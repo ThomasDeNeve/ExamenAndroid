@@ -2,11 +2,9 @@ package com.example.hier.ui.coworking
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import com.example.hier.models.CoworkReservation
 import com.example.hier.repository.ReservationRepository
-import okhttp3.internal.notifyAll
 import java.util.*
 
 class CoworkingViewModel(
@@ -73,15 +71,6 @@ class CoworkingViewModel(
     private val _chair13reserved = MutableLiveData<Boolean>()
     val chair13reserved: LiveData<Boolean>
         get() = _chair13reserved
-    private val _chair14reserved = MutableLiveData<Boolean>()
-    val chair14reserved: LiveData<Boolean>
-        get() = _chair14reserved
-    private val _chair15reserved = MutableLiveData<Boolean>()
-    val chair15reserved: LiveData<Boolean>
-        get() = _chair15reserved
-    private val _chair16reserved = MutableLiveData<Boolean>()
-    val chair16reserved: LiveData<Boolean>
-        get() = _chair16reserved
 
     val listOfChairs: List<LiveData<Boolean>> = listOf(
         chair1reserved,
@@ -96,10 +85,7 @@ class CoworkingViewModel(
         chair10reserved,
         chair11reserved,
         chair12reserved,
-        chair13reserved,
-        chair14reserved,
-        chair15reserved,
-        chair16reserved
+        chair13reserved
     )
 
     fun setInitialDate() {
@@ -131,9 +117,6 @@ class CoworkingViewModel(
         _chair11reserved.value = false
         _chair12reserved.value = false
         _chair13reserved.value = false
-        _chair14reserved.value = false
-        _chair15reserved.value = false
-        _chair16reserved.value = false
 
         reservationsList.value = reservationRepository.getCoworkReservations(dateAsDate)
         reservationsList.value?.let {
@@ -164,26 +147,20 @@ class CoworkingViewModel(
                     _chair12reserved.value = true
                 if (x.seatId == 13)
                     _chair13reserved.value = true
-                if (x.seatId == 14)
-                    _chair14reserved.value = true
-                if (x.seatId == 15)
-                    _chair15reserved.value = true
-                if (x.seatId == 16)
-                    _chair16reserved.value = true
             }
         }
     }
-
 
     /**
      * Clickhandler for chair
      */
     fun onGreenChairClicked(value: Int) {
         _clickedSeatId.value = value
-        if (value in 1..6)
-            _chamber.value = "hier.beneden"
-        if (value > 6)
-            _chamber.value = "hier.boven"
+        when (value) {
+            in 1..4 -> _chamber.value = "Bureel 1 - gelijkvloers"
+            in 5..7 -> _chamber.value = "Bureel 2 - gelijkvloers"
+            else -> _chamber.value = "Coworking 1 - gelijkvloers"
+        }
         _eventChairClicked.value = true
     }
 

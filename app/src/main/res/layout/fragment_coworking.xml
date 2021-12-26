@@ -53,14 +53,14 @@
                 style="@style/hier_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/hier_beneden"
+                android:text="@string/coworking_gelijkvloers"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/date_picker" />
 
 
             <ImageView
-                android:id="@+id/redchair1"
+                android:id="@+id/redchair13"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="@id/table1"
@@ -70,7 +70,7 @@
                 app:srcCompat="@drawable/redchair" />
 
             <ImageView
-                android:id="@+id/redchair2"
+                android:id="@+id/redchair9"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="@id/table1"
@@ -80,7 +80,7 @@
                 app:srcCompat="@drawable/redchair" />
 
             <ImageView
-                android:id="@+id/redchair3"
+                android:id="@+id/redchair8"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="@id/table1"
@@ -91,7 +91,7 @@
 
 
             <ImageView
-                android:id="@+id/redchair4"
+                android:id="@+id/redchair12"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:rotationX="180"
@@ -102,7 +102,7 @@
                 app:srcCompat="@drawable/redchair" />
 
             <ImageView
-                android:id="@+id/redchair5"
+                android:id="@+id/redchair10"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:rotationX="180"
@@ -113,7 +113,7 @@
                 app:srcCompat="@drawable/redchair" />
 
             <ImageView
-                android:id="@+id/redchair6"
+                android:id="@+id/redchair11"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:rotationX="180"
@@ -135,18 +135,7 @@
                 app:srcCompat="@drawable/redchair" />
 
             <ImageView
-                android:id="@+id/redchair8"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:scaleType="fitEnd"
-                app:layout_constraintBottom_toTopOf="@id/table2"
-                app:layout_constraintEnd_toEndOf="@id/table2"
-                app:layout_constraintHorizontal_bias="0.50"
-                app:layout_constraintStart_toStartOf="@id/table2"
-                app:srcCompat="@drawable/redchair" />
-
-            <ImageView
-                android:id="@+id/redchair9"
+                android:id="@+id/redchair6"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:scaleType="fitEnd"
@@ -157,19 +146,7 @@
                 app:srcCompat="@drawable/redchair" />
 
             <ImageView
-                android:id="@+id/redchair10"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:rotationX="180"
-                android:scaleType="fitEnd"
-                app:layout_constraintEnd_toEndOf="@id/table2"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@id/table2"
-                app:layout_constraintTop_toBottomOf="@id/table2"
-                app:srcCompat="@drawable/redchair" />
-
-            <ImageView
-                android:id="@+id/redchair11"
+                android:id="@+id/redchair5"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:rotationX="180"
@@ -181,19 +158,7 @@
                 app:srcCompat="@drawable/redchair" />
 
             <ImageView
-                android:id="@+id/redchair12"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:rotationX="180"
-                android:scaleType="fitEnd"
-                app:layout_constraintEnd_toEndOf="@id/table2"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="@id/table2"
-                app:layout_constraintTop_toBottomOf="@id/table2"
-                app:srcCompat="@drawable/redchair" />
-
-            <ImageView
-                android:id="@+id/redchair13"
+                android:id="@+id/redchair3"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:scaleType="fitEnd"
@@ -204,7 +169,7 @@
                 app:srcCompat="@drawable/redchair" />
 
             <ImageView
-                android:id="@+id/redchair14"
+                android:id="@+id/redchair2"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:scaleType="fitEnd"
@@ -215,7 +180,7 @@
                 app:srcCompat="@drawable/redchair" />
 
             <ImageView
-                android:id="@+id/redchair15"
+                android:id="@+id/redchair4"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:rotationX="180"
@@ -227,7 +192,7 @@
                 app:srcCompat="@drawable/redchair" />
 
             <ImageView
-                android:id="@+id/redchair16"
+                android:id="@+id/redchair1"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:rotationX="180"
@@ -239,10 +204,10 @@
                 app:srcCompat="@drawable/redchair" />
 
             <ImageView
-                android:id="@+id/chair1"
+                android:id="@+id/chair13"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:onClick="@{() -> viewModel.onGreenChairClicked(1)}"
+                android:onClick="@{() -> viewModel.onGreenChairClicked(13)}"
                 app:layout_constraintEnd_toEndOf="@id/table1"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@id/table1"
@@ -250,10 +215,10 @@
                 app:srcCompat="@drawable/greenchair" />
 
             <ImageView
-                android:id="@+id/chair2"
+                android:id="@+id/chair9"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:onClick="@{() -> viewModel.onGreenChairClicked(2)}"
+                android:onClick="@{() -> viewModel.onGreenChairClicked(9)}"
                 app:layout_constraintEnd_toEndOf="@id/table1"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="@id/table1"
@@ -261,10 +226,10 @@
                 app:srcCompat="@drawable/greenchair" />
 
             <ImageView
-                android:id="@+id/chair3"
+                android:id="@+id/chair8"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:onClick="@{() -> viewModel.onGreenChairClicked(3)}"
+                android:onClick="@{() -> viewModel.onGreenChairClicked(8)}"
                 app:layout_constraintEnd_toEndOf="@id/table1"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="@id/table1"
@@ -285,10 +250,10 @@
 
 
             <ImageView
-                android:id="@+id/chair4"
+                android:id="@+id/chair12"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:onClick="@{() -> viewModel.onGreenChairClicked(4)}"
+                android:onClick="@{() -> viewModel.onGreenChairClicked(12)}"
                 android:rotationX="180"
                 app:layout_constraintEnd_toEndOf="@id/table1"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -297,10 +262,10 @@
                 app:srcCompat="@drawable/greenchair" />
 
             <ImageView
-                android:id="@+id/chair5"
+                android:id="@+id/chair10"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:onClick="@{() -> viewModel.onGreenChairClicked(5)}"
+                android:onClick="@{() -> viewModel.onGreenChairClicked(10)}"
                 android:rotationX="180"
                 app:layout_constraintEnd_toEndOf="@id/table1"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -309,10 +274,10 @@
                 app:srcCompat="@drawable/greenchair" />
 
             <ImageView
-                android:id="@+id/chair6"
+                android:id="@+id/chair11"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:onClick="@{() -> viewModel.onGreenChairClicked(6)}"
+                android:onClick="@{() -> viewModel.onGreenChairClicked(11)}"
                 android:rotationX="180"
                 app:layout_constraintEnd_toEndOf="@id/table1"
                 app:layout_constraintHorizontal_bias="1.0"
@@ -321,15 +286,24 @@
                 app:srcCompat="@drawable/greenchair" />
 
             <TextView
-                android:id="@+id/hier_boven_text"
+                android:id="@+id/bureel2_text"
                 style="@style/hier_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="72dp"
-                android:text="@string/hier_boven"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/table1" />
+                android:text="@string/bureel2_gelijkvloers"
+                app:layout_constraintStart_toEndOf="@+id/redchair7"
+                app:layout_constraintStart_toStartOf="@+id/chair7"
+                app:layout_constraintTop_toBottomOf="@+id/redchair10" />
+
+            <TextView
+                android:id="@+id/bureel1_text"
+                style="@style/hier_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="@string/bureel1_gelijkvloers"
+                app:layout_constraintBottom_toBottomOf="@+id/bureel2_text"
+                app:layout_constraintEnd_toEndOf="parent" />
 
             <ImageView
                 android:id="@+id/chair7"
@@ -344,22 +318,10 @@
                 app:srcCompat="@drawable/greenchair" />
 
             <ImageView
-                android:id="@+id/chair8"
+                android:id="@+id/chair6"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:onClick="@{() -> viewModel.onGreenChairClicked(8)}"
-                android:scaleType="fitEnd"
-                app:layout_constraintBottom_toTopOf="@id/table2"
-                app:layout_constraintEnd_toEndOf="@id/table2"
-                app:layout_constraintHorizontal_bias="0.50"
-                app:layout_constraintStart_toStartOf="@id/table2"
-                app:srcCompat="@drawable/greenchair" />
-
-            <ImageView
-                android:id="@+id/chair9"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:onClick="@{() -> viewModel.onGreenChairClicked(9)}"
+                android:onClick="@{() -> viewModel.onGreenChairClicked(6)}"
                 android:scaleType="fitEnd"
                 app:layout_constraintBottom_toTopOf="@id/table2"
                 app:layout_constraintEnd_toEndOf="@id/table2"
@@ -374,40 +336,27 @@
                 android:layout_marginTop="60dp"
                 android:adjustViewBounds="false"
                 android:scaleType="fitXY"
-                app:layout_constraintEnd_toStartOf="@id/table3"
+                app:layout_constraintEnd_toStartOf="@+id/table3"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/hier_boven_text"
+                app:layout_constraintTop_toBottomOf="@id/bureel2_text"
                 app:srcCompat="@drawable/table" />
 
             <ImageView
                 android:id="@+id/table3"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
+                android:layout_marginEnd="32dp"
                 android:adjustViewBounds="false"
                 android:scaleType="fitXY"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/table2"
                 app:layout_constraintTop_toTopOf="@id/table2"
                 app:srcCompat="@drawable/table" />
 
             <ImageView
-                android:id="@+id/chair10"
+                android:id="@+id/chair5"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:onClick="@{() -> viewModel.onGreenChairClicked(10)}"
-                android:rotationX="180"
-                android:scaleType="fitEnd"
-                app:layout_constraintEnd_toEndOf="@id/table2"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@id/table2"
-                app:layout_constraintTop_toBottomOf="@id/table2"
-                app:srcCompat="@drawable/greenchair" />
-
-            <ImageView
-                android:id="@+id/chair11"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:onClick="@{() -> viewModel.onGreenChairClicked(11)}"
+                android:onClick="@{() -> viewModel.onGreenChairClicked(5)}"
                 android:rotationX="180"
                 android:scaleType="fitEnd"
                 app:layout_constraintEnd_toEndOf="@id/table2"
@@ -417,23 +366,10 @@
                 app:srcCompat="@drawable/greenchair" />
 
             <ImageView
-                android:id="@+id/chair12"
+                android:id="@+id/chair3"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:onClick="@{() -> viewModel.onGreenChairClicked(12)}"
-                android:rotationX="180"
-                android:scaleType="fitEnd"
-                app:layout_constraintEnd_toEndOf="@id/table2"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="@id/table2"
-                app:layout_constraintTop_toBottomOf="@id/table2"
-                app:srcCompat="@drawable/greenchair" />
-
-            <ImageView
-                android:id="@+id/chair13"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:onClick="@{() -> viewModel.onGreenChairClicked(13)}"
+                android:onClick="@{() -> viewModel.onGreenChairClicked(3)}"
                 android:scaleType="fitEnd"
                 app:layout_constraintBottom_toTopOf="@id/table3"
                 app:layout_constraintEnd_toEndOf="@id/table3"
@@ -442,10 +378,10 @@
                 app:srcCompat="@drawable/greenchair" />
 
             <ImageView
-                android:id="@+id/chair14"
+                android:id="@+id/chair2"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:onClick="@{() -> viewModel.onGreenChairClicked(14)}"
+                android:onClick="@{() -> viewModel.onGreenChairClicked(2)}"
                 android:scaleType="fitEnd"
                 app:layout_constraintBottom_toTopOf="@id/table3"
                 app:layout_constraintEnd_toEndOf="@id/table3"
@@ -454,10 +390,10 @@
                 app:srcCompat="@drawable/greenchair" />
 
             <ImageView
-                android:id="@+id/chair15"
+                android:id="@+id/chair4"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:onClick="@{() -> viewModel.onGreenChairClicked(15)}"
+                android:onClick="@{() -> viewModel.onGreenChairClicked(4)}"
                 android:rotationX="180"
                 android:scaleType="fitEnd"
                 app:layout_constraintEnd_toEndOf="@id/table3"
@@ -467,10 +403,10 @@
                 app:srcCompat="@drawable/greenchair" />
 
             <ImageView
-                android:id="@+id/chair16"
+                android:id="@+id/chair1"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:onClick="@{() -> viewModel.onGreenChairClicked(16)}"
+                android:onClick="@{() -> viewModel.onGreenChairClicked(1)}"
                 android:rotationX="180"
                 android:scaleType="fitEnd"
                 app:layout_constraintEnd_toEndOf="@id/table3"
