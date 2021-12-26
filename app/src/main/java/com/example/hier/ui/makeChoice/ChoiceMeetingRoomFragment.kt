@@ -8,30 +8,30 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.hier.databinding.FragmentChoiceBinding
-import org.koin.android.ext.android.inject
 
 class ChoiceMeetingRoomFragment : Fragment() {
-//    private val args: RoomOverviewFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val viewModel: ChoiceViewModel by inject()
         val binding = FragmentChoiceBinding.inflate(inflater, container, false)
-        binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
         binding.btnLocOne.setOnClickListener {
-            // val locationId: Int = viewModel.getLocationId("HIER")
-            val directions = ChoiceMeetingRoomFragmentDirections.actionChoiceMeetingRoomFragmentToRoomOverviewFragment(1)
+            val directions =
+                ChoiceMeetingRoomFragmentDirections.actionChoiceMeetingRoomFragmentToRoomOverviewFragment(
+                    1
+                )
             findNavController().navigate(directions)
         }
 
         binding.btnLocTwo.setOnClickListener {
-            // val locationId: Int = viewModel.getLocationId("Kluizen")
-            val directions = ChoiceMeetingRoomFragmentDirections.actionChoiceMeetingRoomFragmentToRoomOverviewFragment(2)
+            val directions =
+                ChoiceMeetingRoomFragmentDirections.actionChoiceMeetingRoomFragmentToRoomOverviewFragment(
+                    2
+                )
             findNavController().navigate(directions)
         }
         return binding.root

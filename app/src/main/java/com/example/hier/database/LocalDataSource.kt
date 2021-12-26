@@ -10,12 +10,8 @@ class LocalDataSource(
     private val reservationDao: ReservationDao,
     private val roomDao: RoomDao
 ) {
-    // fun getLocations() = locationDao.getAllLocations()
     fun getRooms() = roomDao.getRooms()
-    // fun getRoomsByNeededSeats(neededseats:Int) = roomDao.getRoomsByNeededSeats(neededseats)
-
     fun getRoomById(roomId: Int) = roomDao.getRoom(roomId)
-    fun getLocationById(locationId: Int) = roomDao.getLocation(locationId)
     fun getLocationIdByName(name: String) = locationDao.getLocationIdByName(name)
 
     fun getReservations() = reservationDao.getAllMeetingRoomReservations()
@@ -32,26 +28,6 @@ class LocalDataSource(
 
         userDao.getUser(user.username)
     }
-
-/*    fun saveReservations(list: List<CoworkReservationPostModel>) {
-        val reservationList = ArrayList<Reservation>()
-        list.forEach { res -> reservationList.add(res.toDataBaseModel()) }
-        reservationDao.insertAll(reservationList)
-    }*/
-
-    /*fun saveLocations(list: List<LocationNetworkModel>)
-    {
-        val locations = ArrayList<Location>()
-        val rooms = ArrayList<Room>()
-
-        val lwrList: List<LocationWithRooms> = list.map { item -> item.toDatabaseModel() }
-        for (lwr in lwrList) {
-            locations.add(lwr.location)
-            rooms.addAll(lwr.rooms)
-        }
-        locationDao.insertAll(locations)
-        roomDao.insertAll(rooms)
-    }*/
 
     /*
     * Yves

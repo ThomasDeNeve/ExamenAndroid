@@ -11,9 +11,6 @@ interface ApiService {
     @GET("api/customer/GetLoggedIn")
     suspend fun getUser(@Query("username") username: String): Response<UserNetworkModel>
 
-    @GET("api/Location")
-    suspend fun getLocations(): Response<List<LocationNetworkModel>>
-
     @GET("api/Reservation/availablemeetingrooms")
     suspend fun getAvailableMeetingrooms(
         @Query("neededseats") neededseats: Int,

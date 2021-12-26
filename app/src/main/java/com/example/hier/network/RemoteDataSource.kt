@@ -7,11 +7,7 @@ import com.example.hier.util.Resource
 class RemoteDataSource(private val apiService: ApiService) : BaseDataSource() {
     suspend fun getUser(username: String) = getResult { apiService.getUser(username) }
 
-    //suspend fun getReservations() = getResult { apiService.getReservations() }
-
     suspend fun getReservations(date: String) = getResult { apiService.getCoworkReservations(date) }
-
-    suspend fun getLocations() = getResult { apiService.getLocations() }
 
     suspend fun getAvailableMeetingrooms(
         neededseats: Int,
