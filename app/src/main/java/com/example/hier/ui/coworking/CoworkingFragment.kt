@@ -1,50 +1,65 @@
 package com.example.hier.ui.coworking
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.example.hier.databinding.FragmentAlbertLienartstraatCoworkingBinding
+import com.example.hier.databinding.FragmentCoworkingBinding
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
-class AlbertLienartstraatCoworkingFragment : Fragment() {
-    private lateinit var binding: FragmentAlbertLienartstraatCoworkingBinding
+class CoworkingFragment : Fragment() {
+    private lateinit var binding: FragmentCoworkingBinding
+    private val viewModel: CoworkingViewModel by inject()
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        viewModel.setInitialDate()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentAlbertLienartstraatCoworkingBinding.inflate(inflater, container, false)
-        val viewmodel: ALCViewModel by inject()
-        binding.viewModel = viewmodel
+        binding = FragmentCoworkingBinding.inflate(inflater, container, false)
+        binding.viewModel = viewModel
 
-        viewmodel.eventChairClicked.observe(this, Observer { chairClick ->
+        viewModel.eventChairClicked.observe(viewLifecycleOwner, Observer { chairClick ->
             if (chairClick) {
                 val action =
-                    AlbertLienartstraatCoworkingFragmentDirections.actionAlbertLienartstraatCoworkingFragmentToCoworkingRecapFragment()
-                action.seatNumber = viewmodel.clickedSeatId.value!!
-                action.chamberName = viewmodel.chamber.value!!
-                action.date = viewmodel.date.value!!
+                    CoworkingFragmentDirections.actionAlbertLienartstraatCoworkingFragmentToCoworkingRecapFragment()
+                action.seatNumber = viewModel.clickedSeatId.value!!
+                action.chamberName = viewModel.chamber.value!!
+                action.date = viewModel.date.value!!
                 action.locationName = "Albert Lienartstraat"
                 findNavController().navigate(action)
-                viewmodel.onGreenChairClickedComplete()
+                viewModel.onGreenChairClickedComplete()
             }
         })
 
-        viewmodel.listOfChairs.forEach { item ->
-            item.observe(this, Observer {
-                updateChairs(viewmodel)
+
+        viewModel.date.observe(viewLifecycleOwner, Observer { newDate ->
+            lifecycleScope.launch { viewModel.checkAvailability(newDate) }
+        })
+
+        viewModel.setInitialDate()
+        
+        viewModel.listOfChairs.forEach { item ->
+            item.observe(viewLifecycleOwner, Observer {
+                updateChairs(viewModel)
             })
         }
 
         return binding.root
     }
 
-    private fun updateChairs(viewmodel: ALCViewModel) {
+    private fun updateChairs(viewmodel: CoworkingViewModel) {
         binding.chair1.visibility =
             if (viewmodel.chair1reserved.value!!) View.GONE else View.VISIBLE
         binding.chair2.visibility =

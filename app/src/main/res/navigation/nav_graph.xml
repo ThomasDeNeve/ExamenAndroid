@@ -92,7 +92,7 @@
     </fragment>
     <fragment
         android:id="@+id/albertLienartstraatCoworkingFragment"
-        android:name="com.example.hier.ui.coworking.AlbertLienartstraatCoworkingFragment"
+        android:name="com.example.hier.ui.coworking.CoworkingFragment"
         android:label="AlbertLienartstraatCoworkingFragment" >
         <action
             android:id="@+id/action_albertLienartstraatCoworkingFragment_to_coworkingRecapFragment"

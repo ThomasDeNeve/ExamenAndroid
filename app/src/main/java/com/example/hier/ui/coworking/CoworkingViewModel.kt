@@ -6,11 +6,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import com.example.hier.models.CoworkReservation
 import com.example.hier.repository.ReservationRepository
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import okhttp3.internal.notifyAll
 import java.util.*
 
-class ALCViewModel(
+class CoworkingViewModel(
     val reservationRepository: ReservationRepository
 ) : ViewModel() {
 
@@ -103,18 +102,20 @@ class ALCViewModel(
         chair16reserved
     )
 
-    init {
+    fun setInitialDate() {
         var today = System.currentTimeMillis()
         today = today.div(86400000L) //remove hours and minutes from date
         today = today.times(86400000L)
         _date.value = today
+    }
+/*
+    suspend fun observeDatePicker() {
         _date.observeForever(Observer { newDate ->
             checkAvailability(newDate)
         })
+    }*/
 
-    }
-
-    fun checkAvailability(newDate: Long) = runBlocking {
+    suspend fun checkAvailability(newDate: Long) {
         val dateAsDate: Date = Date(newDate)
 
         _chair1reserved.value = false
@@ -133,46 +134,46 @@ class ALCViewModel(
         _chair14reserved.value = false
         _chair15reserved.value = false
         _chair16reserved.value = false
-        launch {
-            reservationsList.postValue(reservationRepository.getCoworkReservations(dateAsDate))
-            reservationsList.value?.let {
-                for (x in reservationsList.value!!) {
-                    if (x.seatId == 1)
-                        _chair1reserved.value = true
-                    if (x.seatId == 2)
-                        _chair2reserved.value = true
-                    if (x.seatId == 3)
-                        _chair3reserved.value = true
-                    if (x.seatId == 4)
-                        _chair4reserved.value = true
-                    if (x.seatId == 5)
-                        _chair5reserved.value = true
-                    if (x.seatId == 6)
-                        _chair6reserved.value = true
-                    if (x.seatId == 7)
-                        _chair7reserved.value = true
-                    if (x.seatId == 8)
-                        _chair8reserved.value = true
-                    if (x.seatId == 9)
-                        _chair9reserved.value = true
-                    if (x.seatId == 10)
-                        _chair10reserved.value = true
-                    if (x.seatId == 11)
-                        _chair11reserved.value = true
-                    if (x.seatId == 12)
-                        _chair12reserved.value = true
-                    if (x.seatId == 13)
-                        _chair13reserved.value = true
-                    if (x.seatId == 14)
-                        _chair14reserved.value = true
-                    if (x.seatId == 15)
-                        _chair15reserved.value = true
-                    if (x.seatId == 16)
-                        _chair16reserved.value = true
-                }
+
+        reservationsList.value = reservationRepository.getCoworkReservations(dateAsDate)
+        reservationsList.value?.let {
+            for (x in reservationsList.value!!) {
+                if (x.seatId == 1)
+                    _chair1reserved.value = true
+                if (x.seatId == 2)
+                    _chair2reserved.value = true
+                if (x.seatId == 3)
+                    _chair3reserved.value = true
+                if (x.seatId == 4)
+                    _chair4reserved.value = true
+                if (x.seatId == 5)
+                    _chair5reserved.value = true
+                if (x.seatId == 6)
+                    _chair6reserved.value = true
+                if (x.seatId == 7)
+                    _chair7reserved.value = true
+                if (x.seatId == 8)
+                    _chair8reserved.value = true
+                if (x.seatId == 9)
+                    _chair9reserved.value = true
+                if (x.seatId == 10)
+                    _chair10reserved.value = true
+                if (x.seatId == 11)
+                    _chair11reserved.value = true
+                if (x.seatId == 12)
+                    _chair12reserved.value = true
+                if (x.seatId == 13)
+                    _chair13reserved.value = true
+                if (x.seatId == 14)
+                    _chair14reserved.value = true
+                if (x.seatId == 15)
+                    _chair15reserved.value = true
+                if (x.seatId == 16)
+                    _chair16reserved.value = true
             }
         }
     }
+
 
     /**
      * Clickhandler for chair

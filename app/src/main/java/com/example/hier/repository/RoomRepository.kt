@@ -92,7 +92,7 @@ class RoomRepository(
         remoteDataSource.addMeetingroomReservation(meetingroomReservationPostModel)
     }
 
-    fun getRooms_fetchDirectly(): LiveData<Resource<List<Room>>> {
+    /*fun getRooms_fetchDirectly(): LiveData<Resource<List<Room>>> {
         val rooms = ArrayList<Room>()
         runBlocking {
             launch {
@@ -110,7 +110,7 @@ class RoomRepository(
         val resource: Resource<List<Room>>
         resource = Resource(Status.SUCCESS, rooms, null)
         return MutableLiveData<Resource<List<Room>>>(resource)
-    }
+    }*/
 
     fun getCurrentUser(): User {
         return localDataSource.getCurrentUser()
