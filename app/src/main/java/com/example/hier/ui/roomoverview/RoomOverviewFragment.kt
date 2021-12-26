@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.hier.R
@@ -18,6 +19,7 @@ import com.example.hier.databinding.FragmentRoomoverviewBinding
 import com.example.hier.models.Room
 import com.example.hier.util.Status
 import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import java.util.*
 
@@ -34,6 +36,10 @@ class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener {
         savedInstanceState: Bundle?
     ): View {
         val binding = FragmentRoomoverviewBinding.inflate(inflater, container, false)
+
+        lifecycleScope.launch {
+            overviewViewModel.initializeUser()
+        }
 
         buildDatePicker(binding)
         buildAmountOfSeatsSpinner(binding)

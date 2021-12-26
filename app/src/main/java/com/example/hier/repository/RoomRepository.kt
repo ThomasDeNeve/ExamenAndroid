@@ -112,7 +112,7 @@ class RoomRepository(
         return MutableLiveData<Resource<List<Room>>>(resource)
     }*/
 
-    fun getCurrentUser(): User {
+    suspend fun getCurrentUser(): User {
         return localDataSource.getCurrentUser()
     }
 }

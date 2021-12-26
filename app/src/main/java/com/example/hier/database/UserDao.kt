@@ -17,8 +17,8 @@ interface UserDao {
 
     @Transaction
     @Query("select * from users order by userId desc limit 1")
-    fun getCurrentUser(): User
+    suspend fun getCurrentUser(): User
 
     @Insert(onConflict = REPLACE)
-    fun insert(user: User)
+    suspend fun insert(user: User)
 }

@@ -44,7 +44,7 @@ class ReservationRepository(
     }
 
 
-    fun getUser(): User {
+    suspend fun getUser(): User {
         return localDataSource.getCurrentUser()
     }
 }

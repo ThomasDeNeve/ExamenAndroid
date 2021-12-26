@@ -23,11 +23,11 @@ class LocalDataSource(
 
     fun getUser(username: String) = userDao.getUser(username)
 
-    fun getCurrentUser(): User {
+    suspend fun getCurrentUser(): User {
         return userDao.getCurrentUser()
     }
 
-    fun saveUser(user: User) {
+    suspend fun saveUser(user: User) {
         userDao.insert(user)
 
         userDao.getUser(user.username)
