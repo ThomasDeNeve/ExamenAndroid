@@ -13,6 +13,7 @@ class MyApplication : Application() {
     companion object {
         var cachedCredentials: Credentials? = null
         var cachedUserProfile: UserProfile? = null
+        var apiAccessToken: String = ""
     }
 
     override fun onCreate() {
