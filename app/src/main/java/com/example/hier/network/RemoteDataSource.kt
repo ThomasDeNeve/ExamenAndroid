@@ -8,7 +8,9 @@ import com.example.hier.util.Resource
 
 class RemoteDataSource(private val apiService: ApiService) : BaseDataSource() {
 
-    suspend fun getReservations(date: String) = getResult { apiService.getCoworkReservations(date) }
+    suspend fun getUser(username: String) = getResult { apiService.getUser("Bearer " + apiAccessToken, username) }
+
+    suspend fun getReservations(date: String) = getResult { apiService.getCoworkReservations("Bearer " + apiAccessToken, date) }
 
     suspend fun getAvailableMeetingrooms(
         neededseats: Int,
@@ -17,6 +19,7 @@ class RemoteDataSource(private val apiService: ApiService) : BaseDataSource() {
         datetimeEnd: String
     ) = getResult {
         apiService.getAvailableMeetingrooms(
+            "Bearer " + apiAccessToken,
             neededseats,
             locationid,
             datetimeStart,
@@ -25,9 +28,9 @@ class RemoteDataSource(private val apiService: ApiService) : BaseDataSource() {
     }
 
     suspend fun addCoworkReservation(coworkReservationPostModel: CoworkReservationPostModel): Resource<String> {
-        return getResult { apiService.postCoworkReservation(coworkReservationPostModel) }
+        return getResult { apiService.postCoworkReservation("Bearer " + apiAccessToken, coworkReservationPostModel) }
     }
 
     suspend fun addMeetingroomReservation(meetingroomReservationPostModel: MeetingroomReservationPostModel) =
-        getResult { apiService.postMeetingroomReservation(meetingroomReservationPostModel) }
+        getResult { apiService.postMeetingroomReservation("Bearer " + apiAccessToken, meetingroomReservationPostModel) }
 }
