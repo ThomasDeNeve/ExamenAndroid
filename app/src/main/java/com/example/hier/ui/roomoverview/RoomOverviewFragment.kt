@@ -5,9 +5,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.hier.R
@@ -16,6 +19,7 @@ import com.example.hier.databinding.FragmentRoomoverviewBinding
 import com.example.hier.models.Room
 import com.example.hier.util.Status
 import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import java.util.*
 
@@ -26,8 +30,16 @@ class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener {
 
     private var timeslot: String = ""
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         val binding = FragmentRoomoverviewBinding.inflate(inflater, container, false)
+
+        lifecycleScope.launch {
+            overviewViewModel.initializeUser()
+        }
 
         buildDatePicker(binding)
         buildAmountOfSeatsSpinner(binding)
@@ -48,9 +60,15 @@ class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener {
     }
 
     override fun onRoomClicked(room: Room) {
-        val user = 1 // TODO: get actual userid
+        val user = overviewViewModel.currentUser.userId
         val directions =
-            RoomOverviewFragmentDirections.actionRoomOverviewFragmentToRoomFragment(room.id, overviewViewModel.datetimeStart, overviewViewModel.datetimeEnd, user, timeslot)
+            RoomOverviewFragmentDirections.actionRoomOverviewFragmentToRoomFragment(
+                room.id,
+                overviewViewModel.datetimeStart,
+                overviewViewModel.datetimeEnd,
+                user,
+                timeslot
+            )
 
         findNavController().navigate(directions)
     }
@@ -68,18 +86,15 @@ class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener {
             {
                 it?.let { resource ->
                     when (resource.status) {
-                        Status.SUCCESS ->
-                            {
-                                adapter.data = resource.data!!
-                            }
-                        Status.LOADING ->
-                            {
-                                Toast.makeText(context, "Loading...", Toast.LENGTH_LONG).show()
-                            }
-                        Status.ERROR ->
-                            {
-                                Toast.makeText(context, resource.message, Toast.LENGTH_LONG).show()
-                            }
+                        Status.SUCCESS -> {
+                            adapter.data = resource.data!!
+                        }
+                        Status.LOADING -> {
+                            Toast.makeText(context, "Loading...", Toast.LENGTH_LONG).show()
+                        }
+                        Status.ERROR -> {
+                            Toast.makeText(context, resource.message, Toast.LENGTH_LONG).show()
+                        }
                     }
                 }
             }
@@ -100,7 +115,12 @@ class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener {
                 overviewViewModel.rooms = overviewViewModel.getAvavailableRooms()
             }
 
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
                 val item = parent?.getItemAtPosition(position) as Int
                 overviewViewModel.neededseats = item
 
@@ -112,7 +132,12 @@ class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener {
 
     private fun buildTimeOfDaySpinner(binding: FragmentRoomoverviewBinding) {
         val spinner = binding.timeSpinner
-        val items = arrayOf("Voormiddag", "Namiddag", "Hele dag", "Avond") // TODO: 2 hours slot edge case (needs refactoring)
+        val items = arrayOf(
+            "Voormiddag",
+            "Namiddag",
+            "Hele dag",
+            "Avond"
+        ) // TODO: 2 hours slot edge case (needs refactoring)
 
         spinner.adapter = ArrayAdapter(this.requireContext(), R.layout.custom_spinner_list, items)
 
@@ -121,7 +146,12 @@ class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener {
                 rebuildDateAndOverviewViewModel("08:00:00", "12:00:00")
             }
 
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
                 when (parent?.getItemAtPosition(position).toString()) {
                     "Voormiddag" -> {
                         rebuildDateAndOverviewViewModel("08:00:00", "12:00:00")
@@ -162,8 +192,11 @@ class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener {
     private fun buildDatePicker(binding: FragmentRoomoverviewBinding) {
         val now = Calendar.getInstance()
 
-        binding.datePicker.init(now.get(Calendar.YEAR), now.get(Calendar.MONTH), now.get(Calendar.DAY_OF_MONTH)) {
-            _, year, month, day ->
+        binding.datePicker.init(
+            now.get(Calendar.YEAR),
+            now.get(Calendar.MONTH),
+            now.get(Calendar.DAY_OF_MONTH)
+        ) { _, year, month, day ->
             val month = month + 1
 
             overviewViewModel.datetimeStart = "$year-$month-$day 08:00:00"

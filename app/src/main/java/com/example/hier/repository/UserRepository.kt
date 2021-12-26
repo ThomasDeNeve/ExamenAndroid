@@ -15,26 +15,13 @@ class UserRepository(
         var userNetworkModel: Resource<UserNetworkModel> = remoteDataSource.getUser(username)
 
         if (userNetworkModel.data != null) {
-            userNetworkModel.data?.toDatabaseModel()?.let { localDataSource.saveUser(it) }
+            localDataSource.saveUser(userNetworkModel.data!!.toDatabaseModel())
         }
     }
 
-    fun getReservations() = performGetOperation(
+   /* fun getReservations() = performGetOperation(
         databaseQuery = { localDataSource.getReservations() },
         networkCall = { remoteDataSource.getReservations() },
         saveCallResult = { localDataSource.saveReservations(it.records) }
-    )
-
-    /*fun loginUser(username: String, password: String): LiveData<Resource<LoginResponse>> = liveData(Dispatchers.IO) {
-        Log.e("UserRepository", "got into loginUser")
-        emit(remoteDataSource.loginUser(username, password))
-        /*val temp = remoteDataSource.loginUser(username, password)
-        temp.let { resource ->
-            when (resource.status) {
-                Status.SUCCESS -> {
-                    return a;
-                }
-            }
-        }*/
-    }*/
+    )*/
 }
