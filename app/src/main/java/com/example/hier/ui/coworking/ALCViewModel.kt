@@ -8,7 +8,6 @@ import com.example.hier.models.CoworkReservation
 import com.example.hier.repository.ReservationRepository
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import java.text.SimpleDateFormat
 import java.util.*
 
 class ALCViewModel(
@@ -39,7 +38,7 @@ class ALCViewModel(
     private val _chair1reserved = MutableLiveData<Boolean>()
     val chair1reserved: LiveData<Boolean>
         get() = _chair1reserved
-    private val _chair2reserved = MutableLiveData<Boolean>()
+    val _chair2reserved = MutableLiveData<Boolean>()
     val chair2reserved: LiveData<Boolean>
         get() = _chair2reserved
     private val _chair3reserved = MutableLiveData<Boolean>()
@@ -85,6 +84,25 @@ class ALCViewModel(
     val chair16reserved: LiveData<Boolean>
         get() = _chair16reserved
 
+    val listOfChairs: List<LiveData<Boolean>> = listOf(
+        chair1reserved,
+        chair2reserved,
+        chair3reserved,
+        chair4reserved,
+        chair5reserved,
+        chair6reserved,
+        chair7reserved,
+        chair8reserved,
+        chair9reserved,
+        chair10reserved,
+        chair11reserved,
+        chair12reserved,
+        chair13reserved,
+        chair14reserved,
+        chair15reserved,
+        chair16reserved
+    )
+
     init {
         var today = System.currentTimeMillis()
         today = today.div(86400000L) //remove hours and minutes from date
@@ -97,7 +115,7 @@ class ALCViewModel(
     }
 
     fun checkAvailability(newDate: Long) = runBlocking {
-        val dateAsDate : Date = Date(newDate)
+        val dateAsDate: Date = Date(newDate)
 
         _chair1reserved.value = false
         _chair2reserved.value = false

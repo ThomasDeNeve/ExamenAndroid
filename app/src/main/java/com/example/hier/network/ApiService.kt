@@ -22,8 +22,8 @@ interface ApiService {
         @Query("datetimeEnd") datetimeEnd: String
     ): Response<List<MeetingRoomNetworkModel>>
 
-    @GET("api/reservation/coworkroom/")
-    suspend fun getCoworkReservations(@Query("date") date: String): Response<List<CoworkReservationPostModel>>
+    @GET("api/reservation/coworkroom")
+    suspend fun getCoworkReservations(@Query("date") date: String): Response<List<CoworkReservationReceiveModel>>
 
     @POST("api/reservation/seat")
     suspend fun postCoworkReservation(@Body coworkReservation: CoworkReservationPostModel): Response<CoworkReservationPostModel>
