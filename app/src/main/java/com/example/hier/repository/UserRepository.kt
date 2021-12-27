@@ -4,7 +4,6 @@ import com.example.hier.database.LocalDataSource
 import com.example.hier.network.RemoteDataSource
 import com.example.hier.networkModels.UserNetworkModel
 import com.example.hier.util.Resource
-import com.example.hier.util.performGetOperation
 
 class UserRepository(
     private val remoteDataSource: RemoteDataSource,
@@ -12,16 +11,12 @@ class UserRepository(
 ) {
 
     suspend fun getUser(username: String) {
-        var userNetworkModel: Resource<UserNetworkModel> = remoteDataSource.getUser(username)
+        val userNetworkModel: Resource<UserNetworkModel> = remoteDataSource.getUser(username)
 
         if (userNetworkModel.data != null) {
-            localDataSource.saveUser(userNetworkModel.data!!.toDatabaseModel())
+            localDataSource.saveUser(userNetworkModel.data.toDatabaseModel())
+        } else {
+            throw IllegalStateException("Failed to fetch user!")
         }
     }
-
-   /* fun getReservations() = performGetOperation(
-        databaseQuery = { localDataSource.getReservations() },
-        networkCall = { remoteDataSource.getReservations() },
-        saveCallResult = { localDataSource.saveReservations(it.records) }
-    )*/
 }

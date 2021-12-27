@@ -111,6 +111,7 @@ class LoginFragment : Fragment() {
                 )
         }
     }
+
     private fun getUserProfile() {
         if (MyApplication.cachedUserProfile != null) {
             return
@@ -130,11 +131,18 @@ class LoginFragment : Fragment() {
 
                 override fun onSuccess(result: UserProfile) {
                     MyApplication.cachedUserProfile = result
-                    lifecycleScope.launch { viewModel.insertNewUser(result.email) }
-                    navigateToHome()
+                    lifecycleScope.launch {
+                        try {
+                            viewModel.insertNewUser(result.email)
+                            navigateToHome()
+                        } catch (e: Exception) {
+                            Toast.makeText(context, e.message, Toast.LENGTH_LONG).show()
+                        }
+                    }
                 }
             })
     }
+
     private fun navigateToHome() {
         val directions =
             LoginFragmentDirections.actionLoginFragmentToChoiceMeetingRoomFragment() // actionLoginFragmentToMainActivity()
