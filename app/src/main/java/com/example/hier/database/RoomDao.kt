@@ -1,7 +1,11 @@
 package com.example.hier.database
 
 import androidx.lifecycle.LiveData
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import androidx.room.Transaction
 import com.example.hier.models.Location
 import com.example.hier.models.Room
 
@@ -23,7 +27,7 @@ interface RoomDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(list: List<Room>)
 
-    // Delete all meetingrooms in the cached database. This ensures the cached data is equal to the data retreived via the API
+    // Delete all meetingrooms in the cached database. This ensures the cached data is equal to the data retrieved via the API
     @Transaction
     @Query("delete from rooms")
     fun deleteAllRooms()

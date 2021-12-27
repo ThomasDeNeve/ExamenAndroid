@@ -33,8 +33,7 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // val viewModel: LoginViewModel by inject()
+    ): View {
         val binding = FragmentLoginBinding.inflate(inflater, container, false)
 
         binding.viewModel = viewModel
@@ -54,7 +53,7 @@ class LoginFragment : Fragment() {
         account = Auth0(clientId, domain)
 
         activity?.let {
-            //Get Authentication token for API calls
+            // Get Authentication token for API calls
             WebAuthProvider.login(account)
                 .withScheme("demo")
                 .withScope("openid")
@@ -111,6 +110,7 @@ class LoginFragment : Fragment() {
                 )
         }
     }
+
     private fun getUserProfile() {
         if (MyApplication.cachedUserProfile != null) {
             return
@@ -130,14 +130,21 @@ class LoginFragment : Fragment() {
 
                 override fun onSuccess(result: UserProfile) {
                     MyApplication.cachedUserProfile = result
-                    lifecycleScope.launch { viewModel.insertNewUser(result.email) }
-                    navigateToHome()
+                    lifecycleScope.launch {
+                        try {
+                            viewModel.insertNewUser(result.email)
+                            navigateToHome()
+                        } catch (e: Exception) {
+                            Toast.makeText(context, e.message, Toast.LENGTH_LONG).show()
+                        }
+                    }
                 }
             })
     }
+
     private fun navigateToHome() {
         val directions =
-            LoginFragmentDirections.actionLoginFragmentToChoiceMeetingRoomFragment() // actionLoginFragmentToMainActivity()
+            LoginFragmentDirections.actionLoginFragmentToChoiceMeetingRoomFragment()
         findNavController().navigate(directions)
     }
 }

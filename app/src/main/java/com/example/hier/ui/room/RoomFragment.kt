@@ -82,7 +82,7 @@ class RoomFragment : Fragment() {
         (activity as AppCompatActivity).supportActionBar?.title = roomName
     }
 
-    fun onReserveButtonClicked() {
+    private fun onReserveButtonClicked() {
         val directions = RoomFragmentDirections.actionRoomFragmentToChoiceMeetingRoomFragment()
         findNavController().navigate(directions)
     }

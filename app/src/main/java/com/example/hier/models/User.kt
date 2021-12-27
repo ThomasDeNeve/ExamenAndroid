@@ -8,5 +8,4 @@ import androidx.room.PrimaryKey
 class User(
     @PrimaryKey var username: String,
     @ColumnInfo(name = "userID") var userId: Int
-) {
-}
+)

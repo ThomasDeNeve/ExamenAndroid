@@ -46,8 +46,6 @@ class ProfileFragment : Fragment() {
 
         getUserMetadata()
 
-        // binding.lblName.text = "Test"
-
         binding.btnLogout.setOnClickListener {
             logoutWithBrowser()
         }

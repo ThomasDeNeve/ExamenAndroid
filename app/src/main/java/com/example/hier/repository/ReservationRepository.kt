@@ -9,18 +9,12 @@ import com.example.hier.network.RemoteDataSource
 import com.example.hier.networkModels.CoworkReservationPostModel
 import com.example.hier.util.Resource
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Date
 
 class ReservationRepository(
     private val remoteDataSource: RemoteDataSource,
     private val localDataSource: LocalDataSource
 ) {
-/*    fun getRooms() = performGetOperation(
-        databaseQuery = { localDataSource.getReservations() },
-        networkCall = { remoteDataSource.getReservations() },
-        saveCallResult = { localDataSource.saveReservations(it.records) }
-    )*/
-
     /**
      *
      *fetch reservations and adapt to Reservation class
@@ -45,14 +39,12 @@ class ReservationRepository(
         return remoteDataSource.addCoworkReservation(coworkReservation)
     }
 
-
     suspend fun getUser(): User {
-        if(cachedUserProfile != null){
+        if (cachedUserProfile != null) {
             val username: String = cachedUserProfile?.name.toString()
             return localDataSource.getUser(username)
-        }
-        else Log.e("ReservationRepository", "CachedUserProfile was null!")
-        //return localDataSource.getUser(username).value!!
-        return localDataSource.getNewestUser();
+        } else Log.e("ReservationRepository", "CachedUserProfile was null!")
+        // return localDataSource.getUser(username).value!!
+        return localDataSource.getNewestUser()
     }
 }

@@ -30,11 +30,10 @@ val networkModule = module {
     single { ApplicationDatabase.getDatabase(androidApplication()).reservationsDao() }
     single { ApplicationDatabase.getDatabase(androidApplication()).roomDao() }
     single { RemoteDataSource(get()) }
-    single { LocalDataSource(get(), get(), get(), get()) }
+    single { LocalDataSource(get(), get()) }
     single { RoomRepository(get(), get()) }
     single { UserRepository(get(), get()) }
     single { ReservationRepository(get(), get()) }
-    // single { LocationRepository(get(), get()) }
 }
 
 private fun provideUnsafeOkHttpClient(): OkHttpClient {
@@ -62,15 +61,6 @@ private fun provideUnsafeOkHttpClient(): OkHttpClient {
         .sslSocketFactory(sslSocketFactory, trustAllCerts[0] as X509TrustManager)
         .hostnameVerifier { _, _ -> true }.addInterceptor(loggingInterceptor).build()
 }
-
-// DONT DELETE THIS!
-/*private fun provideOkHttpClient() = if (BuildConfig.DEBUG) {
-    val loggingInterceptor = HttpLoggingInterceptor()
-    loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
-    OkHttpClient.Builder()
-        .addInterceptor(loggingInterceptor)
-        .build()
-} else OkHttpClient.Builder().build()*/
 
 private fun provideRetrofit(
     okHttpClient: OkHttpClient,

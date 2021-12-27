@@ -3,22 +3,15 @@
     <string name="profile">Profiel</string>
     <string name="reserve_meetingroom">Zalen</string>
     <string name="reserve">Reserveer</string>
-    <string name="confirm">Bevestig</string>
-    <string name="from">Van</string>
     <string name="reserve_coworkingspace">Stoelen</string>
     <string name="myReservations">Reservaties</string>
-    <string name="username">Gebruikersnaam</string>
-    <string name="passwordHint">Vul uw paswoord in</string>
     <string name="login">Login</string>
-    <string name="register">Registreer</string>
     <string name="hier_logo">HIER logo</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="dagprijs_label">Prijs volledige dag:</string>
     <string name="halvedagprijs_label">Prijs halve dag:</string>
     <string name="avondprijs_label">Prijs avond:</string>
     <string name="tweeuurprijs_label">Prijs voor 2 uur:</string>
     <string name="grootte_label">zitplaatsen</string>
-    <string name="rooms_fragment_title">Reserveer zalen</string>
     <string name="euro">euro</string>
     <string name="info">Info</string>
     <string name="locatie">Locatie:</string>
@@ -31,22 +24,12 @@
     <string name="coworking_gelijkvloers">Coworking 1 - gelijkvloers</string>
     <string name="bureel2_gelijkvloers">Bureel 2 - gelijkvloers</string>
     <string name="bureel1_gelijkvloers">Bureel 1 - gelijkvloers</string>
-    <string name="kies_locatie">Kies locatie voor coworking</string>
     <string name="reservation_recap">Samenvatting van uw reservatie</string>
     <string name="aanvragen">Aanvragen</string>
-    <string-array name="tijdssloten">
-        <item>Voormiddag</item>
-        <item>Namiddag</item>
-        <item>Avond</item>
-        <item>Dag</item>
-    </string-array>
-    <string name="error_login" >Fout tijdens login</string>
     <string name="auth0_clientId">tIHBlQvkYFg35zCofxtjKPvip5Yrg2b2</string>
     <string name="auth0_domain">devops-t4.eu.auth0.com</string>
     <string name="auth0_scheme">demo</string>
     <string name="logout">Afmelden</string>
-    <string name="to">Tot</string>
-    <string name="room_overview">Room overview</string>
     <string name="aantalPlaatsen">Aantal plaatsen:</string>
     <string name="profile_userData">Gebruikers gegevens</string>
     <string name="profile_name">Naam</string>
@@ -58,7 +41,13 @@
     <string name="col2_header">Tot</string>
     <string name="col3_header">Zaal</string>
     <string name="col4_header">Stoel</string>
-    <string name="aanpassing_selectie">Aanpassing selectie</string>
     <string name="capaciteit">Capaciteit</string>
     <string name="tijdstip_dag">Tijdstip dag</string>
+    <string name="hier_arrow_img">Arrow image HIER</string>
+    <string name="location_img">Location image</string>
+    <string name="room_image">Room image</string>
+    <string name="red_chair">Red chair</string>
+    <string name="green_chair">Green chair</string>
+    <string name="table">table</string>
+    <string name="hier">HIER</string>
 </resources>

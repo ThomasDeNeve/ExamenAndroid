@@ -54,12 +54,7 @@ class RoomRepository(
         saveCallResult = { localDataSource.saveRooms(it) }
     )
 
-    // TODO: change to remoteDataSource
-    fun getLocationIdByName(name: String): Int {
-        return localDataSource.getLocationIdByName(name)
-    }
-
-    suspend fun addReservation(meetingroomReservationPostModel: MeetingroomReservationPostModel) : Resource<String> {
+    suspend fun addReservation(meetingroomReservationPostModel: MeetingroomReservationPostModel): Resource<String> {
         return remoteDataSource.addMeetingroomReservation(meetingroomReservationPostModel)
     }
 

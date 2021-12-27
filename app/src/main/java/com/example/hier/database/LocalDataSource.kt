@@ -5,17 +5,11 @@ import com.example.hier.models.User
 import com.example.hier.networkModels.MeetingRoomNetworkModel
 
 class LocalDataSource(
-    private val locationDao: LocationDao,
     private val userDao: UserDao,
-    private val reservationDao: ReservationDao,
     private val roomDao: RoomDao
 ) {
     fun getRooms() = roomDao.getRooms()
     fun getRoomById(roomId: Int) = roomDao.getRoom(roomId)
-    fun getLocationIdByName(name: String) = locationDao.getLocationIdByName(name)
-
-    fun getReservations() = reservationDao.getAllMeetingRoomReservations()
-    fun getReservations(date: Long) = reservationDao.getMeetingRoomReservationsOnDate(date)
 
     suspend fun getUser(username: String): User {
         return userDao.getUser(username)

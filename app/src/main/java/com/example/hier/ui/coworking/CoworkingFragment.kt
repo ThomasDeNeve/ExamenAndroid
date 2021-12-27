@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.hier.databinding.FragmentCoworkingBinding
@@ -26,11 +25,11 @@ class CoworkingFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentCoworkingBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
 
-        viewModel.eventChairClicked.observe(viewLifecycleOwner, Observer { chairClick ->
+        viewModel.eventChairClicked.observe(viewLifecycleOwner, { chairClick ->
             if (chairClick) {
                 val action =
                     CoworkingFragmentDirections.actionAlbertLienartstraatCoworkingFragmentToCoworkingRecapFragment()
@@ -43,15 +42,14 @@ class CoworkingFragment : Fragment() {
             }
         })
 
-
-        viewModel.date.observe(viewLifecycleOwner, Observer { newDate ->
+        viewModel.date.observe(viewLifecycleOwner, { newDate ->
             lifecycleScope.launch { viewModel.checkAvailability(newDate) }
         })
 
         viewModel.setInitialDate()
 
         viewModel.listOfChairs.forEach { item ->
-            item.observe(viewLifecycleOwner, Observer {
+            item.observe(viewLifecycleOwner, {
                 updateChairs(viewModel)
             })
         }

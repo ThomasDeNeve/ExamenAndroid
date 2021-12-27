@@ -14,7 +14,7 @@ val viewModelModule = module {
     viewModel { LoginViewModel(get()) }
     viewModel { RoomOverviewViewModel(get()) }
     viewModel { ProfileViewModel(get()) }
-    viewModel { ReservationsViewModel(get()) }
+    viewModel { ReservationsViewModel() }
     viewModel { RoomViewModel(get()) }
     viewModel { CoworkingViewModel(get()) }
     viewModel { CoworkingRecapViewModel(get()) }
