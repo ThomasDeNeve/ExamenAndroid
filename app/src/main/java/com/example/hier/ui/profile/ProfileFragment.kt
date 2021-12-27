@@ -1,11 +1,11 @@
 package com.example.hier.ui.profile
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.auth0.android.Auth0
@@ -15,6 +15,7 @@ import com.auth0.android.management.ManagementException
 import com.auth0.android.management.UsersAPIClient
 import com.auth0.android.provider.WebAuthProvider
 import com.auth0.android.result.UserProfile
+import com.example.hier.MainActivity
 import com.example.hier.MyApplication.Companion.cachedCredentials
 import com.example.hier.MyApplication.Companion.cachedUserProfile
 import com.example.hier.R
@@ -56,7 +57,11 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (activity as AppCompatActivity).supportActionBar?.title = "Mijn profiel"
+        try {
+            (activity as MainActivity).supportActionBar?.title = "Mijn profiel"
+        } catch (e: java.lang.ClassCastException) {
+            Log.i("classcastexception: ", e.stackTraceToString())
+        }
     }
 
     private fun getUserMetadata() {
@@ -72,14 +77,19 @@ class ProfileFragment : Fragment() {
             .start(object : Callback<UserProfile, ManagementException> {
 
                 override fun onFailure(error: ManagementException) {
-                    Toast.makeText(context, "Laden van gebruikersinfo gefaald. ${error.getDescription()}", Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        context,
+                        "Laden van gebruikersinfo gefaald. ${error.getDescription()}",
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
 
                 override fun onSuccess(result: UserProfile) {
                     cachedUserProfile = result
 
                     binding.lblProfileName.text = result.getUserMetadata()["first_name"] as String?
-                    binding.lblProfileFirstName.text = result.getUserMetadata()["last_name"] as String?
+                    binding.lblProfileFirstName.text =
+                        result.getUserMetadata()["last_name"] as String?
                     binding.lblProfileEmail.text = result.email
                     binding.lblProfileTel.text = result.getUserMetadata()["tel"] as String?
                     binding.lblProfileBTW.text = result.getUserMetadata()["btw_nr"] as String?

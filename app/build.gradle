@@ -22,8 +22,8 @@ android {
         versionCode 1
         versionName "1.0"
         //TODO IMPORTANT change BASE_URL to backend-URL!!
-        //buildConfigField 'String', 'BASE_URL', "\"https://10.0.2.2:5001/\""
-        buildConfigField 'String', 'BASE_URL', "\"http://ec2-3-212-186-23.compute-1.amazonaws.com:5000/\""
+        buildConfigField 'String', 'BASE_URL', "\"https://10.0.2.2:5001/\""
+        //buildConfigField 'String', 'BASE_URL', "\"http://ec2-3-212-186-23.compute-1.amazonaws.com:5000/\""
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         //manifestPlaceholders = [auth0Domain: "@string/devops-t4.eu.auth0.com", auth0Scheme: "https"]
         manifestPlaceholders = [auth0Domain: "devops-t4.eu.auth0.com", auth0Scheme: "demo"]
@@ -68,7 +68,7 @@ dependencies {
     // Koin for Jetpack WorkManager
     implementation "io.insert-koin:koin-androidx-workmanager:$koin_version"
     // Koin for Jetpack Compose
-    implementation "io.insert-koin:koin-androidx-compose:$koin_version"
+    //implementation "io.insert-koin:koin-androidx-compose:$koin_version"
 
 
     // RETROFIT
@@ -108,6 +108,12 @@ dependencies {
 
     // Add the Auth0 Android SDK
     implementation 'com.auth0.android:auth0:2.5.1'
+
+    // Testing
+    implementation "androidx.fragment:fragment-ktx:1.4.0"
+    testImplementation("org.junit.jupiter:junit-jupiter:5.7.0")
+    // Testing Fragments in Isolation
+    debugImplementation "androidx.fragment:fragment-testing:$fragment_version"
 }
 
 //https://github.com/jeremymailen/kotlinter-gradle
