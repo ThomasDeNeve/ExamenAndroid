@@ -13,7 +13,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:background="@color/white"
             tools:context=".ui.makeChoice.ChoiceMeetingRoomFragment">
 
@@ -24,7 +24,7 @@
                 android:layout_height="117dp"
                 android:layout_marginTop="48dp"
                 android:layout_marginEnd="1dp"
-                android:contentDescription="TODO"
+                android:contentDescription="@string/hier_arrow_img"
                 android:src="@drawable/klik_hier"
                 app:layout_constraintEnd_toStartOf="@+id/textView3"
                 app:layout_constraintStart_toStartOf="parent"
@@ -38,7 +38,7 @@
                 android:layout_marginTop="170dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="2dp"
-                android:contentDescription="TODO"
+                android:contentDescription="@string/hier_arrow_img"
                 android:src="@drawable/of_hier"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -50,7 +50,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="24dp"
-                android:contentDescription="TODO"
+                android:contentDescription="@string/location_img"
                 android:src="@drawable/icon_place"
                 app:layout_constraintBottom_toTopOf="@+id/textView3"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -81,7 +81,7 @@
                 android:layout_marginStart="181dp"
                 android:layout_marginTop="62dp"
                 android:layout_marginEnd="180dp"
-                android:contentDescription="TODO"
+                android:contentDescription="@string/location_img"
                 android:src="@drawable/icon_place"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

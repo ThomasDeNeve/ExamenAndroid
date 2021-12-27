@@ -30,7 +30,7 @@ val networkModule = module {
     single { ApplicationDatabase.getDatabase(androidApplication()).reservationsDao() }
     single { ApplicationDatabase.getDatabase(androidApplication()).roomDao() }
     single { RemoteDataSource(get()) }
-    single { LocalDataSource(get(), get(), get(), get()) }
+    single { LocalDataSource(get(), get()) }
     single { RoomRepository(get(), get()) }
     single { UserRepository(get(), get()) }
     single { ReservationRepository(get(), get()) }

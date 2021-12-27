@@ -2,16 +2,10 @@ package com.example.hier.util
 
 import android.util.Log
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.liveData
 import androidx.lifecycle.map
-import com.example.hier.models.Location
-import com.example.hier.models.LocationWithRooms
-import com.example.hier.models.Room
 import kotlinx.coroutines.DelicateCoroutinesApi
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import org.json.JSONArray
 
 /**
  * Helper method to do 3 things:

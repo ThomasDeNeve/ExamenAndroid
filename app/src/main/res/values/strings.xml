@@ -61,4 +61,11 @@
     <string name="aanpassing_selectie">Aanpassing selectie</string>
     <string name="capaciteit">Capaciteit</string>
     <string name="tijdstip_dag">Tijdstip dag</string>
+    <string name="hier_arrow_img">Arrow image HIER</string>
+    <string name="location_img">Location image</string>
+    <string name="room_image">Room image</string>
+    <string name="red_chair">Red chair</string>
+    <string name="green_chair">Green chair</string>
+    <string name="table">table</string>
+    <string name="hier">HIER</string>
 </resources>
