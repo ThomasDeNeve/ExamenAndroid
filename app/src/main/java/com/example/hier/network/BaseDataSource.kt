@@ -5,13 +5,12 @@ import com.example.hier.util.Resource
 import retrofit2.Response
 
 abstract class BaseDataSource {
-    // TODO delete logging
     protected suspend fun <T> getResult(call: suspend () -> Response<T>): Resource<T> {
         try {
             val response = call()
             if (response.isSuccessful) {
                 val body = response.body()
-                Log.e("GetResult", body.toString())
+                Log.i("GetResult", body.toString())
                 if (body != null)
                     return Resource.success(body)
             }

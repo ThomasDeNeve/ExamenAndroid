@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.example.hier.models.Location
 import com.example.hier.models.Room
-import com.example.hier.network.ReservationPostModel
+import com.example.hier.networkModels.MeetingroomReservationPostModel
 import com.example.hier.repository.RoomRepository
 
 class RoomViewModel(private val roomRepository: RoomRepository) : ViewModel() {
@@ -28,7 +28,7 @@ class RoomViewModel(private val roomRepository: RoomRepository) : ViewModel() {
         to: String,
         timeslot: String
     ) {
-        val reservationPostModel = ReservationPostModel(roomId, customerId, from, to, timeslot)
+        val reservationPostModel = MeetingroomReservationPostModel(roomId, customerId, from, to, timeslot)
         roomRepository.addReservation(reservationPostModel)
     }
 }

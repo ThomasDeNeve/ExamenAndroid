@@ -5,6 +5,7 @@ import com.example.hier.database.ApplicationDatabase
 import com.example.hier.database.LocalDataSource
 import com.example.hier.network.ApiService
 import com.example.hier.network.RemoteDataSource
+import com.example.hier.repository.ReservationRepository
 import com.example.hier.repository.RoomRepository
 import com.example.hier.repository.UserRepository
 import com.squareup.moshi.Moshi
@@ -32,8 +33,8 @@ val networkModule = module {
     single { LocalDataSource(get(), get(), get(), get()) }
     single { RoomRepository(get(), get()) }
     single { UserRepository(get(), get()) }
+    single { ReservationRepository(get(), get()) }
     // single { LocationRepository(get(), get()) }
-    // single { ReservationRepository(get(), get()) }
 }
 
 private fun provideUnsafeOkHttpClient(): OkHttpClient {

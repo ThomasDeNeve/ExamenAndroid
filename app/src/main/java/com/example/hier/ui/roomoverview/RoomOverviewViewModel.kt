@@ -3,6 +3,7 @@ package com.example.hier.ui.roomoverview
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.example.hier.models.Room
+import com.example.hier.models.User
 import com.example.hier.repository.RoomRepository
 import com.example.hier.util.Resource
 import kotlinx.coroutines.DelicateCoroutinesApi
@@ -11,9 +12,10 @@ import java.util.*
 
 class RoomOverviewViewModel(private val roomRepository: RoomRepository) : ViewModel() {
     var neededseats: Int = 8 // init on minimum amount of needed seats
-    var location: Int = 0 // location is passed by RoomOverviewFragment on init using args.locationId
+    var location: Int =  0 // location is passed by RoomOverviewFragment on init using args.locationId
     var datetimeStart: String = getStartDateTime() // initialize date on current datetime
     var datetimeEnd: String = getEndDateTime()
+    lateinit var currentUser: User
 
     @DelicateCoroutinesApi
     var rooms = getAvavailableRooms()
@@ -22,6 +24,10 @@ class RoomOverviewViewModel(private val roomRepository: RoomRepository) : ViewMo
     @DelicateCoroutinesApi
     fun getAvavailableRooms(): LiveData<Resource<List<Room>>> {
         return roomRepository.getRooms(neededseats, location, datetimeStart, datetimeEnd)
+    }
+
+    suspend fun initializeUser() {
+        currentUser = roomRepository.getCurrentUser()
     }
 
     // Get the actual date and return as String

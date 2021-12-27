@@ -1,10 +1,8 @@
 package com.example.hier.database
 
-import com.example.hier.models.Reservation
 import com.example.hier.models.Room
 import com.example.hier.models.User
 import com.example.hier.networkModels.MeetingRoomNetworkModel
-import com.example.hier.networkModels.ReservationNetworkModel
 
 class LocalDataSource(
     private val locationDao: LocationDao,
@@ -12,43 +10,24 @@ class LocalDataSource(
     private val reservationDao: ReservationDao,
     private val roomDao: RoomDao
 ) {
-    // fun getLocations() = locationDao.getAllLocations()
     fun getRooms() = roomDao.getRooms()
-    // fun getRoomsByNeededSeats(neededseats:Int) = roomDao.getRoomsByNeededSeats(neededseats)
-
     fun getRoomById(roomId: Int) = roomDao.getRoom(roomId)
-    fun getLocationById(locationId: Int) = roomDao.getLocation(locationId)
     fun getLocationIdByName(name: String) = locationDao.getLocationIdByName(name)
 
-    fun getReservations() = reservationDao.getAllReservations()
+    fun getReservations() = reservationDao.getAllMeetingRoomReservations()
+    fun getReservations(date: Long) = reservationDao.getMeetingRoomReservationsOnDate(date)
 
     fun getUser(username: String) = userDao.getUser(username)
 
-    fun saveUser(user: User) {
+    suspend fun getCurrentUser(): User {
+        return userDao.getCurrentUser()
+    }
+
+    suspend fun saveUser(user: User) {
         userDao.insert(user)
 
         userDao.getUser(user.username)
     }
-
-    fun saveReservations(list: List<ReservationNetworkModel>) {
-        val reservationList = ArrayList<Reservation>()
-        list.forEach { res -> reservationList.add(res.toDataBaseModel()) }
-        reservationDao.insertAll(reservationList)
-    }
-
-    /*fun saveLocations(list: List<LocationNetworkModel>)
-    {
-        val locations = ArrayList<Location>()
-        val rooms = ArrayList<Room>()
-
-        val lwrList: List<LocationWithRooms> = list.map { item -> item.toDatabaseModel() }
-        for (lwr in lwrList) {
-            locations.add(lwr.location)
-            rooms.addAll(lwr.rooms)
-        }
-        locationDao.insertAll(locations)
-        roomDao.insertAll(rooms)
-    }*/
 
     /*
     * Yves

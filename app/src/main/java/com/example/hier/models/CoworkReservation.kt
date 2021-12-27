@@ -4,16 +4,12 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "reservations")
-data class Reservation(
+@Entity(tableName = "coworkreservation")
+data class CoworkReservation(
     @PrimaryKey(autoGenerate = true)
-    var reservationId: Int,
+    var reservationId: Int = 0,
     @ColumnInfo(name = "from")
     var from: Long,
-    @ColumnInfo(name = "to")
-    var to: Long,
-    @ColumnInfo(name = "room")
-    var room: String,
     @ColumnInfo(name = "seat")
-    var seat: String
+    var seatId: Int
 )
