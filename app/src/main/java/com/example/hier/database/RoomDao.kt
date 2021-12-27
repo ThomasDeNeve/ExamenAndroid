@@ -2,10 +2,10 @@ package com.example.hier.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
-import androidx.room.Transaction
-import androidx.room.Query
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import androidx.room.Transaction
 import com.example.hier.models.Location
 import com.example.hier.models.Room
 
