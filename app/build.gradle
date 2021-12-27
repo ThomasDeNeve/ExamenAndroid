@@ -110,7 +110,8 @@ dependencies {
     implementation 'com.auth0.android:auth0:2.5.1'
 
     // Testing
-    implementation "androidx.fragment:fragment-ktx:$fragment_version"
+    implementation "androidx.fragment:fragment-ktx:1.4.0"
+    testImplementation("org.junit.jupiter:junit-jupiter:5.7.0")
     // Testing Fragments in Isolation
     debugImplementation "androidx.fragment:fragment-testing:$fragment_version"
 }
