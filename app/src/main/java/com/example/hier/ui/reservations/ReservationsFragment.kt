@@ -3,11 +3,14 @@ package com.example.hier.ui.reservations
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.TableLayout
+import android.widget.TableRow
 import android.widget.TableRow.LayoutParams
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.hier.R
@@ -33,7 +36,11 @@ class ReservationsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (activity as AppCompatActivity).supportActionBar?.title = "Mijn reservaties"
+        try {
+            (activity as AppCompatActivity).supportActionBar?.title = "Mijn reservaties"
+        } catch (e: java.lang.ClassCastException) {
+            Log.i("classcastexception", e.stackTraceToString())
+        }
         createTable(view)
     }
 
