@@ -103,7 +103,7 @@ class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener {
 
     private fun buildAmountOfSeatsSpinner(binding: FragmentRoomoverviewBinding) {
         val spinner = binding.seatSpinner
-        val items = arrayOf(8, 14, 40, 50, 120) // TODO: get capacity list from db
+        val items = arrayOf(8, 14, 40, 50, 120)
 
         spinner.adapter = ArrayAdapter(this.requireContext(), R.layout.custom_spinner_list, items)
 
@@ -111,7 +111,7 @@ class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 overviewViewModel.neededseats = 8
 
-                // Retreive and update the available rooms list
+                // Retrieve and update the available rooms list
                 overviewViewModel.rooms = overviewViewModel.getAvavailableRooms()
             }
 
@@ -124,7 +124,7 @@ class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener {
                 val item = parent?.getItemAtPosition(position) as Int
                 overviewViewModel.neededseats = item
 
-                // Retreive and update the available rooms list
+                // Retrieve and update the available rooms list
                 overviewViewModel.rooms = overviewViewModel.getAvavailableRooms()
             }
         }
@@ -137,7 +137,7 @@ class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener {
             "Namiddag",
             "Hele dag",
             "Avond"
-        ) // TODO: 2 hours slot edge case (needs refactoring)
+        )
 
         spinner.adapter = ArrayAdapter(this.requireContext(), R.layout.custom_spinner_list, items)
 
@@ -164,7 +164,7 @@ class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener {
                     "Hele dag" -> {
                         rebuildDateAndOverviewViewModel("08:00:00", "17:00:00")
                         timeslot = "Volledige dag"
-                    } // show enkel avond, extra api calls (gelijkaardig voor 2 uur?)
+                    } // show enkel avond, extra api calls
                     "Avond" -> {
                         rebuildDateAndOverviewViewModel("17:00:00", "21:00:00")
                         timeslot = "Avond"

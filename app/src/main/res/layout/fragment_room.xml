@@ -61,9 +61,6 @@
                 app:layout_constraintStart_toStartOf="@+id/txvInfo"
                 app:layout_constraintTop_toBottomOf="@+id/txvInfo" />
 
-            <!--
-                    TODO fix hardcoded location name
-            -->
             <TextView
                 android:id="@+id/lblLocatie"
                 android:layout_width="wrap_content"

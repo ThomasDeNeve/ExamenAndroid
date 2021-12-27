@@ -15,12 +15,6 @@ class ReservationRepository(
     private val remoteDataSource: RemoteDataSource,
     private val localDataSource: LocalDataSource
 ) {
-/*    fun getRooms() = performGetOperation(
-        databaseQuery = { localDataSource.getReservations() },
-        networkCall = { remoteDataSource.getReservations() },
-        saveCallResult = { localDataSource.saveReservations(it.records) }
-    )*/
-
     /**
      *
      *fetch reservations and adapt to Reservation class

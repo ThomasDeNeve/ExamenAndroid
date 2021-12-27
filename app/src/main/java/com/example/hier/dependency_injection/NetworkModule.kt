@@ -62,15 +62,6 @@ private fun provideUnsafeOkHttpClient(): OkHttpClient {
         .hostnameVerifier { _, _ -> true }.addInterceptor(loggingInterceptor).build()
 }
 
-// DONT DELETE THIS!
-/*private fun provideOkHttpClient() = if (BuildConfig.DEBUG) {
-    val loggingInterceptor = HttpLoggingInterceptor()
-    loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
-    OkHttpClient.Builder()
-        .addInterceptor(loggingInterceptor)
-        .build()
-} else OkHttpClient.Builder().build()*/
-
 private fun provideRetrofit(
     okHttpClient: OkHttpClient,
     BASE_URL: String

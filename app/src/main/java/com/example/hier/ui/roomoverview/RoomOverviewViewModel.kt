@@ -38,7 +38,7 @@ class RoomOverviewViewModel(private val roomRepository: RoomRepository) : ViewMo
         cdatestring = cdatestring.split(" ")[0]
         cdatestring += " 08:00:00"
         // format to string
-        return cdatestring // currentdate.format(Date())
+        return cdatestring
     }
 
     private fun getEndDateTime(): String {
@@ -47,6 +47,6 @@ class RoomOverviewViewModel(private val roomRepository: RoomRepository) : ViewMo
         cdatestring = cdatestring.split(" ")[0]
         cdatestring += " 12:00:00"
         // format to string
-        return cdatestring // currentdate.format(Date())
+        return cdatestring
     }
 }

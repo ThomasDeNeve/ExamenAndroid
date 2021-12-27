@@ -34,7 +34,6 @@ class LoginFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // val viewModel: LoginViewModel by inject()
         val binding = FragmentLoginBinding.inflate(inflater, container, false)
 
         binding.viewModel = viewModel
@@ -145,7 +144,7 @@ class LoginFragment : Fragment() {
 
     private fun navigateToHome() {
         val directions =
-            LoginFragmentDirections.actionLoginFragmentToChoiceMeetingRoomFragment() // actionLoginFragmentToMainActivity()
+            LoginFragmentDirections.actionLoginFragmentToChoiceMeetingRoomFragment()
         findNavController().navigate(directions)
     }
 }

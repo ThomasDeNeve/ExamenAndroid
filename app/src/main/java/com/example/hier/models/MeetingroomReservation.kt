@@ -13,7 +13,5 @@ data class MeetingroomReservation(
     @ColumnInfo(name = "to")
     var to: Long,
     @ColumnInfo(name = "room")
-    var room: String,
-    /*@ColumnInfo(name = "seat")
-    var seat: String*/
+    var room: String
 )

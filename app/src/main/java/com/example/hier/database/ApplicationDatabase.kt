@@ -32,7 +32,7 @@ abstract class ApplicationDatabase : RoomDatabase() {
                 ApplicationDatabase::class.java,
                 "hierDB"
             )
-                .fallbackToDestructiveMigration()//.allowMainThreadQueries() //REMOVE allowMainThreadQueries -> this allows accessing database on main thread, which causes blocking
+                .fallbackToDestructiveMigration()
                 .build()
     }
 }

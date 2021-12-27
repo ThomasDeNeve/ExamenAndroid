@@ -13,13 +13,6 @@ fun setDate(view: CalendarView, date: Long) {
     }
 }
 
-/*@BindingAdapter("app:minDate")
-fun setMinDate(view: CalendarView, date: Long) {
-    if (view.minDate != date) {
-        view.minDate = date
-    }
-}*/
-
 @BindingAdapter(
     value = ["android:onSelectedDayChange", "android:dateAttrChanged"],
     requireAll = false

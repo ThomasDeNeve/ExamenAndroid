@@ -23,7 +23,7 @@ interface RoomDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(list: List<Room>)
 
-    // Delete all meetingrooms in the cached database. This ensures the cached data is equal to the data retreived via the API
+    // Delete all meetingrooms in the cached database. This ensures the cached data is equal to the data retrieved via the API
     @Transaction
     @Query("delete from rooms")
     fun deleteAllRooms()

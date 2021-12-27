@@ -94,12 +94,6 @@ class CoworkingViewModel(
         today = today.times(86400000L)
         dateMutable.value = today
     }
-/*
-    suspend fun observeDatePicker() {
-        _date.observeForever(Observer { newDate ->
-            checkAvailability(newDate)
-        })
-    }*/
 
     suspend fun checkAvailability(newDate: Long) {
         val dateAsDate = Date(newDate)
