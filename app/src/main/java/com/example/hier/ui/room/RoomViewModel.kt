@@ -6,6 +6,7 @@ import com.example.hier.models.Location
 import com.example.hier.models.Room
 import com.example.hier.networkModels.MeetingroomReservationPostModel
 import com.example.hier.repository.RoomRepository
+import com.example.hier.util.Resource
 
 class RoomViewModel(private val roomRepository: RoomRepository) : ViewModel() {
     private lateinit var _room: LiveData<Room>
@@ -16,6 +17,8 @@ class RoomViewModel(private val roomRepository: RoomRepository) : ViewModel() {
 
     val location: LiveData<Location>
         get() = _location
+
+    lateinit var response: Resource<String>
 
     fun setRoom(roomId: Int) {
         _room = roomRepository.getRoomById(roomId)
@@ -29,6 +32,6 @@ class RoomViewModel(private val roomRepository: RoomRepository) : ViewModel() {
         timeslot: String
     ) {
         val reservationPostModel = MeetingroomReservationPostModel(roomId, customerId, from, to, timeslot)
-        roomRepository.addReservation(reservationPostModel)
+        response = roomRepository.addReservation(reservationPostModel)
     }
 }
