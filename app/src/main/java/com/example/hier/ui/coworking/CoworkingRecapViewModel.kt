@@ -1,4 +1,4 @@
-package com.example.hier.ui.coworking;
+package com.example.hier.ui.coworking
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -9,7 +9,7 @@ import com.example.hier.util.Resource
 import java.text.SimpleDateFormat
 import java.util.*
 
-public class CoworkingRecapViewModel(
+class CoworkingRecapViewModel(
     private val reservationRepository: ReservationRepository
 ) : ViewModel() {
     private val _eventSubmit = MutableLiveData<Boolean>()
@@ -51,9 +51,9 @@ public class CoworkingRecapViewModel(
     lateinit var response: Resource<String>
 
     suspend fun onSubmit() {
-        val date: Date = Date(_date.value!!)
+        val date = Date(_date.value!!)
         val dateString = SimpleDateFormat("dd/MM/yyyy").format(date)
-        var user = reservationRepository.getUser()
+        val user = reservationRepository.getUser()
         val rnw = CoworkReservationPostModel(user.userId, _seatId.value!!, dateString)
         response = reservationRepository.postCoworkReservation(rnw)
         _eventSubmit.value = true

@@ -13,12 +13,12 @@ fun setDate(view: CalendarView, date: Long) {
     }
 }
 
-@BindingAdapter("app:minDate")
+/*@BindingAdapter("app:minDate")
 fun setMinDate(view: CalendarView, date: Long) {
     if (view.minDate != date) {
         view.minDate = date
     }
-}
+}*/
 
 @BindingAdapter(
     value = ["android:onSelectedDayChange", "android:dateAttrChanged"],
@@ -35,7 +35,7 @@ fun setListeners(
             onDayChange?.onSelectedDayChange(view, year, month, dayOfMonth)
             val instance: Calendar = Calendar.getInstance()
             instance.set(year, month, dayOfMonth)
-            view.date = instance.getTimeInMillis()
+            view.date = instance.timeInMillis
             attrChange.onChange()
         }
     }

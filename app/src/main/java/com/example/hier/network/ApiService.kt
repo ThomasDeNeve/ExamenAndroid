@@ -8,10 +8,6 @@ interface ApiService {
     @GET("api/customer/GetLoggedIn")
     suspend fun getUser(@Header("Authorization") token: String, @Query("username") username: String): Response<UserNetworkModel>
 
-    fun getReservations(): Response<RootReservationNetworkModel> {
-        TODO("Not yet implemented")
-    }
-
     @GET("api/Reservation/availablemeetingrooms")
     suspend fun getAvailableMeetingrooms(
         @Header("Authorization") token: String,

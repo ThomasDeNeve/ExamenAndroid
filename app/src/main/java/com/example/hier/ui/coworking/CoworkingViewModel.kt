@@ -8,20 +8,20 @@ import com.example.hier.repository.ReservationRepository
 import java.util.*
 
 class CoworkingViewModel(
-    val reservationRepository: ReservationRepository
+    private val reservationRepository: ReservationRepository
 ) : ViewModel() {
 
     //date as given by user, must be at least today
-    var _date = MutableLiveData<Long>()
+    var dateMutable = MutableLiveData<Long>()
     val date: LiveData<Long>
-        get() = _date
+        get() = dateMutable
 
     private val _chamber = MutableLiveData<String>()
     val chamber: LiveData<String>
         get() = _chamber
 
     //List of reservations from server for given date and timespan
-    var reservationsList = MutableLiveData<List<CoworkReservation>>()
+    private var reservationsList = MutableLiveData<List<CoworkReservation>>()
 
     //eventflag
     private val _eventChairClicked = MutableLiveData<Boolean>()
@@ -35,7 +35,7 @@ class CoworkingViewModel(
     private val _chair1reserved = MutableLiveData<Boolean>()
     val chair1reserved: LiveData<Boolean>
         get() = _chair1reserved
-    val _chair2reserved = MutableLiveData<Boolean>()
+    private val _chair2reserved = MutableLiveData<Boolean>()
     val chair2reserved: LiveData<Boolean>
         get() = _chair2reserved
     private val _chair3reserved = MutableLiveData<Boolean>()
@@ -92,7 +92,7 @@ class CoworkingViewModel(
         var today = System.currentTimeMillis()
         today = today.div(86400000L) //remove hours and minutes from date
         today = today.times(86400000L)
-        _date.value = today
+        dateMutable.value = today
     }
 /*
     suspend fun observeDatePicker() {
@@ -102,7 +102,7 @@ class CoworkingViewModel(
     }*/
 
     suspend fun checkAvailability(newDate: Long) {
-        val dateAsDate: Date = Date(newDate)
+        val dateAsDate = Date(newDate)
 
         _chair1reserved.value = false
         _chair2reserved.value = false

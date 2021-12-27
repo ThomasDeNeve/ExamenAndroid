@@ -9,13 +9,13 @@ class ConvertNetworkModelsTest {
 
     @Test
     fun convertRoomNetworkModelToRoom() {
-        var meetingRoomNetworkModel =
+        val meetingRoomNetworkModel =
             MeetingRoomNetworkModel(
                 1, "testRoom", "testroom.jpeg",
                 10, 1, 50.0, 100.0,
                 75.5, 20.0
             )
-        var room = meetingRoomNetworkModel.toDatabaseModel()
+        val room = meetingRoomNetworkModel.toDatabaseModel()
 
         assertEquals(meetingRoomNetworkModel.id, room.id)
         assertEquals(meetingRoomNetworkModel.name, room.name)
@@ -30,12 +30,12 @@ class ConvertNetworkModelsTest {
 
     @Test
     fun convertUserNetworkModelToUser() {
-        var userNetworkModel = UserNetworkModel(
+        val userNetworkModel = UserNetworkModel(
             1, "Thomas", "Boghaert",
             "thomas.boghaert@student.hogent.be", "thomas.boghaert@student.hogent.be",
             "BE123456789", "0412345678"
         )
-        var user = userNetworkModel.toDatabaseModel()
+        val user = userNetworkModel.toDatabaseModel()
 
         assertEquals(userNetworkModel.customerId, user.userId)
     }

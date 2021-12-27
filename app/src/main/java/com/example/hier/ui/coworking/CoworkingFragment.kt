@@ -26,11 +26,11 @@ class CoworkingFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentCoworkingBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
 
-        viewModel.eventChairClicked.observe(viewLifecycleOwner, Observer { chairClick ->
+        viewModel.eventChairClicked.observe(viewLifecycleOwner, { chairClick ->
             if (chairClick) {
                 val action =
                     CoworkingFragmentDirections.actionAlbertLienartstraatCoworkingFragmentToCoworkingRecapFragment()
@@ -44,14 +44,14 @@ class CoworkingFragment : Fragment() {
         })
 
 
-        viewModel.date.observe(viewLifecycleOwner, Observer { newDate ->
+        viewModel.date.observe(viewLifecycleOwner, { newDate ->
             lifecycleScope.launch { viewModel.checkAvailability(newDate) }
         })
 
         viewModel.setInitialDate()
 
         viewModel.listOfChairs.forEach { item ->
-            item.observe(viewLifecycleOwner, Observer {
+            item.observe(viewLifecycleOwner, {
                 updateChairs(viewModel)
             })
         }

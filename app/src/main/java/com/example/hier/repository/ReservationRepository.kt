@@ -53,6 +53,6 @@ class ReservationRepository(
         }
         else Log.e("ReservationRepository", "CachedUserProfile was null!")
         //return localDataSource.getUser(username).value!!
-        return localDataSource.getNewestUser();
+        return localDataSource.getNewestUser()
     }
 }

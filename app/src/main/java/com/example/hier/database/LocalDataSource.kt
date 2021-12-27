@@ -14,9 +14,6 @@ class LocalDataSource(
     fun getRoomById(roomId: Int) = roomDao.getRoom(roomId)
     fun getLocationIdByName(name: String) = locationDao.getLocationIdByName(name)
 
-    fun getReservations() = reservationDao.getAllMeetingRoomReservations()
-    fun getReservations(date: Long) = reservationDao.getMeetingRoomReservationsOnDate(date)
-
     suspend fun getUser(username: String): User {
         return userDao.getUser(username)
     }

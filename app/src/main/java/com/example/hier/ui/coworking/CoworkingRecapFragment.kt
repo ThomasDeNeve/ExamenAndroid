@@ -23,7 +23,7 @@ class CoworkingRecapFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         binding = DataBindingUtil.inflate(
             inflater,
@@ -56,7 +56,7 @@ class CoworkingRecapFragment : Fragment() {
             }
         }
 
-        viewModel.eventSubmit.observe(viewLifecycleOwner, Observer { submit ->
+        viewModel.eventSubmit.observe(viewLifecycleOwner, { submit ->
             if (submit) {
                 findNavController().navigate(CoworkingRecapFragmentDirections.actionCoworkingRecapFragmentToReservationsFragment())
                 viewModel.onSubmitComplete()

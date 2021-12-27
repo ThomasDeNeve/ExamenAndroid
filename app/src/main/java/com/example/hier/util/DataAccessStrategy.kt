@@ -24,7 +24,7 @@ import org.json.JSONArray
  * @param saveCallResult A suspend function to save the newly fetched data to the database
  * @return LiveData<Resource<T>>
  * */
-fun <T, A> performGetOperation(databaseQuery: () -> LiveData<T>, networkCall: suspend () -> Resource<A>, saveCallResult: suspend (A) -> Unit): LiveData<Resource<T>> =
+/*fun <T, A> performGetOperation(databaseQuery: () -> LiveData<T>, networkCall: suspend () -> Resource<A>, saveCallResult: suspend (A) -> Unit): LiveData<Resource<T>> =
     liveData(Dispatchers.IO) {
         emit(Resource.loading())
         val source = databaseQuery.invoke().map { Resource.success(it) }
@@ -39,7 +39,7 @@ fun <T, A> performGetOperation(databaseQuery: () -> LiveData<T>, networkCall: su
             emit(Resource.error(responseStatus.message!!))
             emitSource(source)
         }
-    }
+    }*/
 
 /*fun <T,A> fetchAndSaveMeetingrooms(
     databaseQuery: () -> LiveData<T>,
@@ -59,7 +59,7 @@ fun <T, A> performGetOperation(databaseQuery: () -> LiveData<T>, networkCall: su
     }
 }*/
 
-@DelicateCoroutinesApi
+/*@DelicateCoroutinesApi
 fun <T, A> fetchAndSaveLocations(
     databaseQuery: () -> LiveData<T>,
     networkCall: suspend () -> Resource<A>,
@@ -76,7 +76,7 @@ fun <T, A> fetchAndSaveLocations(
             throw Exception("Exception thrown because response failed: ${responseStatus.message!!}")
         }
     }
-}
+}*/
 
 @DelicateCoroutinesApi
 fun <T, A> fetchAndSaveRooms(
@@ -97,6 +97,7 @@ fun <T, A> fetchAndSaveRooms(
     }
 }
 
+/*
 fun parseJson(jsonString: String): ArrayList<LocationWithRooms> {
     val jsonArray = JSONArray(jsonString)
 
@@ -139,18 +140,4 @@ fun parseJson(jsonString: String): ArrayList<LocationWithRooms> {
         locations.add(location)
     }
     return locations
-}
-
-/*fun <T, A> fetchUser(networkCall: suspend () -> Resource<A>, saveCallResult: suspend (A) -> Unit): LiveData<Resource<T>> =
-    liveData(Dispatchers.IO) {
-        emit(Resource.loading())
-        val responseStatus = networkCall.invoke()
-        if (responseStatus.status == Status.SUCCESS) {
-            saveCallResult(responseStatus.data!!)
-            Log.i("DataAccessStrategy", "Successfully fetched data from API")
-        } else if (responseStatus.status == Status.ERROR) {
-            Log.e("DataAccessStrategy", "Error fetching result from API")
-            emit(Resource.error(responseStatus.message!!))
-            emitSource(source)
-        }
-    }*/
+}*/

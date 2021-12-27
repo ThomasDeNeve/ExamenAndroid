@@ -33,7 +33,7 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // val viewModel: LoginViewModel by inject()
         val binding = FragmentLoginBinding.inflate(inflater, container, false)
 

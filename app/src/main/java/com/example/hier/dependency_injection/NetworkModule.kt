@@ -34,7 +34,6 @@ val networkModule = module {
     single { RoomRepository(get(), get()) }
     single { UserRepository(get(), get()) }
     single { ReservationRepository(get(), get()) }
-    // single { LocationRepository(get(), get()) }
 }
 
 private fun provideUnsafeOkHttpClient(): OkHttpClient {
