@@ -21,7 +21,7 @@ import com.example.hier.util.Status
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
-import java.util.*
+import java.util.Calendar
 
 @DelicateCoroutinesApi
 class RoomOverviewFragment : Fragment(), RoomAdapter.RoomClickListener {

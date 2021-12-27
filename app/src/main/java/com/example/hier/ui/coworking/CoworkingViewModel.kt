@@ -5,13 +5,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.hier.models.CoworkReservation
 import com.example.hier.repository.ReservationRepository
-import java.util.*
+import java.util.Date
 
 class CoworkingViewModel(
     private val reservationRepository: ReservationRepository
 ) : ViewModel() {
 
-    //date as given by user, must be at least today
+    // date as given by user, must be at least today
     var dateMutable = MutableLiveData<Long>()
     val date: LiveData<Long>
         get() = dateMutable
@@ -20,10 +20,10 @@ class CoworkingViewModel(
     val chamber: LiveData<String>
         get() = _chamber
 
-    //List of reservations from server for given date and timespan
+    // List of reservations from server for given date and timespan
     private var reservationsList = MutableLiveData<List<CoworkReservation>>()
 
-    //eventflag
+    // eventflag
     private val _eventChairClicked = MutableLiveData<Boolean>()
     val eventChairClicked: LiveData<Boolean>
         get() = _eventChairClicked
@@ -90,7 +90,7 @@ class CoworkingViewModel(
 
     fun setInitialDate() {
         var today = System.currentTimeMillis()
-        today = today.div(86400000L) //remove hours and minutes from date
+        today = today.div(86400000L) // remove hours and minutes from date
         today = today.times(86400000L)
         dateMutable.value = today
     }

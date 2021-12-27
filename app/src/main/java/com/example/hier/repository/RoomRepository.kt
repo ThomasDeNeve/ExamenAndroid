@@ -54,7 +54,7 @@ class RoomRepository(
         saveCallResult = { localDataSource.saveRooms(it) }
     )
 
-    suspend fun addReservation(meetingroomReservationPostModel: MeetingroomReservationPostModel) : Resource<String> {
+    suspend fun addReservation(meetingroomReservationPostModel: MeetingroomReservationPostModel): Resource<String> {
         return remoteDataSource.addMeetingroomReservation(meetingroomReservationPostModel)
     }
 

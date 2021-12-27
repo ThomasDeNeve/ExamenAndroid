@@ -7,7 +7,7 @@ import com.example.hier.networkModels.CoworkReservationPostModel
 import com.example.hier.repository.ReservationRepository
 import com.example.hier.util.Resource
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Date
 
 class CoworkingRecapViewModel(
     private val reservationRepository: ReservationRepository

@@ -4,7 +4,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Date
 
 @BindingAdapter("textFromLong")
 fun bindTextFromLong(view: TextView, long: Long) {

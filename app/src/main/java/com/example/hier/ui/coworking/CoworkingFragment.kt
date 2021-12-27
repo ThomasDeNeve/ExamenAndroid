@@ -42,7 +42,6 @@ class CoworkingFragment : Fragment() {
             }
         })
 
-
         viewModel.date.observe(viewLifecycleOwner, { newDate ->
             lifecycleScope.launch { viewModel.checkAvailability(newDate) }
         })

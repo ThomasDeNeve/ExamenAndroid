@@ -17,7 +17,7 @@ import com.example.hier.R
 import com.example.hier.databinding.FragmentReservationsBinding
 import org.koin.android.ext.android.inject
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Date
 
 class ReservationsFragment : Fragment() {
 

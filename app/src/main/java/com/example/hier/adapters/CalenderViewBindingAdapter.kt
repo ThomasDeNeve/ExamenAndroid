@@ -4,7 +4,7 @@ import android.widget.CalendarView
 import android.widget.CalendarView.OnDateChangeListener
 import androidx.databinding.BindingAdapter
 import androidx.databinding.InverseBindingListener
-import java.util.*
+import java.util.Calendar
 
 @BindingAdapter("android:date")
 fun setDate(view: CalendarView, date: Long) {
@@ -18,7 +18,8 @@ fun setDate(view: CalendarView, date: Long) {
     requireAll = false
 )
 fun setListeners(
-    view: CalendarView, onDayChange: OnDateChangeListener?,
+    view: CalendarView,
+    onDayChange: OnDateChangeListener?,
     attrChange: InverseBindingListener?
 ) {
     if (attrChange == null) {

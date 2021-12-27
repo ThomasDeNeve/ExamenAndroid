@@ -8,11 +8,11 @@ import com.example.hier.repository.RoomRepository
 import com.example.hier.util.Resource
 import kotlinx.coroutines.DelicateCoroutinesApi
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Date
 
 class RoomOverviewViewModel(private val roomRepository: RoomRepository) : ViewModel() {
     var neededseats: Int = 8 // init on minimum amount of needed seats
-    var location: Int =  0 // location is passed by RoomOverviewFragment on init using args.locationId
+    var location: Int = 0 // location is passed by RoomOverviewFragment on init using args.locationId
     var datetimeStart: String = getStartDateTime() // initialize date on current datetime
     var datetimeEnd: String = getEndDateTime()
     lateinit var currentUser: User

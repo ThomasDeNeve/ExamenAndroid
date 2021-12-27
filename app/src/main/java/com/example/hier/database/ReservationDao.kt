@@ -1,7 +1,11 @@
 package com.example.hier.database
 
 import androidx.lifecycle.LiveData
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import androidx.room.Transaction
 import com.example.hier.models.MeetingroomReservation
 
 @Dao
@@ -17,5 +21,4 @@ interface ReservationDao {
     @Transaction
     @Query("select * from meetingroomreservation where `from`=:date")
     fun getMeetingRoomReservationsOnDate(date: Long): LiveData<List<MeetingroomReservation>>
-
 }

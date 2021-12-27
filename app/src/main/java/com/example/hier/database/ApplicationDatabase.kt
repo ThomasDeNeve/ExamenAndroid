@@ -3,7 +3,11 @@ package com.example.hier.database
 import android.content.Context
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.example.hier.models.*
+import com.example.hier.models.CoworkReservation
+import com.example.hier.models.Location
+import com.example.hier.models.MeetingroomReservation
+import com.example.hier.models.Room
+import com.example.hier.models.User
 
 @Database(
     entities = [Room::class, User::class, MeetingroomReservation::class, CoworkReservation::class, Location::class],

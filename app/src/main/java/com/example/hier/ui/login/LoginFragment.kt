@@ -53,7 +53,7 @@ class LoginFragment : Fragment() {
         account = Auth0(clientId, domain)
 
         activity?.let {
-            //Get Authentication token for API calls
+            // Get Authentication token for API calls
             WebAuthProvider.login(account)
                 .withScheme("demo")
                 .withScope("openid")
