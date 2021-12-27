@@ -12,8 +12,6 @@ data class UserNetworkModel(
     val tel: String?,
 ) {
     fun toDatabaseModel(): User {
-        val user = User(username)
-        user.userId = customerId
-        return user
+        return User(username, customerId)
     }
 }

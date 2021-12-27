@@ -63,7 +63,7 @@ class RoomRepository(
         remoteDataSource.addMeetingroomReservation(meetingroomReservationPostModel)
     }
 
-    suspend fun getCurrentUser(): User {
-        return localDataSource.getCurrentUser()
+    suspend fun getNewestUser(): User {
+        return localDataSource.getNewestUser()
     }
 }

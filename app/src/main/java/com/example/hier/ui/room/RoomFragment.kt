@@ -1,6 +1,7 @@
 package com.example.hier.ui.room
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -50,6 +51,7 @@ class RoomFragment : Fragment() {
                     onReserveButtonClicked()
                     Toast.makeText(container!!.context, "Reservatie werd geregistreerd!", Toast.LENGTH_LONG).show()
                 } catch (e: Exception) {
+                    Log.e("RoomFragment", e.stackTraceToString())
                     Toast.makeText(container!!.context, "Er ging iets fout bij de reservatie", Toast.LENGTH_LONG).show()
                 }
             }
@@ -63,7 +65,7 @@ class RoomFragment : Fragment() {
     }
 
     fun onReserveButtonClicked() {
-        val directions = RoomFragmentDirections.actionRoomFragmentToChoiceCoworkingFragment()
+        val directions = RoomFragmentDirections.actionRoomFragmentToChoiceMeetingRoomFragment()
 
         findNavController().navigate(directions)
     }

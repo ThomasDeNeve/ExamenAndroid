@@ -1,5 +1,6 @@
 package com.example.hier.repository
 
+import android.util.Log
 import com.example.hier.MyApplication.Companion.cachedUserProfile
 import com.example.hier.database.LocalDataSource
 import com.example.hier.models.CoworkReservation
@@ -46,8 +47,12 @@ class ReservationRepository(
 
 
     suspend fun getUser(): User {
-        var username: String = cachedUserProfile?.name.toString()
+        if(cachedUserProfile != null){
+            val username: String = cachedUserProfile?.name.toString()
+            return localDataSource.getUser(username)
+        }
+        else Log.e("ReservationRepository", "CachedUserProfile was null!")
         //return localDataSource.getUser(username).value!!
-        return localDataSource.getCurrentUser();
+        return localDataSource.getNewestUser();
     }
 }
