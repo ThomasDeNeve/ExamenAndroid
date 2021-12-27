@@ -57,7 +57,7 @@ class LoginFragment : Fragment() {
             WebAuthProvider.login(account)
                 .withScheme("demo")
                 .withScope("openid")
-                .withAudience("https://localhost:5001/api/")
+                .withAudience("http://ec2-3-212-186-23.compute-1.amazonaws.com:5000/API/")
                 // Launch the authentication passing the callback where the results will be received
                 .start(
                     it,
