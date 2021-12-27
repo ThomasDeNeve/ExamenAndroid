@@ -7,7 +7,6 @@ import com.example.hier.database.LocalDataSource
 import com.example.hier.models.Room
 import com.example.hier.models.User
 import com.example.hier.network.RemoteDataSource
-import com.example.hier.network.ReservationPostModel
 import com.example.hier.networkModels.MeetingroomReservationPostModel
 import com.example.hier.util.Resource
 import com.example.hier.util.fetchAndSaveRooms
