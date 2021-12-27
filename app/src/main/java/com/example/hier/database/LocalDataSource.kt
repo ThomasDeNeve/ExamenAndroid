@@ -17,10 +17,12 @@ class LocalDataSource(
     fun getReservations() = reservationDao.getAllMeetingRoomReservations()
     fun getReservations(date: Long) = reservationDao.getMeetingRoomReservationsOnDate(date)
 
-    fun getUser(username: String) = userDao.getUser(username)
+    suspend fun getUser(username: String): User {
+        return userDao.getUser(username)
+    }
 
-    suspend fun getCurrentUser(): User {
-        return userDao.getCurrentUser()
+    suspend fun getNewestUser(): User {
+        return userDao.getNewestUser()
     }
 
     suspend fun saveUser(user: User) {

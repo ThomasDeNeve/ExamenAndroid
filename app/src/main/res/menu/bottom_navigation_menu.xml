@@ -10,7 +10,7 @@
         android:icon="@drawable/icon_meetingroom"
         android:title="@string/reserve_meetingroom"/>
     <item
-        android:id="@+id/albertLienartstraatCoworkingFragment"
+        android:id="@+id/coworkingFragment"
         android:enabled="true"
         android:icon="@drawable/icon_seat"
         android:title="@string/reserve_coworkingspace"/>

@@ -17,6 +17,7 @@ import com.auth0.android.provider.WebAuthProvider
 import com.auth0.android.result.Credentials
 import com.auth0.android.result.UserProfile
 import com.example.hier.MyApplication
+import com.example.hier.MyApplication.Companion.apiAccessToken
 import com.example.hier.MyApplication.Companion.cachedCredentials
 import com.example.hier.R
 import com.example.hier.databinding.FragmentLoginBinding
@@ -40,20 +41,49 @@ class LoginFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
 
         binding.loginButton.setOnClickListener {
-            loginWithBrowser()
+            getAPIAccessToken()
         }
 
         return binding.root
     }
 
-    private fun loginWithBrowser() {
+    private fun getAPIAccessToken() {
         // Setup the WebAuthProvider, using the custom scheme and scope
+        val clientId: String = getString(R.string.auth0_clientId)
+        val domain: String = getString(R.string.auth0_domain)
+        account = Auth0(clientId, domain)
+
         activity?.let {
-            val clientId: String = getString(R.string.auth0_clientId)
-            val domain: String = getString(R.string.auth0_domain)
+            //Get Authentication token for API calls
+            WebAuthProvider.login(account)
+                .withScheme("demo")
+                .withScope("openid")
+                .withAudience("https://localhost:5001/api/")
+                // Launch the authentication passing the callback where the results will be received
+                .start(
+                    it,
+                    object : Callback<Credentials, AuthenticationException> {
+                        // Called when there is an authentication failure
+                        override fun onFailure(error: AuthenticationException) {
+                            // Something went wrong!
+                            Log.i("LOGIN", error.getDescription())
+                            Toast.makeText(context, "Login failed", Toast.LENGTH_LONG).show()
+                        }
 
-            account = Auth0(clientId, domain)
+                        // Called when authentication completed successfully
+                        override fun onSuccess(result: Credentials) {
+                            // Get the access token from the credentials object.
+                            // This can be used to call APIs
+                            apiAccessToken = result.accessToken
+                            loginWithBrowser()
+                        }
+                    }
+                )
+        }
+    }
 
+    private fun loginWithBrowser() {
+        activity?.let {
             WebAuthProvider.login(account)
                 .withScheme("demo")
                 .withScope("openid profile email read:current_user update:current_user_metadata")

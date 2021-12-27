@@ -32,7 +32,7 @@
         android:id="@+id/profileFragment"
         android:name="com.example.hier.ui.profile.ProfileFragment"
         android:label="profile_fragment"
-        tools:layout="@layout/fragment_profile" >
+        tools:layout="@layout/fragment_profile">
         <action
             android:id="@+id/action_profileFragment_to_loginFragment"
             app:destination="@id/loginFragment"
@@ -42,7 +42,8 @@
     <fragment
         android:id="@+id/choiceMeetingRoomFragment"
         android:name="com.example.hier.ui.makeChoice.ChoiceMeetingRoomFragment"
-        android:label="choicemeetingroomfragment">
+        android:label="choicemeetingroomfragment"
+        tools:layout="@layout/fragment_choice">
         <action
             android:id="@+id/action_choiceMeetingRoomFragment_to_roomOverviewFragment"
             app:destination="@id/roomOverviewFragment"
@@ -52,15 +53,7 @@
             app:popExitAnim="@anim/nav_default_exit_anim" />
     </fragment>
 
-    <fragment
-        android:id="@+id/choiceCoworkingFragment"
-        android:name="com.example.hier.ui.makeChoice.ChoiceCoworkingFragment"
-        android:label="choicecoworkingfragment"
-        tools:layout="@layout/fragment_choice" >
-        <action
-            android:id="@+id/action_choiceCoworkingFragment_to_albertLienartstraatCoworkingFragment"
-            app:destination="@id/albertLienartstraatCoworkingFragment" />
-    </fragment>
+
     <fragment
         android:id="@+id/reservationsFragment"
         android:name="com.example.hier.ui.reservations.ReservationsFragment"
@@ -84,46 +77,47 @@
             android:name="user"
             app:argType="integer" />
         <action
-            android:id="@+id/action_roomFragment_to_choiceCoworkingFragment"
-            app:destination="@id/choiceCoworkingFragment" />
+            android:id="@+id/action_roomFragment_to_choiceMeetingRoomFragment"
+            app:destination="@id/choiceMeetingRoomFragment" />
         <argument
             android:name="timeslot"
             app:argType="string" />
     </fragment>
     <fragment
-        android:id="@+id/albertLienartstraatCoworkingFragment"
+        android:id="@+id/coworkingFragment"
         android:name="com.example.hier.ui.coworking.CoworkingFragment"
-        android:label="AlbertLienartstraatCoworkingFragment" >
+        android:label="CoworkingFragment"
+        tools:layout="@layout/fragment_coworking">
         <action
             android:id="@+id/action_albertLienartstraatCoworkingFragment_to_coworkingRecapFragment"
-            app:destination="@id/coworkingRecapFragment"
-            />
+            app:destination="@id/coworkingRecapFragment" />
 
     </fragment>
     <fragment
         android:id="@+id/coworkingRecapFragment"
         android:name="com.example.hier.ui.coworking.CoworkingRecapFragment"
-        android:label="CoworkingRecapFragment" >
+        android:label="CoworkingRecapFragment"
+        tools:layout="@layout/fragment_coworking_recap">
         <argument
             android:name="locationName"
             android:defaultValue="Albert Lienartstraat"
-            app:argType="string"/>
+            app:argType="string" />
         <argument
             android:name="chamberName"
             android:defaultValue="Hier.vanboven"
-            app:argType="string"/>
+            app:argType="string" />
         <argument
             android:name="seatNumber"
             android:defaultValue="0"
-            app:argType="integer"/>
+            app:argType="integer" />
         <argument
             android:name="date"
             android:defaultValue="0L"
-            app:argType="long"/>
+            app:argType="long" />
         <argument
             android:name="timeslot"
             android:defaultValue="Voormiddag"
-            app:argType="string"/>
+            app:argType="string" />
         <action
             android:id="@+id/action_coworkingRecapFragment_to_reservationsFragment"
             app:destination="@id/reservationsFragment" />

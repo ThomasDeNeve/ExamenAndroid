@@ -1,6 +1,7 @@
 package com.example.hier.ui.room
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.hier.databinding.FragmentRoomBinding
+import com.example.hier.util.Status
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
@@ -47,10 +49,28 @@ class RoomFragment : Fragment() {
                         args.dateEnd,
                         args.timeslot
                     )
+                    if (viewModel.response.status == Status.SUCCESS) {
+                        if (viewModel.response.data.equals("OK"))
+                            Toast.makeText(
+                                context,
+                                "Reservatie werd geregistreerd!",
+                                Toast.LENGTH_LONG
+                            )
+                                .show()
+                    } else
+                        Toast.makeText(
+                            context,
+                            "Uw reservatie is helaas mislukt, probeer het later opnieuw",
+                            Toast.LENGTH_LONG
+                        ).show()
                     onReserveButtonClicked()
-                    Toast.makeText(container!!.context, "Reservatie werd geregistreerd!", Toast.LENGTH_LONG).show()
                 } catch (e: Exception) {
-                    Toast.makeText(container!!.context, "Er ging iets fout bij de reservatie", Toast.LENGTH_LONG).show()
+                    Log.e("RoomFragment", e.stackTraceToString())
+                    Toast.makeText(
+                        container!!.context,
+                        "Er ging iets fout bij de reservatie",
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
             }
         }
@@ -63,8 +83,7 @@ class RoomFragment : Fragment() {
     }
 
     fun onReserveButtonClicked() {
-        val directions = RoomFragmentDirections.actionRoomFragmentToChoiceCoworkingFragment()
-
+        val directions = RoomFragmentDirections.actionRoomFragmentToChoiceMeetingRoomFragment()
         findNavController().navigate(directions)
     }
 }

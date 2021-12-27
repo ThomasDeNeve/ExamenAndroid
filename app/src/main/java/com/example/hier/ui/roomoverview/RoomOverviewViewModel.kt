@@ -27,7 +27,7 @@ class RoomOverviewViewModel(private val roomRepository: RoomRepository) : ViewMo
     }
 
     suspend fun initializeUser() {
-        currentUser = roomRepository.getCurrentUser()
+        currentUser = roomRepository.getNewestUser()
     }
 
     // Get the actual date and return as String
