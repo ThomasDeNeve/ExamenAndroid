@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.example.hier.R
+import com.example.hier.adapters.ReservationsAdapter
 import com.example.hier.databinding.FragmentReservationsBinding
 import org.koin.android.ext.android.inject
 import java.lang.ClassCastException
@@ -32,6 +33,16 @@ class ReservationsFragment : Fragment() {
     ): View {
         val binding = FragmentReservationsBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
+
+        val adapter = ReservationsAdapter()
+        binding.reservationsList.adapter = adapter
+
+        viewModel.response.observe(viewLifecycleOwner, Observer {
+            it?.let{
+                adapter.data = it
+            }
+        })
+
         binding.lifecycleOwner = viewLifecycleOwner
 
         return binding.root
@@ -54,6 +65,7 @@ class ReservationsFragment : Fragment() {
 
     @SuppressLint("SimpleDateFormat")
     private fun createTable(view: View) {
+        /*
         val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm")
         val table = view.findViewById<TableLayout>(R.id.reservations_table)
 
@@ -76,7 +88,7 @@ class ReservationsFragment : Fragment() {
 
                 table.addView(row)
             }
-        }
+        }*/
     }
 
     private fun createAndAddTextView(reservation: String, row: TableRow) {
