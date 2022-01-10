@@ -26,18 +26,24 @@ class ReservationsAdapter: RecyclerView.Adapter<ReservationsAdapter.ViewHolder>(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val layoutInflater = LayoutInflater.from(parent.context)
-        val view = layoutInflater.inflate(R.layout.reservation_item_view, parent, false)
-        return ViewHolder(view)
+        return ViewHolder.from(parent)
     }
 
-    class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    class ViewHolder private constructor(itemView: View): RecyclerView.ViewHolder(itemView) {
         private val reservationFrom: TextView = itemView.findViewById(R.id.reservation_item_from)
         private val reservationTo: TextView = itemView.findViewById(R.id.reservation_item_to)
         private val reservationType: TextView = itemView.findViewById(R.id.reservation_item_type)
         private val reservationRoom: TextView = itemView.findViewById(R.id.reservation_item_room)
 
         private val reservationLayout: LinearLayout = itemView.findViewById(R.id.reservation_item_layout)
+
+        companion object {
+            fun from(parent: ViewGroup): ViewHolder {
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val view = layoutInflater.inflate(R.layout.reservation_item_view, parent, false)
+                return ViewHolder(view)
+            }
+        }
 
         fun setBackground(position: Int) {
             if (position % 2 != 1) {
