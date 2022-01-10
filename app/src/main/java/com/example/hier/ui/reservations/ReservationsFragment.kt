@@ -55,40 +55,6 @@ class ReservationsFragment : Fragment() {
         } catch (e: ClassCastException) {
             Log.i("classcastexception", e.stackTraceToString())
         }
-        createTable(view)
-
-
-        viewModel.response.observe(viewLifecycleOwner) {
-            createTable(view)
-        };
-    }
-
-    @SuppressLint("SimpleDateFormat")
-    private fun createTable(view: View) {
-        /*
-        val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm")
-        val table = view.findViewById<TableLayout>(R.id.reservations_table)
-
-        if (viewModel.response.value != null)
-        {
-            var size = viewModel.response.value!!.size - 1
-            for (i in 0..size) {
-                val row = TableRow(context)
-                val reservation = viewModel.response.value!![i]
-                row.layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
-
-                if (i % 2 == 1) {
-                    row.setBackgroundColor(Color.LTGRAY)
-                }
-
-                createAndAddTextView(reservation.from, row)
-                createAndAddTextView(reservation.to, row)
-                createAndAddTextView(reservation.roomType, row)
-                createAndAddTextView(reservation.room, row)
-
-                table.addView(row)
-            }
-        }*/
     }
 
     private fun createAndAddTextView(reservation: String, row: TableRow) {

@@ -1,9 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/reservation_item_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_weight="4"
-    android:gravity="center_horizontal"
-    android:padding="10sp"
-    android:textColor="@color/black"
-    android:textSize="14sp" />
+    android:layout_weight="4">
+
+    <TextView
+        android:id="@+id/reservation_item_from"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="4"
+        android:gravity="center_horizontal"
+        android:padding="10sp"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/reservation_item_to"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="4"
+        android:gravity="center_horizontal"
+        android:padding="10sp"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/reservation_item_type"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="4"
+        android:gravity="center_horizontal"
+        android:padding="10sp"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/reservation_item_room"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="4"
+        android:gravity="center_horizontal"
+        android:padding="10sp"
+        android:textSize="14sp" />
+</LinearLayout>
