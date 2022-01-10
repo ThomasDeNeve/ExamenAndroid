@@ -13,9 +13,11 @@ import android.widget.TableRow.LayoutParams
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import com.example.hier.R
 import com.example.hier.databinding.FragmentReservationsBinding
 import org.koin.android.ext.android.inject
+import java.lang.ClassCastException
 import java.text.SimpleDateFormat
 import java.util.Date
 
@@ -31,6 +33,7 @@ class ReservationsFragment : Fragment() {
         val binding = FragmentReservationsBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
+
         return binding.root
     }
 
@@ -38,29 +41,41 @@ class ReservationsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         try {
             (activity as AppCompatActivity).supportActionBar?.title = "Mijn reservaties"
-        } catch (e: java.lang.ClassCastException) {
+        } catch (e: ClassCastException) {
             Log.i("classcastexception", e.stackTraceToString())
         }
         createTable(view)
+
+
+        viewModel.response.observe(viewLifecycleOwner) {
+            createTable(view)
+        };
     }
 
     @SuppressLint("SimpleDateFormat")
     private fun createTable(view: View) {
-        val formatter = SimpleDateFormat("dd-MM-yyyy")
+        val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm")
         val table = view.findViewById<TableLayout>(R.id.reservations_table)
 
-        for ((count, reservation) in viewModel.reservations.withIndex()) {
-            val row = TableRow(context)
-            row.layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
+        if (viewModel.response.value != null)
+        {
+            var size = viewModel.response.value!!.size - 1
+            for (i in 0..size) {
+                val row = TableRow(context)
+                val reservation = viewModel.response.value!![i]
+                row.layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
 
-            if (count % 2 == 1) {
-                row.setBackgroundColor(Color.LTGRAY)
+                if (i % 2 == 1) {
+                    row.setBackgroundColor(Color.LTGRAY)
+                }
+
+                createAndAddTextView(reservation.from, row)
+                createAndAddTextView(reservation.to, row)
+                createAndAddTextView(reservation.roomType, row)
+                createAndAddTextView(reservation.room, row)
+
+                table.addView(row)
             }
-
-            createAndAddTextView(formatter.format(Date(reservation.from)), row)
-            createAndAddTextView(reservation.room, row)
-
-            table.addView(row)
         }
     }
 

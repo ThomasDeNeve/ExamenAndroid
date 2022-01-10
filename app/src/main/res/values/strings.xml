@@ -39,8 +39,8 @@
     <string name="profile_btw">BTW</string>
     <string name="col1_header">Van</string>
     <string name="col2_header">Tot</string>
-    <string name="col3_header">Zaal</string>
-    <string name="col4_header">Stoel</string>
+    <string name="col3_header">Type</string>
+    <string name="col4_header">Zaal</string>
     <string name="capaciteit">Capaciteit</string>
     <string name="tijdstip_dag">Tijdstip dag</string>
     <string name="hier_arrow_img">Arrow image HIER</string>

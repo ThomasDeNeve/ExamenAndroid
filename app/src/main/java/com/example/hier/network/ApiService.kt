@@ -1,5 +1,6 @@
 package com.example.hier.network
 
+import com.example.hier.models.Reservation
 import com.example.hier.networkModels.CoworkReservationPostModel
 import com.example.hier.networkModels.CoworkReservationReceiveModel
 import com.example.hier.networkModels.MeetingRoomNetworkModel
@@ -33,4 +34,7 @@ interface ApiService {
 
     @POST("/api/Reservation/meetingroom")
     suspend fun postMeetingroomReservation(@Header("Authorization") token: String, @Body meetingroomReservation: MeetingroomReservationPostModel): Response<String>
+
+    @GET("api/reservation/allreservations")
+    suspend fun getAllReservations(@Header("Authorization") token: String, @Query("username") customer: String, @Query("roomType") roomType: Int): Response<List<Reservation>>
 }

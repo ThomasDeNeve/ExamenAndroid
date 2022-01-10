@@ -43,6 +43,7 @@ class LoginFragment : Fragment() {
             getAPIAccessToken()
         }
 
+        getAPIAccessToken()
         return binding.root
     }
 

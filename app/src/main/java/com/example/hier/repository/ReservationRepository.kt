@@ -4,6 +4,7 @@ import android.util.Log
 import com.example.hier.MyApplication.Companion.cachedUserProfile
 import com.example.hier.database.LocalDataSource
 import com.example.hier.models.CoworkReservation
+import com.example.hier.models.Reservation
 import com.example.hier.models.User
 import com.example.hier.network.RemoteDataSource
 import com.example.hier.networkModels.CoworkReservationPostModel
@@ -33,6 +34,19 @@ class ReservationRepository(
             )
         }
         return coworkReservationList
+    }
+
+    suspend fun getAllReservations(roomType: Int): List<Reservation> {
+        val user: User
+        if (cachedUserProfile != null) {
+            val username: String = cachedUserProfile?.name.toString()
+            user = localDataSource.getUser(username)
+        } else {
+            Log.e("ReservationRepository", "CachedUserProfile was null!")
+            user = localDataSource.getNewestUser()
+        }
+
+        return remoteDataSource.getAllReservations(user.username, roomType).data!!
     }
 
     suspend fun postCoworkReservation(coworkReservation: CoworkReservationPostModel): Resource<String> {

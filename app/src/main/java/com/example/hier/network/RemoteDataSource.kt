@@ -10,6 +10,8 @@ class RemoteDataSource(private val apiService: ApiService) : BaseDataSource() {
 
     suspend fun getReservations(date: String) = getResult { apiService.getCoworkReservations("Bearer $apiAccessToken", date) }
 
+    suspend fun getAllReservations(customer: String, roomType: Int) = getResult { apiService.getAllReservations("Bearer $apiAccessToken", customer, roomType) }
+
     suspend fun getAvailableMeetingrooms(
         neededseats: Int,
         locationid: Int,

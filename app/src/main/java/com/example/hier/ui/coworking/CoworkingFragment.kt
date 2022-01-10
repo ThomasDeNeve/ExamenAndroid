@@ -18,7 +18,7 @@ class CoworkingFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        viewModel.setInitialDate()
+            //viewModel.setInitialDate()
     }
 
     override fun onCreateView(
@@ -46,7 +46,7 @@ class CoworkingFragment : Fragment() {
             lifecycleScope.launch { viewModel.checkAvailability(newDate) }
         })
 
-        viewModel.setInitialDate()
+        //viewModel.setInitialDate()
 
         viewModel.listOfChairs.forEach { item ->
             item.observe(viewLifecycleOwner, {
@@ -55,6 +55,11 @@ class CoworkingFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        //outState.put
     }
 
     private fun updateChairs(viewmodel: CoworkingViewModel) {
