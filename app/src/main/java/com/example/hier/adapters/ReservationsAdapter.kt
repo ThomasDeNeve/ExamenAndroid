@@ -5,22 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import androidx.recyclerview.widget.ListAdapter
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hier.R
 import com.example.hier.models.Reservation
 
-class ReservationsAdapter: RecyclerView.Adapter<ReservationsAdapter.ViewHolder>()  {
-    var data = listOf<Reservation>()
-        set(value) {
-            field = value
-            notifyDataSetChanged()
-        }
-
-    override fun getItemCount() = data.size
+class ReservationsAdapter: ListAdapter<Reservation, ReservationsAdapter.ViewHolder>(ReservationDiffCallback()) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = data[position]
+        val item = getItem(position)
         holder.setBackground(position)
         holder.bind(item)
     }
@@ -60,4 +55,15 @@ class ReservationsAdapter: RecyclerView.Adapter<ReservationsAdapter.ViewHolder>(
             reservationRoom.text = item.room
         }
     }
+}
+
+class ReservationDiffCallback: DiffUtil.ItemCallback<Reservation>() {
+    override fun areItemsTheSame(oldItem: Reservation, newItem: Reservation): Boolean {
+        return oldItem.reservationId == newItem.reservationId
+    }
+
+    override fun areContentsTheSame(oldItem: Reservation, newItem: Reservation): Boolean {
+        return oldItem == newItem
+    }
+
 }
