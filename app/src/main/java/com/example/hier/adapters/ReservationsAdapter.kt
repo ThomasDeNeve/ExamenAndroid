@@ -21,15 +21,8 @@ class ReservationsAdapter: RecyclerView.Adapter<ReservationsAdapter.ViewHolder>(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = data[position]
-        if (position % 2 != 1) {
-            holder.reservationLayout.setBackgroundColor(Color.LTGRAY)
-        } else {
-            holder.reservationLayout.setBackgroundColor(Color.TRANSPARENT)
-        }
-        holder.reservationFrom.text = item.from
-        holder.reservationTo.text = item.to
-        holder.reservationType.text = item.roomType
-        holder.reservationRoom.text = item.room
+        holder.setBackground(position)
+        holder.bind(item)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -39,11 +32,26 @@ class ReservationsAdapter: RecyclerView.Adapter<ReservationsAdapter.ViewHolder>(
     }
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        val reservationFrom: TextView = itemView.findViewById(R.id.reservation_item_from)
-        val reservationTo: TextView = itemView.findViewById(R.id.reservation_item_to)
-        val reservationType: TextView = itemView.findViewById(R.id.reservation_item_type)
-        val reservationRoom: TextView = itemView.findViewById(R.id.reservation_item_room)
+        private val reservationFrom: TextView = itemView.findViewById(R.id.reservation_item_from)
+        private val reservationTo: TextView = itemView.findViewById(R.id.reservation_item_to)
+        private val reservationType: TextView = itemView.findViewById(R.id.reservation_item_type)
+        private val reservationRoom: TextView = itemView.findViewById(R.id.reservation_item_room)
 
-        val reservationLayout: LinearLayout = itemView.findViewById(R.id.reservation_item_layout)
+        private val reservationLayout: LinearLayout = itemView.findViewById(R.id.reservation_item_layout)
+
+        fun setBackground(position: Int) {
+            if (position % 2 != 1) {
+                reservationLayout.setBackgroundColor(Color.LTGRAY)
+            } else {
+                reservationLayout.setBackgroundColor(Color.TRANSPARENT)
+            }
+        }
+
+        fun bind(item: Reservation) {
+            reservationFrom.text = item.from
+            reservationTo.text = item.to
+            reservationType.text = item.roomType
+            reservationRoom.text = item.room
+        }
     }
 }
