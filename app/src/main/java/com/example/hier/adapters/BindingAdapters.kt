@@ -4,12 +4,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import java.text.SimpleDateFormat
-import java.util.Date
+import java.util.*
 
 @BindingAdapter("textFromLong")
 fun bindTextFromLong(view: TextView, long: Long) {
     val date = Date(long)
-    val format = SimpleDateFormat("dd/MM/yyyy")
+    val format = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
     val text = format.format(date)
     view.text = text
 }

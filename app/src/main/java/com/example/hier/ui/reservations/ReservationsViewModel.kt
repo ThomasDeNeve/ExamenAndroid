@@ -1,26 +1,34 @@
 package com.example.hier.ui.reservations
 
+import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.hier.models.MeetingroomReservation
-import java.util.GregorianCalendar
+import com.example.hier.models.Reservation
+import com.example.hier.repository.ReservationRepository
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 
-class ReservationsViewModel : ViewModel() {
-    val reservations = populateData()
+class ReservationsViewModel(private val reservationRepository: ReservationRepository) : ViewModel() {
+    private val _response = MutableLiveData<List<Reservation>>()
 
-    private fun populateData(): List<MeetingroomReservation> {
-        val reservations = mutableListOf<MeetingroomReservation>()
-        for (i in 1..20) {
-            val from = GregorianCalendar(2021, 12, i).timeInMillis
-            val res = MeetingroomReservation(i, from, 0, (0..10).random().toString())
+    val response: MutableLiveData<List<Reservation>>
+        get() = _response
 
-            reservations.add(res)
+    private var viewModelJob = Job()
+    private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
+
+    init {
+        populateData()
+    }
+
+    private fun populateData() {
+        var reservations: MutableList<Reservation>
+        coroutineScope.launch {
+            reservations = reservationRepository.getAllReservations(0) as MutableList<Reservation>
+            _response.value = reservations
+            Log.i("FirstReservation", response.value?.get(0)?.to.toString().take(10))
         }
-        for (i in 1..12) {
-            val from = GregorianCalendar(2021, i, 5).timeInMillis
-            val res = MeetingroomReservation(i, from, 0, "/")
-
-            reservations.add(res)
-        }
-        return reservations
     }
 }

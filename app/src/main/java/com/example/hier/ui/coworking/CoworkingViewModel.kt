@@ -88,11 +88,18 @@ class CoworkingViewModel(
         chair13reserved
     )
 
-    fun setInitialDate() {
-        var today = System.currentTimeMillis()
-        today = today.div(86400000L) // remove hours and minutes from date
-        today = today.times(86400000L)
-        dateMutable.value = today
+    init {
+        setInitialDate()
+    }
+
+    private fun  setInitialDate() {
+        if (dateMutable.value == null)
+        {
+            var today = System.currentTimeMillis()
+            today = today.div(86400000L) // remove hours and minutes from date
+            today = today.times(86400000L)
+            dateMutable.value = today
+        }
     }
 
     suspend fun checkAvailability(newDate: Long) {

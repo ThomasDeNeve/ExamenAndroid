@@ -13,8 +13,8 @@ import org.koin.dsl.module
 val viewModelModule = module {
     viewModel { LoginViewModel(get()) }
     viewModel { RoomOverviewViewModel(get()) }
-    viewModel { ProfileViewModel(get()) }
-    viewModel { ReservationsViewModel() }
+    viewModel { ProfileViewModel() }
+    viewModel { ReservationsViewModel(get()) }
     viewModel { RoomViewModel(get()) }
     viewModel { CoworkingViewModel(get()) }
     viewModel { CoworkingRecapViewModel(get()) }

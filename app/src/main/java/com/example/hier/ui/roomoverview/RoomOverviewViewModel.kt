@@ -8,7 +8,7 @@ import com.example.hier.repository.RoomRepository
 import com.example.hier.util.Resource
 import kotlinx.coroutines.DelicateCoroutinesApi
 import java.text.SimpleDateFormat
-import java.util.Date
+import java.util.*
 
 class RoomOverviewViewModel(private val roomRepository: RoomRepository) : ViewModel() {
     var neededseats: Int = 8 // init on minimum amount of needed seats
@@ -33,7 +33,7 @@ class RoomOverviewViewModel(private val roomRepository: RoomRepository) : ViewMo
     // Get the actual date and return as String
     private fun getStartDateTime(): String {
         // Get the current date
-        val currentdate = SimpleDateFormat("yyyy-MM-dd hh:mm:ss")
+        val currentdate = SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.getDefault())
         var cdatestring = currentdate.format(Date()).toString()
         cdatestring = cdatestring.split(" ")[0]
         cdatestring += " 08:00:00"
@@ -42,7 +42,7 @@ class RoomOverviewViewModel(private val roomRepository: RoomRepository) : ViewMo
     }
 
     private fun getEndDateTime(): String {
-        val currentdate = SimpleDateFormat("yyyy-MM-dd hh:mm:ss")
+        val currentdate = SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.getDefault())
         var cdatestring = currentdate.format(Date()).toString()
         cdatestring = cdatestring.split(" ")[0]
         cdatestring += " 12:00:00"

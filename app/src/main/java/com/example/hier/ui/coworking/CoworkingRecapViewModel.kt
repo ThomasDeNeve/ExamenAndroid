@@ -7,7 +7,7 @@ import com.example.hier.networkModels.CoworkReservationPostModel
 import com.example.hier.repository.ReservationRepository
 import com.example.hier.util.Resource
 import java.text.SimpleDateFormat
-import java.util.Date
+import java.util.*
 
 class CoworkingRecapViewModel(
     private val reservationRepository: ReservationRepository
@@ -52,7 +52,7 @@ class CoworkingRecapViewModel(
 
     suspend fun onSubmit() {
         val date = Date(_date.value!!)
-        val dateString = SimpleDateFormat("dd/MM/yyyy").format(date)
+        val dateString = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(date)
         val user = reservationRepository.getUser()
         val rnw = CoworkReservationPostModel(user.userId, _seatId.value!!, dateString)
         response = reservationRepository.postCoworkReservation(rnw)
