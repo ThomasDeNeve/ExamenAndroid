@@ -76,7 +76,7 @@ class MeetingRoomFragmentTest {
         onData(allOf(`is`(instanceOf(Int::class.java)), `is`(14))).perform(click())
         onView(withId(R.id.room_list)).check(RecyclerViewItemCountAssertion(2))
         Thread.sleep(1_000)
-        onView(withId(R.id.room_list)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()));
+        onView(withId(R.id.room_list)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
         Thread.sleep(1_000)
         onView(withId(R.id.btn_reserve)).perform(scrollTo(), click())
         Thread.sleep(5_000)
