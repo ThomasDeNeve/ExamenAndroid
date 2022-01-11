@@ -27,20 +27,20 @@ class ProfileFragmentTest {
         Thread.sleep(5_000)
 
         //Use UiAutomator to control the external login page
-        var device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
+        val device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
         val selector = UiSelector()
         //Select the username field by its ID
-        var username = device.findObject(selector.resourceId("1-email"))
+        val username = device.findObject(selector.resourceId("1-email"))
         username.click()
         username.text = "deneve.thomas@gmail.com"
         //Password has no ID. TAB to it, and get the focused object
-        device.pressKeyCode(KeyEvent.KEYCODE_TAB);
+        device.pressKeyCode(KeyEvent.KEYCODE_TAB)
         Thread.sleep(1_000)
-        var password = device.findObject(selector.focused(true))
+        val password = device.findObject(selector.focused(true))
         password.text = "P@ssword001!"
         //The login button also has no ID. TAB to it and press enter
-        device.pressKeyCode(KeyEvent.KEYCODE_TAB);
-        device.pressKeyCode(KeyEvent.KEYCODE_TAB);
+        device.pressKeyCode(KeyEvent.KEYCODE_TAB)
+        device.pressKeyCode(KeyEvent.KEYCODE_TAB)
         device.pressEnter()
 
         Thread.sleep(5_000)
