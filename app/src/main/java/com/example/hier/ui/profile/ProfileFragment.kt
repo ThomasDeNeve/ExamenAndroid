@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.auth0.android.Auth0
 import com.auth0.android.authentication.AuthenticationException
@@ -120,6 +121,8 @@ class ProfileFragment : Fragment() {
 
     private fun navigateToLogin() {
         val directions = ProfileFragmentDirections.actionProfileFragmentToLoginFragment()
-        findNavController().navigate(directions)
+        lifecycleScope.launchWhenResumed {
+            findNavController().navigate(directions)
+        }
     }
 }

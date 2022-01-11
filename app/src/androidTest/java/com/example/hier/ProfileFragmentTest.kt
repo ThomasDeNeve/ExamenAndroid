@@ -35,6 +35,7 @@ class ProfileFragmentTest {
         username.text = "deneve.thomas@gmail.com"
         //Password has no ID. TAB to it, and get the focused object
         device.pressKeyCode(KeyEvent.KEYCODE_TAB);
+        Thread.sleep(1_000)
         var password = device.findObject(selector.focused(true))
         password.text = "P@ssword001!"
         //The login button also has no ID. TAB to it and press enter
