@@ -110,7 +110,6 @@ class LoginFragment : Fragment() {
                         override fun onSuccess(result: Credentials) {
                             // Get the access token from the credentials object.
                             // This can be used to call APIs
-                            binding.loginProgressBar.visibility = View.INVISIBLE
                             Log.i("LOGIN", "Login success")
                             cachedCredentials = result
                             getUserProfile()

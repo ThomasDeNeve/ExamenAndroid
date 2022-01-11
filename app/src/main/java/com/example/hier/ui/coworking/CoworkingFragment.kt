@@ -1,6 +1,5 @@
 package com.example.hier.ui.coworking
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,11 +14,6 @@ import org.koin.android.ext.android.inject
 class CoworkingFragment : Fragment() {
     private lateinit var binding: FragmentCoworkingBinding
     private val viewModel: CoworkingViewModel by inject()
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-            //viewModel.setInitialDate()
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -55,11 +49,6 @@ class CoworkingFragment : Fragment() {
         }
 
         return binding.root
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        //outState.put
     }
 
     private fun updateChairs(viewmodel: CoworkingViewModel) {

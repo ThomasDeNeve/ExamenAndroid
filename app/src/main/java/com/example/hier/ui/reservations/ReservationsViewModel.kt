@@ -1,10 +1,8 @@
 package com.example.hier.ui.reservations
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.hier.models.MeetingroomReservation
 import com.example.hier.models.Reservation
 import com.example.hier.repository.ReservationRepository
 import kotlinx.coroutines.CoroutineScope
@@ -18,8 +16,6 @@ class ReservationsViewModel(private val reservationRepository: ReservationReposi
     val response: MutableLiveData<List<Reservation>>
         get() = _response
 
-    //val reservations = populateData()
-
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
@@ -28,7 +24,7 @@ class ReservationsViewModel(private val reservationRepository: ReservationReposi
     }
 
     private fun populateData() {
-        var reservations = mutableListOf<Reservation>()
+        var reservations: MutableList<Reservation>
         coroutineScope.launch {
             reservations = reservationRepository.getAllReservations(0) as MutableList<Reservation>
             _response.value = reservations

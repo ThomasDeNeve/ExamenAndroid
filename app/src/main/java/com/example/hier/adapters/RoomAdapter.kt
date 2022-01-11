@@ -1,5 +1,6 @@
 package com.example.hier.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -8,6 +9,8 @@ import com.example.hier.models.Room
 
 class RoomAdapter(private val roomClickListener: RoomClickListener) : RecyclerView.Adapter<RoomAdapter.RoomViewHolder>() {
     var data = listOf<Room>()
+        //Suppress this Lint error. No time to refactor. Done correctly in ReservationsAdapter!
+        @SuppressLint("NotifyDataSetChanged")
         set(value) {
             val valueSorted = value.sortedWith { lhs, rhs ->
                 // sort rooms by location | -1 - less than, 1 - greater than, 0 - equal, all inversed for descending

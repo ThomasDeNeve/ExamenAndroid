@@ -1,28 +1,54 @@
 package com.example.hier
 
-import androidx.fragment.app.testing.launchFragmentInContainer
-import androidx.lifecycle.Lifecycle
+import android.view.View
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers.isEnabled
-import androidx.test.espresso.matcher.ViewMatchers.withId
-import com.example.hier.ui.reservations.ReservationsFragment
+import androidx.test.ext.junit.rules.ActivityScenarioRule
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
+import kotlin.properties.Delegates
+import androidx.recyclerview.widget.RecyclerView
+
+import androidx.test.espresso.NoMatchingViewException
+
+import androidx.test.espresso.ViewAssertion
+import androidx.test.espresso.matcher.ViewMatchers.*
+import org.hamcrest.CoreMatchers.`is`
+
 
 class ReservationsFragmentTest {
+    var resCount: Int = 0
+
+    @get:Rule
+    val activityRule = ActivityScenarioRule(MainActivity::class.java)
+
     @Before
     fun setUp() {
-        launchFragmentInContainer<ReservationsFragment>(
-            fragmentArgs = null,
-            themeResId = R.style.Theme_MaterialComponents,
-            initialState = Lifecycle.State.RESUMED,
-            factory = null
-        )
+        onView(withId(R.id.reservationsFragment)).perform(click())
     }
 
     @Test
     fun tableIsDisplayed() {
         onView(withId(R.id.reservations_table)).check(matches(isEnabled()))
     }
+    /*
+    @Test
+    fun reservationsListItemCount() {
+        onView(withId(R.id.reservations_list)).check(RecyclerViewItemCountAssertion(30));
+    }
+
+    class RecyclerViewItemCountAssertion(private val expectedCount: Int) :
+        ViewAssertion {
+        override fun check(view: View, noViewFoundException: NoMatchingViewException?) {
+            if (noViewFoundException != null) {
+                throw noViewFoundException
+            }
+            val recyclerView = view as RecyclerView
+            val adapter = recyclerView.adapter
+            assertThat(adapter!!.itemCount, `is`(expectedCount))
+        }
+    }
+    */
 }

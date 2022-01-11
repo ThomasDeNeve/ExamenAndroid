@@ -5,10 +5,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.ListAdapter
-import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.hier.R
 import com.example.hier.databinding.ReservationItemViewBinding
 import com.example.hier.models.Reservation
 
@@ -25,11 +23,12 @@ class ReservationsAdapter: ListAdapter<Reservation, ReservationsAdapter.ViewHold
     }
 
     class ViewHolder private constructor(val binding: ReservationItemViewBinding): RecyclerView.ViewHolder(binding.root) {
+        /*
         private val reservationFrom: TextView = binding.reservationItemFrom
         private val reservationTo: TextView = binding.reservationItemTo
         private val reservationType: TextView = binding.reservationItemType
         private val reservationRoom: TextView = binding.reservationItemRoom
-
+*/
         private val reservationLayout: LinearLayout = binding.reservationItemLayout
 
         companion object {

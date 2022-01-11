@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Docs/School/Cursussen/Jaar 5/AndroidProject/devops-project-android-2122-t4-android/app/src/main/res/font/font_hier.xml" value="0.2328125" />
         <entry key="..\:/Docs/School/Cursussen/Jaar 5/AndroidProject/devops-project-android-2122-t4-android/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Docs/School/Cursussen/Jaar 5/AndroidProject/devops-project-android-2122-t4-android/app/src/main/res/layout/fragment_coworking.xml" value="0.19479166666666667" />
         <entry key="..\:/Docs/School/Cursussen/Jaar 5/AndroidProject/devops-project-android-2122-t4-android/app/src/main/res/layout/fragment_coworking_recap.xml" value="0.19479166666666667" />
@@ -10,7 +11,9 @@
         <entry key="..\:/Docs/School/Cursussen/Jaar 5/AndroidProject/devops-project-android-2122-t4-android/app/src/main/res/layout/fragment_reservations.xml" value="0.25" />
         <entry key="..\:/Docs/School/Cursussen/Jaar 5/AndroidProject/devops-project-android-2122-t4-android/app/src/main/res/layout/fragment_room.xml" value="0.3625" />
         <entry key="..\:/Docs/School/Cursussen/Jaar 5/AndroidProject/devops-project-android-2122-t4-android/app/src/main/res/layout/fragment_roomoverview.xml" value="0.3625" />
+        <entry key="..\:/Docs/School/Cursussen/Jaar 5/AndroidProject/devops-project-android-2122-t4-android/app/src/main/res/layout/reservation_item_view.xml" value="0.15989583333333332" />
         <entry key="..\:/Docs/School/Cursussen/Jaar 5/AndroidProject/devops-project-android-2122-t4-android/app/src/main/res/layout/text_item_view.xml" value="0.19479166666666667" />
+        <entry key="..\:/Docs/School/Cursussen/Jaar 5/AndroidProject/devops-project-android-2122-t4-android/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/thoma/AndroidStudioProjects/devops-project-android-2122-t4-android/app/src/main/res/drawable/icon_reserve.xml" value="0.1" />
         <entry key="..\:/Users/thoma/AndroidStudioProjects/devops-project-android-2122-t4-android/app/src/main/res/layout/custom_spinner_list.xml" value="0.19270833333333334" />
         <entry key="..\:/Users/thoma/AndroidStudioProjects/devops-project-android-2122-t4-android/app/src/main/res/layout/fragment_albert_lienartstraat_coworking.xml" value="0.22135416666666666" />

@@ -92,7 +92,7 @@ class CoworkingViewModel(
         setInitialDate()
     }
 
-    fun  setInitialDate() {
+    private fun  setInitialDate() {
         if (dateMutable.value == null)
         {
             var today = System.currentTimeMillis()
