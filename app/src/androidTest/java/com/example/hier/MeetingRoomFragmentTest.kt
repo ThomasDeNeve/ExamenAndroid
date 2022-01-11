@@ -14,6 +14,8 @@ import androidx.test.espresso.Espresso.onData
 import androidx.test.espresso.NoMatchingViewException
 
 import androidx.test.espresso.ViewAssertion
+import androidx.test.espresso.action.ViewActions.scrollTo
+import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.uiautomator.UiDevice
@@ -73,6 +75,10 @@ class MeetingRoomFragmentTest {
         onView(withId(R.id.seatSpinner)).perform(click())
         onData(allOf(`is`(instanceOf(Int::class.java)), `is`(14))).perform(click())
         onView(withId(R.id.room_list)).check(RecyclerViewItemCountAssertion(2))
+        Thread.sleep(1_000)
+        onView(withId(R.id.room_list)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()));
+        Thread.sleep(1_000)
+        onView(withId(R.id.btn_reserve)).perform(scrollTo(), click())
         Thread.sleep(5_000)
     }
 
