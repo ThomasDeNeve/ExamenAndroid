@@ -85,9 +85,9 @@ class ProfileFragment : Fragment() {
                 override fun onSuccess(result: UserProfile) {
                     cachedUserProfile = result
 
-                    binding.lblProfileName.text = result.getUserMetadata()["first_name"] as String?
+                    binding.lblProfileName.text = result.getUserMetadata()["last_name"] as String?
                     binding.lblProfileFirstName.text =
-                        result.getUserMetadata()["last_name"] as String?
+                        result.getUserMetadata()["first_name"] as String?
                     binding.lblProfileEmail.text = result.email
                     binding.lblProfileTel.text = result.getUserMetadata()["tel"] as String?
                     binding.lblProfileBTW.text = result.getUserMetadata()["btw_nr"] as String?

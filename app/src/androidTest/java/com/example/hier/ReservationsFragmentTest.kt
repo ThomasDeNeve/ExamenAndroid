@@ -19,10 +19,10 @@ import org.hamcrest.CoreMatchers.`is`
 
 
 class ReservationsFragmentTest {
-    var resCount: Int = 0
-
     @get:Rule
     val activityRule = ActivityScenarioRule(MainActivity::class.java)
+
+    var resCount: Int = 0
 
     @Before
     fun setUp() {
@@ -33,6 +33,7 @@ class ReservationsFragmentTest {
     fun tableIsDisplayed() {
         onView(withId(R.id.reservations_table)).check(matches(isEnabled()))
     }
+
     /*
     @Test
     fun reservationsListItemCount() {
