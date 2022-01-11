@@ -40,18 +40,21 @@ class LoginFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
 
         binding.loginButton.setOnClickListener {
-            getAPIAccessToken()
+            getAPIAccessToken(binding)
         }
 
-        getAPIAccessToken()
+        getAPIAccessToken(binding)
         return binding.root
     }
 
-    private fun getAPIAccessToken() {
+    private fun getAPIAccessToken(binding: FragmentLoginBinding) {
         // Setup the WebAuthProvider, using the custom scheme and scope
         val clientId: String = getString(R.string.auth0_clientId)
         val domain: String = getString(R.string.auth0_domain)
         account = Auth0(clientId, domain)
+
+        binding.loginButton.visibility = View.INVISIBLE
+        binding.loginProgressBar.visibility = View.VISIBLE
 
         activity?.let {
             // Get Authentication token for API calls
@@ -66,6 +69,8 @@ class LoginFragment : Fragment() {
                         // Called when there is an authentication failure
                         override fun onFailure(error: AuthenticationException) {
                             // Something went wrong!
+                            binding.loginProgressBar.visibility = View.INVISIBLE
+                            binding.loginButton.visibility = View.VISIBLE
                             Log.i("LOGIN", error.getDescription())
                             Toast.makeText(context, "Login failed", Toast.LENGTH_LONG).show()
                         }
@@ -75,14 +80,14 @@ class LoginFragment : Fragment() {
                             // Get the access token from the credentials object.
                             // This can be used to call APIs
                             apiAccessToken = result.accessToken
-                            loginWithBrowser()
+                            loginWithBrowser(binding)
                         }
                     }
                 )
         }
     }
 
-    private fun loginWithBrowser() {
+    private fun loginWithBrowser(binding: FragmentLoginBinding) {
         activity?.let {
             WebAuthProvider.login(account)
                 .withScheme("demo")
@@ -95,6 +100,8 @@ class LoginFragment : Fragment() {
                         // Called when there is an authentication failure
                         override fun onFailure(error: AuthenticationException) {
                             // Something went wrong!
+                            binding.loginProgressBar.visibility = View.INVISIBLE
+                            binding.loginButton.visibility = View.VISIBLE
                             Log.i("LOGIN", error.getDescription())
                             Toast.makeText(context, "Login failed", Toast.LENGTH_LONG).show()
                         }
@@ -103,6 +110,7 @@ class LoginFragment : Fragment() {
                         override fun onSuccess(result: Credentials) {
                             // Get the access token from the credentials object.
                             // This can be used to call APIs
+                            binding.loginProgressBar.visibility = View.INVISIBLE
                             Log.i("LOGIN", "Login success")
                             cachedCredentials = result
                             getUserProfile()
