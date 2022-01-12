@@ -1,5 +1,15 @@
 # Android devops Project - T4
 
+## How to run
+In Android Studio, press 'run app' & have fun! Alternatively, you could download & install the APK on your Android device from [here](http://ec2-3-212-186-23.compute-1.amazonaws.com:8080/) (thanks Ops team!)
+
+Our app will only work if the backend is running online!
+The backend can be found here: https://github.com/ThomasDeNeve/ExamenAndroidBackend
+Run the backend locally on port 5001 (or change the port in the Android BASE_URL).
+
+For testing purposes, run the backend locally and uncomment the line below in build.gradle(module) :
+>buildConfigField 'String', 'BASE_URL', "\"https://10.0.2.2:5001/\""
+
 ## Used Technology
 This app is built using the MVVM-architecture. It fetches the rooms & reservations via API calls to the backend, using the single-source-of-truth principle. Data is saved to a local Room (Android) database. While fetching the data from API, it asynchronously loads the data from this Room database and updates it with the fetched (new) data. The app is fully lifecycle-aware and uses coroutines where needed. 
 Used technologies:
@@ -11,15 +21,6 @@ Used technologies:
 - Auth0 for logging in & registering
 - ktlint (org.jlleitschuh.gradle:ktlint-gradle:10.2.0)
 - ...
-
-## How to run
-In Android Studio, press 'run app' & have fun! Alternatively, you could download & install the APK on your Android device from [here](http://ec2-3-212-186-23.compute-1.amazonaws.com:8080/) (thanks Ops team!)
-
-Our app will only work if the backend is running online! 
-For testing purposes, run the backend locally and uncomment the line below in build.gradle(module) :
->buildConfigField 'String', 'BASE_URL', "\"https://10.0.2.2:5001/\""
-
-
 
 To perform a ktlint check, type this in terminal:
 > gradlew ktlintCheck
