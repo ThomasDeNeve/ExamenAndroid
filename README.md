@@ -5,6 +5,7 @@ In Android Studio, press 'run app' & have fun! Alternatively, you could download
 
 Our app will only work if the backend is running online!
 The backend can be found here: https://github.com/ThomasDeNeve/ExamenAndroidBackend
+
 Run the backend locally on port 5001 (or change the port in the Android BASE_URL).
 
 For testing purposes, run the backend locally and uncomment the line below in build.gradle(module) :
